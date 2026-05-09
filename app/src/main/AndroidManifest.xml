@@ -12,14 +12,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sistemapdm1">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importador.ImportadorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.vehiculo.VehiculoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.movimiento.MovimientoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.reparacion.ReparacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.venta.VentaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.catalogos.CatalogosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.marca.MarcaActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
