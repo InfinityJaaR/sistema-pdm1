@@ -153,4 +153,40 @@ public final class Constants {
     public static final String TAG_DAO      = "GenericDAO";
     public static final String TAG_SESSION  = "SessionManager";
     public static final String TAG_ACTIVITY = "Activity";
+
+    // =========================================================
+    // 13. OPCIONES DE MENÚ PRINCIPAL (15 módulos)
+    // =========================================================
+
+    public static final int MENU_IMPORTADOR      = 100;
+    public static final int MENU_VEHICULO        = 200;
+    public static final int MENU_IMPORTACION     = 210;
+    public static final int MENU_BODEGA          = 300;
+    public static final int MENU_SECCION         = 310;
+    public static final int MENU_MOVIMIENTO      = 400;
+    public static final int MENU_TRANSPORTE      = 410;
+    public static final int MENU_REPARACION      = 500;
+    public static final int MENU_TALLER          = 510;
+    public static final int MENU_VENTA           = 600;
+    public static final int MENU_DESPERFECTO     = 610;
+    public static final int MENU_PERSONAL        = 620;
+    public static final int MENU_MARCA           = 630;
+    public static final int MENU_TIPO_TRANSPORTE = 640;
+    public static final int MENU_TIPO_VEHICULO   = 650;
+
+    public static final String DESC_IMPORTADOR      = "Gestión de importadores";
+    public static final String DESC_VEHICULO        = "Catálogo de vehículos";
+    public static final String DESC_IMPORTACION     = "Registro de importaciones";
+    public static final String DESC_BODEGA          = "Gestión de bodegas";
+    public static final String DESC_SECCION         = "Secciones dentro de bodegas";
+    public static final String DESC_MOVIMIENTO      = "Movimientos de vehículos";
+    public static final String DESC_TRANSPORTE      = "Gestión de transportes";
+    public static final String DESC_REPARACION      = "Registro de reparaciones";
+    public static final String DESC_TALLER          = "Catálogo de talleres";
+    public static final String DESC_VENTA           = "Registro de ventas";
+    public static final String DESC_DESPERFECTO     = "Detalle de desperfectos";
+    public static final String DESC_PERSONAL        = "Personal de la empresa";
+    public static final String DESC_MARCA           = "Marcas de vehículos";
+    public static final String DESC_TIPO_TRANSPORTE = "Tipos de transporte";
+    public static final String DESC_TIPO_VEHICULO   = "Tipos de vehículos";
 }

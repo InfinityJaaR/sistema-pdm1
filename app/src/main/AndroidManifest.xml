@@ -40,6 +40,9 @@
         <activity
             android:name=".activities.catalogos.CatalogosActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.marca.MarcaActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

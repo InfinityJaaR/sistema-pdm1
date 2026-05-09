@@ -54,92 +54,53 @@ public class LlenarBDGpo02 {
             }
 
             // =================================================================
-            // SECCIÓN 2: OPCIONES CRUD (30 opciones)
-            // IDs son String porque ID_OPCION es TEXT en BD
+            // SECCIÓN 2: OPCIONES DE MENÚ PRINCIPAL (15 módulos)
+            // Cada ID representa acceso al módulo; CRUD interno se define en FASE 4
             // =================================================================
             if (opcionDAO.contar() == 0) {
-
-                // Módulo IMPORTADOR (100-104)
-                opcionDAO.insertar(new OpcionCrud("100", "Menu Importador",       0));
-                opcionDAO.insertar(new OpcionCrud("101", "Agregar Importador",    1));
-                opcionDAO.insertar(new OpcionCrud("102", "Modificar Importador",  2));
-                opcionDAO.insertar(new OpcionCrud("103", "Eliminar Importador",   3));
-                opcionDAO.insertar(new OpcionCrud("104", "Consultar Importador",  4));
-
-                // Módulo VEHÍCULO (200-204)
-                opcionDAO.insertar(new OpcionCrud("200", "Menu Vehiculo",         0));
-                opcionDAO.insertar(new OpcionCrud("201", "Agregar Vehiculo",      1));
-                opcionDAO.insertar(new OpcionCrud("202", "Modificar Vehiculo",    2));
-                opcionDAO.insertar(new OpcionCrud("203", "Eliminar Vehiculo",     3));
-                opcionDAO.insertar(new OpcionCrud("204", "Consultar Vehiculo",    4));
-
-                // Módulo MOVIMIENTO (300-304)
-                opcionDAO.insertar(new OpcionCrud("300", "Menu Movimiento",       0));
-                opcionDAO.insertar(new OpcionCrud("301", "Agregar Movimiento",    1));
-                opcionDAO.insertar(new OpcionCrud("302", "Modificar Movimiento",  2));
-                opcionDAO.insertar(new OpcionCrud("303", "Eliminar Movimiento",   3));
-                opcionDAO.insertar(new OpcionCrud("304", "Consultar Movimiento",  4));
-
-                // Módulo REPARACIÓN (400-404)
-                opcionDAO.insertar(new OpcionCrud("400", "Menu Reparacion",       0));
-                opcionDAO.insertar(new OpcionCrud("401", "Agregar Reparacion",    1));
-                opcionDAO.insertar(new OpcionCrud("402", "Modificar Reparacion",  2));
-                opcionDAO.insertar(new OpcionCrud("403", "Eliminar Reparacion",   3));
-                opcionDAO.insertar(new OpcionCrud("404", "Consultar Reparacion",  4));
-
-                // Módulo VENTA (500-504)
-                opcionDAO.insertar(new OpcionCrud("500", "Menu Venta",            0));
-                opcionDAO.insertar(new OpcionCrud("501", "Agregar Venta",         1));
-                opcionDAO.insertar(new OpcionCrud("502", "Modificar Venta",       2));
-                opcionDAO.insertar(new OpcionCrud("503", "Eliminar Venta",        3));
-                opcionDAO.insertar(new OpcionCrud("504", "Consultar Venta",       4));
-
-                // Módulo CATÁLOGOS (600-604)
-                opcionDAO.insertar(new OpcionCrud("600", "Menu Catalogos",        0));
-                opcionDAO.insertar(new OpcionCrud("601", "Agregar Catalogo",      1));
-                opcionDAO.insertar(new OpcionCrud("602", "Modificar Catalogo",    2));
-                opcionDAO.insertar(new OpcionCrud("603", "Eliminar Catalogo",     3));
-                opcionDAO.insertar(new OpcionCrud("604", "Consultar Catalogo",    4));
-
-                Log.d(TAG, "30 opciones CRUD insertadas");
+                opcionDAO.insertar(new OpcionCrud("100", "Importador",        0));
+                opcionDAO.insertar(new OpcionCrud("200", "Vehículo",          0));
+                opcionDAO.insertar(new OpcionCrud("210", "Importación",       0));
+                opcionDAO.insertar(new OpcionCrud("300", "Bodega",            0));
+                opcionDAO.insertar(new OpcionCrud("310", "Sección",           0));
+                opcionDAO.insertar(new OpcionCrud("400", "Movimiento",        0));
+                opcionDAO.insertar(new OpcionCrud("410", "Transporte",        0));
+                opcionDAO.insertar(new OpcionCrud("500", "Reparación",        0));
+                opcionDAO.insertar(new OpcionCrud("510", "Taller",            0));
+                opcionDAO.insertar(new OpcionCrud("600", "Venta",             0));
+                opcionDAO.insertar(new OpcionCrud("610", "Desperfecto",       0));
+                opcionDAO.insertar(new OpcionCrud("620", "Personal Interno",  0));
+                opcionDAO.insertar(new OpcionCrud("630", "Marca",             0));
+                opcionDAO.insertar(new OpcionCrud("640", "Tipo de Transporte",0));
+                opcionDAO.insertar(new OpcionCrud("650", "Tipo de Vehículo",  0));
+                Log.d(TAG, "15 opciones de menú insertadas");
             }
 
             // =================================================================
             // SECCIÓN 3: MATRIZ DE ACCESOS
-            // idOpcion y idUsuario son String (TEXT en BD)
+            // Solo se verifica acceso al módulo (X00), no al CRUD interno
             // =================================================================
             if (accesoDAO.contar() == 0) {
 
-                // Todas las IDs de opción válidas
+                // ADMIN (id="1"): acceso a los 15 módulos
                 String[] todasOpciones = {
-                    "100","101","102","103","104",
-                    "200","201","202","203","204",
-                    "300","301","302","303","304",
-                    "400","401","402","403","404",
-                    "500","501","502","503","504",
-                    "600","601","602","603","604"
+                    "100","200","210","300","310",
+                    "400","410","500","510","600",
+                    "610","620","630","640","650"
                 };
-
-                // ADMIN (id="1"): acceso total a las 30 opciones
                 for (String opcion : todasOpciones) {
                     accesoDAO.insertar(new AccesoUsuario(opcion, "1"));
                 }
 
-                // IMPORTADOR (id="2"): módulo importador + consultar catálogos
-                accesoDAO.insertar(new AccesoUsuario("100", "2"));
-                accesoDAO.insertar(new AccesoUsuario("101", "2"));
-                accesoDAO.insertar(new AccesoUsuario("102", "2"));
-                accesoDAO.insertar(new AccesoUsuario("103", "2"));
-                accesoDAO.insertar(new AccesoUsuario("104", "2"));
-                accesoDAO.insertar(new AccesoUsuario("604", "2"));
+                // IMPORTADOR (id="2"): Importador, Importación + catálogos básicos
+                for (String opcion : new String[]{"100","210","630","640","650"}) {
+                    accesoDAO.insertar(new AccesoUsuario(opcion, "2"));
+                }
 
-                // PERSONAL (id="3"): módulo movimiento + consultar catálogos
-                accesoDAO.insertar(new AccesoUsuario("300", "3"));
-                accesoDAO.insertar(new AccesoUsuario("301", "3"));
-                accesoDAO.insertar(new AccesoUsuario("302", "3"));
-                accesoDAO.insertar(new AccesoUsuario("303", "3"));
-                accesoDAO.insertar(new AccesoUsuario("304", "3"));
-                accesoDAO.insertar(new AccesoUsuario("604", "3"));
+                // PERSONAL (id="3"): Movimiento, Transporte + catálogos básicos
+                for (String opcion : new String[]{"400","410","630","640","650"}) {
+                    accesoDAO.insertar(new AccesoUsuario(opcion, "3"));
+                }
 
                 Log.d(TAG, "Matriz de accesos insertada");
             }
