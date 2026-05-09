@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sistema_pdm1"
+    namespace = "com.ues.sistema_pdm1"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
