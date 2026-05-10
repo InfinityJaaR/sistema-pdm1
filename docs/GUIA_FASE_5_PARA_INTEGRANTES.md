@@ -525,13 +525,14 @@ List<TelefonoImportador> tels = telefonoDAO.obtenerPor("ID_IMPORTADOR",
     data/dao/GenericDAO.java
     data/dao/IBaseDAO.java
     activities/LoginActivity.java
-    adapters/MenuItemAdapter.java
-    models/MenuItem.java
-    models/*.java          ← todos los 26 POJOs
+    activities/MainActivity.java    ← solo agregar case en abrirModulo()
+    models/*.java                   ← todos los 26 POJOs
+    res/layout/activity_main.xml    ← menú completo, no tocar
+    res/values/colors.xml           ← paleta cerrada
 
 ⚠️ SOLO AGREGAR (no modificar lo existente):
     activities/MainActivity.java
-        → Agregar case en el switch de abrirModulo()
+        → Agregar case en el switch de abrirModulo() para tu Activity
     AndroidManifest.xml
         → Registrar <activity> de tus clases nuevas
 ```
@@ -540,15 +541,13 @@ List<TelefonoImportador> tels = telefonoDAO.obtenerPor("ID_IMPORTADOR",
 
 ## Sección 5: Cómo integrar tu módulo al menú
 
-El menú ya funciona automáticamente para los módulos que tienen acceso definido.
-Tu única tarea es agregar el `case` que abre tu Activity.
+El menú principal **ya está completo**. `activity_main.xml` ya tiene todas las tarjetas
+definidas y `MainActivity.configurarTarjetas()` ya controla la visibilidad de cada una
+según los permisos del usuario. **No hay que tocar el menú visual.**
 
-### Paso 1 — Verificar que el acceso ya existe
+Tu única tarea es dos pasos:
 
-En `LlenarBDGpo02.java` ya están las opciones de menú y la matriz de accesos.
-Busca el ID de tu módulo en `Constants.java` (sección 13 — OPCIONES DE MENÚ PRINCIPAL).
-
-### Paso 2 — Agregar el case en MainActivity
+### Paso 1 — Agregar el case en `abrirModulo()`
 
 Abre `MainActivity.java`, busca el método `abrirModulo(int idOpcion)` y agrega
 tu(s) `case` al final del switch, **antes del `default`**:
@@ -587,10 +586,9 @@ case Constants.MENU_SECCION:
 ```
 
 > Los módulos IMPORTADOR, VEHÍCULO, MOVIMIENTO, REPARACIÓN y VENTA ya tienen
-> su `case` en `MainActivity` apuntando a stubs. Solo tienes que implementar
-> el contenido de esas Activities — el case ya existe.
+> su `case` — solo implementa el contenido de esas Activities.
 
-### Paso 3 — Registrar en AndroidManifest.xml
+### Paso 2 — Registrar en AndroidManifest.xml
 
 Dentro de la etiqueta `<application>`, agregar una línea por Activity nueva:
 
@@ -603,6 +601,15 @@ Dentro de la etiqueta `<application>`, agregar una línea por Activity nueva:
 <activity android:name=".activities.bodega.BodegaActivity" />
 <activity android:name=".activities.seccion.SeccionActivity" />
 ```
+
+### ¿Cómo aparece mi tarjeta en el menú automáticamente?
+
+`configurarTarjetas()` en `MainActivity` ya tiene tu tarjeta mapeada al ID de tu módulo.
+Cuando el usuario tiene acceso (`tieneAcceso(id)` = true), la tarjeta aparece clickeable
+y llama a `abrirModulo(id)`. No necesitas hacer nada más en el menú.
+
+Cuando tu `case` en `abrirModulo()` aún no existe, el click muestra el Toast
+_"Módulo en construcción"_ — es el comportamiento esperado durante el desarrollo.
 
 ---
 
@@ -759,20 +766,21 @@ FOREIGN KEYS
 
 ## Referencia rápida — IDs de menú en Constants.java
 
-| Constante | Valor | Integrante | Case ya en MainActivity |
-|-----------|-------|-----------|------------------------|
-| `MENU_IMPORTADOR` | 100 | Gaby | ✅ sí (stub) |
-| `MENU_VEHICULO` | 200 | Yami | ✅ sí (stub) |
-| `MENU_IMPORTACION` | 210 | Gaby | ❌ agregar |
-| `MENU_BODEGA` | 300 | Javier | ❌ agregar |
-| `MENU_SECCION` | 310 | Javier | ❌ agregar |
-| `MENU_MOVIMIENTO` | 400 | Eleazar | ✅ sí (stub) |
-| `MENU_TRANSPORTE` | 410 | Eleazar | ❌ agregar |
-| `MENU_REPARACION` | 500 | Ricardo | ✅ sí (stub) |
-| `MENU_TALLER` | 510 | Ricardo | ❌ agregar |
-| `MENU_VENTA` | 600 | Javier | ✅ sí (stub) |
-| `MENU_DESPERFECTO` | 610 | Yami | ❌ agregar |
-| `MENU_PERSONAL` | 620 | Eleazar | ❌ agregar |
-| `MENU_MARCA` | 630 | Base | ✅ sí (completo) |
-| `MENU_TIPO_TRANSPORTE` | 640 | Sin asignar | ❌ agregar |
-| `MENU_TIPO_VEHICULO` | 650 | Sin asignar | ❌ agregar |
+La columna "Tarjeta en menú" ya está resuelta — todas las tarjetas están en `activity_main.xml`.
+Solo falta la columna "Case en `abrirModulo()`".
+
+| Constante | Valor | Integrante | Tarjeta en menú | Case en `abrirModulo()` |
+|-----------|-------|-----------|-----------------|------------------------|
+| `MENU_IMPORTADOR` | 100 | Gaby | ✅ `cardImportadores` | ✅ existe (stub) |
+| `MENU_VEHICULO` | 200 | Yami | ✅ `cardVehiculos` | ✅ existe (stub) |
+| `MENU_IMPORTACION` | 210 | Gaby | ✅ `cardImportaciones` | ❌ agregar |
+| `MENU_BODEGA` | 300 | Javier | ✅ `cardBodegas` | ❌ agregar |
+| `MENU_SECCION` | 310 | Javier | ✅ `cardSeccion` | ❌ agregar |
+| `MENU_MOVIMIENTO` | 400 | Eleazar | ✅ `cardMovimientos` | ✅ existe (stub) |
+| `MENU_TRANSPORTE` | 410 | Eleazar | ✅ `cardTransporte` | ❌ agregar |
+| `MENU_REPARACION` | 500 | Ricardo | ✅ `cardReparaciones` | ✅ existe (stub) |
+| `MENU_TALLER` | 510 | Ricardo | ✅ `cardTalleres` | ❌ agregar |
+| `MENU_VENTA` | 600 | Javier | ✅ `cardVentas` | ✅ existe (stub) |
+| `MENU_DESPERFECTO` | 610 | Yami | ✅ `cardDesperfectos` | ❌ agregar |
+| `MENU_PERSONAL` | 620 | Eleazar | ✅ `cardPersonal` | ❌ agregar |
+| `MENU_MARCA` | 630 | Base | ✅ `cardMarca` (temporal) | ✅ existe (completo) |

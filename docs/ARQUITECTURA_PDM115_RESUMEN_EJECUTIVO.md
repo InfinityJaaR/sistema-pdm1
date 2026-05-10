@@ -46,7 +46,7 @@ Cubre el ciclo completo: importación → almacenamiento en bodegas → movimien
 |------|-------------|--------|
 | **FASE 1** | Base de datos: 26 tablas + 7 triggers + DatabaseContract/Helper/Manager | ✅ Completa |
 | **FASE 2** | 26 modelos POJO + SessionManager + Constants + LlenarBDGpo02 | ✅ Completa |
-| **FASE 3** | LoginActivity + MainActivity con menú dinámico (DrawerLayout + ListView + MenuItemAdapter) | ✅ Completa |
+| **FASE 3** | LoginActivity + MainActivity con menú de tarjetas en cuadrícula, control de acceso por rol | ✅ Completa |
 | **FASE 4** | Template CRUD de Marca: MarcaActivity + 3 Dialogs + 4 layouts | ✅ Completa |
 | **FASE 5** | CRUDs por módulo, siguiendo el patrón de Marca, uno por integrante | 🔄 En progreso |
 
@@ -65,9 +65,7 @@ Cubre el ciclo completo: importación → almacenamiento en bodegas → movimien
 
 **FASE 3 — Autenticación y menú**
 - `LoginActivity.java` — formulario de login, llama `SessionManager.login()`, redirige a `MainActivity`
-- `MainActivity.java` — `DrawerLayout` + `ListView` dinámico; 15 opciones filtradas por `tieneAcceso()`
-- `MenuItemAdapter.java` — adapter del ListView del menú; muestra nombre y descripción de cada opción
-- `MenuItem.java` — modelo de ítem de menú (id, nombre, descripción)
+- `MainActivity.java` — menú de tarjetas en cuadrícula (2 columnas, 7 filas) dentro de un `ScrollView`; visibilidad de cada tarjeta controlada por `tieneAcceso()`; filas completas se ocultan si ninguna de sus tarjetas tiene acceso; click en el bloque ícono+nombre del header dispara logout con `AlertDialog` de confirmación
 
 **FASE 4 — Template de Marca**
 - `MarcaActivity.java` — lista con búsqueda en tiempo real, botón agregar
@@ -82,12 +80,15 @@ Cubre el ciclo completo: importación → almacenamiento en bodegas → movimien
 ```
 ┌──────────────────────────────────────────────────────┐
 │                   CAPA DE UI                          │
-│  LoginActivity      → autenticación                  │
-│  MainActivity       → menú dinámico por rol          │
-│  [Modulo]Activity   → lista + búsqueda               │
-│  [Modulo]FormDialog → insertar / actualizar          │
+│  LoginActivity         → autenticación               │
+│  MainActivity          → cuadrícula de tarjetas      │
+│                           2 col × 7 filas, ScrollView│
+│                           visibilidad por rol         │
+│                           logout en header           │
+│  [Modulo]Activity      → lista + búsqueda            │
+│  [Modulo]FormDialog    → insertar / actualizar       │
 │  [Modulo]OptionsDialog → Ver / Editar / Eliminar     │
-│  [Modulo]ViewDialog → solo lectura                   │
+│  [Modulo]ViewDialog    → solo lectura                │
 └───────────────────────────┬──────────────────────────┘
                              │
 ┌───────────────────────────▼──────────────────────────┐
@@ -231,23 +232,25 @@ Cubre el ciclo completo: importación → almacenamiento en bodegas → movimien
 
 ### IDs de menú en Constants.java (Sección 13)
 
-| Constante | Valor | Módulo | Case en MainActivity |
-|-----------|-------|--------|---------------------|
-| `MENU_IMPORTADOR` | 100 | Importador | ✅ ya existe |
-| `MENU_VEHICULO` | 200 | Vehículo | ✅ ya existe |
-| `MENU_IMPORTACION` | 210 | Importación | ❌ agregar |
-| `MENU_BODEGA` | 300 | Bodega | ❌ agregar |
-| `MENU_SECCION` | 310 | Sección | ❌ agregar |
-| `MENU_MOVIMIENTO` | 400 | Movimiento | ✅ ya existe |
-| `MENU_TRANSPORTE` | 410 | Transporte | ❌ agregar |
-| `MENU_REPARACION` | 500 | Reparación | ✅ ya existe |
-| `MENU_TALLER` | 510 | Taller | ❌ agregar |
-| `MENU_VENTA` | 600 | Venta | ✅ ya existe |
-| `MENU_DESPERFECTO` | 610 | Detalle Desperfecto | ❌ agregar |
-| `MENU_PERSONAL` | 620 | Personal Interno | ❌ agregar |
-| `MENU_MARCA` | 630 | Marca | ✅ ya existe (completo) |
-| `MENU_TIPO_TRANSPORTE` | 640 | Tipo Transporte | ❌ agregar |
-| `MENU_TIPO_VEHICULO` | 650 | Tipo Vehículo | ❌ agregar |
+Las tarjetas del menú están **todas ya definidas en `activity_main.xml`** y la visibilidad está **ya cableada en `configurarTarjetas()`** de `MainActivity`. Lo único que cada integrante debe agregar es el `case` en `abrirModulo()` y registrar su Activity en el Manifest.
+
+| Constante | Valor | Módulo | Tarjeta en layout | Case en `abrirModulo()` |
+|-----------|-------|--------|-------------------|------------------------|
+| `MENU_IMPORTADOR` | 100 | Importador | ✅ `cardImportadores` | ✅ existe (stub) |
+| `MENU_VEHICULO` | 200 | Vehículo | ✅ `cardVehiculos` | ✅ existe (stub) |
+| `MENU_IMPORTACION` | 210 | Importación | ✅ `cardImportaciones` | ❌ agregar |
+| `MENU_BODEGA` | 300 | Bodega | ✅ `cardBodegas` | ❌ agregar |
+| `MENU_SECCION` | 310 | Sección | ✅ `cardSeccion` | ❌ agregar |
+| `MENU_MOVIMIENTO` | 400 | Movimiento | ✅ `cardMovimientos` | ✅ existe (stub) |
+| `MENU_TRANSPORTE` | 410 | Transporte | ✅ `cardTransporte` | ❌ agregar |
+| `MENU_REPARACION` | 500 | Reparación | ✅ `cardReparaciones` | ✅ existe (stub) |
+| `MENU_TALLER` | 510 | Taller | ✅ `cardTalleres` | ❌ agregar |
+| `MENU_VENTA` | 600 | Venta | ✅ `cardVentas` | ✅ existe (stub) |
+| `MENU_DESPERFECTO` | 610 | Detalle Desperfecto | ✅ `cardDesperfectos` | ❌ agregar |
+| `MENU_PERSONAL` | 620 | Personal Interno | ✅ `cardPersonal` | ❌ agregar |
+| `MENU_MARCA` | 630 | Marca (temporal) | ✅ `cardMarca` | ✅ existe (completo) |
+| `MENU_TIPO_TRANSPORTE` | 640 | Tipo Transporte | ❌ no en UI | — sin tarjeta — |
+| `MENU_TIPO_VEHICULO` | 650 | Tipo Vehículo | ❌ no en UI | — sin tarjeta — |
 
 ### Flujo de verificación de acceso
 
@@ -259,11 +262,16 @@ LoginActivity
            └─ Carga List<Integer> con los IDs de OPCIONCRUD del usuario
            └─ Retorna true si OK
 
-MainActivity.cargarMenuDinamico()
-    └─ Para cada MenuItem en crearTodasLasOpciones():
-           if (session.tieneAcceso(item.getId()))
-               menuItems.add(item)  ← aparece en el ListView
-           // sino → no se agrega, no aparece
+MainActivity.configurarTarjetas()
+    └─ Para cada tarjeta (cardImportadores, cardVehiculos, …):
+           if (session.tieneAcceso(idModulo))
+               card.setOnClickListener(…)   ← tarjeta activa y clickeable
+           else
+               card.setVisibility(GONE)     ← tarjeta oculta
+
+    └─ Por cada fila (row1…row7):
+           if ninguna de sus dos tarjetas tiene acceso
+               fila.setVisibility(GONE)     ← fila completa oculta
 
 Dentro de cualquier Activity o Dialog:
     if (!SessionManager.getInstance().isLoggedIn()) {
@@ -277,7 +285,7 @@ Dentro de cualquier Activity o Dialog:
 
 ```
 INSTALACIÓN
-  └─ LoginActivity.onCreate()
+  └─ MainActivity.onCreate()
        └─ LlenarBDGpo02.llenarDatosIniciales()
             └─ 16 bloques independientes (cada uno con contar() == 0)
             └─ Precarga todas las 26 tablas con datos demo
@@ -288,8 +296,9 @@ LOGIN
   └─ Éxito → MainActivity
 
 MENÚ
-  └─ ListView con opciones filtradas por rol
-  └─ Tap en opción → abrirModulo(id) → lanza Activity
+  └─ Cuadrícula 2 col × 7 filas de tarjetas en ScrollView
+  └─ configurarTarjetas() oculta tarjetas/filas sin acceso
+  └─ Tap en tarjeta → abrirModulo(id) → lanza Activity
 
 DENTRO DEL MÓDULO (patrón Marca)
   └─ Activity: ListView + búsqueda en tiempo real
@@ -300,7 +309,8 @@ DENTRO DEL MÓDULO (patrón Marca)
   └─ Cada operación → recargar ListView
 
 LOGOUT
-  └─ Botón en MainActivity → SessionManager.logout()
+  └─ Click en bloque ícono+nombre en el header → AlertDialog
+  └─ Confirmar → SessionManager.logout()
   └─ Vuelve a LoginActivity con flags NEW_TASK | CLEAR_TASK
 ```
 
@@ -392,7 +402,7 @@ app/src/main/
 │   │       ├── IBaseDAO.java
 │   │       └── GenericDAO.java
 │   │
-│   ├── models/                          ← 26 POJOs + MenuItem
+│   ├── models/                          ← 26 POJOs
 │   │   ├── AccesoUsuario.java
 │   │   ├── Bodega.java
 │   │   ├── Departamento.java
@@ -402,7 +412,6 @@ app/src/main/
 │   │   ├── Importacion.java
 │   │   ├── Importador.java
 │   │   ├── Marca.java
-│   │   ├── MenuItem.java
 │   │   ├── Modelo.java
 │   │   ├── Movimiento.java
 │   │   ├── Municipio.java
@@ -420,9 +429,6 @@ app/src/main/
 │   │   ├── Usuario.java
 │   │   ├── Vehiculo.java
 │   │   └── Venta.java
-│   │
-│   ├── adapters/
-│   │   └── MenuItemAdapter.java
 │   │
 │   ├── utils/
 │   │   ├── SessionManager.java
@@ -461,8 +467,7 @@ app/src/main/
     ├── dialog_vehiculo.xml              ← stub
     ├── item_vehiculo.xml
     ├── dialog_options.xml               ← genérico reutilizable
-    ├── dialog_confirmacion.xml          ← genérico reutilizable
-    └── item_menu.xml
+    └── dialog_confirmacion.xml          ← genérico reutilizable
 ```
 
 ---
@@ -480,13 +485,14 @@ app/src/main/
     data/dao/GenericDAO.java
     data/dao/IBaseDAO.java
     activities/LoginActivity.java
-    adapters/MenuItemAdapter.java
-    models/MenuItem.java
-    models/*.java  ← todos los 26 POJOs
+    activities/MainActivity.java  ← solo agregar case en abrirModulo(), no tocar el resto
+    models/*.java                 ← todos los 26 POJOs
+    res/layout/activity_main.xml  ← menú ya completo, no tocar
+    res/values/colors.xml         ← paleta cerrada, no agregar ni cambiar colores
 
 ⚠️ SOLO AGREGAR (no cambiar lógica existente):
     activities/MainActivity.java
-        → Agregar case en switch de abrirModulo()
+        → Agregar case en switch de abrirModulo() para tu Activity
     AndroidManifest.xml
         → Registrar <activity> de las clases nuevas
     res/values/strings.xml
@@ -505,8 +511,8 @@ app/src/main/
 ✅ SessionManager valida credenciales y permisos
 ✅ LlenarBDGpo02 precarga las 26 tablas
 ✅ LoginActivity autentica y redirige
-✅ MainActivity muestra menú dinámico por rol
-✅ MarcaActivity CRUD completo funciona
+✅ MainActivity — menú de tarjetas 2×7 con control de acceso por rol
+✅ MarcaActivity CRUD completo (template para los demás módulos)
 ```
 
 ### Por cada integrante (Fase 5)
@@ -575,7 +581,6 @@ SESIÓN
 
 | Archivo | Contenido |
 |---------|-----------|
-| `ESTADO_PROYECTO.md` | Estado general, arquitectura, fases completadas |
 | `CLASIFICACION_FINAL_26_TABLAS.md` | Las 26 tablas clasificadas, diagrama de dependencias |
 | `LLENARBDGPO2_ESTRUCTURA_ACTUAL.md` | Análisis de la precarga, qué tiene cada tabla |
 | `GUIA_FASE_5_PARA_INTEGRANTES.md` | Guía práctica por integrante con campos reales |

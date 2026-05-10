@@ -1,93 +1,531 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1A1A2E"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:background="@color/background_light">
 
+    <!-- HEADER -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="116dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:background="@color/primary_blue">
 
-        <!--    HEADER FIJO    -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:src="@drawable/ic_truck"
+            app:tint="@color/text_light"
+            android:contentDescription="@string/main_title" />
+
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#12122A"
+            android:layout_weight="1"
+            android:text="@string/main_title"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_light"
+            android:layout_marginStart="16dp" />
+
+        <!-- Unidad clickeable: ícono de usuario + nombre -->
+        <LinearLayout
+            android:id="@+id/layoutUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="18dp">
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground">
 
-            <!-- Fila superior y titulo del sistema -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                tools:ignore="UselessParent">
+            <ImageView
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:src="@drawable/ic_importer"
+                app:tint="@color/text_light"
+                android:contentDescription="@string/nav_profile" />
 
-                <TextView
-                    android:id="@+id/tv_titulo_sistema"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/titulo_sistema"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvUsername"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:text="@string/username_text"
-                    android:textColor="#FFFFFF"
-                    android:textSize="13sp"
-                    tools:ignore="RtlCompat" />
-
-                <Button
-                    android:id="@+id/btn_logout"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Salir"
-                    android:textColor="#FF6B6B"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <!-- Menu Principal -->
             <TextView
-                android:id="@+id/tv_menu"
-                android:layout_width="match_parent"
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:text="@string/menu_principal"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text=""
+                android:textSize="12sp"
+                android:textColor="@color/text_light"
+                android:layout_marginTop="4dp" />
 
         </LinearLayout>
 
-        <ListView
-            android:id="@+id/lv_opciones_menu"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:clipToPadding="false"
-            android:divider="#DDDDDD"
-            android:dividerHeight="1dp"
-            android:padding="8dp"
-            android:scrollbarStyle="outsideOverlay" />
-
     </LinearLayout>
-</androidx.drawerlayout.widget.DrawerLayout>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_welcome"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_subtitle"
+                android:textColor="@color/text_secondary"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="28dp" />
+
+            <!-- FILA 1: Importadores e Importaciones -->
+            <LinearLayout
+                android:id="@+id/row1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:id="@+id/cardImportadores"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_importer"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_importers" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_importers"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardImportaciones"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_import"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_imports" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_imports"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- FILA 2: Vehículos y Desperfectos -->
+            <LinearLayout
+                android:id="@+id/row2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:id="@+id/cardVehiculos"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_cars"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_vehicles" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_vehicles"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardDesperfectos"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_damage"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_damage" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_damage"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- FILA 3: Movimientos y Transporte -->
+            <LinearLayout
+                android:id="@+id/row3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:id="@+id/cardMovimientos"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_movement"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_movements" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_movements"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardTransporte"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_truck"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_transport" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_transport"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- FILA 4: Reparaciones y Talleres -->
+            <LinearLayout
+                android:id="@+id/row4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:id="@+id/cardReparaciones"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_build"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_build" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_build"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardTalleres"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_workshop"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_workshops" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_workshops"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- FILA 5: Ventas y Bodegas -->
+            <LinearLayout
+                android:id="@+id/row5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:id="@+id/cardVentas"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_sale"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_sales" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_sales"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardBodegas"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_warehouse"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_warehouses" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_warehouses"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- FILA 6: Empleados y Sección -->
+            <LinearLayout
+                android:id="@+id/row6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:id="@+id/cardPersonal"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_employed"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_staff" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_staff"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardSeccion"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_section"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_section" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_section"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- FILA 7: Marca (temporal) -->
+            <LinearLayout
+                android:id="@+id/row7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:id="@+id/cardMarca"
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:src="@drawable/ic_emptybox"
+                        app:tint="@color/text_light"
+                        android:contentDescription="@string/menu_brand" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/menu_brand"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_light" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="124dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

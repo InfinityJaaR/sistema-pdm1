@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="material_blue">#2196F3</color>
-    <color name="material_grey">#9E9E9E</color>
-    <color name="material_red">#F44336</color>
-    <color name="light_grey">#F5F5F5</color>
+    <!-- Colores Primarios -->
+    <color name="primary_blue">#1A1A2E</color>
+    <color name="primary_blue_dark">#12122A</color>
+    <color name="primary_blue_light">#9FA5FC</color>
 
-    <color name="color_primary">#1565C0</color>
-    <color name="background_login">#EEF2F7</color>
-    <color name="text_primary"></color>
-    <color name="text_secondary">#546E7A</color>
+    <!-- Colores Secundarios -->
+    <color name="secondary_gray">#F3F4F6</color>
+    <color name="secondary_gray_medium">#E5E7EB</color>
+    <color name="secondary_gray_dark">#9CA3AF</color>
+
+    <!-- Colores de Acciones -->
+    <color name="accent_orange">#F97316</color>
+    <color name="accent_red">#EF4444</color>
+    <color name="accent_green">#22C55E</color>
+
+    <!-- Colores de Texto -->
+    <color name="text_primary">#1F2937</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_light">#F9FAFB</color>
+
+    <!-- Colores de Fondos -->
+    <color name="background_white">#FFFFFF</color>
+    <color name="background_light">#F9FAFB</color>
+
+    <!-- Colores de Estado -->
+    <color name="error">#DC2626</color>
+    <color name="success">#16A34A</color>
+    <color name="warning">#EA580C</color>
+
+    <!-- Otros -->
+    <color name="transparent">#00000000</color>
+    <color name="divider">#E5E7EB</color>
 </resources>

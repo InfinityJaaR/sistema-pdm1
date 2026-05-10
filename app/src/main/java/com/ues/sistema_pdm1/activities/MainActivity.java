@@ -2,41 +2,39 @@ package com.ues.sistema_pdm1.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.ues.sistema_pdm1.R;
 import com.ues.sistema_pdm1.activities.importador.ImportadorActivity;
+import com.ues.sistema_pdm1.activities.marca.MarcaActivity;
 import com.ues.sistema_pdm1.activities.movimiento.MovimientoActivity;
 import com.ues.sistema_pdm1.activities.reparacion.ReparacionActivity;
-import com.ues.sistema_pdm1.activities.marca.MarcaActivity;
 import com.ues.sistema_pdm1.activities.venta.VentaActivity;
 import com.ues.sistema_pdm1.activities.vehiculo.VehiculoActivity;
-import com.ues.sistema_pdm1.adapters.MenuItemAdapter;
-import com.ues.sistema_pdm1.models.MenuItem;
 import com.ues.sistema_pdm1.utils.Constants;
 import com.ues.sistema_pdm1.utils.LlenarBDGpo02;
 import com.ues.sistema_pdm1.utils.SessionManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout;
-    private ListView lvOpcionesMenu;
-    private TextView tvUsername;
-    private Button btnLogout;
+    private TextView tvUserName;
 
-    private List<MenuItem> menuItems;
-    private MenuItemAdapter adapter;
+    private LinearLayout row1, row2, row3, row4, row5, row6, row7;
+
+    private LinearLayout cardImportadores, cardImportaciones;
+    private LinearLayout cardVehiculos,    cardDesperfectos;
+    private LinearLayout cardMovimientos,  cardTransporte;
+    private LinearLayout cardReparaciones, cardTalleres;
+    private LinearLayout cardVentas,       cardBodegas;
+    private LinearLayout cardPersonal,     cardSeccion;
+    private LinearLayout cardMarca;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,71 +49,105 @@ public class MainActivity extends AppCompatActivity {
         SessionManager.getInstance().inicializar(getApplicationContext());
         LlenarBDGpo02.llenarDatosIniciales(getApplicationContext());
 
-        drawerLayout   = findViewById(R.id.drawer_layout);
-        lvOpcionesMenu = findViewById(R.id.lv_opciones_menu);
-        tvUsername     = findViewById(R.id.tvUsername);
-        btnLogout      = findViewById(R.id.btn_logout);
-
-        tvUsername.setText("Usuario: " + SessionManager.getInstance().getNombreUsuario());
-
-        btnLogout.setOnClickListener(v -> {
-            SessionManager.getInstance().logout();
-            irALogin();
-        });
+        vincularVistas();
+        configurarLogout();
+        configurarTarjetas();
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("Salir")
+                    .setTitle(R.string.nav_logout)
                     .setMessage("¿Desea cerrar la aplicación?")
-                    .setPositiveButton("Sí", (dialog, which) -> finish())
-                    .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                    .setPositiveButton(R.string.yes, (dialog, which) -> finish())
+                    .setNegativeButton(R.string.no,  (dialog, which) -> dialog.dismiss())
                     .show();
             }
         });
-
-        cargarMenuDinamico();
-
-        lvOpcionesMenu.setOnItemClickListener((parent, view, position, id) -> {
-            MenuItem item = menuItems.get(position);
-            abrirModulo(item.getId());
-        });
-
     }
 
-    private void cargarMenuDinamico() {
-        menuItems = new ArrayList<>();
-        SessionManager session = SessionManager.getInstance();
+    private void vincularVistas() {
+        tvUserName = findViewById(R.id.tvUserName);
+        tvUserName.setText(SessionManager.getInstance().getNombreUsuario());
 
-        for (MenuItem item : crearTodasLasOpciones()) {
-            if (session.tieneAcceso(item.getId())) {
-                menuItems.add(item);
-            }
+        row1 = findViewById(R.id.row1);
+        row2 = findViewById(R.id.row2);
+        row3 = findViewById(R.id.row3);
+        row4 = findViewById(R.id.row4);
+        row5 = findViewById(R.id.row5);
+        row6 = findViewById(R.id.row6);
+        row7 = findViewById(R.id.row7);
+
+        cardImportadores  = findViewById(R.id.cardImportadores);
+        cardImportaciones = findViewById(R.id.cardImportaciones);
+        cardVehiculos     = findViewById(R.id.cardVehiculos);
+        cardDesperfectos  = findViewById(R.id.cardDesperfectos);
+        cardMovimientos   = findViewById(R.id.cardMovimientos);
+        cardTransporte    = findViewById(R.id.cardTransporte);
+        cardReparaciones  = findViewById(R.id.cardReparaciones);
+        cardTalleres      = findViewById(R.id.cardTalleres);
+        cardVentas        = findViewById(R.id.cardVentas);
+        cardBodegas       = findViewById(R.id.cardBodegas);
+        cardPersonal      = findViewById(R.id.cardPersonal);
+        cardSeccion       = findViewById(R.id.cardSeccion);
+        cardMarca         = findViewById(R.id.cardMarca);
+    }
+
+    private void configurarLogout() {
+        LinearLayout layoutUser = findViewById(R.id.layoutUser);
+        layoutUser.setOnClickListener(v ->
+            new AlertDialog.Builder(this)
+                .setTitle(R.string.logout_title)
+                .setMessage(R.string.logout_message)
+                .setPositiveButton(R.string.yes, (dialog, which) -> {
+                    SessionManager.getInstance().logout();
+                    irALogin();
+                })
+                .setNegativeButton(R.string.no, (dialog, which) -> dialog.dismiss())
+                .show()
+        );
+    }
+
+    private void configurarTarjetas() {
+        configurarTarjeta(cardImportadores,  Constants.MENU_IMPORTADOR);
+        configurarTarjeta(cardImportaciones, Constants.MENU_IMPORTACION);
+        configurarTarjeta(cardVehiculos,     Constants.MENU_VEHICULO);
+        configurarTarjeta(cardDesperfectos,  Constants.MENU_DESPERFECTO);
+        configurarTarjeta(cardMovimientos,   Constants.MENU_MOVIMIENTO);
+        configurarTarjeta(cardTransporte,    Constants.MENU_TRANSPORTE);
+        configurarTarjeta(cardReparaciones,  Constants.MENU_REPARACION);
+        configurarTarjeta(cardTalleres,      Constants.MENU_TALLER);
+        configurarTarjeta(cardVentas,        Constants.MENU_VENTA);
+        configurarTarjeta(cardBodegas,       Constants.MENU_BODEGA);
+        configurarTarjeta(cardPersonal,      Constants.MENU_PERSONAL);
+        configurarTarjeta(cardSeccion,       Constants.MENU_SECCION);
+        configurarTarjeta(cardMarca,         Constants.MENU_MARCA);
+
+        ocultarFilaSiSinAcceso(row1, Constants.MENU_IMPORTADOR,  Constants.MENU_IMPORTACION);
+        ocultarFilaSiSinAcceso(row2, Constants.MENU_VEHICULO,    Constants.MENU_DESPERFECTO);
+        ocultarFilaSiSinAcceso(row3, Constants.MENU_MOVIMIENTO,  Constants.MENU_TRANSPORTE);
+        ocultarFilaSiSinAcceso(row4, Constants.MENU_REPARACION,  Constants.MENU_TALLER);
+        ocultarFilaSiSinAcceso(row5, Constants.MENU_VENTA,       Constants.MENU_BODEGA);
+        ocultarFilaSiSinAcceso(row6, Constants.MENU_PERSONAL,    Constants.MENU_SECCION);
+
+        if (!SessionManager.getInstance().tieneAcceso(Constants.MENU_MARCA)) {
+            row7.setVisibility(View.GONE);
         }
-
-        adapter = new MenuItemAdapter(this, menuItems);
-        lvOpcionesMenu.setAdapter(adapter);
     }
 
-    private List<MenuItem> crearTodasLasOpciones() {
-        List<MenuItem> opciones = new ArrayList<>();
-        opciones.add(new MenuItem(Constants.MENU_IMPORTADOR,      "Importador",         Constants.DESC_IMPORTADOR));
-        opciones.add(new MenuItem(Constants.MENU_VEHICULO,        "Vehículo",           Constants.DESC_VEHICULO));
-        opciones.add(new MenuItem(Constants.MENU_IMPORTACION,     "Importación",        Constants.DESC_IMPORTACION));
-        opciones.add(new MenuItem(Constants.MENU_BODEGA,          "Bodega",             Constants.DESC_BODEGA));
-        opciones.add(new MenuItem(Constants.MENU_SECCION,         "Sección",            Constants.DESC_SECCION));
-        opciones.add(new MenuItem(Constants.MENU_MOVIMIENTO,      "Movimiento",         Constants.DESC_MOVIMIENTO));
-        opciones.add(new MenuItem(Constants.MENU_TRANSPORTE,      "Transporte",         Constants.DESC_TRANSPORTE));
-        opciones.add(new MenuItem(Constants.MENU_REPARACION,      "Reparación",         Constants.DESC_REPARACION));
-        opciones.add(new MenuItem(Constants.MENU_TALLER,          "Taller",             Constants.DESC_TALLER));
-        opciones.add(new MenuItem(Constants.MENU_VENTA,           "Venta",              Constants.DESC_VENTA));
-        opciones.add(new MenuItem(Constants.MENU_DESPERFECTO,     "Desperfecto",        Constants.DESC_DESPERFECTO));
-        opciones.add(new MenuItem(Constants.MENU_PERSONAL,        "Personal Interno",   Constants.DESC_PERSONAL));
-        opciones.add(new MenuItem(Constants.MENU_MARCA,           "Marca",              Constants.DESC_MARCA));
-        opciones.add(new MenuItem(Constants.MENU_TIPO_TRANSPORTE, "Tipo de Transporte", Constants.DESC_TIPO_TRANSPORTE));
-        opciones.add(new MenuItem(Constants.MENU_TIPO_VEHICULO,   "Tipo de Vehículo",   Constants.DESC_TIPO_VEHICULO));
-        return opciones;
+    private void configurarTarjeta(LinearLayout card, int menuId) {
+        if (SessionManager.getInstance().tieneAcceso(menuId)) {
+            card.setOnClickListener(v -> abrirModulo(menuId));
+        } else {
+            card.setVisibility(View.GONE);
+        }
+    }
+
+    private void ocultarFilaSiSinAcceso(LinearLayout fila, int idA, int idB) {
+        SessionManager s = SessionManager.getInstance();
+        if (!s.tieneAcceso(idA) && !s.tieneAcceso(idB)) {
+            fila.setVisibility(View.GONE);
+        }
     }
 
     private void abrirModulo(int idOpcion) {
@@ -151,14 +183,5 @@ public class MainActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
-    }
-
-    @Override
-    protected void onDestroy() {
-        drawerLayout   = null;
-        lvOpcionesMenu = null;
-        tvUsername     = null;
-        btnLogout      = null;
-        super.onDestroy();
     }
 }
