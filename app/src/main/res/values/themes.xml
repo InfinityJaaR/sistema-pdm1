@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.Sistemapdm1" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimary">@color/primary_blue</item>
     </style>
 
     <style name="Theme.Sistemapdm1" parent="Base.Theme.Sistemapdm1" />

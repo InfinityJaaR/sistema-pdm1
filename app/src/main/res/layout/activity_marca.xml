@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F7">
+    android:background="@color/background_light">
 
     <!-- CABECERA -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#12122A"
+        android:background="@color/primary_blue_dark"
         android:padding="18dp">
 
         <LinearLayout
@@ -32,7 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/title_marcas"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/text_light"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/subtitle_marcas"
-                    android:textColor="#AAAACC"
+                    android:textColor="@color/primary_blue_light"
                     android:textSize="12sp" />
 
             </LinearLayout>
@@ -55,7 +55,7 @@
                 android:contentDescription="@string/desc_agregar_nuevo"
                 android:padding="11dp"
                 android:scaleType="centerInside"
-                app:tint="#FFFFFF" />
+                app:tint="@color/text_light" />
 
         </LinearLayout>
 
@@ -77,8 +77,8 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="@string/hint_buscar_marca"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#AAAACC"
+                android:textColor="@color/text_light"
+                android:textColorHint="@color/primary_blue_light"
                 android:textSize="14sp"
                 android:inputType="text"
                 android:imeOptions="actionSearch"
@@ -93,7 +93,7 @@
                 android:padding="12dp"
                 android:scaleType="centerInside"
                 android:contentDescription="@string/desc_boton_buscar"
-                app:tint="#FFFFFF" />
+                app:tint="@color/text_light" />
 
         </LinearLayout>
 

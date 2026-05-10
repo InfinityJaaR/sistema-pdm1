@@ -67,4 +67,33 @@
     <string name="view">Ver</string>
     <string name="update">Editar</string>
     <string name="delete">Eliminar</string>
+
+    <!-- Menú Principal - Header y bienvenida -->
+    <string name="main_title">Sistema de Inventario</string>
+    <string name="main_welcome">¡Bienvenido!</string>
+    <string name="main_subtitle">Gestión de Vehículos Importados</string>
+
+    <!-- Menú Principal - Tarjetas de módulos -->
+    <string name="menu_importers">Importadores</string>
+    <string name="menu_imports">Importaciones</string>
+    <string name="menu_vehicles">Vehículos</string>
+    <string name="menu_damage">Desperfectos</string>
+    <string name="menu_movements">Movimientos E/S</string>
+    <string name="menu_transport">Transporte</string>
+    <string name="menu_build">Reparaciones</string>
+    <string name="menu_workshops">Talleres</string>
+    <string name="menu_sales">Ventas</string>
+    <string name="menu_warehouses">Bodegas</string>
+    <string name="menu_staff">Empleados</string>
+    <string name="menu_section">Sección</string>
+    <string name="menu_brand">Marcas</string>
+
+    <!-- Menú Principal - Navegación -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_profile">Perfil de usuario</string>
+    <string name="nav_logout">Salir</string>
+
+    <!-- Diálogo de cierre de sesión -->
+    <string name="logout_title">Cerrar sesión</string>
+    <string name="logout_message">¿Desea cerrar la sesión actual?</string>
 </resources>
