@@ -43,6 +43,12 @@
         <activity
             android:name=".activities.marca.MarcaActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.personalInterno.PersonalInternoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.transporte.TransporteActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

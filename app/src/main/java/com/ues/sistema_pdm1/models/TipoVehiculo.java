@@ -2,21 +2,21 @@ package com.ues.sistema_pdm1.models;
 
 public class TipoVehiculo {
     private int id;
-    private String descripcion;
+    private String descripcionTipoVehiculo;
 
     public TipoVehiculo() {}
 
-    public TipoVehiculo(int id, String descripcion) {
+    public TipoVehiculo(int id, String descripcionTipoVehiculo) {
         this.id = id;
-        this.descripcion = descripcion;
+        this.descripcionTipoVehiculo = descripcionTipoVehiculo;
     }
 
     public int getId() { return id; }
-    public String getDescripcion() { return descripcion; }
+    public String getDescripcionTipoVehiculo() { return descripcionTipoVehiculo; }
 
     public void setId(int id) { this.id = id; }
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+    public void setDescripcionTipoVehiculo(String descripcionTipoVehiculo) { this.descripcionTipoVehiculo = descripcionTipoVehiculo; }
 
     @Override
-    public String toString() { return descripcion; }
+    public String toString() { return descripcionTipoVehiculo; }
 }

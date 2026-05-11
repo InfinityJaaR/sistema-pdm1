@@ -8,7 +8,7 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME    = "inventario_pdm1.db";
-    private static final int    DB_VERSION = 2;
+    private static final int    DB_VERSION = 4;
     private static final String TAG        = "DatabaseHelper";
 
     // ----------------------------------------------------------------

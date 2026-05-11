@@ -227,7 +227,7 @@ public class LlenarBDGpo02 {
                 // TIPOS DE TRANSPORTE
                 tipoTransporteDAO.insertar(new TipoTransporte(0, "Camión Plataforma", 8));
                 tipoTransporteDAO.insertar(new TipoTransporte(0, "Camión Cerrado",    6));
-                tipoTransporteDAO.insertar(new TipoTransporte(0, "Remolque",          10));
+                tipoTransporteDAO.insertar(new TipoTransporte(0, "Remolque",         10));
 
                 // TIPOS DE DESPERFECTO
                 tipoDesperfectoDAO.insertar(new TipoDesperfecto(0, "Rayón",        "Rayones en carrocería"));
@@ -256,12 +256,12 @@ public class LlenarBDGpo02 {
             //   7 = Zacatecoluca Centro, 8 = Sensuntepeque Centro, 3 = Sonsonate Centro
             // =================================================================
             if (bodegaDAO.contar() == 0) {
-                bodegaDAO.insertar(new Bodega(0,  5, "Bodega Central",     "Bulevar Los Héroes Km 2, San Salvador", 150, 0));
-                bodegaDAO.insertar(new Bodega(0,  2, "Bodega Occidente",   "Carretera a Santa Ana Km 32",           150, 0));
-                bodegaDAO.insertar(new Bodega(0, 14, "Bodega Oriente",     "Carretera Panamericana Km 138, San Miguel", 150, 0));
-                bodegaDAO.insertar(new Bodega(0,  7, "Bodega Sur",         "Carretera al Puerto Km 56, Zacatecoluca",  100, 0));
-                bodegaDAO.insertar(new Bodega(0,  8, "Bodega Paracentral", "Carretera a Sensuntepeque Km 88",       100, 0));
-                bodegaDAO.insertar(new Bodega(0,  3, "Bodega Costera",     "Carretera Litoral Km 72, Sonsonate",    100, 0));
+                bodegaDAO.insertar(new Bodega(0,  5, "Bodega Central",     "Bulevar Los Héroes Km 2, San Salvador"));
+                bodegaDAO.insertar(new Bodega(0,  2, "Bodega Occidente",   "Carretera a Santa Ana Km 32"));
+                bodegaDAO.insertar(new Bodega(0, 14, "Bodega Oriente",     "Carretera Panamericana Km 138, San Miguel"));
+                bodegaDAO.insertar(new Bodega(0,  7, "Bodega Sur",         "Carretera al Puerto Km 56, Zacatecoluca"));
+                bodegaDAO.insertar(new Bodega(0,  8, "Bodega Paracentral", "Carretera a Sensuntepeque Km 88"));
+                bodegaDAO.insertar(new Bodega(0,  3, "Bodega Costera",     "Carretera Litoral Km 72, Sonsonate"));
                 Log.d(TAG, "Bodegas insertadas");
             }
 
@@ -305,9 +305,9 @@ public class LlenarBDGpo02 {
             // idDistrito: 5=San Salvador Centro, 2=Santa Ana Centro, 14=San Miguel Centro
             // =================================================================
             if (importadorDAO.contar() == 0) {
-                importadorDAO.insertar(new Importador(0, 5, "NUI-001", "Carlos",  "Mendoza",   "Colonia Escalón, San Salvador",                  "cmendoza@gmail.com",   "activo", 100, 0));
-                importadorDAO.insertar(new Importador(0, 2, "NUI-002", "María",   "González",  "Residencial Santa Elena, Antiguo Cuscatlán",     "mgonzalez@hotmail.com","activo",  80, 0));
-                importadorDAO.insertar(new Importador(0, 14,"NUI-003", "Roberto", "Hernández", "Colonia San Benito, San Salvador",               "rhernandez@yahoo.com", "activo",  60, 0));
+                importadorDAO.insertar(new Importador(0,  5, "Carlos",  "Mendoza",   null, "M", "Colonia Escalón, San Salvador",              "1985-03-15", "cmendoza@gmail.com",    "NUI-001", null));
+                importadorDAO.insertar(new Importador(0,  2, "María",   "González",  null, "F", "Residencial Santa Elena, Antiguo Cuscatlán", "1990-07-22", "mgonzalez@hotmail.com", "NUI-002", null));
+                importadorDAO.insertar(new Importador(0, 14, "Roberto", "Hernández", null, "M", "Colonia San Benito, San Salvador",           "1978-11-30", "rhernandez@yahoo.com",  "NUI-003", null));
                 Log.d(TAG, "Importadores insertados");
             }
 
@@ -341,9 +341,9 @@ public class LlenarBDGpo02 {
             // idTipoTransporte: 1=Camión Plataforma(cap 8), 2=Camión Cerrado(cap 6), 3=Remolque(cap 10)
             // =================================================================
             if (transporteDAO.contar() == 0) {
-                transporteDAO.insertar(new Transporte(0, 1, "P-123-456", "Camión de traslado principal", 8,  0));
-                transporteDAO.insertar(new Transporte(0, 2, "P-789-012", "Camión cerrado de carga",      6,  0));
-                transporteDAO.insertar(new Transporte(0, 3, "P-345-678", "Remolque de gran capacidad",   10, 0));
+                transporteDAO.insertar(new Transporte(0, 1, "P-123-456", "Camión de traslado principal"));
+                transporteDAO.insertar(new Transporte(0, 2, "P-789-012", "Camión cerrado de carga"));
+                transporteDAO.insertar(new Transporte(0, 3, "P-345-678", "Remolque de gran capacidad"));
                 Log.d(TAG, "Transportes insertados");
             }
 
@@ -357,11 +357,11 @@ public class LlenarBDGpo02 {
             // Trigger TRG_SECCION_INCREMENTAR suma +1 a capacidadActual al insertar
             // =================================================================
             if (vehiculoDAO.contar() == 0) {
-                vehiculoDAO.insertar(new Vehiculo(0, 1, 1,  1, 1,  "VIN2024TOY001", 2022, "en bodega", "2024-01-15"));
-                vehiculoDAO.insertar(new Vehiculo(0, 1, 4,  1, 2,  "VIN2024HON001", 2023, "en bodega", "2024-01-16"));
-                vehiculoDAO.insertar(new Vehiculo(0, 2, 12, 3, 4,  "VIN2024NIS001", 2021, "en bodega", "2024-02-20"));
-                vehiculoDAO.insertar(new Vehiculo(0, 3, 13, 2, 7,  "VIN2024HYU001", 2023, "en bodega", "2024-03-10"));
-                vehiculoDAO.insertar(new Vehiculo(0, 4, 17, 1, 10, "VIN2024BMW001", 2024, "en bodega", "2024-04-05"));
+                vehiculoDAO.insertar(new Vehiculo(0, 1, 1,  1, 1,  "VIN2024TOY001", 2022, "Blanco",  "en bodega"));
+                vehiculoDAO.insertar(new Vehiculo(0, 1, 4,  1, 2,  "VIN2024HON001", 2023, "Negro",   "en bodega"));
+                vehiculoDAO.insertar(new Vehiculo(0, 2, 12, 3, 4,  "VIN2024NIS001", 2021, "Gris",    "en bodega"));
+                vehiculoDAO.insertar(new Vehiculo(0, 3, 13, 2, 7,  "VIN2024HYU001", 2023, "Azul",    "en bodega"));
+                vehiculoDAO.insertar(new Vehiculo(0, 4, 17, 1, 10, "VIN2024BMW001", 2024, "Plateado", "en bodega"));
                 Log.d(TAG, "Vehículos insertados");
             }
 
@@ -371,10 +371,11 @@ public class LlenarBDGpo02 {
             // idBodegaDestino: 1-6 | Fechas distintas para no exceder límite diario del trigger
             // =================================================================
             if (movimientoDAO.contar() == 0) {
-                movimientoDAO.insertar(new Movimiento(0, 1, 1, 1, 1, "2024-01-15", "Ingreso a bodega", "Recepción importación Carlos Mendoza"));
-                movimientoDAO.insertar(new Movimiento(0, 2, 1, 1, 1, "2024-01-16", "Ingreso a bodega", "Recepción importación Carlos Mendoza"));
-                movimientoDAO.insertar(new Movimiento(0, 3, 2, 2, 2, "2024-02-20", "Ingreso a bodega", "Recepción importación María González"));
-                movimientoDAO.insertar(new Movimiento(0, 4, 3, 3, 3, "2024-03-10", "Ingreso a bodega", "Recepción importación Roberto Hernández"));
+                // Constructor: (id, idTransporte, idPersonal, idVehiculo, idBodega, tipoMovimiento, fechaMovimiento, motivo)
+                movimientoDAO.insertar(new Movimiento(0, 1, 1, 1, 1, "entrada", "2024-01-15", "Ingreso a bodega central"));
+                movimientoDAO.insertar(new Movimiento(0, 1, 1, 2, 1, "entrada", "2024-01-16", "Ingreso a bodega central"));
+                movimientoDAO.insertar(new Movimiento(0, 2, 2, 3, 2, "entrada", "2024-02-20", "Ingreso a bodega occidente"));
+                movimientoDAO.insertar(new Movimiento(0, 3, 3, 4, 3, "entrada", "2024-03-10", "Ingreso a bodega oriente"));
                 Log.d(TAG, "Movimientos insertados");
             }
 
@@ -383,10 +384,10 @@ public class LlenarBDGpo02 {
             // idVehiculo: 1-4 | idTipoDesperfecto: 1=Rayón,2=Golpe,3=Cristal roto,4=Mecánico
             // =================================================================
             if (detalleDAO.contar() == 0) {
-                detalleDAO.insertar(new DetalleDesperfecto(0, 1, 2, "Golpe leve en puerta delantera derecha", "pendiente"));
-                detalleDAO.insertar(new DetalleDesperfecto(0, 2, 1, "Rayón superficial en capó",              "pendiente"));
-                detalleDAO.insertar(new DetalleDesperfecto(0, 3, 3, "Vidrio trasero con fisura",              "pendiente"));
-                detalleDAO.insertar(new DetalleDesperfecto(0, 4, 4, "Falla leve en sistema de frenos",        "pendiente"));
+                detalleDAO.insertar(new DetalleDesperfecto(0, 1, 2, "Golpe leve en puerta delantera derecha", "2024-01-15"));
+                detalleDAO.insertar(new DetalleDesperfecto(0, 2, 1, "Rayón superficial en capó",              "2024-01-16"));
+                detalleDAO.insertar(new DetalleDesperfecto(0, 3, 3, "Vidrio trasero con fisura",              "2024-02-20"));
+                detalleDAO.insertar(new DetalleDesperfecto(0, 4, 4, "Falla leve en sistema de frenos",        "2024-03-10"));
                 Log.d(TAG, "Detalles de desperfecto insertados");
             }
 
@@ -411,9 +412,9 @@ public class LlenarBDGpo02 {
             // aptoParaVenta=0 en demo; Ricardo lo actualizará en su módulo.
             // =================================================================
             if (reparacionDAO.contar() == 0) {
-                reparacionDAO.insertar(new Reparacion(0, 1, 1, "2024-01-20", "2024-01-25", 0, 1500.00, "Reparación de golpe en puerta"));
-                reparacionDAO.insertar(new Reparacion(0, 2, 2, "2024-01-22", "2024-02-01", 0,  850.00, "Pulido y pintura por rayones"));
-                reparacionDAO.insertar(new Reparacion(0, 3, 3, "2024-02-25", "2024-03-05", 0,  620.00, "Reemplazo de vidrio trasero"));
+                reparacionDAO.insertar(new Reparacion(0, 1, 1, "2024-01-20", "2024-01-25", "Reparación de golpe en puerta", 0, 0));
+                reparacionDAO.insertar(new Reparacion(0, 2, 2, "2024-01-22", "2024-02-01", "Pulido y pintura por rayones",  0, 0));
+                reparacionDAO.insertar(new Reparacion(0, 3, 3, "2024-02-25", "2024-03-05", "Reemplazo de vidrio trasero",   0, 0));
                 Log.d(TAG, "Reparaciones insertadas");
             }
 
