@@ -15,6 +15,8 @@ import com.ues.sistema_pdm1.R;
 import com.ues.sistema_pdm1.activities.importador.ImportadorActivity;
 import com.ues.sistema_pdm1.activities.marca.MarcaActivity;
 import com.ues.sistema_pdm1.activities.movimiento.MovimientoActivity;
+import com.ues.sistema_pdm1.activities.personalInterno.PersonalInternoActivity;
+import com.ues.sistema_pdm1.activities.transporte.TransporteActivity;
 import com.ues.sistema_pdm1.activities.reparacion.ReparacionActivity;
 import com.ues.sistema_pdm1.activities.venta.VentaActivity;
 import com.ues.sistema_pdm1.activities.vehiculo.VehiculoActivity;
@@ -170,6 +172,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case Constants.MENU_MARCA:
                 intent = new Intent(this, MarcaActivity.class);
+                break;
+            case Constants.MENU_PERSONAL:
+                intent = new Intent(this, PersonalInternoActivity.class);
+                break;
+            case Constants.MENU_TRANSPORTE:
+                intent = new Intent(this, TransporteActivity.class);
                 break;
             default:
                 Toast.makeText(this, "Módulo en construcción", Toast.LENGTH_SHORT).show();

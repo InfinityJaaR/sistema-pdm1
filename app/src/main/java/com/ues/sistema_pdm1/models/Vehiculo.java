@@ -8,13 +8,13 @@ public class Vehiculo {
     private int idSeccion;
     private String vin;
     private int anio;
+    private String colorVehiculo;
     private String estadoVehiculo;
-    private String fechaIngreso;
 
     public Vehiculo() {}
 
     public Vehiculo(int id, int idImportacion, int idModelo, int idTipoVehiculo, int idSeccion,
-                    String vin, int anio, String estadoVehiculo, String fechaIngreso) {
+                    String vin, int anio, String colorVehiculo, String estadoVehiculo) {
         this.id = id;
         this.idImportacion = idImportacion;
         this.idModelo = idModelo;
@@ -22,8 +22,8 @@ public class Vehiculo {
         this.idSeccion = idSeccion;
         this.vin = vin;
         this.anio = anio;
+        this.colorVehiculo = colorVehiculo;
         this.estadoVehiculo = estadoVehiculo;
-        this.fechaIngreso = fechaIngreso;
     }
 
     public int getId() { return id; }
@@ -33,8 +33,8 @@ public class Vehiculo {
     public int getIdSeccion() { return idSeccion; }
     public String getVin() { return vin; }
     public int getAnio() { return anio; }
+    public String getColorVehiculo() { return colorVehiculo; }
     public String getEstadoVehiculo() { return estadoVehiculo; }
-    public String getFechaIngreso() { return fechaIngreso; }
 
     public void setId(int id) { this.id = id; }
     public void setIdImportacion(int idImportacion) { this.idImportacion = idImportacion; }
@@ -43,8 +43,8 @@ public class Vehiculo {
     public void setIdSeccion(int idSeccion) { this.idSeccion = idSeccion; }
     public void setVin(String vin) { this.vin = vin; }
     public void setAnio(int anio) { this.anio = anio; }
+    public void setColorVehiculo(String colorVehiculo) { this.colorVehiculo = colorVehiculo; }
     public void setEstadoVehiculo(String estadoVehiculo) { this.estadoVehiculo = estadoVehiculo; }
-    public void setFechaIngreso(String fechaIngreso) { this.fechaIngreso = fechaIngreso; }
 
     @Override
     public String toString() { return vin; }
