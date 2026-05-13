@@ -113,7 +113,7 @@ public final class DatabaseContract {
             "    ID_DISTRITO         INTEGER," +
             "    NOMBRE_BODEGA       TEXT    NOT NULL," +
             "    DIRECCION_BODEGA    TEXT    NOT NULL," +
-            "    CAPACIDAD_TOTAL     INTEGER NOT NULL DEFAULT 0 CHECK (CAPACIDAD_TOTAL <= 50)," +
+            "    CAPACIDAD_TOTAL     INTEGER NOT NULL DEFAULT 0 CHECK (CAPACIDAD_TOTAL <= 150)," +
             "    CAPACIDAD_ACTUAL    INTEGER NOT NULL DEFAULT 0," +
             "    FOREIGN KEY (ID_DISTRITO) REFERENCES DISTRITO (ID_DISTRITO)" +
             ")";
