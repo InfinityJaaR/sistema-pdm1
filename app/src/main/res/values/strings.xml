@@ -61,6 +61,25 @@
     <string name="btn_cancelar">Cancelar</string>
     <!-- Fin de elementos de Marca -->
 
+    <!-- Elementos de la pantalla de Bodegas -->
+    <string name="title_bodegas">Bodegas</string>
+    <string name="subtitle_bodegas">Gestión de bodegas de almacenamiento</string>
+    <string name="hint_buscar_bodega">Buscar bodega...</string>
+    <string name="label_distrito">Distrito</string>
+    <string name="label_nombre_bodega">Nombre de la bodega</string>
+    <string name="label_direccion_bodega">Dirección de la bodega</string>
+    <string name="hint_nombre_bodega">Nombre de la bodega</string>
+    <string name="hint_direccion_bodega">Dirección de la bodega</string>
+    <!-- Fin de elementos de Bodega -->
+
+    <!-- Elementos de la pantalla de Secciones -->
+    <string name="title_secciones">Secciones</string>
+    <string name="subtitle_secciones">Gestión de niveles por bodega</string>
+    <string name="hint_buscar_seccion">Buscar sección por nivel...</string>
+    <string name="label_bodega">Bodega</string>
+    <string name="label_nivel_seccion">Nivel de Sección</string>
+    <!-- Fin de elementos de Seccion -->
+
     <!--            COMUNES             -->
     <!--Modal de Opciones-->
     <string name="title_options">Opciones</string>

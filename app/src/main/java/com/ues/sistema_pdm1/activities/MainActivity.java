@@ -12,10 +12,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ues.sistema_pdm1.R;
+import com.ues.sistema_pdm1.activities.bodega.BodegaActivity;
 import com.ues.sistema_pdm1.activities.importador.ImportadorActivity;
 import com.ues.sistema_pdm1.activities.marca.MarcaActivity;
 import com.ues.sistema_pdm1.activities.movimiento.MovimientoActivity;
 import com.ues.sistema_pdm1.activities.reparacion.ReparacionActivity;
+import com.ues.sistema_pdm1.activities.seccion.SeccionActivity;
 import com.ues.sistema_pdm1.activities.venta.VentaActivity;
 import com.ues.sistema_pdm1.activities.vehiculo.VehiculoActivity;
 import com.ues.sistema_pdm1.utils.Constants;
@@ -170,6 +172,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case Constants.MENU_MARCA:
                 intent = new Intent(this, MarcaActivity.class);
+                break;
+            case Constants.MENU_BODEGA:
+                intent = new Intent(this, BodegaActivity.class);
+                break;
+            case Constants.MENU_SECCION:
+                intent = new Intent(this, SeccionActivity.class);
                 break;
             default:
                 Toast.makeText(this, "Módulo en construcción", Toast.LENGTH_SHORT).show();

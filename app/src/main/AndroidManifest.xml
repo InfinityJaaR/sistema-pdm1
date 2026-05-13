@@ -43,6 +43,12 @@
         <activity
             android:name=".activities.marca.MarcaActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.bodega.BodegaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.seccion.SeccionActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

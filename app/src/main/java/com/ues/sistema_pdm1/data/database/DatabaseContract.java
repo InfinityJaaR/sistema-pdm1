@@ -52,9 +52,8 @@ public final class DatabaseContract {
         public static final String COL_NOMBRE_PAIS = "NOMBRE_PAIS";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS PAIS (" +
-            "    ID_PAIS         INTEGER NOT NULL," +
-            "    NOMBRE_PAIS     TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_PAIS)" +
+            "    ID_PAIS         INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "    NOMBRE_PAIS     TEXT    NOT NULL" +
             ")";
     }
 
@@ -65,10 +64,9 @@ public final class DatabaseContract {
         public static final String COL_NOMBRE_DEPARTAMENTO = "NOMBRE_DEPARTAMENTO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS DEPARTAMENTO (" +
-            "    ID_DEPARTAMENTO     INTEGER NOT NULL," +
+            "    ID_DEPARTAMENTO     INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_PAIS             INTEGER NOT NULL," +
             "    NOMBRE_DEPARTAMENTO TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_DEPARTAMENTO)," +
             "    FOREIGN KEY (ID_PAIS) REFERENCES PAIS (ID_PAIS)" +
             ")";
     }
@@ -80,10 +78,9 @@ public final class DatabaseContract {
         public static final String COL_NOMBRE_MUNICIPIO = "NOMBRE_MUNICIPIO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS MUNICIPIO (" +
-            "    ID_MUNICIPIO        INTEGER NOT NULL," +
+            "    ID_MUNICIPIO        INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_DEPARTAMENTO     INTEGER," +
             "    NOMBRE_MUNICIPIO    TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_MUNICIPIO)," +
             "    FOREIGN KEY (ID_DEPARTAMENTO) REFERENCES DEPARTAMENTO (ID_DEPARTAMENTO)" +
             ")";
     }
@@ -95,10 +92,9 @@ public final class DatabaseContract {
         public static final String COL_NOMBRE_DISTRITO = "NOMBRE_DISTRITO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS DISTRITO (" +
-            "    ID_DISTRITO         INTEGER NOT NULL," +
+            "    ID_DISTRITO         INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_MUNICIPIO        INTEGER," +
             "    NOMBRE_DISTRITO     TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_DISTRITO)," +
             "    FOREIGN KEY (ID_MUNICIPIO) REFERENCES MUNICIPIO (ID_MUNICIPIO)" +
             ")";
     }
@@ -109,13 +105,16 @@ public final class DatabaseContract {
         public static final String COL_ID_DISTRITO    = "ID_DISTRITO";
         public static final String COL_NOMBRE_BODEGA  = "NOMBRE_BODEGA";
         public static final String COL_DIRECCION_BODEGA = "DIRECCION_BODEGA";
+        public static final String COL_CAPACIDAD_TOTAL = "CAPACIDAD_TOTAL";
+        public static final String COL_CAPACIDAD_ACTUAL = "CAPACIDAD_ACTUAL";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS BODEGA (" +
-            "    ID_BODEGA           INTEGER NOT NULL," +
+            "    ID_BODEGA           INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_DISTRITO         INTEGER," +
             "    NOMBRE_BODEGA       TEXT    NOT NULL," +
             "    DIRECCION_BODEGA    TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_BODEGA)," +
+            "    CAPACIDAD_TOTAL     INTEGER NOT NULL DEFAULT 0 CHECK (CAPACIDAD_TOTAL <= 50)," +
+            "    CAPACIDAD_ACTUAL    INTEGER NOT NULL DEFAULT 0," +
             "    FOREIGN KEY (ID_DISTRITO) REFERENCES DISTRITO (ID_DISTRITO)" +
             ")";
     }
@@ -135,7 +134,7 @@ public final class DatabaseContract {
         public static final String COL_NOMBRE_RESPONSABLE   = "NOMBRE_RESPONSABLE";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS IMPORTADOR (" +
-            "    ID_IMPORTADOR           INTEGER NOT NULL," +
+            "    ID_IMPORTADOR           INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_DISTRITO             INTEGER," +
             "    NOMBRE_IMPORTADOR       TEXT    NOT NULL," +
             "    APELLIDO_IMPORTADOR     TEXT    NOT NULL," +
@@ -146,7 +145,6 @@ public final class DatabaseContract {
             "    CORREO_ELECTRONICO      TEXT," +
             "    NUI                     TEXT    NOT NULL," +
             "    NOMBRE_RESPONSABLE      TEXT," +
-            "    PRIMARY KEY (ID_IMPORTADOR)," +
             "    FOREIGN KEY (ID_DISTRITO) REFERENCES DISTRITO (ID_DISTRITO)" +
             ")";
     }
@@ -158,10 +156,9 @@ public final class DatabaseContract {
         public static final String COL_FECHA_IMPORTACION = "FECHA_IMPORTACION";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS IMPORTACION (" +
-            "    ID_IMPORTACION      INTEGER NOT NULL," +
+            "    ID_IMPORTACION      INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_IMPORTADOR       INTEGER," +
             "    FECHA_IMPORTACION   TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_IMPORTACION)," +
             "    FOREIGN KEY (ID_IMPORTADOR) REFERENCES IMPORTADOR (ID_IMPORTADOR)" +
             ")";
     }
@@ -172,9 +169,8 @@ public final class DatabaseContract {
         public static final String COL_NOMBRE_MARCA = "NOMBRE_MARCA";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS MARCA (" +
-            "    ID_MARCA        INTEGER NOT NULL," +
-            "    NOMBRE_MARCA    TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_MARCA)" +
+            "    ID_MARCA        INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "    NOMBRE_MARCA    TEXT    NOT NULL" +
             ")";
     }
 
@@ -185,10 +181,9 @@ public final class DatabaseContract {
         public static final String COL_NOMBRE_MODELO = "NOMBRE_MODELO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS MODELO (" +
-            "    ID_MODELO       INTEGER NOT NULL," +
+            "    ID_MODELO       INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_MARCA        INTEGER," +
             "    NOMBRE_MODELO   TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_MODELO)," +
             "    FOREIGN KEY (ID_MARCA) REFERENCES MARCA (ID_MARCA)" +
             ")";
     }
@@ -199,9 +194,8 @@ public final class DatabaseContract {
         public static final String COL_DESCRIPCION_TIPO_VEHICULO = "DESCRIPCION_TIPO_VEHICULO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS TIPO_VEHICULO (" +
-            "    ID_TIPO_VEHICULO            INTEGER NOT NULL," +
-            "    DESCRIPCION_TIPO_VEHICULO   TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_TIPO_VEHICULO)" +
+            "    ID_TIPO_VEHICULO            INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "    DESCRIPCION_TIPO_VEHICULO   TEXT    NOT NULL" +
             ")";
     }
 
@@ -214,12 +208,11 @@ public final class DatabaseContract {
         public static final String COL_CAPACIDAD_ACTUAL = "CAPACIDAD_ACTUAL";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS SECCION (" +
-            "    ID_SECCION          INTEGER NOT NULL," +
+            "    ID_SECCION          INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_BODEGA           INTEGER," +
             "    NIVEL               INTEGER NOT NULL," +
             "    CAPACIDAD_MAXIMA    INTEGER NOT NULL," +
             "    CAPACIDAD_ACTUAL    INTEGER NOT NULL," +
-            "    PRIMARY KEY (ID_SECCION)," +
             "    FOREIGN KEY (ID_BODEGA) REFERENCES BODEGA (ID_BODEGA)" +
             ")";
     }
@@ -237,7 +230,7 @@ public final class DatabaseContract {
         public static final String COL_ESTADO_VEHICULO = "ESTADO_VEHICULO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS VEHICULO (" +
-            "    ID_VEHICULO         INTEGER NOT NULL," +
+            "    ID_VEHICULO         INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_TIPO_VEHICULO    INTEGER," +
             "    ID_SECCION          INTEGER," +
             "    ID_MODELO           INTEGER," +
@@ -246,7 +239,6 @@ public final class DatabaseContract {
             "    ANIO                INTEGER NOT NULL," +
             "    COLOR_VEHICULO      TEXT    NOT NULL," +
             "    ESTADO_VEHICULO     TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_VEHICULO)," +
             "    FOREIGN KEY (ID_IMPORTACION)   REFERENCES IMPORTACION (ID_IMPORTACION)," +
             "    FOREIGN KEY (ID_MODELO)        REFERENCES MODELO (ID_MODELO)," +
             "    FOREIGN KEY (ID_TIPO_VEHICULO) REFERENCES TIPO_VEHICULO (ID_TIPO_VEHICULO)," +
@@ -261,10 +253,9 @@ public final class DatabaseContract {
         public static final String COL_DESCRIPCION_TIPO_DESPERFECTO = "DESCRIPCION_TIPO_DESPERFECTO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS TIPO_DESPERFECTO (" +
-            "    ID_TIPO_DESPERFECTO             INTEGER NOT NULL," +
+            "    ID_TIPO_DESPERFECTO             INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    NOMBRE_TIPO_DESPERFECTO         TEXT    NOT NULL," +
-            "    DESCRIPCION_TIPO_DESPERFECTO    TEXT," +
-            "    PRIMARY KEY (ID_TIPO_DESPERFECTO)" +
+            "    DESCRIPCION_TIPO_DESPERFECTO    TEXT" +
             ")";
     }
 
@@ -277,12 +268,11 @@ public final class DatabaseContract {
         public static final String COL_FECHA_REGISTRO        = "FECHA_REGISTRO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS DETALLE_DESPERFECTO (" +
-            "    ID_DETALLE_DESPERFECTO  INTEGER NOT NULL," +
+            "    ID_DETALLE_DESPERFECTO  INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_VEHICULO             INTEGER," +
             "    ID_TIPO_DESPERFECTO     INTEGER," +
             "    DESCRIPCION_DETALLE     TEXT    NOT NULL," +
             "    FECHA_REGISTRO          TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_DETALLE_DESPERFECTO)," +
             "    FOREIGN KEY (ID_VEHICULO)         REFERENCES VEHICULO (ID_VEHICULO)," +
             "    FOREIGN KEY (ID_TIPO_DESPERFECTO) REFERENCES TIPO_DESPERFECTO (ID_TIPO_DESPERFECTO)" +
             ")";
@@ -296,11 +286,10 @@ public final class DatabaseContract {
         public static final String COL_FECHA_TOMA             = "FECHA_TOMA";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS FOTO_DESPERFECTO (" +
-            "    ID_FOTO_DESPERFECTO         INTEGER NOT NULL," +
+            "    ID_FOTO_DESPERFECTO         INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_DETALLE_DESPERFECTO      INTEGER," +
             "    RUTA_IMAGEN                 TEXT    NOT NULL," +
             "    FECHA_TOMA                  TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_FOTO_DESPERFECTO)," +
             "    FOREIGN KEY (ID_DETALLE_DESPERFECTO) REFERENCES DETALLE_DESPERFECTO (ID_DETALLE_DESPERFECTO)" +
             ")";
     }
@@ -312,10 +301,9 @@ public final class DatabaseContract {
         public static final String COL_CAPACIDAD_MAX_VEHICULOS    = "CAPACIDAD_MAX_VEHICULOS";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS TIPO_TRANSPORTE (" +
-            "    ID_TIPO_TRANSPORTE              INTEGER NOT NULL," +
+            "    ID_TIPO_TRANSPORTE              INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    DESCRIPCION_TIPO_TRANSPORTE     TEXT    NOT NULL," +
-            "    CAPACIDAD_MAX_VEHICULOS         INTEGER NOT NULL," +
-            "    PRIMARY KEY (ID_TIPO_TRANSPORTE)" +
+            "    CAPACIDAD_MAX_VEHICULOS         INTEGER NOT NULL" +
             ")";
     }
 
@@ -327,11 +315,10 @@ public final class DatabaseContract {
         public static final String COL_DESCRIPCION_TRANSPORTE = "DESCRIPCION_TRANSPORTE";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS TRANSPORTE (" +
-            "    ID_TRANSPORTE               INTEGER NOT NULL," +
+            "    ID_TRANSPORTE               INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_TIPO_TRANSPORTE          INTEGER," +
             "    PLACA                       TEXT    NOT NULL," +
             "    DESCRIPCION_TRANSPORTE      TEXT," +
-            "    PRIMARY KEY (ID_TRANSPORTE)," +
             "    FOREIGN KEY (ID_TIPO_TRANSPORTE) REFERENCES TIPO_TRANSPORTE (ID_TIPO_TRANSPORTE)" +
             ")";
     }
@@ -344,11 +331,10 @@ public final class DatabaseContract {
         public static final String COL_CARGO            = "CARGO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS PERSONAL_INTERNO (" +
-            "    ID_PERSONAL         INTEGER NOT NULL," +
+            "    ID_PERSONAL         INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    NOMBRE_PERSONAL     TEXT    NOT NULL," +
             "    APELLIDO_PERSONAL   TEXT    NOT NULL," +
-            "    CARGO               TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_PERSONAL)" +
+            "    CARGO               TEXT    NOT NULL" +
             ")";
     }
 
@@ -364,7 +350,7 @@ public final class DatabaseContract {
         public static final String COL_MOTIVO          = "MOTIVO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS MOVIMIENTO (" +
-            "    ID_MOVIMIENTO       INTEGER NOT NULL," +
+            "    ID_MOVIMIENTO       INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_TRANSPORTE       INTEGER," +
             "    ID_PERSONAL         INTEGER," +
             "    ID_VEHICULO         INTEGER," +
@@ -372,7 +358,6 @@ public final class DatabaseContract {
             "    TIPO_MOVIMIENTO     TEXT    NOT NULL," +
             "    FECHA_MOVIMIENTO    TEXT    NOT NULL," +
             "    MOTIVO              TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_MOVIMIENTO)," +
             "    FOREIGN KEY (ID_TRANSPORTE) REFERENCES TRANSPORTE (ID_TRANSPORTE)," +
             "    FOREIGN KEY (ID_VEHICULO)   REFERENCES VEHICULO (ID_VEHICULO)," +
             "    FOREIGN KEY (ID_PERSONAL)   REFERENCES PERSONAL_INTERNO (ID_PERSONAL)," +
@@ -389,12 +374,11 @@ public final class DatabaseContract {
         public static final String COL_AUTORIZADO     = "AUTORIZADO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS TALLER (" +
-            "    ID_TALLER           INTEGER NOT NULL," +
+            "    ID_TALLER           INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    NOMBRE_TALLER       TEXT    NOT NULL," +
             "    DIRECCION_TALLER    TEXT    NOT NULL," +
             "    TELEFONO_TALLER     TEXT    NOT NULL," +
-            "    AUTORIZADO          INTEGER NOT NULL," +
-            "    PRIMARY KEY (ID_TALLER)" +
+            "    AUTORIZADO          INTEGER NOT NULL" +
             ")";
     }
 
@@ -410,7 +394,7 @@ public final class DatabaseContract {
         public static final String COL_REQUIERE_OTRA_REPARACION = "REQUIERE_OTRA_REPARACION";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS REPARACION (" +
-            "    ID_REPARACION               INTEGER NOT NULL," +
+            "    ID_REPARACION               INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_TALLER                   INTEGER," +
             "    ID_VEHICULO                 INTEGER," +
             "    FECHA_INICIO                TEXT    NOT NULL," +
@@ -418,7 +402,6 @@ public final class DatabaseContract {
             "    DESCRIPCION_TRABAJO         TEXT," +
             "    APTO_PARA_VENTA             INTEGER," +
             "    REQUIERE_OTRA_REPARACION    INTEGER," +
-            "    PRIMARY KEY (ID_REPARACION)," +
             "    FOREIGN KEY (ID_TALLER)   REFERENCES TALLER (ID_TALLER)," +
             "    FOREIGN KEY (ID_VEHICULO) REFERENCES VEHICULO (ID_VEHICULO)" +
             ")";
@@ -432,11 +415,10 @@ public final class DatabaseContract {
         public static final String COL_TIPO         = "TIPO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS TELEFONO_IMPORTADOR (" +
-            "    ID_TELEFONO         INTEGER NOT NULL," +
+            "    ID_TELEFONO         INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_IMPORTADOR       INTEGER," +
             "    NUMERO              TEXT    NOT NULL," +
             "    TIPO                TEXT    NOT NULL," +
-            "    PRIMARY KEY (ID_TELEFONO)," +
             "    FOREIGN KEY (ID_IMPORTADOR) REFERENCES IMPORTADOR (ID_IMPORTADOR)" +
             ")";
     }
@@ -450,12 +432,11 @@ public final class DatabaseContract {
         public static final String COL_PRECIO     = "PRECIO";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS VENTA (" +
-            "    ID_VENTA        INTEGER NOT NULL," +
+            "    ID_VENTA        INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_IMPORTADOR   INTEGER," +
             "    ID_VEHICULO     INTEGER," +
             "    FECHA_VENTA     TEXT    NOT NULL," +
             "    PRECIO          REAL    NOT NULL," +
-            "    PRIMARY KEY (ID_VENTA)," +
             "    FOREIGN KEY (ID_VEHICULO)   REFERENCES VEHICULO (ID_VEHICULO)," +
             "    FOREIGN KEY (ID_IMPORTADOR) REFERENCES IMPORTADOR (ID_IMPORTADOR)" +
             ")";
