@@ -187,6 +187,9 @@ public class MainActivity extends AppCompatActivity {
             case Constants.MENU_TRANSPORTE:
                 intent = new Intent(this, TransporteActivity.class);
                 break;
+            case Constants.MENU_IMPORTACION:
+                intent = new Intent(this, com.ues.sistema_pdm1.activities.importacion.ImportacionActivity.class);
+                break;
             default:
                 Toast.makeText(this, "Módulo en construcción", Toast.LENGTH_SHORT).show();
                 return;

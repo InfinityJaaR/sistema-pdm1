@@ -26,6 +26,16 @@
             android:name=".activities.importador.ImportadorActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.importador.ImportadorFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importador.ImportadorViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importador.ImportadorDeleteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Overlay.Transparent" />
+        <activity
             android:name=".activities.vehiculo.VehiculoActivity"
             android:exported="false" />
         <activity
@@ -55,6 +65,19 @@
         <activity
             android:name=".activities.transporte.TransporteActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.importacion.ImportacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importacion.ImportacionFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importacion.ImportacionViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importacion.ImportacionDeleteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Overlay.Transparent" />
     </application>
 
 </manifest>
