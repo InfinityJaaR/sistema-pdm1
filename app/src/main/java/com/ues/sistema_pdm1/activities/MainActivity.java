@@ -12,12 +12,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ues.sistema_pdm1.R;
+import com.ues.sistema_pdm1.activities.bodega.BodegaActivity;
 import com.ues.sistema_pdm1.activities.importador.ImportadorActivity;
 import com.ues.sistema_pdm1.activities.marca.MarcaActivity;
 import com.ues.sistema_pdm1.activities.movimiento.MovimientoActivity;
 import com.ues.sistema_pdm1.activities.personalInterno.PersonalInternoActivity;
 import com.ues.sistema_pdm1.activities.transporte.TransporteActivity;
 import com.ues.sistema_pdm1.activities.reparacion.ReparacionActivity;
+import com.ues.sistema_pdm1.activities.seccion.SeccionActivity;
 import com.ues.sistema_pdm1.activities.venta.VentaActivity;
 import com.ues.sistema_pdm1.activities.vehiculo.VehiculoActivity;
 import com.ues.sistema_pdm1.activities.detalleDesperfecto.DetalleDesperfectoActivity;
@@ -174,11 +176,20 @@ public class MainActivity extends AppCompatActivity {
             case Constants.MENU_MARCA:
                 intent = new Intent(this, MarcaActivity.class);
                 break;
+            case Constants.MENU_BODEGA:
+                intent = new Intent(this, BodegaActivity.class);
+                break;
+            case Constants.MENU_SECCION:
+                intent = new Intent(this, SeccionActivity.class);
+                break;
             case Constants.MENU_PERSONAL:
                 intent = new Intent(this, PersonalInternoActivity.class);
                 break;
             case Constants.MENU_TRANSPORTE:
                 intent = new Intent(this, TransporteActivity.class);
+                break;
+            case Constants.MENU_IMPORTACION:
+                intent = new Intent(this, com.ues.sistema_pdm1.activities.importacion.ImportacionActivity.class);
                 break;
             case Constants.MENU_DESPERFECTO:
                 intent = new Intent(this, DetalleDesperfectoActivity.class);

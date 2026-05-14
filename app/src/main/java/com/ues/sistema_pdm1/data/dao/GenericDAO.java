@@ -8,6 +8,7 @@ import android.util.Log;
 import com.ues.sistema_pdm1.data.database.DatabaseManager;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -226,6 +227,9 @@ public class GenericDAO<T> implements IBaseDAO<T> {
         ContentValues values = new ContentValues();
         Field[] fields = entityClass.getDeclaredFields();
         for (Field field : fields) {
+            if (Modifier.isTransient(field.getModifiers())){
+                continue;
+            }
             field.setAccessible(true);
             try {
                 String fieldName  = field.getName();
