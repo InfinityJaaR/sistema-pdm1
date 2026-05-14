@@ -1,6 +1,8 @@
 package com.ues.sistema_pdm1.models;
 
-public class FotoDesperfecto {
+import java.io.Serializable;
+
+public class FotoDesperfecto implements Serializable {
     private int id;
     private int idDetalleDesperfecto;
     private String rutaImagen;
@@ -16,13 +18,10 @@ public class FotoDesperfecto {
     }
 
     public int getId() { return id; }
-    public int getIdDetalleDesperfecto() { return idDetalleDesperfecto; }
-    public String getRutaImagen() { return rutaImagen; }
-    public String getFechaToma() { return fechaToma; }
-
     public void setId(int id) { this.id = id; }
-    public void setIdDetalleDesperfecto(int idDetalleDesperfecto) { this.idDetalleDesperfecto = idDetalleDesperfecto; }
+    public String getRutaImagen() { return rutaImagen; }
     public void setRutaImagen(String rutaImagen) { this.rutaImagen = rutaImagen; }
+    public String getFechaToma() { return fechaToma; }
     public void setFechaToma(String fechaToma) { this.fechaToma = fechaToma; }
 
     @Override

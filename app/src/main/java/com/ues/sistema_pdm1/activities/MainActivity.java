@@ -20,6 +20,7 @@ import com.ues.sistema_pdm1.activities.transporte.TransporteActivity;
 import com.ues.sistema_pdm1.activities.reparacion.ReparacionActivity;
 import com.ues.sistema_pdm1.activities.venta.VentaActivity;
 import com.ues.sistema_pdm1.activities.vehiculo.VehiculoActivity;
+import com.ues.sistema_pdm1.activities.detalleDesperfecto.DetalleDesperfectoActivity;
 import com.ues.sistema_pdm1.utils.Constants;
 import com.ues.sistema_pdm1.utils.LlenarBDGpo02;
 import com.ues.sistema_pdm1.utils.SessionManager;
@@ -178,6 +179,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case Constants.MENU_TRANSPORTE:
                 intent = new Intent(this, TransporteActivity.class);
+                break;
+            case Constants.MENU_DESPERFECTO:
+                intent = new Intent(this, DetalleDesperfectoActivity.class);
                 break;
             default:
                 Toast.makeText(this, "Módulo en construcción", Toast.LENGTH_SHORT).show();

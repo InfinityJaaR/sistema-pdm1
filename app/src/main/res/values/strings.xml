@@ -7,73 +7,11 @@
     <string name="login_text">Iniciar Sesión</string>
     <string name="demo_text">Demo — Ingresar como Admin</string>
     <string name="footer_text">© 2026 · PDM115 Grupo 02 · UES</string>
-    <!-- Elementos del menu principal -->
-    <string name="titulo_sistema">Sistema de Inventario</string>
-    <string name="menu_principal">Menú Principal</string>
-    <string name="btn_llenar_db">Llenar base de datos</string>
 
-    <!-- Elementos de la pantalla de Vehículos -->
-    <string name="title_vehiculos">Vehículos</string>
-    <string name="subtitle_inventario">Sistema de inventario</string>
-    <string name="hint_buscar">Buscar Vehiculo</string> <!-- Barra de búsqueda -->
-    <string name="desc_boton_buscar">Botón buscar</string>
-    <string name="desc_agregar_nuevo">Agregar nuevo</string>
-    <string name="btn_agregar_vehiculo">Agregar Nuevo Vehículo</string>
-    <string name="placeholder_nombre_vehiculo">Nombre del Vehículo</string> <!-- Textos para el diseño de cada item -->
-    <string name="placeholder_detalles">Presiona para ver detalles técnicos</string>
-    <!-- Fin de elementos de Vehiculo -->
-
-    <!-- Títulos Dinámicos del Modal -->
-    <string name="modal_titulo_registro">Registro de Vehículo</string>
-    <string name="modal_titulo_detalle">Detalles del Vehículo</string>
-    <string name="modal_titulo_actualizar">Actualizar Vehículo</string>
-
-    <!-- Etiquetas de los campos (Labels) -->
-    <string name="label_tipo">Tipo</string>
-    <string name="label_seccion">Sección</string>
-    <string name="label_modelo">Modelo</string>
-    <string name="label_importacion">Importación</string>
-    <string name="label_vin">VIN</string>
-    <string name="label_anio">Año</string>
-    <string name="label_color">Color</string>
-    <string name="label_estado">Estado</string>
-
-    <!-- Sugerencias y Hints -->
-    <string name="hint_vin">Ingrese número de VIN</string>
-    <string name="hint_color">Ingrese el color del vehiculo</string>
-
-    <!-- Botones de Acción -->
-    <string name="btn_limpiar">LIMPIAR</string>
-    <string name="btn_guardar">GUARDAR</string>
-    <string name="btn_actualizar">ACTUALIZAR</string>
-    <string name="btn_cerrar">CERRAR</string>
-
-    <!-- Mensaje de Eliminación y Confirmación -->
-    <string name="modal_titulo_confirmacion">Confirmación</string>
-    <string name="msg_confirmacion_pregunta">¿Está seguro de realizar esta acción?</string>
-    <string name="yes">Sí</string>
-    <string name="no">No</string>
-
-    <!-- Elementos de la pantalla de Marcas -->
-    <string name="title_marcas">Marcas</string>
-    <string name="subtitle_marcas">Catálogo de marcas disponibles</string>
-    <string name="hint_buscar_marca">Buscar marca...</string>
-    <string name="btn_cancelar">Cancelar</string>
-    <!-- Fin de elementos de Marca -->
-
-    <!--            COMUNES             -->
-    <!--Modal de Opciones-->
-    <string name="title_options">Opciones</string>
-    <string name="view">Ver</string>
-    <string name="update">Editar</string>
-    <string name="delete">Eliminar</string>
-
-    <!-- Menú Principal - Header y bienvenida -->
+    <!-- Menú Principal -->
     <string name="main_title">Sistema de Inventario</string>
     <string name="main_welcome">¡Bienvenido!</string>
     <string name="main_subtitle">Gestión de Vehículos Importados</string>
-
-    <!-- Menú Principal - Tarjetas de módulos -->
     <string name="menu_importers">Importadores</string>
     <string name="menu_imports">Importaciones</string>
     <string name="menu_vehicles">Vehículos</string>
@@ -88,12 +26,68 @@
     <string name="menu_section">Sección</string>
     <string name="menu_brand">Marcas</string>
 
-    <!-- Menú Principal - Navegación -->
-    <string name="nav_home">Inicio</string>
-    <string name="nav_profile">Perfil de usuario</string>
-    <string name="nav_logout">Salir</string>
+    <!-- Comunes -->
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="btn_actualizar">Actualizar</string>
+    <string name="btn_cerrar">Cerrar</string>
+    <string name="btn_limpiar">Limpiar</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="view">Ver</string>
+    <string name="update">Editar</string>
+    <string name="delete">Eliminar</string>
+    <string name="title_options">Opciones</string>
+    <string name="modal_titulo_confirmacion">Confirmación</string>
+    <string name="msg_confirmacion_pregunta">¿Está seguro de realizar esta acción?</string>
+    <string name="desc_agregar_nuevo">Agregar nuevo</string>
+    <string name="desc_boton_buscar">Buscar</string>
 
-    <!-- Diálogo de cierre de sesión -->
+    <!-- Vehículos -->
+    <string name="title_vehiculos">Vehículos</string>
+    <string name="subtitle_inventario">Sistema de inventario</string>
+    <string name="hint_buscar">Buscar Vehiculo</string>
+    <string name="modal_titulo_registro">Registro de Vehículo</string>
+    <string name="modal_titulo_detalle">Detalles del Vehículo</string>
+    <string name="modal_titulo_actualizar">Actualizar Vehículo</string>
+    <string name="label_tipo">Tipo</string>
+    <string name="label_seccion">Sección</string>
+    <string name="label_modelo">Modelo</string>
+    <string name="label_importacion">Importación</string>
+    <string name="label_vin">VIN</string>
+    <string name="label_anio">Año</string>
+    <string name="label_color">Color</string>
+    <string name="label_estado">Estado</string>
+    <string name="hint_vin">Ingrese número de VIN</string>
+    <string name="hint_color">Ingrese el color del vehiculo</string>
+
+    <!-- Desperfectos -->
+    <string name="title_desperfectos">Desperfectos</string>
+    <string name="subtitle_desperfectos">Registro de daños en vehículos</string>
+    <string name="hint_buscar_desperfecto">Buscar desperfecto o VIN...</string>
+    <string name="label_evidencia">Evidencia</string>
+    <string name="msg_eliminar_foto">¿Desea eliminar esta foto de evidencia?</string>
+    <string name="title_opciones_imagen">Opciones de Imagen</string>
+
+    <!-- Formulario Desperfectos -->
+    <string name="title_nuevo_desperfecto">Nuevo Desperfecto</string>
+    <string name="label_seleccione_vehiculo">Seleccione Vehículo</string>
+    <string name="label_tipo_desperfecto">Tipo de Desperfecto</string>
+    <string name="label_descripcion_desperfecto">Descripción del Desperfecto</string>
+    <string name="hint_descripcion_desperfecto">Describa el desperfecto encontrado...</string>
+    <string name="title_fotos_evidencia">Fotos de Evidencia</string>
+    <string name="btn_agregar_foto">+ AGREGAR</string>
+    <string name="desc_lista_fotos">Lista de fotos de evidencia</string>
+
+    <!-- Marcas -->
+    <string name="title_marcas">Marcas</string>
+    <string name="subtitle_marcas">Catálogo de marcas disponibles</string>
+    <string name="hint_buscar_marca">Buscar marca...</string>
+
+    <!-- Navegación -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_logout">Salir</string>
     <string name="logout_title">Cerrar sesión</string>
     <string name="logout_message">¿Desea cerrar la sesión actual?</string>
 </resources>

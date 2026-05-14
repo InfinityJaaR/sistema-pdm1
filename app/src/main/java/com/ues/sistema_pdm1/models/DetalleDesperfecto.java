@@ -1,6 +1,8 @@
 package com.ues.sistema_pdm1.models;
 
-public class DetalleDesperfecto {
+import java.io.Serializable;
+
+public class DetalleDesperfecto implements Serializable {
     private int id;
     private int idVehiculo;
     private int idTipoDesperfecto;
@@ -9,8 +11,7 @@ public class DetalleDesperfecto {
 
     public DetalleDesperfecto() {}
 
-    public DetalleDesperfecto(int id, int idVehiculo, int idTipoDesperfecto,
-                               String descripcionDetalle, String fechaRegistro) {
+    public DetalleDesperfecto(int id, int idVehiculo, int idTipoDesperfecto, String descripcionDetalle, String fechaRegistro) {
         this.id = id;
         this.idVehiculo = idVehiculo;
         this.idTipoDesperfecto = idTipoDesperfecto;
@@ -19,15 +20,14 @@ public class DetalleDesperfecto {
     }
 
     public int getId() { return id; }
-    public int getIdVehiculo() { return idVehiculo; }
-    public int getIdTipoDesperfecto() { return idTipoDesperfecto; }
-    public String getDescripcionDetalle() { return descripcionDetalle; }
-    public String getFechaRegistro() { return fechaRegistro; }
-
     public void setId(int id) { this.id = id; }
+    public int getIdVehiculo() { return idVehiculo; }
     public void setIdVehiculo(int idVehiculo) { this.idVehiculo = idVehiculo; }
+    public int getIdTipoDesperfecto() { return idTipoDesperfecto; }
     public void setIdTipoDesperfecto(int idTipoDesperfecto) { this.idTipoDesperfecto = idTipoDesperfecto; }
+    public String getDescripcionDetalle() { return descripcionDetalle; }
     public void setDescripcionDetalle(String descripcionDetalle) { this.descripcionDetalle = descripcionDetalle; }
+    public String getFechaRegistro() { return fechaRegistro; }
     public void setFechaRegistro(String fechaRegistro) { this.fechaRegistro = fechaRegistro; }
 
     @Override

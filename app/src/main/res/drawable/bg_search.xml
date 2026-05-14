@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- El color de fondo de la barra de búsqueda -->
+    <!-- Volviendo al color original -->
     <solid android:color="#1E1E3F" />
-
-    <!-- El radio de las esquinas (redondeado) -->
     <corners android:radius="10dp" />
 </shape>
