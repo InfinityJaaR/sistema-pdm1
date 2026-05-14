@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#80000000"
+    android:gravity="center">
+
+    <!-- DIALOG CONTAINER -->
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_white"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center">
+
+        <!-- Icono de Advertencia -->
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/primary_blue"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/accent_red"
+            android:gravity="center"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Nombre del importador -->
+        <TextView
+            android:id="@+id/delete_importer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Juan Pérez García"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_blue"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Mensaje de advertencia -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_message"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_gray"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:spacing="12dp">
+
+            <Button
+                android:id="@+id/btn_cancel_delete"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="@string/btn_cancel"
+                android:backgroundTint="@color/primary_blue_light"
+                android:textColor="@color/primary_blue_dark"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/btn_confirm_delete"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="@string/btn_delete"
+                android:backgroundTint="@color/primary_blue_dark"
+                android:textColor="@color/background_white"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_light">
+
+    <!-- HEADER AZUL -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_blue"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Fila: Ícono + Título + FAB -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Ícono Camión -->
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_truck"
+                app:tint="@color/text_light"
+                android:layout_marginEnd="12dp" />
+
+            <!-- Título -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/importers_title"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_light" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/importers_subtitle"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_light"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+
+            <!-- FAB Agregar -->
+            <LinearLayout
+                android:id="@+id/fab_agregar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_avatar"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_add"
+                    app:tint="@color/text_light" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- BUSCADOR -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/primary_blue_dark"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/text_light"
+                android:layout_marginEnd="12dp" />
+
+            <EditText
+                android:id="@+id/search_input_importer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/search_importer"
+                android:textColor="@color/text_light"
+                android:textColorHint="@color/text_secondary"
+                android:textSize="14sp"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <!-- LISTA DE IMPORTADORES (RecyclerView placeholder) -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp">
+
+        <LinearLayout
+            android:id="@+id/container_lista_importadores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+
+    </ScrollView>
+
+</LinearLayout>
