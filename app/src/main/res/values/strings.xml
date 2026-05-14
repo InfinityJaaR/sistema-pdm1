@@ -12,6 +12,77 @@
     <string name="menu_principal">Menú Principal</string>
     <string name="btn_llenar_db">Llenar base de datos</string>
 
+
+
+
+    <!-- ________________________IMPORTADORES________________________________ -->
+
+    <!-- Importadores Inicio-->
+    <string name="importers_title">Importadores</string>
+    <string name="importers_subtitle">Gestión de vehículos</string>
+    <string name="search_importer">Buscar importador...</string>
+
+
+    <!-- Formulario Importadores -->
+    <string name="form_title_add">Agregar Importador</string>
+    <string name="form_title_edit">Editar Importador</string>
+    <string name="form_title_view">Detalle Importador</string>
+
+    <!-- Secciones -->
+    <string name="section_personal_data">Datos Personales</string>
+    <string name="section_contact">Información de Contacto</string>
+    <string name="section_professional">Información Profesional</string>
+    <string name="section_imports">Importaciones Realizadas</string>
+
+    <!-- Campos -->
+    <string name="field_name">Nombre *</string>
+    <string name="field_lastname">Apellido *</string>
+    <string name="field_married_lastname">Apellido de Casada</string>
+    <string name="field_gender">Género *</string>
+    <string name="field_birthdate">Fecha de Nacimiento *</string>
+    <string name="field_address">Dirección *</string>
+    <string name="field_phone_primary">Teléfono Principal *</string>
+    <string name="field_phone_secondary">Teléfono Secundario</string>
+    <string name="field_email">Email *</string>
+    <string name="field_nui">NUI (Número Único) *</string>
+    <string name="field_responsible">Responsable de Verificación</string>
+    <string name="field_gender_male">Masculino</string>
+    <string name="field_gender_female">Femenino</string>
+    <string name="field_district">Distrito *</string>
+
+    <!-- Botones -->
+    <string name="btn_save">Guardar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_edit">Editar</string>
+    <string name="btn_delete">Eliminar</string>
+    <string name="btn_back">Volver</string>
+
+    <!-- Delete confirmation -->
+    <string name="delete_title">¿Deseas eliminar?</string>
+    <string name="delete_message">Esta acción no puede deshacerse</string>
+    <string name="delete_confirm">Eliminar importador</string>
+
+    <!-- Placeholders -->
+    <string name="hint_name">Ingresa el nombre</string>
+    <string name="hint_lastname">Ingresa el apellido</string>
+    <string name="hint_address">Calle, número, ciudad</string>
+    <string name="hint_phone">+56 9 XXXX XXXX</string>
+    <string name="hint_email">email@ejemplo.com</string>
+    <string name="hint_nui">NUI12345</string>
+    <string name="hint_responsible">Nombre responsable</string>
+
+    <!-- Labels -->
+    <string name="label_show_married">Casada</string>
+    <string name="label_imports_count">Importaciones: </string>
+    <string name="label_no_imports">Sin importaciones registradas</string>
+
+
+
+
+
+
+
+
     <!-- Elementos de la pantalla de Vehículos -->
     <string name="title_vehiculos">Vehículos</string>
     <string name="subtitle_inventario">Sistema de inventario</string>
