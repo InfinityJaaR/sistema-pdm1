@@ -5,29 +5,30 @@ public class DetalleDesperfecto {
     private int idVehiculo;
     private int idTipoDesperfecto;
     private String descripcionDetalle;
-    private String estado;
+    private String fechaRegistro;
 
     public DetalleDesperfecto() {}
 
-    public DetalleDesperfecto(int id, int idVehiculo, int idTipoDesperfecto, String descripcionDetalle, String estado) {
+    public DetalleDesperfecto(int id, int idVehiculo, int idTipoDesperfecto,
+                               String descripcionDetalle, String fechaRegistro) {
         this.id = id;
         this.idVehiculo = idVehiculo;
         this.idTipoDesperfecto = idTipoDesperfecto;
         this.descripcionDetalle = descripcionDetalle;
-        this.estado = estado;
+        this.fechaRegistro = fechaRegistro;
     }
 
     public int getId() { return id; }
     public int getIdVehiculo() { return idVehiculo; }
     public int getIdTipoDesperfecto() { return idTipoDesperfecto; }
     public String getDescripcionDetalle() { return descripcionDetalle; }
-    public String getEstado() { return estado; }
+    public String getFechaRegistro() { return fechaRegistro; }
 
     public void setId(int id) { this.id = id; }
     public void setIdVehiculo(int idVehiculo) { this.idVehiculo = idVehiculo; }
     public void setIdTipoDesperfecto(int idTipoDesperfecto) { this.idTipoDesperfecto = idTipoDesperfecto; }
     public void setDescripcionDetalle(String descripcionDetalle) { this.descripcionDetalle = descripcionDetalle; }
-    public void setEstado(String estado) { this.estado = estado; }
+    public void setFechaRegistro(String fechaRegistro) { this.fechaRegistro = fechaRegistro; }
 
     @Override
     public String toString() { return descripcionDetalle; }

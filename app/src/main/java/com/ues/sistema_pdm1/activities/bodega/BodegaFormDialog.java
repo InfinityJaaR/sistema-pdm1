@@ -40,8 +40,6 @@ public class BodegaFormDialog extends DialogFragment {
             args.putInt("ID_DISTRITO", bodega.getIdDistrito());
             args.putString("NOMBRE_BODEGA", bodega.getNombreBodega());
             args.putString("DIRECCION_BODEGA", bodega.getDireccionBodega());
-            args.putInt("CAPACIDAD_TOTAL", bodega.getCapacidadTotal());
-            args.putInt("CAPACIDAD_ACTUAL", bodega.getCapacidadActual());
         }
         dialog.setArguments(args);
         return dialog;
@@ -60,8 +58,6 @@ public class BodegaFormDialog extends DialogFragment {
         Spinner spDistrito = view.findViewById(R.id.sp_id_distrito);
         EditText etNombre = view.findViewById(R.id.et_nombre_bodega);
         EditText etDireccion = view.findViewById(R.id.et_direccion_bodega);
-        EditText etCapacidadTotal = view.findViewById(R.id.et_capacidad_total);
-        EditText etCapacidadActual = view.findViewById(R.id.et_capacidad_actual);
         Button btnGuardar = view.findViewById(R.id.btn_guardar);
         Button btnCancelar = view.findViewById(R.id.btn_cancelar);
 
@@ -85,8 +81,6 @@ public class BodegaFormDialog extends DialogFragment {
         if (esEdicion) {
             etNombre.setText(args.getString("NOMBRE_BODEGA"));
             etDireccion.setText(args.getString("DIRECCION_BODEGA"));
-            etCapacidadTotal.setText(String.valueOf(args.getInt("CAPACIDAD_TOTAL")));
-            etCapacidadActual.setText(String.valueOf(args.getInt("CAPACIDAD_ACTUAL")));
 
             int idDistrito = args.getInt("ID_DISTRITO");
             for (int i = 0; i < listaDistritos.size(); i++) {
@@ -105,8 +99,6 @@ public class BodegaFormDialog extends DialogFragment {
         btnGuardar.setOnClickListener(v -> {
             String nombre = etNombre.getText().toString().trim();
             String direccion = etDireccion.getText().toString().trim();
-            String capTotalStr = etCapacidadTotal.getText().toString().trim();
-            String capActualStr = etCapacidadActual.getText().toString().trim();
             Distrito distrito = (Distrito) spDistrito.getSelectedItem();
 
             if (distrito == null) {
@@ -122,25 +114,8 @@ public class BodegaFormDialog extends DialogFragment {
                 return;
             }
 
-            int capT = capTotalStr.isEmpty() ? 0 : Integer.parseInt(capTotalStr);
-            int capA = capActualStr.isEmpty() ? 0 : Integer.parseInt(capActualStr);
-
-            // Validación de capacidad máxima
-            if (capT > 150) {
-                etCapacidadTotal.setError("La capacidad máxima no puede ser superior a 150");
-                etCapacidadTotal.requestFocus();
-                return;
-            }
-
-            // Validación lógica: capacidad actual no puede ser mayor a la total
-            if (capA > capT) {
-                etCapacidadActual.setError("La capacidad actual no puede exceder la capacidad total");
-                etCapacidadActual.requestFocus();
-                return;
-            }
-
             if (listener != null) {
-                Bodega bodega = new Bodega(id, distrito.getId(), nombre, direccion, capT, capA);
+                Bodega bodega = new Bodega(id, distrito.getId(), nombre, direccion);
                 listener.onSave(bodega);
             }
             dialog.dismiss();

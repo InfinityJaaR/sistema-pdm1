@@ -23,8 +23,6 @@ public class BodegaViewDialog extends DialogFragment {
         args.putInt("ID_DISTRITO", bodega.getIdDistrito());
         args.putString("NOMBRE_BODEGA", bodega.getNombreBodega());
         args.putString("DIRECCION_BODEGA", bodega.getDireccionBodega());
-        args.putInt("CAPACIDAD_TOTAL", bodega.getCapacidadTotal());
-        args.putInt("CAPACIDAD_ACTUAL", bodega.getCapacidadActual());
         dialog.setArguments(args);
         return dialog;
     }
@@ -38,14 +36,12 @@ public class BodegaViewDialog extends DialogFragment {
         TextView tvDistrito = view.findViewById(R.id.tv_distrito_bodega);
         TextView tvNombre = view.findViewById(R.id.tv_nombre_bodega);
         TextView tvDireccion = view.findViewById(R.id.tv_direccion_bodega);
-        TextView tvCapacidad = view.findViewById(R.id.tv_capacidad_bodega);
         Button btnCerrar = view.findViewById(R.id.btn_cerrar);
 
         Bundle args = requireArguments();
         tvId.setText("ID: " + args.getInt("ID_BODEGA"));
         tvNombre.setText(args.getString("NOMBRE_BODEGA"));
         tvDireccion.setText(args.getString("DIRECCION_BODEGA"));
-        tvCapacidad.setText(args.getInt("CAPACIDAD_ACTUAL") + " / " + args.getInt("CAPACIDAD_TOTAL") + " vehículos");
 
         try {
             GenericDAO<Distrito> dao = new GenericDAO<>(requireContext(), Distrito.class, "DISTRITO");

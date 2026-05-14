@@ -169,14 +169,15 @@ int idImportador = seleccionado.getId();
 |-----------|-----------|------|-------------|
 | `id` | ID_IMPORTADOR | int | PK auto |
 | `idDistrito` | ID_DISTRITO | int | FK → DISTRITO (Spinner) |
-| `nui` | NUI | String | Número único importador |
 | `nombreImportador` | NOMBRE_IMPORTADOR | String | |
 | `apellidoImportador` | APELLIDO_IMPORTADOR | String | |
+| `apellidoCasada` | APELLIDO_CASADA | String | Opcional |
+| `genero` | GENERO | String | "M" / "F" |
 | `direccionImportador` | DIRECCION_IMPORTADOR | String | |
-| `emailImportador` | EMAIL_IMPORTADOR | String | |
-| `estado` | ESTADO | String | "activo" / "inactivo" |
-| `capacidadBodegaTotal` | CAPACIDAD_BODEGA_TOTAL | int | |
-| `capacidadBodegaActual` | CAPACIDAD_BODEGA_ACTUAL | int | |
+| `fechaNacimiento` | FECHA_NACIMIENTO | String | Formato: `yyyy-MM-dd` |
+| `correoElectronico` | CORREO_ELECTRONICO | String | Opcional |
+| `nui` | NUI | String | Número único importador |
+| `nombreResponsable` | NOMBRE_RESPONSABLE | String | Opcional |
 
 **Spinner necesario:** DISTRITO → `GenericDAO<Distrito>(ctx, Distrito.class, "distrito")`
 
@@ -260,11 +261,8 @@ List<TelefonoImportador> tels = telefonoDAO.obtenerPor("ID_IMPORTADOR",
 | `idSeccion` | ID_SECCION | int | FK → SECCION (Spinner) |
 | `vin` | VIN | String | Exactamente 17 caracteres (`Constants.LONGITUD_VIN`) |
 | `anio` | ANIO | int | Mínimo 2021 (`Constants.ANIO_MINIMO_VEHICULO`) |
+| `colorVehiculo` | COLOR_VEHICULO | String | Color del vehículo |
 | `estadoVehiculo` | ESTADO_VEHICULO | String | "en bodega", "en reparacion", "vendido" |
-| `fechaIngreso` | FECHA_INGRESO | String | Formato: `yyyy-MM-dd` |
-
-> ⚠️ El campo `color` **NO existe** en el modelo Java actual. El modelo tiene
-> `fechaIngreso` en su lugar. No lo confundas con el script SQL de referencia.
 
 **Spinners necesarios:** IMPORTACION, MODELO, TIPO_VEHICULO, SECCION
 
@@ -337,9 +335,7 @@ List<TelefonoImportador> tels = telefonoDAO.obtenerPor("ID_IMPORTADOR",
 | `id` | ID_TRANSPORTE | int | PK auto |
 | `idTipoTransporte` | ID_TIPO_TRANSPORTE | int | FK → TIPO_TRANSPORTE (Spinner) |
 | `placa` | PLACA | String | Placa del vehículo de transporte |
-| `descripcion` | DESCRIPCION | String | Descripción libre |
-| `capacidadDiaria` | CAPACIDAD_DIARIA | int | Cuántos vehículos mueve por día |
-| `capacidadActual` | CAPACIDAD_ACTUAL | int | Cuántos lleva hoy (inicia en 0) |
+| `descripcionTransporte` | DESCRIPCION_TRANSPORTE | String | Descripción libre (opcional) |
 
 **Spinner necesario:** TIPO_TRANSPORTE → `GenericDAO<TipoTransporte>(ctx, TipoTransporte.class, "tipo_transporte")`
 
@@ -369,15 +365,13 @@ List<TelefonoImportador> tels = telefonoDAO.obtenerPor("ID_IMPORTADOR",
 | Campo Java | Columna BD | Tipo | Descripción |
 |-----------|-----------|------|-------------|
 | `id` | ID_MOVIMIENTO | int | PK auto |
-| `idVehiculo` | ID_VEHICULO | int | FK → VEHICULO (Spinner) |
-| `idPersonal` | ID_PERSONAL | int | FK → PERSONAL_INTERNO (Spinner) |
 | `idTransporte` | ID_TRANSPORTE | int | FK → TRANSPORTE (Spinner) |
-| `idBodegaDestino` | ID_BODEGA_DESTINO | int | FK → BODEGA (Spinner) |
+| `idPersonal` | ID_PERSONAL | int | FK → PERSONAL_INTERNO (Spinner) |
+| `idVehiculo` | ID_VEHICULO | int | FK → VEHICULO (Spinner) |
+| `idBodega` | ID_BODEGA | int | FK → BODEGA (Spinner) |
+| `tipoMovimiento` | TIPO_MOVIMIENTO | String | "Entrada" / "Salida" |
 | `fechaMovimiento` | FECHA_MOVIMIENTO | String | Formato: `yyyy-MM-dd` |
 | `motivo` | MOTIVO | String | Motivo del movimiento |
-| `observacion` | OBSERVACION | String | Texto libre |
-
-> ⚠️ El modelo **NO tiene** `idBodegaOrigen`. Solo tiene `idBodegaDestino`.
 
 **Spinners necesarios:** VEHICULO, PERSONAL_INTERNO, TRANSPORTE, BODEGA
 
@@ -419,13 +413,13 @@ List<TelefonoImportador> tels = telefonoDAO.obtenerPor("ID_IMPORTADOR",
 | Campo Java | Columna BD | Tipo | Descripción |
 |-----------|-----------|------|-------------|
 | `id` | ID_REPARACION | int | PK auto |
-| `idVehiculo` | ID_VEHICULO | int | FK → VEHICULO (Spinner) |
 | `idTaller` | ID_TALLER | int | FK → TALLER (Spinner) |
+| `idVehiculo` | ID_VEHICULO | int | FK → VEHICULO (Spinner) |
 | `fechaInicio` | FECHA_INICIO | String | Formato: `yyyy-MM-dd` |
 | `fechaFin` | FECHA_FIN | String | Puede ser vacío si aún no terminó |
-| `aptoParaVenta` | APTO_PARA_VENTA | int | Usar `Constants.REPARACION_APTO = 1` / `Constants.REPARACION_NO_APTO = 0` |
-| `costo` | COSTO | double | Costo de la reparación |
-| `observacion` | OBSERVACION | String | Texto libre |
+| `descripcionTrabajo` | DESCRIPCION_TRABAJO | String | Descripción del trabajo realizado |
+| `aptoParaVenta` | APTO_PARA_VENTA | int | `1` = apto, `0` = no apto |
+| `requiereOtraReparacion` | REQUIERE_OTRA_REPARACION | int | `1` = sí, `0` = no |
 
 **Spinners necesarios:** VEHICULO, TALLER
 
@@ -458,8 +452,6 @@ List<TelefonoImportador> tels = telefonoDAO.obtenerPor("ID_IMPORTADOR",
 | `idDistrito` | ID_DISTRITO | int | FK → DISTRITO (Spinner) |
 | `nombreBodega` | NOMBRE_BODEGA | String | |
 | `direccionBodega` | DIRECCION_BODEGA | String | |
-| `capacidadTotal` | CAPACIDAD_TOTAL | int | Capacidad máxima total |
-| `capacidadActual` | CAPACIDAD_ACTUAL | int | Cuántos vehículos hay ahora |
 
 **Spinner necesario:** DISTRITO
 

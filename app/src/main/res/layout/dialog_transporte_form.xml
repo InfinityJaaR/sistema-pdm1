@@ -12,41 +12,42 @@
         android:padding="20dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Distrito"
-            android:textColor="#555555"
-            android:textSize="13sp"
-            android:textStyle="bold"
+            android:text="Tipo de transporte"
+            android:textSize="12sp"
+            android:textColor="#888888"
             android:layout_marginBottom="4dp" />
 
         <Spinner
-            android:id="@+id/sp_id_distrito"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="16dp" />
-
-        <EditText
-            android:id="@+id/et_nombre_bodega"
+            android:id="@+id/spinner_tipo_transporte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="Nombre de la bodega"
-            android:inputType="textCapWords"
-            android:maxLength="50"
+            android:padding="8dp"
+            android:background="@android:drawable/btn_dropdown" />
+
+        <EditText
+            android:id="@+id/et_transporte_placa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Placa"
+            android:inputType="textCapCharacters"
+            android:maxLength="10"
             android:padding="12dp"
             android:textSize="16sp"
             android:textColor="#12122A"
             android:textColorHint="#AAAACC" />
 
         <EditText
-            android:id="@+id/et_direccion_bodega"
+            android:id="@+id/et_transporte_descripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:hint="Dirección de la bodega"
+            android:hint="Descripción (opcional)"
             android:inputType="textCapSentences"
-            android:maxLength="200"
+            android:maxLength="100"
             android:padding="12dp"
             android:textSize="16sp"
             android:textColor="#12122A"
@@ -64,7 +65,7 @@
                 android:layout_height="52dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:text="@string/btn_cancelar"
+                android:text="Cancelar"
                 android:textColor="#12122A"
                 app:strokeColor="#12122A"
                 app:cornerRadius="8dp" />
@@ -75,7 +76,7 @@
                 android:layout_height="52dp"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                android:text="@string/btn_guardar"
+                android:text="Guardar"
                 android:backgroundTint="#12122A"
                 android:textColor="#FFFFFF"
                 app:cornerRadius="8dp" />
