@@ -1,279 +1,283 @@
-<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="#FFFFFF">
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
 
-    <!-- 1. TÍTULO DINÁMICO -->
-    <TextView
-        android:id="@+id/tv_modal_titulo"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/modal_titulo_registro"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#12122A"
-        android:gravity="center"
-        android:padding="16dp" />
+        android:orientation="vertical"
+        android:background="@color/background_white">
 
-    <!-- 2. ÁREA DE CAMPOS CON SCROLL -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scrollbars="vertical">
-
-        <!-- Contenedor principal del formulario -->
-        <LinearLayout
-            android:id="@+id/containerFormulario"
+        <!-- Header - Adaptado a Blanco y Negro -->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp">
+            android:background="@color/primary_blue_dark"
+            android:padding="24dp">
 
-            <!-- Fila 1: Tipo y Sección -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+            <ImageView
+                android:id="@+id/iv_modal_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/menu_vehicles"
+                android:src="@drawable/ic_cars"
+                app:tint="#FFFFFF" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_label_tipo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_tipo"
-                        android:textColor="#555555"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/sp_vehiculo_tipo"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_label_seccion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_seccion"
-                        android:textColor="#555555"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/sp_vehiculo_seccion"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <Space android:layout_width="match_parent" android:layout_height="8dp"/>
-
-            <!-- Fila 2: Modelo e Importación -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginEnd="8dp">
-
-                    <TextView
-                        android:id="@+id/tv_label_modelo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_modelo"
-                        android:textColor="#555555"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/sp_vehiculo_modelo"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_label_importacion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_importacion"
-                        android:textColor="#555555"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/sp_vehiculo_importacion"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#EEEEEE"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"/>
-
-            <!-- Fila 3: VIN y Año -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginEnd="8dp">
-
-                    <TextView
-                        android:id="@+id/tv_label_vin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_vin"
-                        android:textColor="#555555"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/et_vehiculo_vin"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:hint="@string/hint_vin"
-                        android:inputType="number"
-                        android:textSize="14sp"
-                        android:importantForAutofill="no" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_label_anio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_anio"
-                        android:textColor="#555555"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/sp_vehiculo_anio"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <Space android:layout_width="match_parent" android:layout_height="8dp"/>
-
-            <!-- Color -->
             <TextView
-                android:id="@+id/tv_label_color"
+                android:id="@+id/tv_modal_titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_color"
-                android:textColor="#555555"
-                android:textSize="13sp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@id/iv_modal_icon"
+                android:text="@string/modal_titulo_registro"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
                 android:textStyle="bold" />
+        </RelativeLayout>
 
-            <EditText
-                android:id="@+id/et_vehiculo_color"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:hint="@string/hint_color"
-                android:inputType="text"
-                android:textSize="14sp"
-                android:importantForAutofill="no" />
-
-            <Space android:layout_width="match_parent" android:layout_height="8dp"/>
-
-            <!-- Estado -->
-            <TextView
-                android:id="@+id/tv_label_estado"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/label_estado"
-                android:textColor="#555555"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:padding="24dp">
 
-            <Spinner
-                android:id="@+id/sp_vehiculo_estado"
-                android:layout_width="match_parent"
-                android:layout_height="48dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Identidad del Vehículo"
+                    android:textColor="#000000"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_marginBottom="16dp" />
 
-            <Space android:layout_width="match_parent" android:layout_height="16dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_vin"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+                <EditText
+                    android:id="@+id/et_vehiculo_vin"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:hint="@string/hint_vin"
+                    android:inputType="textCapCharacters"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:background="@drawable/bg_search_white"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginBottom="16dp" />
 
-        </LinearLayout>
-    </ScrollView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false"
+                    android:layout_marginBottom="16dp">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_modelo"
+                            android:textColor="#000000"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="4dp" />
+                        <Spinner
+                            android:id="@+id/sp_vehiculo_modelo"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:background="@drawable/bg_spinner_white" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_tipo"
+                            android:textColor="#000000"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="4dp" />
+                        <Spinner
+                            android:id="@+id/sp_vehiculo_tipo"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:background="@drawable/bg_spinner_white" />
+                    </LinearLayout>
+                </LinearLayout>
 
-    <!-- 3. PANEL DE BOTONES FIJO -->
-    <LinearLayout
-        android:id="@+id/layout_vehiculo_acciones"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:background="#F9F9F9">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false"
+                    android:layout_marginBottom="16dp">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_anio"
+                            android:textColor="#000000"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="4dp" />
+                        <Spinner
+                            android:id="@+id/sp_vehiculo_anio"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:background="@drawable/bg_spinner_white" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_color"
+                            android:textColor="#000000"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="4dp" />
+                        <EditText
+                            android:id="@+id/et_vehiculo_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:hint="@string/hint_color"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:background="@drawable/bg_search_white"
+                            android:paddingHorizontal="16dp"
+                            android:inputType="text" />
+                    </LinearLayout>
+                </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_vehiculo_limpiar"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:text="@string/btn_limpiar"
-            android:textColor="#12122A"
-            app:strokeColor="#12122A"
-            app:cornerRadius="8dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginVertical="16dp"/>
 
-        <Button
-            android:id="@+id/btn_vehiculo_guardar"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:text="@string/btn_guardar"
-            android:backgroundTint="#12122A"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:cornerRadius="8dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Logística e Inventario"
+                    android:textColor="#000000"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_marginBottom="16dp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_seccion"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+                <Spinner
+                    android:id="@+id/sp_vehiculo_seccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_spinner_white"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_importacion"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+                <Spinner
+                    android:id="@+id/sp_vehiculo_importacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_spinner_white"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_estado"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+                <Spinner
+                    android:id="@+id/sp_vehiculo_estado"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_spinner_white"
+                    android:layout_marginBottom="24dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/btn_vehiculo_limpiar"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/btn_limpiar"
+                        android:textColor="@color/primary_blue"
+                        app:strokeColor="@color/primary_blue"
+                        app:cornerRadius="12dp" />
+                    <Button
+                        android:id="@+id/btn_vehiculo_guardar"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/btn_guardar"
+                        android:backgroundTint="@color/primary_blue"
+                        android:textColor="@color/text_light"
+                        android:textStyle="bold"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -127,6 +127,7 @@
     <string name="label_estado">Estado</string>
     <string name="hint_vin">Ingrese número de VIN</string>
     <string name="hint_color">Ingrese el color del vehiculo</string>
+    <string name="placeholder_empty">---</string>
 
     <!-- Desperfectos -->
     <string name="title_desperfectos">Desperfectos</string>
