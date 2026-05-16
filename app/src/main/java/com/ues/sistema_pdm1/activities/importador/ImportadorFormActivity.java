@@ -3,6 +3,8 @@ package com.ues.sistema_pdm1.activities.importador;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -86,6 +88,8 @@ public class ImportadorFormActivity extends AppCompatActivity {
 
         if (esEdicion) cargarDatos();
 
+        aplicarFormatoTelefono(inputPhonePrimary);
+
         btnAddPhone.setOnClickListener(v -> agregarFilaTelefono(""));
         btnCancelar.setOnClickListener(v -> finish());
         btnGuardar.setOnClickListener(v -> guardar());
@@ -120,6 +124,23 @@ public class ImportadorFormActivity extends AppCompatActivity {
         };
         spinnerGender.setAdapter(new ArrayAdapter<>(this,
             android.R.layout.simple_dropdown_item_1line, opciones));
+
+        switchMarried.setEnabled(false);
+        switchMarried.setChecked(false);
+        layoutMarriedLastname.setVisibility(View.GONE);
+
+        spinnerGender.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void afterTextChanged(Editable s) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                boolean esFemenino = getString(R.string.field_gender_female).equals(s.toString());
+                switchMarried.setEnabled(esFemenino);
+                if (!esFemenino) {
+                    switchMarried.setChecked(false);
+                    layoutMarriedLastname.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     private void configurarSpinnerDistrito() {
@@ -136,11 +157,15 @@ public class ImportadorFormActivity extends AppCompatActivity {
 
     private void configurarDatePicker() {
         View.OnClickListener abrirCalendario = v -> {
-            Calendar cal = Calendar.getInstance();
-            new DatePickerDialog(this, (dp, year, month, day) -> {
+            Calendar maxFecha = Calendar.getInstance();
+            maxFecha.add(Calendar.YEAR, -18);
+
+            DatePickerDialog dialog = new DatePickerDialog(this, (dp, year, month, day) -> {
                 String fecha = String.format(Locale.US, "%04d-%02d-%02d", year, month + 1, day);
                 inputBirthdate.setText(fecha);
-            }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show();
+            }, maxFecha.get(Calendar.YEAR), maxFecha.get(Calendar.MONTH), maxFecha.get(Calendar.DAY_OF_MONTH));
+            dialog.getDatePicker().setMaxDate(maxFecha.getTimeInMillis());
+            dialog.show();
         };
         btnDatePicker.setOnClickListener(abrirCalendario);
         inputBirthdate.setOnClickListener(abrirCalendario);
@@ -165,8 +190,15 @@ public class ImportadorFormActivity extends AppCompatActivity {
             inputResponsible.setText(imp.getNombreResponsable());
 
             String genero = imp.getGenero();
-            if ("M".equals(genero)) spinnerGender.setText(getString(R.string.field_gender_male), false);
-            else if ("F".equals(genero)) spinnerGender.setText(getString(R.string.field_gender_female), false);
+            if ("M".equals(genero)) {
+                spinnerGender.setText(getString(R.string.field_gender_male), false);
+                switchMarried.setEnabled(false);
+                switchMarried.setChecked(false);
+                layoutMarriedLastname.setVisibility(View.GONE);
+            } else if ("F".equals(genero)) {
+                spinnerGender.setText(getString(R.string.field_gender_female), false);
+                switchMarried.setEnabled(true);
+            }
 
             String apCasada = imp.getApellidoCasada();
             if (apCasada != null && !apCasada.isEmpty()) {
@@ -198,6 +230,7 @@ public class ImportadorFormActivity extends AppCompatActivity {
     private void agregarFilaTelefono(String numero) {
         View row = LayoutInflater.from(this).inflate(R.layout.item_phone_form_row, containerPhones, false);
         TextInputEditText input = row.findViewById(R.id.input_phone_extra);
+        aplicarFormatoTelefono(input);
         if (!numero.isEmpty()) input.setText(numero);
         phoneExtraFields.add(input);
 
@@ -207,6 +240,35 @@ public class ImportadorFormActivity extends AppCompatActivity {
         });
 
         containerPhones.addView(row);
+    }
+
+    private void aplicarFormatoTelefono(TextInputEditText campo) {
+        campo.addTextChangedListener(new TextWatcher() {
+            private boolean editando = false;
+
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (editando) return;
+                editando = true;
+
+                String soloDigitos = s.toString().replaceAll("[^0-9]", "");
+                if (soloDigitos.length() > 8) soloDigitos = soloDigitos.substring(0, 8);
+
+                String formateado;
+                if (soloDigitos.length() > 4) {
+                    formateado = soloDigitos.substring(0, 4) + "-" + soloDigitos.substring(4);
+                } else {
+                    formateado = soloDigitos;
+                }
+
+                campo.setText(formateado);
+                campo.setSelection(formateado.length());
+                editando = false;
+            }
+        });
     }
 
     private void guardar() {
@@ -230,6 +292,24 @@ public class ImportadorFormActivity extends AppCompatActivity {
 
         if (nui.length() != Constants.LONGITUD_NUI) {
             Toast.makeText(this, "El NUI debe tener exactamente " + Constants.LONGITUD_NUI + " caracteres", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        try {
+            String[] partes = fecha.split("-");
+            int anio = Integer.parseInt(partes[0]);
+            int mes  = Integer.parseInt(partes[1]) - 1;
+            int dia  = Integer.parseInt(partes[2]);
+            Calendar nacimiento = Calendar.getInstance();
+            nacimiento.set(anio, mes, dia);
+            Calendar limite = Calendar.getInstance();
+            limite.add(Calendar.YEAR, -18);
+            if (nacimiento.after(limite)) {
+                Toast.makeText(this, "El importador debe ser mayor de 18 años", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Fecha de nacimiento no válida", Toast.LENGTH_SHORT).show();
             return;
         }
 

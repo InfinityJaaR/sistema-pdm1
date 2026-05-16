@@ -46,10 +46,12 @@
             android:exported="false" />
         <activity
             android:name=".activities.importador.ImportadorFormActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.importador.ImportadorViewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.importador.ImportadorDeleteActivity"
             android:exported="false"
