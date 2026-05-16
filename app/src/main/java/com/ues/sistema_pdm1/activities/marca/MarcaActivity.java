@@ -17,7 +17,7 @@ import com.ues.sistema_pdm1.activities.LoginActivity;
 import com.ues.sistema_pdm1.data.dao.GenericDAO;
 import com.ues.sistema_pdm1.models.Marca;
 import com.ues.sistema_pdm1.utils.SessionManager;
-
+import com.ues.sistema_pdm1.activities.modelo.ModeloActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +67,15 @@ public class MarcaActivity extends AppCompatActivity {
             }
             return false;
         });
+        //Inicio
+        lvMarcas.setOnItemLongClickListener((parent, view, position, id) -> {
+            Marca marca = marcasFiltradas.get(position);
+            Intent intent = new Intent(this, ModeloActivity.class);
+            intent.putExtra("ID_MARCA", marca.getId());
+            startActivity(intent);
+            return true;
+        });
+        //Fin
     }
 
     private void cargarMarcas() {

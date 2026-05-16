@@ -112,7 +112,7 @@ public class ImportadorActivity extends AppCompatActivity {
         TextView tvTelefono  = card.findViewById(R.id.item_telefono);
         TextView tvDireccion = card.findViewById(R.id.item_direccion);
 
-        tvNombre.setText(imp.getNombreImportador() + " " + imp.getApellidoImportador());
+        tvNombre.setText(nombreCompleto(imp));
         tvNui.setText("NUI: " + imp.getNui());
 
         String email = imp.getCorreoElectronico();
@@ -127,6 +127,15 @@ public class ImportadorActivity extends AppCompatActivity {
         card.setOnClickListener(v -> abrirVista(imp.getId()));
         card.findViewById(R.id.item_btn_editar).setOnClickListener(v -> abrirFormulario(imp.getId()));
         card.findViewById(R.id.item_btn_eliminar).setOnClickListener(v -> abrirEliminar(imp));
+    }
+
+    private String nombreCompleto(Importador imp) {
+        String base = imp.getNombreImportador() + " " + imp.getApellidoImportador();
+        String apCasada = imp.getApellidoCasada();
+        if (apCasada != null && !apCasada.isEmpty()) {
+            return base + " de " + apCasada;
+        }
+        return base;
     }
 
     private void abrirFormulario(int id) {
@@ -144,7 +153,7 @@ public class ImportadorActivity extends AppCompatActivity {
     private void abrirEliminar(Importador imp) {
         Intent intent = new Intent(this, ImportadorDeleteActivity.class);
         intent.putExtra("importador_id", imp.getId());
-        intent.putExtra("importador_nombre", imp.getNombreImportador() + " " + imp.getApellidoImportador());
+        intent.putExtra("importador_nombre", nombreCompleto(imp));
         launcher.launch(intent);
     }
 }

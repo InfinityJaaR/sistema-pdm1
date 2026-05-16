@@ -78,6 +78,10 @@ public class ImportadorViewActivity extends AppCompatActivity {
     private void poblarVista() {
         // Header
         String nombreCompleto = importador.getNombreImportador() + " " + importador.getApellidoImportador();
+        String apCasadaHeader = importador.getApellidoCasada();
+        if (apCasadaHeader != null && !apCasadaHeader.isEmpty()) {
+            nombreCompleto += " de " + apCasadaHeader;
+        }
         ((TextView) findViewById(R.id.detail_name)).setText(nombreCompleto);
         ((TextView) findViewById(R.id.detail_nui)).setText("NUI: " + importador.getNui());
 
