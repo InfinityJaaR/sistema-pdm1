@@ -94,7 +94,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/field_name"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textColor="@color/text_primary" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,7 +110,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/field_lastname"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textColor="@color/text_primary" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,7 +148,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/field_married_lastname"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textColor="@color/text_primary" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -179,7 +182,8 @@
                         android:hint="DD/MM/YYYY"
                         android:inputType="date"
                         android:paddingStart="12dp"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:textColor="@color/text_primary" />
 
                     <ImageView
                         android:id="@+id/btn_date_picker"
@@ -247,7 +251,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/field_address"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textColor="@color/text_primary" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -261,7 +266,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/field_email"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/text_primary" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -275,7 +281,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/field_phone_primary"
-                        android:inputType="phone" />
+                        android:inputType="phone"
+                        android:textColor="@color/text_primary" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -345,7 +352,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/field_nui"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textColor="@color/text_primary" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -359,7 +367,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/field_responsible"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textColor="@color/text_primary" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

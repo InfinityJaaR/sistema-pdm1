@@ -131,7 +131,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Juan"
                         android:textColor="@color/text_secondary" />
 
                 </LinearLayout>
@@ -157,7 +156,33 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Pérez"
+                        android:textColor="@color/text_secondary" />
+
+                </LinearLayout>
+
+                <!-- Apellido de Casada (condicional) -->
+                <LinearLayout
+                    android:id="@+id/married_lastname_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ap. Casada:"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginEnd="12dp"
+                        android:minWidth="80dp" />
+
+                    <TextView
+                        android:id="@+id/detail_married_lastname"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:textColor="@color/text_secondary" />
 
                 </LinearLayout>
@@ -213,33 +238,6 @@
 
                 </LinearLayout>
 
-                <!-- Apellido de Casada (condicional) -->
-                <LinearLayout
-                    android:id="@+id/married_lastname_row"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ap. Casada:"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginEnd="12dp"
-                        android:minWidth="80dp" />
-
-                    <TextView
-                        android:id="@+id/detail_married_lastname"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text=""
-                        android:textColor="@color/text_secondary" />
-
-                </LinearLayout>
 
             </LinearLayout>
 
