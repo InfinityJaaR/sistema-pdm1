@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/background_white">
+
+        <!-- Header -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_blue"
+            android:padding="24dp">
+
+            <ImageView
+                android:id="@+id/iv_header_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_cars"
+                app:tint="@color/text_light"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/menu_vehicles" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modal_titulo_detalle"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_light"
+                android:layout_toEndOf="@id/iv_header_icon"
+                android:layout_marginStart="16dp"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- VIN Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_vin"
+                    android:textSize="11sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.05"
+                    android:labelFor="@+id/tv_view_vin" />
+                <TextView
+                    android:id="@+id/tv_view_vin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:paddingVertical="4dp"
+                    android:textIsSelectable="true"
+                    android:text="@string/placeholder_empty"
+                    tools:text="ABC123456789" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginVertical="12dp"/>
+
+                <!-- Modelo & Tipo Grid -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_modelo"
+                            android:textSize="11sp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:labelFor="@+id/tv_view_modelo" />
+                        <TextView
+                            android:id="@+id/tv_view_modelo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:paddingVertical="4dp"
+                            android:text="@string/placeholder_empty"
+                            tools:text="Hilux" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_tipo"
+                            android:textSize="11sp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:labelFor="@+id/tv_view_tipo" />
+                        <TextView
+                            android:id="@+id/tv_view_tipo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:paddingVertical="4dp"
+                            android:text="@string/placeholder_empty"
+                            tools:text="Pick-up" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginVertical="12dp"/>
+
+                <!-- Año & Color Grid -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_anio"
+                            android:textSize="11sp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:labelFor="@+id/tv_view_anio" />
+                        <TextView
+                            android:id="@+id/tv_view_anio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:paddingVertical="4dp"
+                            android:text="@string/placeholder_empty"
+                            tools:text="2022" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_color"
+                            android:textSize="11sp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:labelFor="@+id/tv_view_color" />
+                        <TextView
+                            android:id="@+id/tv_view_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:paddingVertical="4dp"
+                            android:text="@string/placeholder_empty"
+                            tools:text="Blanco" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginVertical="12dp"/>
+
+                <!-- Sección & Estado Grid -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_seccion"
+                            android:textSize="11sp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:labelFor="@+id/tv_view_seccion" />
+                        <TextView
+                            android:id="@+id/tv_view_seccion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:paddingVertical="4dp"
+                            android:text="@string/placeholder_empty"
+                            tools:text="Sección B" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_estado"
+                            android:textSize="11sp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:labelFor="@+id/tv_view_estado" />
+                        <TextView
+                            android:id="@+id/tv_view_estado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:paddingVertical="4dp"
+                            android:text="@string/placeholder_empty"
+                            tools:text="Disponible" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginVertical="12dp"/>
+
+                <!-- Importación -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_importacion"
+                    android:textSize="11sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:labelFor="@+id/tv_view_importacion" />
+                <TextView
+                    android:id="@+id/tv_view_importacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#000000"
+                    android:paddingVertical="4dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="@string/placeholder_empty"
+                    tools:text="Importación #542" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_cerrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="@string/btn_cerrar"
+                    android:backgroundTint="@color/primary_blue"
+                    android:textColor="@color/text_light"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:elevation="2dp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

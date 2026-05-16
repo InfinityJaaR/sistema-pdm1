@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vehículo"
+            android:textColor="#12122A"
+            android:textSize="12sp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_vehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginBottom="8dp"
+            android:hint="Buscar vehículo..."
+            android:textSize="13sp"
+            android:textColor="#12122A"
+            android:textColorHint="#AAAACC"
+            android:padding="8dp"
+            android:completionThreshold="1"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taller"
+            android:textColor="#12122A"
+            android:textSize="12sp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_taller"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginBottom="8dp"
+            android:hint="Buscar taller..."
+            android:textSize="13sp"
+            android:textColor="#12122A"
+            android:textColorHint="#AAAACC"
+            android:padding="8dp"
+            android:completionThreshold="1"
+            android:inputType="text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha inicio"
+                    android:textColor="#12122A"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_fecha_inicio"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:text="Seleccionar"
+                    android:textSize="11sp"
+                    android:textColor="#12122A"
+                    app:strokeColor="#12122A"
+                    app:cornerRadius="8dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha fin"
+                    android:textColor="#12122A"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_fecha_fin"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:text="Seleccionar"
+                    android:textSize="11sp"
+                    android:textColor="#12122A"
+                    app:strokeColor="#12122A"
+                    app:cornerRadius="8dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_descripcion_trabajo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:hint="Descripción del trabajo"
+            android:inputType="textMultiLine"
+            android:maxLength="256"
+            android:minLines="2"
+            android:gravity="top"
+            android:padding="8dp"
+            android:textSize="13sp"
+            android:textColor="#12122A"
+            android:textColorHint="#AAAACC" />
+
+        <CheckBox
+            android:id="@+id/cb_apto_para_venta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apto para venta"
+            android:textColor="#12122A"
+            android:textSize="12sp"
+            android:layout_marginBottom="2dp"
+            android:buttonTint="#12122A" />
+
+        <CheckBox
+            android:id="@+id/cb_requiere_otra_reparacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Requiere otra reparación"
+            android:textColor="#12122A"
+            android:textSize="12sp"
+            android:layout_marginBottom="10dp"
+            android:buttonTint="#12122A" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_cancelar"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="@string/btn_cancelar"
+                android:textColor="#12122A"
+                app:strokeColor="#12122A"
+                app:cornerRadius="8dp" />
+
+            <Button
+                android:id="@+id/btn_guardar"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:text="@string/btn_guardar"
+                android:backgroundTint="#12122A"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

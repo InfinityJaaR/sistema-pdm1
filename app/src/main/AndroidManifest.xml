@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- PERMISOS PARA CÁMARA Y GALERÍA -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- Permisos de lectura de galería según versión de Android -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,8 +21,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sistemapdm1">
+
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.modelo.ModeloActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.taller.TallerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +37,71 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importador.ImportadorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importador.ImportadorFormActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activities.importador.ImportadorViewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activities.importador.ImportadorDeleteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Overlay.Transparent" />
+        <activity
+            android:name=".activities.vehiculo.VehiculoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.movimiento.MovimientoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.reparacion.ReparacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.venta.VentaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.catalogos.CatalogosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.marca.MarcaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.bodega.BodegaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.seccion.SeccionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.personalInterno.PersonalInternoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.transporte.TransporteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.detalleDesperfecto.DetalleDesperfectoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importacion.ImportacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importacion.ImportacionFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importacion.ImportacionViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.importacion.ImportacionDeleteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Overlay.Transparent" />
     </application>
 
 </manifest>

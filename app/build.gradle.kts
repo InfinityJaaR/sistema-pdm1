@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sistema_pdm1"
+    namespace = "com.ues.sistema_pdm1"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

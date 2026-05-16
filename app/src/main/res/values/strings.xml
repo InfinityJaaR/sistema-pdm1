@@ -1,3 +1,189 @@
 <resources>
     <string name="app_name">sistema-pdm1</string>
+    <string name="app_display_name">Sistema de Inventario\nde Vehículos Importados</string>
+    <string name="login_title">Acceso al Sistema</string>
+    <string name="username_text">Nombre de Usuario</string>
+    <string name="password_text">Contraseña</string>
+    <string name="login_text">Iniciar Sesión</string>
+    <string name="demo_text">Demo — Ingresar como Admin</string>
+    <string name="footer_text">© 2026 · PDM115 Grupo 02 · UES</string>
+
+    <!-- Menú Principal -->
+    <string name="main_title">Sistema de Inventario</string>
+    <string name="main_welcome">¡Bienvenido!</string>
+    <string name="main_subtitle">Gestión de Vehículos Importados</string>
+    <string name="menu_importers">Importadores</string>
+    <string name="menu_imports">Importaciones</string>
+    <string name="menu_vehicles">Vehículos</string>
+    <string name="menu_damage">Desperfectos</string>
+    <string name="menu_movements">Movimientos E/S</string>
+    <string name="menu_transport">Transporte</string>
+    <string name="menu_build">Reparaciones</string>
+    <string name="menu_workshops">Talleres</string>
+    <string name="menu_sales">Ventas</string>
+    <string name="menu_warehouses">Bodegas</string>
+    <string name="menu_staff">Empleados</string>
+    <string name="menu_section">Sección</string>
+    <string name="menu_brand">Marcas</string>
+
+
+
+
+    <!-- ________________________IMPORTADORES________________________________ -->
+
+    <!-- Importadores Inicio-->
+    <string name="importers_title">Importadores</string>
+    <string name="importers_subtitle">Gestión de vehículos</string>
+    <string name="search_importer">Buscar importador...</string>
+
+
+    <!-- Formulario Importadores -->
+    <string name="form_title_add">Agregar Importador</string>
+    <string name="form_title_edit">Editar Importador</string>
+    <string name="form_title_view">Detalle Importador</string>
+
+    <!-- Secciones -->
+    <string name="section_personal_data">Datos Personales</string>
+    <string name="section_contact">Información de Contacto</string>
+    <string name="section_professional">Información Profesional</string>
+    <string name="section_imports">Importaciones Realizadas</string>
+
+    <!-- Campos -->
+    <string name="field_name">Nombre *</string>
+    <string name="field_lastname">Apellido *</string>
+    <string name="field_married_lastname">Apellido de Casada</string>
+    <string name="field_gender">Género *</string>
+    <string name="field_birthdate">Fecha de Nacimiento *</string>
+    <string name="field_address">Dirección *</string>
+    <string name="field_phone_primary">Teléfono Principal *</string>
+    <string name="field_phone_secondary">Teléfono Secundario</string>
+    <string name="field_email">Email *</string>
+    <string name="field_nui">NUI (Número Único) *</string>
+    <string name="field_responsible">Responsable de Verificación</string>
+    <string name="field_gender_male">Masculino</string>
+    <string name="field_gender_female">Femenino</string>
+    <string name="field_district">Distrito *</string>
+
+    <!-- Botones -->
+    <string name="btn_save">Guardar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_edit">Editar</string>
+    <string name="btn_delete">Eliminar</string>
+    <string name="btn_back">Volver</string>
+
+    <!-- Delete confirmation -->
+    <string name="delete_title">¿Deseas eliminar?</string>
+    <string name="delete_message">Esta acción no puede deshacerse</string>
+    <string name="delete_confirm">Eliminar importador</string>
+
+    <!-- Placeholders -->
+    <string name="hint_name">Ingresa el nombre</string>
+    <string name="hint_lastname">Ingresa el apellido</string>
+    <string name="hint_address">Calle, número, ciudad</string>
+    <string name="hint_phone">+56 9 XXXX XXXX</string>
+    <string name="hint_email">email@ejemplo.com</string>
+    <string name="hint_nui">NUI12345</string>
+    <string name="hint_responsible">Nombre responsable</string>
+
+    <!-- Labels -->
+    <string name="label_show_married">Casada</string>
+    <string name="label_imports_count">Importaciones: </string>
+    <string name="label_no_imports">Sin importaciones registradas</string>
+
+
+
+
+
+
+
+
+    <!-- Elementos de la pantalla de Vehículos -->
+    <!-- Comunes -->
+    <string name="btn_guardar">Guardar</string>
+    <string name="btn_actualizar">Actualizar</string>
+    <string name="btn_cerrar">Cerrar</string>
+    <string name="btn_limpiar">Limpiar</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="modal_titulo_confirmacion">Confirmación</string>
+    <string name="msg_confirmacion_pregunta">¿Está seguro de realizar esta acción?</string>
+    <string name="desc_agregar_nuevo">Agregar nuevo</string>
+    <string name="desc_boton_buscar">Buscar</string>
+
+    <!-- Vehículos -->
+    <string name="title_vehiculos">Vehículos</string>
+    <string name="subtitle_inventario">Sistema de inventario</string>
+    <string name="hint_buscar">Buscar Vehiculo</string>
+    <string name="modal_titulo_registro">Registro de Vehículo</string>
+    <string name="modal_titulo_detalle">Detalles del Vehículo</string>
+    <string name="modal_titulo_actualizar">Actualizar Vehículo</string>
+    <string name="label_tipo">Tipo</string>
+    <string name="label_seccion">Sección</string>
+    <string name="label_modelo">Modelo</string>
+    <string name="label_importacion">Importación</string>
+    <string name="label_vin">VIN</string>
+    <string name="label_anio">Año</string>
+    <string name="label_color">Color</string>
+    <string name="label_estado">Estado</string>
+    <string name="hint_vin">Ingrese número de VIN</string>
+    <string name="hint_color">Ingrese el color del vehiculo</string>
+    <string name="placeholder_empty">---</string>
+
+    <!-- Desperfectos -->
+    <string name="title_desperfectos">Desperfectos</string>
+    <string name="subtitle_desperfectos">Registro de daños en vehículos</string>
+    <string name="hint_buscar_desperfecto">Buscar desperfecto o VIN...</string>
+    <string name="label_evidencia">Evidencia</string>
+    <string name="msg_eliminar_foto">¿Desea eliminar esta foto de evidencia?</string>
+    <string name="title_opciones_imagen">Opciones de Imagen</string>
+
+    <!-- Formulario Desperfectos -->
+    <string name="title_nuevo_desperfecto">Nuevo Desperfecto</string>
+    <string name="label_seleccione_vehiculo">Seleccione Vehículo</string>
+    <string name="label_tipo_desperfecto">Tipo de Desperfecto</string>
+    <string name="label_descripcion_desperfecto">Descripción del Desperfecto</string>
+    <string name="hint_descripcion_desperfecto">Describa el desperfecto encontrado...</string>
+    <string name="title_fotos_evidencia">Fotos de Evidencia</string>
+    <string name="btn_agregar_foto">+ AGREGAR</string>
+    <string name="desc_lista_fotos">Lista de fotos de evidencia</string>
+
+    <!-- Marcas -->
+    <string name="title_marcas">Marcas</string>
+    <string name="subtitle_marcas">Catálogo de marcas disponibles</string>
+    <string name="hint_buscar_marca">Buscar marca...</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <!-- Fin de elementos de Marca -->
+
+    <!-- Elementos de la pantalla de Bodegas -->
+    <string name="title_bodegas">Bodegas</string>
+    <string name="subtitle_bodegas">Gestión de bodegas de almacenamiento</string>
+    <string name="hint_buscar_bodega">Buscar bodega...</string>
+    <string name="label_distrito">Distrito</string>
+    <string name="label_nombre_bodega">Nombre de la bodega</string>
+    <string name="label_direccion_bodega">Dirección de la bodega</string>
+    <string name="hint_nombre_bodega">Nombre de la bodega</string>
+    <string name="hint_direccion_bodega">Dirección de la bodega</string>
+    <!-- Fin de elementos de Bodega -->
+
+    <!-- Elementos de la pantalla de Secciones -->
+    <string name="title_secciones">Secciones</string>
+    <string name="subtitle_secciones">Gestión de niveles por bodega</string>
+    <string name="hint_buscar_seccion">Buscar sección por nivel...</string>
+    <string name="label_bodega">Bodega</string>
+    <string name="label_nivel_seccion">Nivel de Sección</string>
+    <!-- Fin de elementos de Seccion -->
+
+    <!--            COMUNES             -->
+    <!--Modal de Opciones-->
+    <string name="title_options">Opciones</string>
+    <string name="view">Ver</string>
+    <string name="update">Editar</string>
+    <string name="delete">Eliminar</string>
+
+    <!-- Navegación -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_logout">Salir</string>
+    <string name="logout_title">Cerrar sesión</string>
+    <string name="logout_message">¿Desea cerrar la sesión actual?</string>
 </resources>
