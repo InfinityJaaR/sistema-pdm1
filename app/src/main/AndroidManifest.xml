@@ -23,10 +23,17 @@
         android:theme="@style/Theme.Sistemapdm1">
 
         <activity
+            android:name=".activities.modelo.ModeloActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.taller.TallerActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

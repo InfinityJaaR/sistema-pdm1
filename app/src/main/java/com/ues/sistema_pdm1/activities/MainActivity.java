@@ -21,6 +21,7 @@ import com.ues.sistema_pdm1.activities.transporte.TransporteActivity;
 import com.ues.sistema_pdm1.activities.reparacion.ReparacionActivity;
 import com.ues.sistema_pdm1.activities.seccion.SeccionActivity;
 import com.ues.sistema_pdm1.activities.venta.VentaActivity;
+import com.ues.sistema_pdm1.activities.taller.TallerActivity;
 import com.ues.sistema_pdm1.activities.vehiculo.VehiculoActivity;
 import com.ues.sistema_pdm1.activities.detalleDesperfecto.DetalleDesperfectoActivity;
 import com.ues.sistema_pdm1.utils.Constants;
@@ -62,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void handleOnBackPressed() {
                 new AlertDialog.Builder(MainActivity.this)
-                    .setTitle(R.string.nav_logout)
-                    .setMessage("¿Desea cerrar la aplicación?")
-                    .setPositiveButton(R.string.yes, (dialog, which) -> finish())
-                    .setNegativeButton(R.string.no,  (dialog, which) -> dialog.dismiss())
-                    .show();
+                        .setTitle(R.string.nav_logout)
+                        .setMessage("¿Desea cerrar la aplicación?")
+                        .setPositiveButton(R.string.yes, (dialog, which) -> finish())
+                        .setNegativeButton(R.string.no,  (dialog, which) -> dialog.dismiss())
+                        .show();
             }
         });
     }
@@ -101,15 +102,15 @@ public class MainActivity extends AppCompatActivity {
     private void configurarLogout() {
         LinearLayout layoutUser = findViewById(R.id.layoutUser);
         layoutUser.setOnClickListener(v ->
-            new AlertDialog.Builder(this)
-                .setTitle(R.string.logout_title)
-                .setMessage(R.string.logout_message)
-                .setPositiveButton(R.string.yes, (dialog, which) -> {
-                    SessionManager.getInstance().logout();
-                    irALogin();
-                })
-                .setNegativeButton(R.string.no, (dialog, which) -> dialog.dismiss())
-                .show()
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.logout_title)
+                        .setMessage(R.string.logout_message)
+                        .setPositiveButton(R.string.yes, (dialog, which) -> {
+                            SessionManager.getInstance().logout();
+                            irALogin();
+                        })
+                        .setNegativeButton(R.string.no, (dialog, which) -> dialog.dismiss())
+                        .show()
         );
     }
 
@@ -193,6 +194,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case Constants.MENU_DESPERFECTO:
                 intent = new Intent(this, DetalleDesperfectoActivity.class);
+                break;
+            case Constants.MENU_TALLER:
+                intent = new Intent(this, TallerActivity.class);
                 break;
             default:
                 Toast.makeText(this, "Módulo en construcción", Toast.LENGTH_SHORT).show();
