@@ -84,7 +84,7 @@ public class MarcaActivity extends AppCompatActivity {
             marcasFiltradas = new ArrayList<>(marcas);
             refrescarLista();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar marcas", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_marcas), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -135,7 +135,7 @@ public class MarcaActivity extends AppCompatActivity {
                 }
                 cargarMarcas();
             } catch (Exception e) {
-                Toast.makeText(this, "Error al guardar marca", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.error_guardar_marca), Toast.LENGTH_SHORT).show();
             }
         });
         dialog.show(getSupportFragmentManager(), "form");
@@ -143,18 +143,18 @@ public class MarcaActivity extends AppCompatActivity {
 
     private void confirmarEliminar(Marca marca) {
         new AlertDialog.Builder(this)
-            .setTitle("Eliminar Marca")
-            .setMessage("¿Desea eliminar '" + marca.getNombreMarca() + "'?")
-            .setPositiveButton("Sí", (d, w) -> {
+            .setTitle(getString(R.string.title_eliminar_marca))
+            .setMessage(getString(R.string.msg_eliminar_marca, marca.getNombreMarca()))
+            .setPositiveButton(getString(R.string.yes), (d, w) -> {
                 try {
                     marcaDAO.eliminar(marca.getId());
                     cargarMarcas();
-                    Toast.makeText(this, "Marca eliminada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.msg_marca_eliminada), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
-                    Toast.makeText(this, "Error al eliminar marca", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             })
-            .setNegativeButton("No", null)
+            .setNegativeButton(getString(R.string.no), null)
             .show();
     }
 }

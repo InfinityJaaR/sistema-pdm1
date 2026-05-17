@@ -268,6 +268,16 @@
     <string name="subtitle_marcas">Catálogo de marcas disponibles</string>
     <string name="hint_buscar_marca">Buscar marca...</string>
     <string name="btn_cancelar">Cancelar</string>
+    <string name="title_nueva_marca">Nueva Marca</string>
+    <string name="title_editar_marca">Editar Marca</string>
+    <string name="title_detalle_marca">Detalle de Marca</string>
+    <string name="error_nombre_marca">Ingrese el nombre de la marca</string>
+    <string name="label_id_marca">ID: </string>
+    <string name="error_cargar_marcas">Error al cargar marcas</string>
+    <string name="error_guardar_marca">Error al guardar marca</string>
+    <string name="title_eliminar_marca">Eliminar Marca</string>
+    <string name="msg_eliminar_marca">¿Desea eliminar \'%1$s\'?</string>
+    <string name="msg_marca_eliminada">Marca eliminada</string>
     <!-- Fin de elementos de Marca -->
 
     <!--            COMUNES             -->
