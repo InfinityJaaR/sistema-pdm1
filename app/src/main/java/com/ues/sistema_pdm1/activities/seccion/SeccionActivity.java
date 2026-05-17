@@ -156,7 +156,7 @@ public class SeccionActivity extends AppCompatActivity {
                         cargarSecciones();
                         Toast.makeText(this, "Seccion eliminada", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error al eliminar Seccion", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
                 .setNegativeButton("No", null)

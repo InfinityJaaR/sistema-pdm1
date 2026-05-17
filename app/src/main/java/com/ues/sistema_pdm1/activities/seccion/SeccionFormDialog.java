@@ -84,6 +84,7 @@ public class SeccionFormDialog extends DialogFragment {
             etNivel.setText(String.valueOf(args.getInt("NIVEL")));
             etCapacidadMaxima.setText(String.valueOf(args.getInt("CAPACIDAD_MAXIMA")));
             etCapacidadActual.setText(String.valueOf(args.getInt("CAPACIDAD_ACTUAL")));
+            etCapacidadActual.setEnabled(false);
 
             int idBodega = args.getInt("ID_BODEGA");
             for (int i = 0; i < listaBodegas.size(); i++) {
@@ -92,6 +93,9 @@ public class SeccionFormDialog extends DialogFragment {
                     break;
                 }
             }
+        } else {
+            etCapacidadActual.setText("0");
+            etCapacidadActual.setEnabled(false);
         }
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())
