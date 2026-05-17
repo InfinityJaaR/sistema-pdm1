@@ -34,7 +34,7 @@ google-services.json
 
 # Claude Code
 .agents/
-
-./docs
-
+.claude/
+docs/
+CONTEXT.md
 CONTEXT.MD
