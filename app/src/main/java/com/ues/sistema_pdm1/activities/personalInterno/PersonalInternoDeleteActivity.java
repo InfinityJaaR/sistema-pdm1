@@ -11,19 +11,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ues.sistema_pdm1.R;
 import com.ues.sistema_pdm1.activities.LoginActivity;
 import com.ues.sistema_pdm1.data.dao.GenericDAO;
-import com.ues.sistema_pdm1.models.Movimiento;
 import com.ues.sistema_pdm1.models.PersonalInterno;
 import com.ues.sistema_pdm1.utils.Constants;
 import com.ues.sistema_pdm1.utils.SessionManager;
 
-import java.util.List;
 
 public class PersonalInternoDeleteActivity extends AppCompatActivity {
 
     private int personalId;
 
     private GenericDAO<PersonalInterno> personalDAO;
-    private GenericDAO<Movimiento> movimientoDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +37,7 @@ public class PersonalInternoDeleteActivity extends AppCompatActivity {
         personalId = getIntent().getIntExtra("personal_id", 0);
         String nombre = getIntent().getStringExtra("personal_nombre");
 
-        personalDAO   = new GenericDAO<>(this, PersonalInterno.class, "personal_interno");
-        movimientoDAO = new GenericDAO<>(this, Movimiento.class, "movimiento");
+        personalDAO = new GenericDAO<>(this, PersonalInterno.class, "personal_interno");
 
         TextView tvNombre = findViewById(R.id.delete_personal_nombre);
         tvNombre.setText(nombre != null ? nombre : "");
@@ -56,23 +52,13 @@ public class PersonalInternoDeleteActivity extends AppCompatActivity {
     private void eliminar() {
         if (personalId <= 0) { finish(); return; }
 
-        List<Movimiento> movimientos = movimientoDAO.obtenerPor("ID_PERSONAL",
-            String.valueOf(personalId));
-        if (!movimientos.isEmpty()) {
-            Toast.makeText(this,
-                "No se puede eliminar: el personal tiene " + movimientos.size()
-                    + " movimiento(s) registrado(s)",
-                Toast.LENGTH_LONG).show();
-            return;
-        }
-
         try {
             personalDAO.eliminar(personalId);
             Toast.makeText(this, Constants.MSG_OPERACION_EXITOSA, Toast.LENGTH_SHORT).show();
             setResult(RESULT_OK);
             finish();
         } catch (Exception e) {
-            Toast.makeText(this, Constants.MSG_OPERACION_FALLIDA, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }
