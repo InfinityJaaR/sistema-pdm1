@@ -48,7 +48,7 @@
                     android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Juan Pérez"
+                    android:text="@string/placeholder_empty"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_light" />
@@ -57,7 +57,7 @@
                     android:id="@+id/detail_nui"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NUI: 12345"
+                    android:text="@string/placeholder_empty"
                     android:textSize="12sp"
                     android:textColor="@color/text_light"
                     android:layout_marginTop="2dp" />
@@ -120,7 +120,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nombre:"
+                        android:text="@string/label_nombre_campo"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginEnd="12dp"
@@ -145,7 +145,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Apellido:"
+                        android:text="@string/label_apellido_campo"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginEnd="12dp"
@@ -172,7 +172,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ap. Casada:"
+                        android:text="@string/label_apellido_casada"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginEnd="12dp"
@@ -197,7 +197,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Género:"
+                        android:text="@string/label_genero"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginEnd="12dp"
@@ -208,7 +208,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Masculino"
+                        android:text="@string/placeholder_empty"
                         android:textColor="@color/text_secondary" />
 
                 </LinearLayout>
@@ -222,7 +222,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nacimiento:"
+                        android:text="@string/label_nacimiento"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginEnd="12dp"
@@ -233,7 +233,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="15/03/1980"
+                        android:text="@string/placeholder_empty"
                         android:textColor="@color/text_secondary" />
 
                 </LinearLayout>
@@ -278,7 +278,7 @@
                         android:id="@+id/detail_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="juan@email.com"
+                        android:text="@string/placeholder_empty"
                         android:textSize="12sp"
                         android:textColor="@color/text_secondary" />
 
@@ -303,7 +303,7 @@
                         android:id="@+id/detail_phone_primary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+56 9 8765 4321"
+                        android:text="@string/placeholder_empty"
                         android:textSize="12sp"
                         android:textColor="@color/text_secondary" />
 
@@ -389,7 +389,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Gestionar teléfonos"
+                        android:text="@string/btn_gestionar_telefonos"
                         android:textColor="@color/primary_blue"
                         android:textSize="14sp" />
 
@@ -431,7 +431,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NUI:"
+                        android:text="@string/label_nui_campo"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginEnd="12dp"
@@ -442,7 +442,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="12345"
+                        android:text="@string/placeholder_empty"
                         android:textColor="@color/text_secondary" />
 
                 </LinearLayout>
@@ -456,7 +456,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Responsable:"
+                        android:text="@string/label_responsable"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginEnd="12dp"
@@ -467,7 +467,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Carlos González"
+                        android:text="@string/placeholder_empty"
                         android:textColor="@color/text_secondary" />
 
                 </LinearLayout>
@@ -502,7 +502,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total:"
+                        android:text="@string/label_total"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginEnd="12dp" />
@@ -511,7 +511,7 @@
                         android:id="@+id/detail_imports_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="25 importaciones"
+                        android:text="@string/placeholder_empty"
                         android:textColor="@color/primary_blue_light"
                         android:textStyle="bold" />
 
@@ -527,7 +527,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Últimas importaciones:"
+                    android:text="@string/label_ultimas_importaciones"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary"
                     android:layout_marginBottom="8dp" />
@@ -536,7 +536,7 @@
                     android:id="@+id/detail_imports_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="• 2024-05-10 - Vehículos Sedan\n• 2024-05-08 - Camiones Carga\n• 2024-05-05 - Motos Deportivas"
+                    android:text="@string/placeholder_empty"
                     android:textSize="12sp"
                     android:textColor="@color/text_secondary"
                     android:lineSpacingExtra="6dp" />

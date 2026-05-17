@@ -57,7 +57,7 @@ public class ImportacionViewActivity extends AppCompatActivity {
             Importacion imp = importacionDAO.obtenerPorId(importacionId);
             if (imp == null) { finish(); return; }
 
-            ((TextView) findViewById(R.id.view_importacion_titulo)).setText("Importación #" + imp.getId());
+            ((TextView) findViewById(R.id.view_importacion_titulo)).setText(getString(R.string.label_importacion_prefijo) + imp.getId());
             ((TextView) findViewById(R.id.view_importacion_fecha)).setText(imp.getFechaImportacion());
             ((TextView) findViewById(R.id.view_importacion_fecha_valor)).setText(imp.getFechaImportacion());
 
@@ -67,14 +67,14 @@ public class ImportacionViewActivity extends AppCompatActivity {
                 Importador importador = importadorDAO.obtenerPorId(imp.getIdImportador());
                 nombreImp = importador != null
                     ? importador.getNombreImportador() + " " + importador.getApellidoImportador()
-                    : "Importador #" + imp.getIdImportador();
+                    : getString(R.string.label_importador_prefijo) + imp.getIdImportador();
             } catch (Exception e) {
-                nombreImp = "Importador #" + imp.getIdImportador();
+                nombreImp = getString(R.string.label_importador_prefijo) + imp.getIdImportador();
             }
             ((TextView) findViewById(R.id.view_importacion_importador)).setText(nombreImp);
 
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_datos), Toast.LENGTH_SHORT).show();
             finish();
         }
     }

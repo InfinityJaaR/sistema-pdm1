@@ -104,6 +104,99 @@
     <string name="label_apellido">LAST NAME</string>
     <string name="label_cargo">POSITION</string>
 
+    <!-- Importers -->
+    <string name="importers_title">Importers</string>
+    <string name="importers_subtitle">Vehicle management</string>
+    <string name="search_importer">Search importer...</string>
+    <string name="form_title_add">Add Importer</string>
+    <string name="form_title_edit">Edit Importer</string>
+    <string name="form_title_view">Importer Detail</string>
+    <string name="section_personal_data">Personal Data</string>
+    <string name="section_contact">Contact Information</string>
+    <string name="section_professional">Professional Information</string>
+    <string name="section_imports">Import History</string>
+    <string name="field_married_lastname">Married Last Name</string>
+    <string name="field_gender">Gender *</string>
+    <string name="field_birthdate">Date of Birth *</string>
+    <string name="field_address">Address *</string>
+    <string name="field_phone_primary">Primary Phone *</string>
+    <string name="field_phone_secondary">Secondary Phone</string>
+    <string name="field_email">Email *</string>
+    <string name="field_nui">NUI (Unique Number) *</string>
+    <string name="field_responsible">Verification Responsible</string>
+    <string name="field_gender_male">Male</string>
+    <string name="field_gender_female">Female</string>
+    <string name="field_district">District *</string>
+    <string name="hint_name">Enter first name</string>
+    <string name="hint_lastname">Enter last name</string>
+    <string name="hint_address">Street, number, city</string>
+    <string name="hint_phone">XXXX-XXXX</string>
+    <string name="hint_email">email@example.com</string>
+    <string name="hint_nui">NUI12345</string>
+    <string name="hint_responsible">Responsible name</string>
+    <string name="label_show_married">Married</string>
+    <string name="label_imports_count">Imports: </string>
+    <string name="label_no_imports">No imports registered</string>
+    <string name="delete_confirm">Delete importer</string>
+
+    <!-- Importers - List -->
+    <string name="error_cargar_importadores">Error loading importers</string>
+
+    <!-- Importers - Form -->
+    <string name="hint_fecha_dd_mm_yyyy">DD/MM/YYYY</string>
+    <string name="btn_agregar_contactos">Add more contacts</string>
+    <string name="hint_telefono_adicional">Additional phone</string>
+    <string name="error_seleccione_distrito">Select a district</string>
+    <string name="error_nui_longitud">The NUI must be exactly %d characters</string>
+    <string name="error_edad_minima">The importer must be over 18 years old</string>
+    <string name="error_fecha_nacimiento_invalida">Invalid date of birth</string>
+    <string name="error_email_invalido">Invalid email address</string>
+
+    <!-- Importers - Detail view -->
+    <string name="label_nui_prefijo">NUI: </string>
+    <string name="label_nombre_campo">Name:</string>
+    <string name="label_apellido_campo">Last Name:</string>
+    <string name="label_apellido_casada">Married Name:</string>
+    <string name="label_genero">Gender:</string>
+    <string name="label_nacimiento">Birth:</string>
+    <string name="label_nui_campo">NUI:</string>
+    <string name="label_responsable">Responsible:</string>
+    <string name="label_total">Total:</string>
+    <string name="label_ultimas_importaciones">Recent imports:</string>
+    <string name="btn_gestionar_telefonos">Manage phones</string>
+    <string name="msg_cuenta_importaciones">%d import(s)</string>
+
+    <!-- Importers - Phone dialogs -->
+    <string name="title_telefonos_importador">Importer phones</string>
+    <string name="label_agregar_telefono">+ Add new phone</string>
+    <string name="title_eliminar_telefono">Delete phone</string>
+    <string name="msg_eliminar_numero">Delete number %s?</string>
+    <string name="msg_telefono_eliminado">Phone deleted</string>
+    <string name="title_agregar_telefono">Add phone</string>
+    <string name="hint_numero_telefono">Phone number</string>
+    <string name="btn_agregar">Add</string>
+    <string name="msg_telefono_agregado">Phone added</string>
+    <string name="label_importador_prefijo">Importer #</string>
+
+    <!-- Imports -->
+    <string name="title_importaciones">Imports</string>
+    <string name="title_importacion">Import</string>
+    <string name="subtitle_importaciones">Import records</string>
+    <string name="hint_buscar_importacion">Search import...</string>
+    <string name="error_cargar_importaciones">Error loading imports</string>
+    <string name="label_fecha_prefijo">Date: </string>
+    <string name="label_importacion_del">Import from </string>
+    <string name="label_importacion_prefijo">Import #</string>
+    <string name="title_agregar_importacion">Add Import</string>
+    <string name="title_editar_importacion">Edit Import</string>
+    <string name="section_datos_importacion">Import Details</string>
+    <string name="field_importador">Importer *</string>
+    <string name="field_fecha_importacion">Import Date *</string>
+    <string name="error_seleccione_importador">Select an importer</string>
+    <string name="title_detalle_importacion">Import Detail</string>
+    <string name="label_importador_campo">Importer:</string>
+    <string name="label_fecha_campo">Date:</string>
+
     <!-- Movement -->
     <string name="title_nuevo_movimiento">New Movement</string>
     <string name="title_editar_movimiento">Edit Movement</string>

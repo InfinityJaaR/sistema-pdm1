@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Agregar Importación"
+            android:text="@string/title_agregar_importacion"
             android:textColor="@color/text_light"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -50,7 +50,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Datos de la Importación"
+                    android:text="@string/section_datos_importacion"
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -68,7 +68,7 @@
                         android:id="@+id/spinner_importador"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:hint="Importador *"
+                        android:hint="@string/field_importador"
                         android:inputType="none"
                         android:clickable="true"
                         android:focusable="false"
@@ -81,7 +81,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fecha de Importación *"
+                    android:text="@string/field_fecha_importacion"
                     android:textColor="@color/text_primary"
                     android:textSize="12sp"
                     android:textStyle="bold"
@@ -139,7 +139,7 @@
             android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
-            android:text="Cancelar"
+            android:text="@string/btn_cancelar"
             android:textColor="@color/primary_blue_dark"
             app:strokeColor="@color/primary_blue_dark"
             app:cornerRadius="8dp" />
@@ -150,7 +150,7 @@
             android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
-            android:text="Guardar"
+            android:text="@string/btn_guardar"
             android:backgroundTint="@color/primary_blue_dark"
             android:textColor="@color/background_white"
             app:cornerRadius="8dp" />
