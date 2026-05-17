@@ -82,7 +82,7 @@
 
                 <!-- Tipo -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="TIPO DE MOVIMIENTO" android:textSize="11sp"
+                    android:text="@string/label_tipo_movimiento" android:textSize="11sp"
                     android:textColor="@color/text_secondary" android:letterSpacing="0.1" />
                 <TextView android:id="@+id/detail_tipo_movimiento"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
 
                 <!-- Fecha -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="FECHA" android:textSize="11sp"
+                    android:text="@string/label_fecha" android:textSize="11sp"
                     android:textColor="@color/text_secondary" android:letterSpacing="0.1" />
                 <TextView android:id="@+id/detail_fecha_movimiento"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
 
                 <!-- Motivo -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="MOTIVO" android:textSize="11sp"
+                    android:text="@string/label_motivo" android:textSize="11sp"
                     android:textColor="@color/text_secondary" android:letterSpacing="0.1" />
                 <TextView android:id="@+id/detail_motivo_movimiento"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
 
                 <!-- Vehículo -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="VEHÍCULO (VIN)" android:textSize="11sp"
+                    android:text="@string/label_vehiculo_vin" android:textSize="11sp"
                     android:textColor="@color/text_secondary" android:letterSpacing="0.1" />
                 <TextView android:id="@+id/detail_vehiculo_movimiento"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
 
                 <!-- Transporte -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="TRANSPORTE" android:textSize="11sp"
+                    android:text="@string/label_transporte_detalle" android:textSize="11sp"
                     android:textColor="@color/text_secondary" android:letterSpacing="0.1" />
                 <TextView android:id="@+id/detail_transporte_movimiento"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
 
                 <!-- Personal -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="PERSONAL INTERNO" android:textSize="11sp"
+                    android:text="@string/label_personal_detalle" android:textSize="11sp"
                     android:textColor="@color/text_secondary" android:letterSpacing="0.1" />
                 <TextView android:id="@+id/detail_personal_movimiento"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
 
                 <!-- Bodega -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="BODEGA" android:textSize="11sp"
+                    android:text="@string/label_bodega_detalle" android:textSize="11sp"
                     android:textColor="@color/text_secondary" android:letterSpacing="0.1" />
                 <TextView android:id="@+id/detail_bodega_movimiento"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"

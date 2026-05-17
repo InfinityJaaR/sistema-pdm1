@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detalle de transporte"
+                android:text="@string/title_detalle_transporte"
                 android:textColor="@color/primary_blue_light"
                 android:textSize="12sp"
                 android:layout_marginTop="2dp" />
@@ -84,7 +84,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TIPO DE TRANSPORTE"
+                    android:text="@string/label_tipo_transporte"
                     android:textSize="11sp"
                     android:textColor="@color/text_secondary"
                     android:letterSpacing="0.1" />
@@ -107,7 +107,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="DESCRIPCIÓN"
+                    android:text="@string/label_descripcion_detalle"
                     android:textSize="11sp"
                     android:textColor="@color/text_secondary"
                     android:letterSpacing="0.1" />

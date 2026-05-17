@@ -35,8 +35,9 @@ public class TransporteFormActivity extends AppCompatActivity {
     private List<TipoTransporte> tipos = new ArrayList<>();
     private TipoTransporte tipoSeleccionado = null;
 
-    private boolean esEdicion = false;
-    private int transporteId = 0;
+    private boolean esEdicion   = false;
+    private int     transporteId = 0;
+    private boolean tiposLoaded  = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,7 @@ public class TransporteFormActivity extends AppCompatActivity {
         transporteDAO = new GenericDAO<>(this, Transporte.class, "transporte");
         tipoDAO       = new GenericDAO<>(this, TipoTransporte.class, "tipo_transporte");
 
-        formTitle.setText(esEdicion ? "Editar Transporte" : "Nuevo Transporte");
+        formTitle.setText(esEdicion ? getString(R.string.title_editar_transporte) : getString(R.string.title_nuevo_transporte));
 
         configurarSpinnerTipo();
 
@@ -74,14 +75,20 @@ public class TransporteFormActivity extends AppCompatActivity {
     }
 
     private void configurarSpinnerTipo() {
-        try {
-            tipos = tipoDAO.obtenerTodos();
-        } catch (Exception e) {
-            tipos = new ArrayList<>();
-        }
-        actvTipo.setAdapter(new ArrayAdapter<>(this,
-            android.R.layout.simple_dropdown_item_1line, tipos));
-        actvTipo.setOnClickListener(v -> actvTipo.showDropDown());
+        Runnable cargar = () -> {
+            if (!tiposLoaded) {
+                try { tipos = tipoDAO.obtenerTodos(); }
+                catch (Exception e) { tipos = new ArrayList<>(); }
+                tiposLoaded = true;
+                actvTipo.setAdapter(new ArrayAdapter<>(this,
+                    android.R.layout.simple_dropdown_item_1line, tipos));
+                if (tipoSeleccionado != null)
+                    actvTipo.setText(tipoSeleccionado.toString(), false);
+            }
+            actvTipo.showDropDown();
+        };
+        actvTipo.setOnFocusChangeListener((v, hasFocus) -> { if (hasFocus) cargar.run(); });
+        actvTipo.setOnClickListener(v -> cargar.run());
         actvTipo.setOnItemClickListener((parent, view, position, id) ->
             tipoSeleccionado = tipos.get(position));
     }
@@ -90,19 +97,13 @@ public class TransporteFormActivity extends AppCompatActivity {
         try {
             Transporte t = transporteDAO.obtenerPorId(transporteId);
             if (t == null) return;
-
             etPlaca.setText(t.getPlaca());
             etDescripcion.setText(t.getDescripcionTransporte());
-
-            for (TipoTransporte tipo : tipos) {
-                if (tipo.getId() == t.getIdTipoTransporte()) {
-                    tipoSeleccionado = tipo;
-                    actvTipo.setText(tipo.toString(), false);
-                    break;
-                }
-            }
+            tipoSeleccionado = tipoDAO.obtenerPorId(t.getIdTipoTransporte());
+            if (tipoSeleccionado != null)
+                actvTipo.setText(tipoSeleccionado.toString(), false);
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_datos), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -110,7 +111,7 @@ public class TransporteFormActivity extends AppCompatActivity {
         String placa = etPlaca.getText().toString().trim().toUpperCase();
 
         if (tipoSeleccionado == null) {
-            Toast.makeText(this, "Seleccione el tipo de transporte", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_seleccione_tipo_transporte), Toast.LENGTH_SHORT).show();
             return;
         }
         if (placa.isEmpty()) {
