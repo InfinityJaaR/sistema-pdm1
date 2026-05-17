@@ -318,4 +318,15 @@
     <string name="nav_logout">Salir</string>
     <string name="logout_title">Cerrar sesión</string>
     <string name="logout_message">¿Desea cerrar la sesión actual?</string>
+    <string name="title_ventas">Ventas</string>
+    <string name="subtitle_ventas">Registro de ventas realizadas</string>
+    <string name="hint_buscar_venta">Buscar venta...</string>
+    <string name="label_precio_venta">Precio de Venta</string>
+    <string name="label_fecha_venta">Fecha de Venta</string>
+    <string name="msg_venta_eliminada">Venta eliminada</string>
+    <string name="title_nueva_venta">Nueva Venta</string>
+    <string name="title_editar_venta">Editar Venta</string>
+    <string name="error_cargar_ventas">Error al cargar ventas</string>
+    <string name="error_guardar_venta">Error al guardar venta</string>
+    <string name="msg_confirmar_eliminar_venta">¿Desea eliminar la venta #%d?</string>
 </resources>

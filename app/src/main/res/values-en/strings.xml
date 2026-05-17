@@ -64,6 +64,23 @@
     <string name="logout_title">Sign out</string>
     <string name="logout_message">Do you want to sign out?</string>
 
+    <!-- Warehouses -->
+    <string name="title_bodegas">Warehouses</string>
+    <string name="subtitle_bodegas">Storage warehouse management</string>
+    <string name="hint_buscar_bodega">Search warehouse...</string>
+    <string name="label_nombre_bodega">Warehouse Name</string>
+    <string name="label_direccion_bodega">Warehouse Address</string>
+    <string name="hint_nombre_bodega">Warehouse name</string>
+    <string name="hint_direccion_bodega">Warehouse address</string>
+
+    <!-- Sections -->
+    <string name="title_secciones">Sections</string>
+    <string name="subtitle_secciones">Warehouse level management</string>
+    <string name="hint_buscar_seccion">Search section by level...</string>
+    <string name="label_bodega">Warehouse</string>
+    <string name="label_nivel_seccion">Section Level</string>
+    <string name="label_seccion">Section</string>
+
     <!-- Transport -->
     <string name="title_nuevo_transporte">New Transport</string>
     <string name="title_editar_transporte">Edit Transport</string>
