@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.ues.sistema_pdm1.R;
 import com.ues.sistema_pdm1.data.dao.GenericDAO;
+import com.ues.sistema_pdm1.models.Bodega;
 import com.ues.sistema_pdm1.models.Importacion;
 import com.ues.sistema_pdm1.models.Modelo;
 import com.ues.sistema_pdm1.models.Seccion;
@@ -43,6 +45,8 @@ public class VehiculoFormDialog extends DialogFragment {
     private GenericDAO<Seccion> seccionDAO;
     private GenericDAO<Modelo> modeloDAO;
     private GenericDAO<Importacion> importacionDAO;
+    private GenericDAO<Bodega> bodegaDAO;
+    private GenericDAO<Vehiculo> vehiculoDAO; // Añadido para validar VIN único
 
     public static VehiculoFormDialog newInstance(Vehiculo vehiculo) {
         VehiculoFormDialog dialog = new VehiculoFormDialog();
@@ -84,26 +88,26 @@ public class VehiculoFormDialog extends DialogFragment {
         boolean esEdicion = args != null && args.getInt("ID") > 0;
         int id = esEdicion ? args.getInt("ID") : 0;
 
-        if (esEdicion) {
+        // Limpiar campos si es nuevo registro
+        if (!esEdicion) {
+            etVin.setText("");
+            etColor.setText("");
+        } else {
             tvTitulo.setText(R.string.modal_titulo_actualizar);
             setDatosEdicion(args);
         }
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity()).setView(view).create();
-        
+
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
         view.findViewById(R.id.btn_vehiculo_guardar).setOnClickListener(v -> guardar(id, dialog));
-        
-        Button btnAccion = view.findViewById(R.id.btn_vehiculo_limpiar);
-        if (esEdicion) {
-            btnAccion.setText(R.string.btn_cancelar);
-            btnAccion.setOnClickListener(v -> dialog.dismiss());
-        } else {
-            btnAccion.setOnClickListener(v -> limpiarCampos());
-        }
+
+        Button btnCancelar = view.findViewById(R.id.btn_vehiculo_limpiar);
+        btnCancelar.setText(R.string.btn_cancelar);
+        btnCancelar.setOnClickListener(v -> dialog.dismiss());
 
         return dialog;
     }
@@ -118,6 +122,9 @@ public class VehiculoFormDialog extends DialogFragment {
         spEstado = v.findViewById(R.id.sp_vehiculo_estado);
         etVin = v.findViewById(R.id.et_vehiculo_vin);
         etColor = v.findViewById(R.id.et_vehiculo_color);
+
+        // Filtro físico de 17 caracteres
+        etVin.setFilters(new InputFilter[] {new InputFilter.LengthFilter(17)});
     }
 
     private void inicializarDAOs() {
@@ -125,56 +132,69 @@ public class VehiculoFormDialog extends DialogFragment {
         seccionDAO = new GenericDAO<>(getActivity(), Seccion.class, "seccion");
         modeloDAO = new GenericDAO<>(getActivity(), Modelo.class, "modelo");
         importacionDAO = new GenericDAO<>(getActivity(), Importacion.class, "importacion");
+        bodegaDAO = new GenericDAO<>(getActivity(), Bodega.class, "bodega");
+        vehiculoDAO = new GenericDAO<>(getActivity(), Vehiculo.class, "vehiculo");
     }
 
     private void cargarCatalogos() {
         try {
             setupSpinner(spTipo, tipoDAO.obtenerTodos());
-            setupSpinner(spSeccion, seccionDAO.obtenerTodos());
             setupSpinner(spModelo, modeloDAO.obtenerTodos());
             setupSpinner(spImportacion, importacionDAO.obtenerTodos());
 
-            List<Integer> anios = new ArrayList<>();
-            for (int i = 2021; i <= 2026; i++) anios.add(i);
-            ArrayAdapter<Integer> anioAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item_text_black, anios);
+            List<Seccion> secciones = seccionDAO.obtenerTodos();
+            for (Seccion s : secciones) {
+                Bodega b = bodegaDAO.obtenerPorId(s.getIdBodega());
+                if (b != null) s.setNombreBodega(b.getNombreBodega());
+            }
+            setupSpinner(spSeccion, secciones);
+
+            List<String> anios = new ArrayList<>();
+            anios.add("Seleccione Año");
+            for (int i = 2021; i <= 2026; i++) anios.add(String.valueOf(i));
+            ArrayAdapter<String> anioAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item_text_black, anios);
             anioAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spAnio.setAdapter(anioAdapter);
 
-            String[] estados = {"en bodega", "en reparacion", "listo para venta", "vendido"};
+            List<String> estados = new ArrayList<>();
+            estados.add("Seleccione Estado");
+            estados.add("en bodega");
+            estados.add("en reparacion");
+            estados.add("listo para venta");
+            estados.add("vendido");
             ArrayAdapter<String> estadoAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item_text_black, estados);
             estadoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spEstado.setAdapter(estadoAdapter);
+
         } catch (Exception e) {
             Toast.makeText(getActivity(), "Error catálogos", Toast.LENGTH_SHORT).show();
         }
     }
 
     private <T> void setupSpinner(Spinner sp, List<T> items) {
-        ArrayAdapter<T> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item_text_black, items);
+        List<Object> listaConPrompt = new ArrayList<>();
+        listaConPrompt.add("Seleccione una opción...");
+        listaConPrompt.addAll(items);
+
+        ArrayAdapter<Object> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item_text_black, listaConPrompt);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp.setAdapter(adapter);
     }
 
     private void setDatosEdicion(Bundle args) {
         etVin.setText(args.getString("VIN"));
-        etVin.setEnabled(false);
-        etVin.setTextColor(Color.BLACK);
-
-        spModelo.setEnabled(false);
-        spAnio.setEnabled(false);
-        spTipo.setEnabled(false);
-        spImportacion.setEnabled(false);
-
         etColor.setText(args.getString("COLOR"));
+
         seleccionarEnSpinner(spTipo, args.getInt("ID_TIPO"));
         seleccionarEnSpinner(spSeccion, args.getInt("ID_SECCION"));
         seleccionarEnSpinner(spModelo, args.getInt("ID_MODELO"));
         seleccionarEnSpinner(spImportacion, args.getInt("ID_IMPORTACION"));
 
-        int anio = args.getInt("ANIO");
+        String anio = String.valueOf(args.getInt("ANIO"));
         for (int i = 0; i < spAnio.getCount(); i++) {
-            if (spAnio.getItemAtPosition(i).equals(anio)) { spAnio.setSelection(i); break; }
+            if (spAnio.getItemAtPosition(i).toString().equals(anio)) { spAnio.setSelection(i); break; }
         }
+
         String est = args.getString("ESTADO");
         for (int i = 0; i < spEstado.getCount(); i++) {
             if (spEstado.getItemAtPosition(i).toString().equals(est)) { spEstado.setSelection(i); break; }
@@ -184,6 +204,7 @@ public class VehiculoFormDialog extends DialogFragment {
     private void seleccionarEnSpinner(Spinner sp, int id) {
         for (int i = 0; i < sp.getCount(); i++) {
             Object item = sp.getItemAtPosition(i);
+            if (item instanceof String) continue;
             try {
                 int itemId = (int) item.getClass().getMethod("getId").invoke(item);
                 if (itemId == id) { sp.setSelection(i); break; }
@@ -191,30 +212,65 @@ public class VehiculoFormDialog extends DialogFragment {
         }
     }
 
+    // Validación de VIN único sin tocar el GenericDAO
+    private boolean vinYaExiste(String vin, int idActual) {
+        try {
+            List<Vehiculo> lista = vehiculoDAO.obtenerTodos();
+            for (Vehiculo v : lista) {
+                // Compara el VIN y verifica que no sea el mismo vehículo que se edita
+                if (v.getVin().equalsIgnoreCase(vin) && v.getId() != idActual) {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     private void guardar(int id, AlertDialog dialog) {
         String vin = etVin.getText().toString().trim().toUpperCase();
         String color = etColor.getText().toString().trim();
 
+        // 1. Validar Texto
         if (vin.isEmpty()) { etVin.setError("Requerido"); return; }
-        if (vin.length() < 5) { etVin.setError("VIN demasiado corto"); return; }
+        if (vin.length() != 17) {
+            etVin.setError("El VIN debe tener 17 caracteres (lleva " + vin.length() + ")");
+            return;
+        }
+
+        // 2. Validar VIN Único
+        if (vinYaExiste(vin, id)) {
+            etVin.setError("Este VIN ya está registrado");
+            Toast.makeText(getActivity(), "Error: El VIN ya existe en el sistema", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (color.isEmpty()) { etColor.setError("Especifique color"); return; }
 
-        if (listener != null) {
-            TipoVehiculo t = (TipoVehiculo) spTipo.getSelectedItem();
-            Seccion s = (Seccion) spSeccion.getSelectedItem();
-            Modelo m = (Modelo) spModelo.getSelectedItem();
-            Importacion imp = (Importacion) spImportacion.getSelectedItem();
-            int a = (Integer) spAnio.getSelectedItem();
-            String est = spEstado.getSelectedItem().toString();
-            Vehiculo v = new Vehiculo(id, imp.getId(), m.getId(), t.getId(), s.getId(), vin, a, color, est);
-            listener.onSave(v);
+        // 3. Validar Selecciones
+        if (spTipo.getSelectedItemPosition() == 0 || spSeccion.getSelectedItemPosition() == 0 ||
+                spModelo.getSelectedItemPosition() == 0 || spImportacion.getSelectedItemPosition() == 0 ||
+                spAnio.getSelectedItemPosition() == 0 || spEstado.getSelectedItemPosition() == 0) {
+            Toast.makeText(getActivity(), "Por favor, seleccione todas las opciones", Toast.LENGTH_SHORT).show();
+            return;
         }
-        dialog.dismiss();
-    }
 
-    private void limpiarCampos() {
-        etVin.setText(""); etColor.setText("");
-        spTipo.setSelection(0); spSeccion.setSelection(0); spModelo.setSelection(0);
-        spImportacion.setSelection(0); spAnio.setSelection(0); spEstado.setSelection(0);
+        if (listener != null) {
+            try {
+                TipoVehiculo t = (TipoVehiculo) spTipo.getSelectedItem();
+                Seccion s = (Seccion) spSeccion.getSelectedItem();
+                Modelo m = (Modelo) spModelo.getSelectedItem();
+                Importacion imp = (Importacion) spImportacion.getSelectedItem();
+                int a = Integer.parseInt(spAnio.getSelectedItem().toString());
+                String est = spEstado.getSelectedItem().toString();
+
+                Vehiculo v = new Vehiculo(id, imp.getId(), m.getId(), t.getId(), s.getId(), vin, a, color, est);
+                listener.onSave(v);
+                dialog.dismiss();
+            } catch (Exception e) {
+                Toast.makeText(getActivity(), "Error al procesar datos", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
