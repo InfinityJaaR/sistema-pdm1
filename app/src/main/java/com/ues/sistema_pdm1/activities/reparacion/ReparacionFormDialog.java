@@ -134,7 +134,8 @@ public class ReparacionFormDialog extends DialogFragment {
             List<Vehiculo> todos = vehiculoDAO.obtenerTodos();
             vehiculos = new ArrayList<>();
             for (Vehiculo v : todos) {
-                if ("en reparacion".equals(v.getEstadoVehiculo()))
+                String estado = v.getEstadoVehiculo();
+                if ("en reparacion".equals(estado) || "en bodega".equals(estado))
                     vehiculos.add(v);
             }
 
@@ -185,6 +186,9 @@ public class ReparacionFormDialog extends DialogFragment {
             etDescripcion.setText(args.getString("DESCRIPCION_TRABAJO"));
             cbAptoParaVenta.setChecked(args.getInt("APTO_PARA_VENTA") == 1);
             cbRequiere.setChecked(args.getInt("REQUIERE_OTRA_REPARACION") == 1);
+        } else {
+            cbAptoParaVenta.setVisibility(View.GONE);
+            cbRequiere.setVisibility(View.GONE);
         }
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())

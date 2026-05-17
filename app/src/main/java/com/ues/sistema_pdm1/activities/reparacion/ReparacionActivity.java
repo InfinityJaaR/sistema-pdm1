@@ -192,7 +192,7 @@ public class ReparacionActivity extends AppCompatActivity {
                         cargarReparaciones();
                         Toast.makeText(this, "Reparación eliminada", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error al eliminar reparación", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
                 .setNegativeButton("No", null)
