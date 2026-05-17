@@ -147,7 +147,7 @@ public class VentaActivity extends AppCompatActivity {
                         cargarVentas();
                         Toast.makeText(this, "Venta eliminada", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error al eliminar venta", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
                 .setNegativeButton("No", null)

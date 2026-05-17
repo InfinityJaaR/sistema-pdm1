@@ -358,10 +358,6 @@ public class DetalleDesperfectoFormDialog extends DialogFragment {
             etDescription.setError("Requerido");
             return;
         }
-        if (listaFotos.isEmpty()) {
-            Toast.makeText(getContext(), "Agregue al menos una foto", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         Vehiculo v = (Vehiculo) spVehiculo.getSelectedItem();
         TipoDesperfecto t = (TipoDesperfecto) spTipo.getSelectedItem();

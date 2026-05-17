@@ -141,7 +141,7 @@ public class BodegaActivity extends AppCompatActivity {
                         cargarBodegas();
                         Toast.makeText(this, "Bodega eliminada", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error al eliminar boddega", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
                 .setNegativeButton("No", null)
