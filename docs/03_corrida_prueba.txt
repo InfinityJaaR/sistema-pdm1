@@ -121,10 +121,21 @@ INSERT INTO REPARACION VALUES (3, 3, 7, '2024-04-10', NULL,
 INSERT INTO REPARACION VALUES (4, 4, 8, '2024-04-15', NULL,
     'Revision de rayones y cotizacion de pintura', 0, 0);
 
--- Verificar que los estados se actualizaron por trigger
--- Vehículo 4 → debe estar 'listo' (apto_para_venta=1)
--- Vehículo 3 → debe estar 'listo' (apto_para_venta=1)
+-- Verificar estados tras INSERT de reparaciones
+-- TRG_ESTADO_REPARACION_INSERT pone todos en 'en reparacion' al insertar
+-- Para transicionar a 'listo para venta' se debe hacer UPDATE de APTO_PARA_VENTA
+
+-- Simular aprobación de reparaciones 1 y 2 (trigger UPDATE dispara aquí)
+UPDATE REPARACION SET APTO_PARA_VENTA = 1 WHERE ID_REPARACION = 1; -- Vehículo 4 → 'listo para venta'
+UPDATE REPARACION SET APTO_PARA_VENTA = 1 WHERE ID_REPARACION = 2; -- Vehículo 3 → 'listo para venta'
+
+-- Vehículo 7 ya tiene requiere_otra_reparacion=1 desde el INSERT → 'en reparacion'
+-- Vehículo 8 sin resultado aún → 'en reparacion'
+
+-- Vehículo 4 → debe estar 'listo para venta' (tras UPDATE con apto_para_venta=1)
+-- Vehículo 3 → debe estar 'listo para venta' (tras UPDATE con apto_para_venta=1)
 -- Vehículo 7 → debe estar 'en reparacion' (requiere_otra_reparacion=1)
+-- Vehículo 8 → debe estar 'en reparacion' (INSERT trigger)
 SELECT ID_VEHICULO, ESTADO_VEHICULO FROM VEHICULO
 WHERE ID_VEHICULO IN (3, 4, 7, 8);
 
@@ -136,14 +147,50 @@ WHERE ID_VEHICULO IN (3, 4, 7, 8);
 SELECT ID_SECCION, NIVEL, CAPACIDAD_ACTUAL FROM SECCION
 WHERE ID_SECCION IN (1,2,3,4,5,6,7,8);
 
--- Ventas (solo vehículos con estado 'listo')
+-- Ventas (solo vehículos con estado 'listo para venta')
+-- Vehículo 4 y 3 → 'listo para venta' (reparaciones 1 y 2 aprobadas arriba)
+-- Vehículo 6 → 'en bodega' (Javier lo incluye en spinner, puede venderse directo)
 INSERT INTO VENTA VALUES (1, 2, 4, '2024-04-01', 18500.00);
 INSERT INTO VENTA VALUES (2, 1, 3, '2024-04-08', 22000.00);
 INSERT INTO VENTA VALUES (3, 3, 6, '2024-04-12', 25000.00);
 
--- Verificar que estados se actualizaron a 'vendido' por trigger
+-- TRG_ESTADO_VENDIDO: Verificar que estados se actualizaron a 'vendido'
+-- Esperado: vehículos 3, 4 y 6 → 'vendido'
 SELECT ID_VEHICULO, ESTADO_VEHICULO FROM VEHICULO
 WHERE ID_VEHICULO IN (3, 4, 6);
+
+-- ============================================================
+-- PRUEBA TRG_ESTADO_VENTA_DELETE
+-- Eliminar venta → vehículo debe volver a 'listo para venta'
+-- ============================================================
+
+-- Estado antes: vehículo 4 = 'vendido'
+SELECT ID_VEHICULO, ESTADO_VEHICULO FROM VEHICULO WHERE ID_VEHICULO = 4;
+
+DELETE FROM VENTA WHERE ID_VENTA = 1; -- era vehículo 4
+
+-- Estado después: vehículo 4 debe ser 'listo para venta'
+SELECT ID_VEHICULO, ESTADO_VEHICULO FROM VEHICULO WHERE ID_VEHICULO = 4;
+
+-- ============================================================
+-- PRUEBA TRG_ESTADO_VENTA_UPDATE
+-- Cambiar vehículo de una venta → anterior revierte, nuevo se vende
+-- ============================================================
+
+-- Restaurar la venta eliminada para continuar la prueba
+INSERT INTO VENTA VALUES (1, 2, 4, '2024-04-01', 18500.00);
+
+-- Estado antes: vehículo 4 = 'vendido', vehículo 3 = 'vendido'
+SELECT ID_VEHICULO, ESTADO_VEHICULO FROM VEHICULO WHERE ID_VEHICULO IN (3, 4);
+
+-- Cambiar venta 2 (que era vehículo 3) para que apunte al vehículo 4
+-- Esto simula editar una venta y cambiar el vehículo
+UPDATE VENTA SET ID_VEHICULO = 4 WHERE ID_VENTA = 2;
+
+-- Estado después:
+--   Vehículo 3 (anterior) → debe ser 'listo para venta'
+--   Vehículo 4 (nuevo)    → debe ser 'vendido'
+SELECT ID_VEHICULO, ESTADO_VEHICULO FROM VEHICULO WHERE ID_VEHICULO IN (3, 4);
 
 -- ============================================================
 -- CONSULTAS DE VERIFICACIÓN FINAL

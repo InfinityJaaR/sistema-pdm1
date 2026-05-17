@@ -423,12 +423,28 @@ List<TelefonoImportador> tels = telefonoDAO.obtenerPor("ID_IMPORTADOR",
 
 **Spinners necesarios:** VEHICULO, TALLER
 
-**Trigger activo — muy importante:**
-- `TRG_ESTADO_REPARACION`: dispara en **UPDATE** de `APTO_PARA_VENTA`, NO en INSERT
-- Cuando actualices una reparación y cambies `aptoParaVenta` a 1 → el vehículo
-  cambia automáticamente a `"listo"`
-- Cuando cambies a `requiere_otra_reparacion = 1` → vehículo cambia a `"en reparacion"`
-- El trigger **no dispara al insertar**, solo al actualizar ese campo específico
+**Triggers activos — muy importantes:**
+
+- `TRG_ESTADO_REPARACION_INSERT`: dispara en **INSERT** de REPARACION
+  → siempre cambia el vehículo a `"en reparacion"` al crear la reparación
+
+- `TRG_ESTADO_REPARACION`: dispara en **UPDATE** de `APTO_PARA_VENTA`
+  → `aptoParaVenta = 1` → vehículo cambia a `"listo para venta"`
+  → `requiereOtraReparacion = 1` → vehículo se mantiene en `"en reparacion"`
+
+**Cambios requeridos en `ReparacionFormDialog`:**
+1. Filtro de vehículos: mostrar `"en bodega"` Y `"en reparacion"` (no solo en reparacion)
+   ```java
+   String est = v.getEstadoVehiculo();
+   if (Constants.ESTADO_VEHICULO_ALMACENADO.equals(est) ||
+       Constants.ESTADO_VEHICULO_EN_REPARACION.equals(est))
+   ```
+2. Checkboxes `aptoParaVenta` y `requiereOtraReparacion`: deshabilitados al crear,
+   habilitados solo al editar:
+   ```java
+   cbAptoParaVenta.setEnabled(esEdicion);
+   cbRequiere.setEnabled(esEdicion);
+   ```
 
 **Menú:** `Constants.MENU_REPARACION = 500` (ya cableado en `MainActivity`)
 

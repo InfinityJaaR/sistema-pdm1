@@ -54,9 +54,9 @@ public final class Constants {
     // 2. ESTADOS DE VEHÍCULO
     // =========================================================
 
-    public static final String ESTADO_VEHICULO_ALMACENADO   = "almacenado";
-    public static final String ESTADO_VEHICULO_EN_REPARACION = "en_reparacion";
-    public static final String ESTADO_VEHICULO_LISTO        = "listo";
+    public static final String ESTADO_VEHICULO_ALMACENADO   = "en bodega";
+    public static final String ESTADO_VEHICULO_EN_REPARACION = "en reparacion";
+    public static final String ESTADO_VEHICULO_LISTO        = "listo para venta";
     public static final String ESTADO_VEHICULO_VENDIDO      = "vendido";
 
     // =========================================================
