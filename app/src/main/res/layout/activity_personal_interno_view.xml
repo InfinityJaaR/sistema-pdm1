@@ -84,7 +84,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NOMBRE"
+                    android:text="@string/label_nombre"
                     android:textSize="11sp"
                     android:textColor="@color/text_secondary"
                     android:letterSpacing="0.1" />
@@ -107,7 +107,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="APELLIDO"
+                    android:text="@string/label_apellido"
                     android:textSize="11sp"
                     android:textColor="@color/text_secondary"
                     android:letterSpacing="0.1" />
@@ -130,7 +130,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CARGO"
+                    android:text="@string/label_cargo"
                     android:textSize="11sp"
                     android:textColor="@color/text_secondary"
                     android:letterSpacing="0.1" />

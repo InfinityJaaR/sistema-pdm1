@@ -52,7 +52,7 @@ public class PersonalInternoViewActivity extends AppCompatActivity {
             if (p == null) { finish(); return; }
             poblarVista(p);
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_datos), Toast.LENGTH_SHORT).show();
             finish();
         }
     }

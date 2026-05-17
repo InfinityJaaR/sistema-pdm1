@@ -51,7 +51,7 @@ public class PersonalInternoFormActivity extends AppCompatActivity {
 
         personalDAO = new GenericDAO<>(this, PersonalInterno.class, "personal_interno");
 
-        formTitle.setText(esEdicion ? "Editar Personal" : "Nuevo Personal");
+        formTitle.setText(esEdicion ? getString(R.string.title_editar_personal) : getString(R.string.title_nuevo_personal));
 
         if (esEdicion) cargarDatos();
 
@@ -67,7 +67,7 @@ public class PersonalInternoFormActivity extends AppCompatActivity {
             etApellido.setText(p.getApellidoPersonal());
             etCargo.setText(p.getCargo());
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_datos), Toast.LENGTH_SHORT).show();
         }
     }
 

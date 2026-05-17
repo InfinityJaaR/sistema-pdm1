@@ -71,7 +71,7 @@ public class MovimientoActivity extends AppCompatActivity {
             movimientos = movimientoDAO.obtenerTodos();
         } catch (Exception e) {
             movimientos = new ArrayList<>();
-            Toast.makeText(this, "Error al cargar movimientos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_movimientos), Toast.LENGTH_SHORT).show();
         }
         mostrarMovimientos(movimientos);
     }
@@ -112,7 +112,12 @@ public class MovimientoActivity extends AppCompatActivity {
 
         card.setOnClickListener(v -> abrirVista(m.getId()));
         card.findViewById(R.id.item_btn_editar).setOnClickListener(v -> abrirFormulario(m.getId()));
-        card.findViewById(R.id.item_btn_eliminar).setOnClickListener(v -> abrirEliminar(m));
+        View btnEliminar = card.findViewById(R.id.item_btn_eliminar);
+        if (SessionManager.getInstance().puedeEliminar()) {
+            btnEliminar.setOnClickListener(v -> abrirEliminar(m));
+        } else {
+            btnEliminar.setVisibility(View.GONE);
+        }
     }
 
     private void abrirFormulario(int id) {

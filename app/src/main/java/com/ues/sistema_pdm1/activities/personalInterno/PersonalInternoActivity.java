@@ -71,7 +71,7 @@ public class PersonalInternoActivity extends AppCompatActivity {
             personal = personalDAO.obtenerTodos();
         } catch (Exception e) {
             personal = new ArrayList<>();
-            Toast.makeText(this, "Error al cargar personal", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_personal), Toast.LENGTH_SHORT).show();
         }
         mostrarPersonal(personal);
     }
@@ -111,7 +111,12 @@ public class PersonalInternoActivity extends AppCompatActivity {
 
         card.setOnClickListener(v -> abrirVista(p.getId()));
         card.findViewById(R.id.item_btn_editar).setOnClickListener(v -> abrirFormulario(p.getId()));
-        card.findViewById(R.id.item_btn_eliminar).setOnClickListener(v -> abrirEliminar(p));
+        View btnEliminar = card.findViewById(R.id.item_btn_eliminar);
+        if (SessionManager.getInstance().puedeEliminar()) {
+            btnEliminar.setOnClickListener(v -> abrirEliminar(p));
+        } else {
+            btnEliminar.setVisibility(View.GONE);
+        }
     }
 
     private void abrirFormulario(int id) {
