@@ -17,6 +17,7 @@ import com.ues.sistema_pdm1.R;
 import com.ues.sistema_pdm1.models.Taller;
 
 public class TallerFormDialog extends DialogFragment {
+
     public interface OnSaveListener {
         void onSave(Taller taller);
     }
@@ -27,11 +28,11 @@ public class TallerFormDialog extends DialogFragment {
         TallerFormDialog dialog = new TallerFormDialog();
         Bundle args = new Bundle();
         if (taller != null) {
-            args.putInt("ID_TALLER", taller.getId());
-            args.putString("NOMBRE_TALLER", taller.getNombreTaller());
-            args.putString("DIRECCION_TALLER", taller.getDireccionTaller());
+            args.putInt("ID_TALLER",         taller.getId());
+            args.putString("NOMBRE_TALLER",   taller.getNombreTaller());
+            args.putString("DIRECCION_TALLER",taller.getDireccionTaller());
             args.putString("TELEFONO_TALLER", taller.getTelefonoTaller());
-            args.putInt("AUTORIZADO", taller.getAutorizado());
+            args.putInt("AUTORIZADO",         taller.getAutorizado());
         }
         dialog.setArguments(args);
         return dialog;
@@ -51,12 +52,12 @@ public class TallerFormDialog extends DialogFragment {
         EditText etDireccion  = view.findViewById(R.id.et_direccion_taller);
         EditText etTelefono   = view.findViewById(R.id.et_telefono_taller);
         CheckBox cbAutorizado = view.findViewById(R.id.cb_autorizado);
-        Button btnGuardar     = view.findViewById(R.id.btn_guardar);
-        Button btnCancelar    = view.findViewById(R.id.btn_cancelar);
+        Button   btnGuardar   = view.findViewById(R.id.btn_guardar);
+        Button   btnCancelar  = view.findViewById(R.id.btn_cancelar);
 
-        Bundle args       = getArguments();
+        Bundle  args      = getArguments();
         boolean esEdicion = args != null && args.getInt("ID_TALLER") > 0;
-        int id            = esEdicion ? args.getInt("ID_TALLER") : 0;
+        int     id        = esEdicion ? args.getInt("ID_TALLER") : 0;
 
         etTelefono.addTextChangedListener(new TextWatcher() {
             boolean isFormatting = false;
@@ -68,14 +69,11 @@ public class TallerFormDialog extends DialogFragment {
             public void afterTextChanged(Editable s) {
                 if (isFormatting) return;
                 isFormatting = true;
-
                 String digits = s.toString().replaceAll("[^0-9]", "");
                 if (digits.length() > 8) digits = digits.substring(0, 8);
-
                 String formatted = digits.length() > 4
                         ? digits.substring(0, 4) + "-" + digits.substring(4)
                         : digits;
-
                 s.replace(0, s.length(), formatted);
                 isFormatting = false;
             }
@@ -89,7 +87,9 @@ public class TallerFormDialog extends DialogFragment {
         }
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())
-                .setTitle(esEdicion ? "Editar Taller" : "Nuevo Taller")
+                .setTitle(esEdicion
+                        ? getString(R.string.title_editar_taller)
+                        : getString(R.string.title_nuevo_taller))
                 .setView(view)
                 .create();
 
@@ -97,18 +97,18 @@ public class TallerFormDialog extends DialogFragment {
             String nombre    = etNombre.getText().toString().trim();
             String direccion = etDireccion.getText().toString().trim();
             String telefono  = etTelefono.getText().toString().trim();
-            int autorizado   = cbAutorizado.isChecked() ? 1 : 0;
+            int    autorizado = cbAutorizado.isChecked() ? 1 : 0;
 
             if (nombre.isEmpty()) {
-                Toast.makeText(getActivity(), "Ingrese el nombre del taller", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.error_nombre_taller), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (direccion.isEmpty()) {
-                Toast.makeText(getActivity(), "Ingrese la dirección del taller", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.error_direccion_taller), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (telefono.length() < 9) {
-                Toast.makeText(getActivity(), "Ingrese un teléfono válido (0000-0000)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.error_telefono_taller), Toast.LENGTH_SHORT).show();
                 return;
             }
 

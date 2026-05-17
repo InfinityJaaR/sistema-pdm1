@@ -318,4 +318,89 @@
     <string name="nav_logout">Salir</string>
     <string name="logout_title">Cerrar sesión</string>
     <string name="logout_message">¿Desea cerrar la sesión actual?</string>
+
+    <!-- Taller -->
+    <string name="title_talleres">Talleres</string>
+    <string name="subtitle_talleres">Catálogo de Talleres disponibles</string>
+    <string name="hint_buscar_taller">Buscar Taller</string>
+    <string name="title_nuevo_taller">Nuevo Taller</string>
+    <string name="title_editar_taller">Editar Taller</string>
+    <string name="title_detalle_taller">Detalle de Taller</string>
+    <string name="title_eliminar_taller">Eliminar Taller</string>
+    <string name="hint_nombre_taller">Nombre del taller</string>
+    <string name="hint_direccion_taller">Dirección del taller</string>
+    <string name="hint_telefono_taller">Teléfono del taller</string>
+    <string name="label_autorizado_pregunta">¿Taller autorizado?</string>
+    <string name="label_autorizado">Autorizado</string>
+    <string name="label_no_autorizado">No autorizado</string>
+    <string name="error_cargar_talleres">Error al cargar talleres</string>
+    <string name="error_guardar_taller">Error al guardar taller</string>
+    <string name="msg_eliminar_taller">¿Desea eliminar \'%1$s\'?</string>
+    <string name="msg_taller_eliminado">Taller eliminado</string>
+    <string name="error_nombre_taller">Ingrese el nombre del taller</string>
+    <string name="error_direccion_taller">Ingrese la dirección del taller</string>
+    <string name="error_telefono_taller">Ingrese un teléfono válido (0000-0000)</string>
+    <string name="item_presiona_opciones">Presiona para ver opciones</string>
+
+    <!-- Reparación -->
+    <string name="title_reparaciones">Reparaciones</string>
+    <string name="subtitle_reparaciones">Catálogo de Reparaciones disponibles</string>
+    <string name="hint_buscar_reparacion">Buscar Reparación</string>
+    <string name="title_nueva_reparacion">Nueva Reparación</string>
+    <string name="title_editar_reparacion">Editar Reparación</string>
+    <string name="title_detalle_reparacion">Detalle de Reparación</string>
+    <string name="title_eliminar_reparacion">Eliminar Reparación</string>
+    <string name="msg_eliminar_reparacion">¿Desea eliminar esta reparación?</string>
+    <string name="msg_reparacion_registrada">Reparación registrada</string>
+    <string name="msg_reparacion_actualizada">Reparación actualizada</string>
+    <string name="msg_reparacion_eliminada">Reparación eliminada</string>
+    <string name="error_cargar_reparaciones">Error al cargar reparaciones</string>
+    <string name="error_registrar_reparacion">Error al registrar reparación</string>
+    <string name="error_actualizar_reparacion">Error al actualizar reparación</string>
+    <string name="error_verificar_vehiculo">Error al verificar vehículo</string>
+    <string name="error_vehiculo_no_encontrado">No se encontró el vehículo asociado</string>
+    <string name="error_apto_y_requiere">No puede ser apto para venta y requerir otra reparación a la vez</string>
+    <string name="error_vehiculo_no_en_reparacion">El vehículo no está en reparación, no se puede marcar como apto</string>
+    <string name="label_vehiculo">Vehículo</string>
+    <string name="label_taller">Taller</string>
+    <string name="label_fecha_inicio">Fecha inicio</string>
+    <string name="label_fecha_fin">Fecha fin</string>
+    <string name="hint_buscar_vehiculo">Buscar vehículo...</string>
+    <string name="hint_buscar_taller_reparacion">Buscar taller...</string>
+    <string name="btn_seleccionar">Seleccionar</string>
+    <string name="hint_descripcion_trabajo">Descripción del trabajo</string>
+    <string name="cb_apto_para_venta">Apto para venta</string>
+    <string name="cb_requiere_otra_reparacion">Requiere otra reparación</string>
+    <string name="error_seleccione_vehiculo">Seleccione un vehículo</string>
+    <string name="error_seleccione_taller">Seleccione un taller</string>
+    <string name="error_seleccione_fecha_inicio">Seleccione la fecha de inicio</string>
+    <string name="error_descripcion_trabajo">Ingrese la descripción del trabajo</string>
+    <string name="label_vehiculo_id">Vehículo ID: </string>
+    <string name="label_taller_id">Taller ID: </string>
+    <string name="label_fecha_inicio_detalle">Fecha inicio: </string>
+    <string name="label_fecha_fin_detalle">Fecha fin: </string>
+
+    <string name="label_apto_venta_si">✔ Apto para venta</string>
+    <string name="label_apto_venta_no">✘ No apto para venta</string>
+    <string name="label_requiere_reparacion_si">⚠ Requiere otra reparación</string>
+    <string name="label_requiere_reparacion_no">✔ No requiere otra reparación</string>
+
+    <!-- Modelo -->
+    <string name="title_modelos">Modelos</string>
+    <string name="subtitle_modelos">Catálogo de Modelos disponibles</string>
+    <string name="hint_buscar_modelo">Buscar Modelo</string>
+    <string name="title_nuevo_modelo">Nuevo Modelo</string>
+    <string name="title_editar_modelo">Editar Modelo</string>
+    <string name="title_detalle_modelo">Detalle de Modelo</string>
+    <string name="title_eliminar_modelo">Eliminar Modelo</string>
+    <string name="msg_eliminar_modelo">¿Desea eliminar \'%1$s\'?</string>
+    <string name="msg_modelo_eliminado">Modelo eliminado</string>
+    <string name="error_cargar_modelos">Error al cargar modelos</string>
+    <string name="error_guardar_modelo">Error al guardar modelo</string>
+    <string name="error_eliminar_modelo_trigger">Error al eliminar modelo</string>
+    <string name="hint_nombre_modelo">Nombre del modelo</string>
+    <string name="error_nombre_modelo">Ingrese el nombre del modelo</string>
+    <string name="label_marca_id">Marca ID: </string>
+    <string name="label_nombre_modelo_detalle">Nombre: </string>
+
 </resources>

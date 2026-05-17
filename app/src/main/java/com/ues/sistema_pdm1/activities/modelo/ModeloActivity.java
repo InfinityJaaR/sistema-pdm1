@@ -23,9 +23,9 @@ import java.util.List;
 
 public class ModeloActivity extends AppCompatActivity {
 
-    private ListView      lvModelos;
-    private ImageButton   btnAgregar, btnBuscar;
-    private EditText      etBuscar;
+    private ListView    lvModelos;
+    private ImageButton btnAgregar, btnBuscar;
+    private EditText    etBuscar;
 
     private GenericDAO<Modelo> modeloDAO;
     private int idMarca;
@@ -80,7 +80,7 @@ public class ModeloActivity extends AppCompatActivity {
             modelosFiltrados = new ArrayList<>(modelos);
             refrescarLista();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar modelos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_modelos), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -130,7 +130,7 @@ public class ModeloActivity extends AppCompatActivity {
                 }
                 cargarModelos();
             } catch (Exception e) {
-                Toast.makeText(this, "Error al guardar modelo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.error_guardar_modelo), Toast.LENGTH_SHORT).show();
             }
         });
         dialog.show(getSupportFragmentManager(), "form");
@@ -138,18 +138,18 @@ public class ModeloActivity extends AppCompatActivity {
 
     private void confirmarEliminar(Modelo modelo) {
         new AlertDialog.Builder(this)
-                .setTitle("Eliminar Modelo")
-                .setMessage("¿Desea eliminar '" + modelo.getNombreModelo() + "'?")
-                .setPositiveButton("Sí", (d, w) -> {
+                .setTitle(getString(R.string.title_eliminar_modelo))
+                .setMessage(getString(R.string.msg_eliminar_modelo, modelo.getNombreModelo()))
+                .setPositiveButton(getString(R.string.yes), (d, w) -> {
                     try {
                         modeloDAO.eliminar(modelo.getId());
                         cargarModelos();
-                        Toast.makeText(this, "Modelo eliminado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.msg_modelo_eliminado), Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error al eliminar modelo", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(getString(R.string.no), null)
                 .show();
     }
 }

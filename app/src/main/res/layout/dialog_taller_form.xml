@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="Nombre del taller"
+            android:hint="@string/hint_nombre_taller"
             android:inputType="textCapWords"
             android:maxLength="50"
             android:padding="12dp"
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="Dirección del taller"
+            android:hint="@string/hint_direccion_taller"
             android:inputType="textCapSentences"
             android:maxLength="100"
             android:padding="12dp"
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="Teléfono del taller"
+            android:hint="@string/hint_telefono_taller"
             android:inputType="phone"
             android:maxLength="9"
             android:padding="12dp"
@@ -50,11 +50,10 @@
             android:textColor="#12122A"
             android:textColorHint="#AAAACC" />
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿Taller autorizado?"
+            android:text="@string/label_autorizado_pregunta"
             android:textColor="#12122A"
             android:textSize="14sp"
             android:layout_marginBottom="8dp" />
@@ -63,7 +62,7 @@
             android:id="@+id/cb_autorizado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Autorizado"
+            android:text="@string/label_autorizado"
             android:textColor="#12122A"
             android:textSize="14sp"
             android:layout_marginBottom="24dp"

@@ -30,7 +30,7 @@
                     android:id="@+id/tv_modelo_titulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Modelos"
+                    android:text="@string/title_modelos"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -39,7 +39,7 @@
                     android:id="@+id/tv_modelo_subtitulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Catálogo de Modelos disponibles"
+                    android:text="@string/subtitle_modelos"
                     android:textColor="#AAAACC"
                     android:textSize="12sp" />
 
@@ -74,7 +74,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Buscar Modelo"
+                android:hint="@string/hint_buscar_modelo"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#AAAACC"
                 android:textSize="14sp"
