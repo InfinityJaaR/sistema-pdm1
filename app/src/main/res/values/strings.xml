@@ -379,7 +379,7 @@
     <string name="label_taller_id">Taller ID: </string>
     <string name="label_fecha_inicio_detalle">Fecha inicio: </string>
     <string name="label_fecha_fin_detalle">Fecha fin: </string>
-    <string name="label_descripcion_detalle">Descripción: </string>
+
     <string name="label_apto_venta_si">✔ Apto para venta</string>
     <string name="label_apto_venta_no">✘ No apto para venta</string>
     <string name="label_requiere_reparacion_si">⚠ Requiere otra reparación</string>
