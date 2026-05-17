@@ -1,6 +1,8 @@
 -- ============================================================
 -- Script SQLite - Triggers y Datos Iniciales
 -- PDM115 - Grupo 02
+-- 02_triggers_y_datos.txt
+-- Fuente canónica: DatabaseHelper.java (triggers) + LlenarBDGpo02.java (datos)
 -- ============================================================
 
 -- ============================================================
@@ -362,281 +364,209 @@ END;
 
 -- ============================================================
 -- DATOS INICIALES
+-- Fuente canónica: LlenarBDGpo02.java
 -- ============================================================
 
--- PAIS
-INSERT INTO PAIS VALUES (1, 'El Salvador');
-
--- DEPARTAMENTOS
-INSERT INTO DEPARTAMENTO VALUES (1,  1, 'Ahuachapán');
-INSERT INTO DEPARTAMENTO VALUES (2,  1, 'Santa Ana');
-INSERT INTO DEPARTAMENTO VALUES (3,  1, 'Sonsonate');
-INSERT INTO DEPARTAMENTO VALUES (4,  1, 'Chalatenango');
-INSERT INTO DEPARTAMENTO VALUES (5,  1, 'La Libertad');
-INSERT INTO DEPARTAMENTO VALUES (6,  1, 'San Salvador');
-INSERT INTO DEPARTAMENTO VALUES (7,  1, 'Cuscatlán');
-INSERT INTO DEPARTAMENTO VALUES (8,  1, 'La Paz');
-INSERT INTO DEPARTAMENTO VALUES (9,  1, 'Cabañas');
-INSERT INTO DEPARTAMENTO VALUES (10, 1, 'San Vicente');
-INSERT INTO DEPARTAMENTO VALUES (11, 1, 'Usulután');
-INSERT INTO DEPARTAMENTO VALUES (12, 1, 'San Miguel');
-INSERT INTO DEPARTAMENTO VALUES (13, 1, 'Morazán');
-INSERT INTO DEPARTAMENTO VALUES (14, 1, 'La Unión');
-
--- MUNICIPIOS
-INSERT INTO MUNICIPIO VALUES (1,  1,  'Ahuachapán');
-INSERT INTO MUNICIPIO VALUES (2,  1,  'Atiquizaya');
-INSERT INTO MUNICIPIO VALUES (3,  1,  'Tacuba');
-INSERT INTO MUNICIPIO VALUES (4,  2,  'Santa Ana');
-INSERT INTO MUNICIPIO VALUES (5,  2,  'Chalchuapa');
-INSERT INTO MUNICIPIO VALUES (6,  2,  'Metapán');
-INSERT INTO MUNICIPIO VALUES (7,  3,  'Sonsonate');
-INSERT INTO MUNICIPIO VALUES (8,  3,  'Acajutla');
-INSERT INTO MUNICIPIO VALUES (9,  3,  'Nahuizalco');
-INSERT INTO MUNICIPIO VALUES (10, 4,  'Chalatenango');
-INSERT INTO MUNICIPIO VALUES (11, 4,  'La Palma');
-INSERT INTO MUNICIPIO VALUES (12, 5,  'Santa Tecla');
-INSERT INTO MUNICIPIO VALUES (13, 5,  'Antiguo Cuscatlán');
-INSERT INTO MUNICIPIO VALUES (14, 5,  'Quezaltepeque');
-INSERT INTO MUNICIPIO VALUES (15, 6,  'San Salvador');
-INSERT INTO MUNICIPIO VALUES (16, 6,  'Soyapango');
-INSERT INTO MUNICIPIO VALUES (17, 6,  'Mejicanos');
-INSERT INTO MUNICIPIO VALUES (18, 6,  'Apopa');
-INSERT INTO MUNICIPIO VALUES (19, 7,  'Cojutepeque');
-INSERT INTO MUNICIPIO VALUES (20, 7,  'San Pedro Perulapán');
-INSERT INTO MUNICIPIO VALUES (21, 8,  'Zacatecoluca');
-INSERT INTO MUNICIPIO VALUES (22, 8,  'San Luis Talpa');
-INSERT INTO MUNICIPIO VALUES (23, 9,  'Sensuntepeque');
-INSERT INTO MUNICIPIO VALUES (24, 9,  'Ilobasco');
-INSERT INTO MUNICIPIO VALUES (25, 10, 'San Vicente');
-INSERT INTO MUNICIPIO VALUES (26, 10, 'Tecoluca');
-INSERT INTO MUNICIPIO VALUES (27, 11, 'Usulután');
-INSERT INTO MUNICIPIO VALUES (28, 11, 'Santiago de María');
-INSERT INTO MUNICIPIO VALUES (29, 12, 'San Miguel');
-INSERT INTO MUNICIPIO VALUES (30, 12, 'Moncagua');
-INSERT INTO MUNICIPIO VALUES (31, 13, 'San Francisco Gotera');
-INSERT INTO MUNICIPIO VALUES (32, 13, 'Corinto');
-INSERT INTO MUNICIPIO VALUES (33, 14, 'La Unión');
-INSERT INTO MUNICIPIO VALUES (34, 14, 'Santa Rosa de Lima');
-
--- DISTRITOS
-INSERT INTO DISTRITO VALUES (1,  15, 'Distrito Centro San Salvador');
-INSERT INTO DISTRITO VALUES (2,  16, 'Distrito Soyapango');
-INSERT INTO DISTRITO VALUES (3,  4,  'Distrito Santa Ana Centro');
-INSERT INTO DISTRITO VALUES (4,  29, 'Distrito San Miguel Centro');
-INSERT INTO DISTRITO VALUES (5,  21, 'Distrito Zacatecoluca');
-INSERT INTO DISTRITO VALUES (6,  23, 'Distrito Sensuntepeque');
-INSERT INTO DISTRITO VALUES (7,  12, 'Distrito Santa Tecla');
-INSERT INTO DISTRITO VALUES (8,  7,  'Distrito Sonsonate Centro');
-INSERT INTO DISTRITO VALUES (9,  1,  'Distrito Ahuachapán Centro');
-INSERT INTO DISTRITO VALUES (10, 27, 'Distrito Usulután Centro');
-
--- MARCAS
-INSERT INTO MARCA VALUES (1, 'Toyota');
-INSERT INTO MARCA VALUES (2, 'Honda');
-INSERT INTO MARCA VALUES (3, 'Hyundai');
-INSERT INTO MARCA VALUES (4, 'Nissan');
-INSERT INTO MARCA VALUES (5, 'Ford');
-INSERT INTO MARCA VALUES (6, 'Chevrolet');
-INSERT INTO MARCA VALUES (7, 'Mazda');
-
--- MODELOS
-INSERT INTO MODELO VALUES (1,  1, 'Corolla');
-INSERT INTO MODELO VALUES (2,  1, 'Hilux');
-INSERT INTO MODELO VALUES (3,  1, 'RAV4');
-INSERT INTO MODELO VALUES (4,  2, 'Civic');
-INSERT INTO MODELO VALUES (5,  2, 'CR-V');
-INSERT INTO MODELO VALUES (6,  2, 'HR-V');
-INSERT INTO MODELO VALUES (7,  3, 'Tucson');
-INSERT INTO MODELO VALUES (8,  3, 'Accent');
-INSERT INTO MODELO VALUES (9,  3, 'Santa Fe');
-INSERT INTO MODELO VALUES (10, 4, 'Frontier');
-INSERT INTO MODELO VALUES (11, 4, 'Sentra');
-INSERT INTO MODELO VALUES (12, 4, 'X-Trail');
-INSERT INTO MODELO VALUES (13, 5, 'F-150');
-INSERT INTO MODELO VALUES (14, 5, 'Explorer');
-INSERT INTO MODELO VALUES (15, 5, 'Escape');
-INSERT INTO MODELO VALUES (16, 6, 'Silverado');
-INSERT INTO MODELO VALUES (17, 6, 'Equinox');
-INSERT INTO MODELO VALUES (18, 7, 'CX-5');
-INSERT INTO MODELO VALUES (19, 7, 'Mazda3');
-
--- TIPO_VEHICULO
-INSERT INTO TIPO_VEHICULO VALUES (1, 'Sedan');
-INSERT INTO TIPO_VEHICULO VALUES (2, 'Pickup');
-INSERT INTO TIPO_VEHICULO VALUES (3, 'SUV');
-INSERT INTO TIPO_VEHICULO VALUES (4, 'Van');
-INSERT INTO TIPO_VEHICULO VALUES (5, 'Hatchback');
-
--- TIPO_TRANSPORTE
-INSERT INTO TIPO_TRANSPORTE VALUES (1, 'Auto',      1);
-INSERT INTO TIPO_TRANSPORTE VALUES (2, 'Grúa',      1);
-INSERT INTO TIPO_TRANSPORTE VALUES (3, 'Tacuazina', 12);
-
--- TIPO_DESPERFECTO
-INSERT INTO TIPO_DESPERFECTO VALUES (1, 'Golpe',          'Daño por impacto físico en carrocería');
-INSERT INTO TIPO_DESPERFECTO VALUES (2, 'Rayón',          'Raspadura superficial en pintura');
-INSERT INTO TIPO_DESPERFECTO VALUES (3, 'Rotura de Vidrio','Vidrio roto o con fisuras');
-INSERT INTO TIPO_DESPERFECTO VALUES (4, 'Falla Mecánica', 'Problema en motor o transmisión');
-INSERT INTO TIPO_DESPERFECTO VALUES (5, 'Daño Interior',  'Deterioro en tapicería o tablero');
-INSERT INTO TIPO_DESPERFECTO VALUES (6, 'Daño Eléctrico', 'Falla en sistema eléctrico');
-
--- TALLERES (5 autorizados, 1 no autorizado)
-INSERT INTO TALLER VALUES (1, 'Taller Central SA',    'Bulevar Los Héroes, San Salvador',    '22345678', 1);
-INSERT INTO TALLER VALUES (2, 'Mecánica San Miguel',  'Av. Roosevelt, San Miguel',            '26781234', 1);
-INSERT INTO TALLER VALUES (3, 'Auto Servicio Occidente','Calle Matías Delgado, Santa Ana',    '24561234', 1);
-INSERT INTO TALLER VALUES (4, 'Taller La Paz',        'Carretera al Puerto, Zacatecoluca',    '23341234', 1);
-INSERT INTO TALLER VALUES (5, 'Servicio Norte',       'Carretera a Chalatenango Km 45',       '23121234', 1);
-INSERT INTO TALLER VALUES (6, 'Taller Sin Autorizar', 'Dirección desconocida',                '00000000', 0);
-
--- BODEGAS (6 en distintos departamentos)
-INSERT INTO BODEGA VALUES (1, 1, 'Bodega Central',    'Bulevar Los Héroes Km 2, San Salvador');
-INSERT INTO BODEGA VALUES (2, 3, 'Bodega Occidente',  'Carretera a Santa Ana Km 32');
-INSERT INTO BODEGA VALUES (3, 4, 'Bodega Oriente',    'Carretera Panamericana Km 138, San Miguel');
-INSERT INTO BODEGA VALUES (4, 5, 'Bodega Sur',        'Carretera al Puerto Km 56, Zacatecoluca');
-INSERT INTO BODEGA VALUES (5, 6, 'Bodega Paracentral','Carretera a Sensuntepeque Km 88');
-INSERT INTO BODEGA VALUES (6, 8, 'Bodega Costera',    'Carretera Litoral Km 72, Sonsonate');
-
--- SECCIONES (3 niveles por bodega, capacidad 50 c/u)
--- Bodega 1
-INSERT INTO SECCION VALUES (1,  1, 1, 50, 0);
-INSERT INTO SECCION VALUES (2,  1, 2, 50, 0);
-INSERT INTO SECCION VALUES (3,  1, 3, 50, 0);
--- Bodega 2
-INSERT INTO SECCION VALUES (4,  2, 1, 50, 0);
-INSERT INTO SECCION VALUES (5,  2, 2, 50, 0);
-INSERT INTO SECCION VALUES (6,  2, 3, 50, 0);
--- Bodega 3
-INSERT INTO SECCION VALUES (7,  3, 1, 50, 0);
-INSERT INTO SECCION VALUES (8,  3, 2, 50, 0);
-INSERT INTO SECCION VALUES (9,  3, 3, 50, 0);
--- Bodega 4
-INSERT INTO SECCION VALUES (10, 4, 1, 50, 0);
-INSERT INTO SECCION VALUES (11, 4, 2, 50, 0);
-INSERT INTO SECCION VALUES (12, 4, 3, 50, 0);
--- Bodega 5
-INSERT INTO SECCION VALUES (13, 5, 1, 50, 0);
-INSERT INTO SECCION VALUES (14, 5, 2, 50, 0);
-INSERT INTO SECCION VALUES (15, 5, 3, 50, 0);
--- Bodega 6
-INSERT INTO SECCION VALUES (16, 6, 1, 50, 0);
-INSERT INTO SECCION VALUES (17, 6, 2, 50, 0);
-INSERT INTO SECCION VALUES (18, 6, 3, 50, 0);
+-- USUARIOS (ID_USUARIO es TEXT)
+INSERT INTO USUARIO VALUES ('1', 'admin',      'adm01');
+INSERT INTO USUARIO VALUES ('2', 'importador', 'imp01');
+INSERT INTO USUARIO VALUES ('3', 'personal',   'per01');
 
 -- ============================================================
--- USUARIOS Y CONTROL DE ACCESO
+-- OPCIONCRUD (13 opciones de menú, NUM_CRUD=0 = acceso al módulo)
 -- ============================================================
-
-INSERT INTO USUARIO VALUES ('01', 'admin',    'adm01');
-INSERT INTO USUARIO VALUES ('02', 'importador','imp01');
-INSERT INTO USUARIO VALUES ('03', 'personal',  'per01');
-
--- ============================================================
--- OPCIONCRUD
--- Estructura: ID 3 chars — primer dígito = módulo, resto = operación
--- NUM_CRUD: 0=menu, 1=insertar, 2=modificar, 3=eliminar, 4=consultar
--- ============================================================
-
--- Menús principales
-INSERT INTO OPCIONCRUD VALUES ('100', 'Menu Importador',   0);
-INSERT INTO OPCIONCRUD VALUES ('200', 'Menu Vehiculo',     0);
-INSERT INTO OPCIONCRUD VALUES ('300', 'Menu Movimiento',   0);
-INSERT INTO OPCIONCRUD VALUES ('400', 'Menu Reparacion',   0);
-INSERT INTO OPCIONCRUD VALUES ('500', 'Menu Venta',        0);
-INSERT INTO OPCIONCRUD VALUES ('600', 'Menu Catalogos',    0);
-
--- Importador
-INSERT INTO OPCIONCRUD VALUES ('101', 'Agregar Importador',   1);
-INSERT INTO OPCIONCRUD VALUES ('102', 'Modificar Importador', 2);
-INSERT INTO OPCIONCRUD VALUES ('103', 'Eliminar Importador',  3);
-INSERT INTO OPCIONCRUD VALUES ('104', 'Consultar Importador', 4);
-
--- Vehículo
-INSERT INTO OPCIONCRUD VALUES ('201', 'Agregar Vehiculo',     1);
-INSERT INTO OPCIONCRUD VALUES ('202', 'Modificar Vehiculo',   2);
-INSERT INTO OPCIONCRUD VALUES ('203', 'Eliminar Vehiculo',    3);
-INSERT INTO OPCIONCRUD VALUES ('204', 'Consultar Vehiculo',   4);
-
--- Movimiento
-INSERT INTO OPCIONCRUD VALUES ('301', 'Agregar Movimiento',   1);
-INSERT INTO OPCIONCRUD VALUES ('302', 'Modificar Movimiento', 2);
-INSERT INTO OPCIONCRUD VALUES ('303', 'Eliminar Movimiento',  3);
-INSERT INTO OPCIONCRUD VALUES ('304', 'Consultar Movimiento', 4);
-
--- Reparacion
-INSERT INTO OPCIONCRUD VALUES ('401', 'Agregar Reparacion',   1);
-INSERT INTO OPCIONCRUD VALUES ('402', 'Modificar Reparacion', 2);
-INSERT INTO OPCIONCRUD VALUES ('403', 'Eliminar Reparacion',  3);
-INSERT INTO OPCIONCRUD VALUES ('404', 'Consultar Reparacion', 4);
-
--- Venta
-INSERT INTO OPCIONCRUD VALUES ('501', 'Agregar Venta',        1);
-INSERT INTO OPCIONCRUD VALUES ('502', 'Modificar Venta',      2);
-INSERT INTO OPCIONCRUD VALUES ('503', 'Eliminar Venta',       3);
-INSERT INTO OPCIONCRUD VALUES ('504', 'Consultar Venta',      4);
-
--- Catálogos (agrupados en un solo menú)
-INSERT INTO OPCIONCRUD VALUES ('601', 'Agregar Catalogo',     1);
-INSERT INTO OPCIONCRUD VALUES ('602', 'Modificar Catalogo',   2);
-INSERT INTO OPCIONCRUD VALUES ('603', 'Eliminar Catalogo',    3);
-INSERT INTO OPCIONCRUD VALUES ('604', 'Consultar Catalogo',   4);
+INSERT INTO OPCIONCRUD VALUES ('100', 'Importador',       0);
+INSERT INTO OPCIONCRUD VALUES ('200', 'Vehículo',         0);
+INSERT INTO OPCIONCRUD VALUES ('210', 'Importación',      0);
+INSERT INTO OPCIONCRUD VALUES ('300', 'Bodega',           0);
+INSERT INTO OPCIONCRUD VALUES ('310', 'Sección',          0);
+INSERT INTO OPCIONCRUD VALUES ('400', 'Movimiento',       0);
+INSERT INTO OPCIONCRUD VALUES ('410', 'Transporte',       0);
+INSERT INTO OPCIONCRUD VALUES ('500', 'Reparación',       0);
+INSERT INTO OPCIONCRUD VALUES ('510', 'Taller',           0);
+INSERT INTO OPCIONCRUD VALUES ('600', 'Venta',            0);
+INSERT INTO OPCIONCRUD VALUES ('610', 'Desperfecto',      0);
+INSERT INTO OPCIONCRUD VALUES ('620', 'Personal Interno', 0);
+INSERT INTO OPCIONCRUD VALUES ('630', 'Marca',            0);
 
 -- ============================================================
 -- ACCESOUSUARIO
+-- Admin (id='1'): acceso total a los 13 módulos
+-- Importador (id='2'): 100, 200, 210, 610
+-- Personal (id='3'): 300, 310, 400, 410, 620
 -- ============================================================
 
--- ADMIN: acceso total a todo
-INSERT INTO ACCESOUSUARIO VALUES ('100', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('101', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('102', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('103', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('104', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('200', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('201', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('202', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('203', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('204', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('300', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('301', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('302', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('303', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('304', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('400', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('401', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('402', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('403', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('404', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('500', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('501', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('502', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('503', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('504', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('600', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('601', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('602', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('603', '01');
-INSERT INTO ACCESOUSUARIO VALUES ('604', '01');
+-- ADMIN
+INSERT INTO ACCESOUSUARIO VALUES ('100', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('200', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('210', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('300', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('310', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('400', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('410', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('500', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('510', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('600', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('610', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('620', '1');
+INSERT INTO ACCESOUSUARIO VALUES ('630', '1');
 
--- IMPORTADOR: su módulo completo + consulta vehículos + consulta ventas
--- Sin acceso a movimientos, reparaciones ni catálogos
-INSERT INTO ACCESOUSUARIO VALUES ('100', '02');
-INSERT INTO ACCESOUSUARIO VALUES ('101', '02');
-INSERT INTO ACCESOUSUARIO VALUES ('102', '02');
-INSERT INTO ACCESOUSUARIO VALUES ('104', '02');
-INSERT INTO ACCESOUSUARIO VALUES ('200', '02');
-INSERT INTO ACCESOUSUARIO VALUES ('204', '02');
-INSERT INTO ACCESOUSUARIO VALUES ('500', '02');
-INSERT INTO ACCESOUSUARIO VALUES ('501', '02');
-INSERT INTO ACCESOUSUARIO VALUES ('504', '02');
+-- IMPORTADOR
+INSERT INTO ACCESOUSUARIO VALUES ('100', '2');
+INSERT INTO ACCESOUSUARIO VALUES ('200', '2');
+INSERT INTO ACCESOUSUARIO VALUES ('210', '2');
+INSERT INTO ACCESOUSUARIO VALUES ('610', '2');
 
--- PERSONAL INTERNO: movimientos completo + consultas de vehículo y bodega
--- Sin acceso a importadores, ventas ni catálogos administrativos
-INSERT INTO ACCESOUSUARIO VALUES ('200', '03');
-INSERT INTO ACCESOUSUARIO VALUES ('204', '03');
-INSERT INTO ACCESOUSUARIO VALUES ('300', '03');
-INSERT INTO ACCESOUSUARIO VALUES ('301', '03');
-INSERT INTO ACCESOUSUARIO VALUES ('302', '03');
-INSERT INTO ACCESOUSUARIO VALUES ('304', '03');
-INSERT INTO ACCESOUSUARIO VALUES ('400', '03');
-INSERT INTO ACCESOUSUARIO VALUES ('401', '03');
-INSERT INTO ACCESOUSUARIO VALUES ('404', '03');
+-- PERSONAL
+INSERT INTO ACCESOUSUARIO VALUES ('300', '3');
+INSERT INTO ACCESOUSUARIO VALUES ('310', '3');
+INSERT INTO ACCESOUSUARIO VALUES ('400', '3');
+INSERT INTO ACCESOUSUARIO VALUES ('410', '3');
+INSERT INTO ACCESOUSUARIO VALUES ('620', '3');
+
+-- ============================================================
+-- PAIS
+-- ============================================================
+INSERT INTO PAIS VALUES (1, 'El Salvador');
+
+-- DEPARTAMENTOS (14 de El Salvador, orden de inserción = ID)
+INSERT INTO DEPARTAMENTO VALUES (1,  1, 'Ahuachapán');
+INSERT INTO DEPARTAMENTO VALUES (2,  1, 'Santa Ana');
+INSERT INTO DEPARTAMENTO VALUES (3,  1, 'Sonsonate');
+INSERT INTO DEPARTAMENTO VALUES (4,  1, 'La Libertad');
+INSERT INTO DEPARTAMENTO VALUES (5,  1, 'San Salvador');
+INSERT INTO DEPARTAMENTO VALUES (6,  1, 'Cuscatlán');
+INSERT INTO DEPARTAMENTO VALUES (7,  1, 'La Paz');
+INSERT INTO DEPARTAMENTO VALUES (8,  1, 'Cabañas');
+INSERT INTO DEPARTAMENTO VALUES (9,  1, 'San Vicente');
+INSERT INTO DEPARTAMENTO VALUES (10, 1, 'Usulután');
+INSERT INTO DEPARTAMENTO VALUES (11, 1, 'Morazán');
+INSERT INTO DEPARTAMENTO VALUES (12, 1, 'La Unión');
+INSERT INTO DEPARTAMENTO VALUES (13, 1, 'Chalatenango');
+INSERT INTO DEPARTAMENTO VALUES (14, 1, 'San Miguel');
+
+-- MUNICIPIOS (1 por departamento, ID coincide con ID_DEPARTAMENTO)
+INSERT INTO MUNICIPIO VALUES (1,  1,  'Ahuachapán');
+INSERT INTO MUNICIPIO VALUES (2,  2,  'Santa Ana');
+INSERT INTO MUNICIPIO VALUES (3,  3,  'Sonsonate');
+INSERT INTO MUNICIPIO VALUES (4,  4,  'Santa Tecla');
+INSERT INTO MUNICIPIO VALUES (5,  5,  'San Salvador');
+INSERT INTO MUNICIPIO VALUES (6,  6,  'Cojutepeque');
+INSERT INTO MUNICIPIO VALUES (7,  7,  'Zacatecoluca');
+INSERT INTO MUNICIPIO VALUES (8,  8,  'Sensuntepeque');
+INSERT INTO MUNICIPIO VALUES (9,  9,  'San Vicente');
+INSERT INTO MUNICIPIO VALUES (10, 10, 'Usulután');
+INSERT INTO MUNICIPIO VALUES (11, 11, 'San Francisco Gotera');
+INSERT INTO MUNICIPIO VALUES (12, 12, 'La Unión');
+INSERT INTO MUNICIPIO VALUES (13, 13, 'Nueva Concepción');
+INSERT INTO MUNICIPIO VALUES (14, 14, 'San Miguel');
+
+-- DISTRITOS (1 por municipio, ID coincide con ID_MUNICIPIO)
+INSERT INTO DISTRITO VALUES (1,  1,  'Ahuachapán Centro');
+INSERT INTO DISTRITO VALUES (2,  2,  'Santa Ana Centro');
+INSERT INTO DISTRITO VALUES (3,  3,  'Sonsonate Centro');
+INSERT INTO DISTRITO VALUES (4,  4,  'Santa Tecla Centro');
+INSERT INTO DISTRITO VALUES (5,  5,  'San Salvador Centro');
+INSERT INTO DISTRITO VALUES (6,  6,  'Cojutepeque Centro');
+INSERT INTO DISTRITO VALUES (7,  7,  'Zacatecoluca Centro');
+INSERT INTO DISTRITO VALUES (8,  8,  'Sensuntepeque Centro');
+INSERT INTO DISTRITO VALUES (9,  9,  'San Vicente Centro');
+INSERT INTO DISTRITO VALUES (10, 10, 'Usulután Centro');
+INSERT INTO DISTRITO VALUES (11, 11, 'Gotera Centro');
+INSERT INTO DISTRITO VALUES (12, 12, 'La Unión Centro');
+INSERT INTO DISTRITO VALUES (13, 13, 'Nueva Concepción Centro');
+INSERT INTO DISTRITO VALUES (14, 14, 'San Miguel Centro');
+
+-- MARCAS (9)
+INSERT INTO MARCA VALUES (1, 'Toyota');
+INSERT INTO MARCA VALUES (2, 'Honda');
+INSERT INTO MARCA VALUES (3, 'Ford');
+INSERT INTO MARCA VALUES (4, 'Chevrolet');
+INSERT INTO MARCA VALUES (5, 'Nissan');
+INSERT INTO MARCA VALUES (6, 'Hyundai');
+INSERT INTO MARCA VALUES (7, 'KIA');
+INSERT INTO MARCA VALUES (8, 'BMW');
+INSERT INTO MARCA VALUES (9, 'Mercedes Benz');
+
+-- MODELOS (18 — idMarca según orden de inserción arriba)
+INSERT INTO MODELO VALUES (1,  1, 'Corolla');
+INSERT INTO MODELO VALUES (2,  1, 'Camry');
+INSERT INTO MODELO VALUES (3,  1, 'Hilux');
+INSERT INTO MODELO VALUES (4,  2, 'Civic');
+INSERT INTO MODELO VALUES (5,  2, 'Accord');
+INSERT INTO MODELO VALUES (6,  2, 'CR-V');
+INSERT INTO MODELO VALUES (7,  3, 'Fiesta');
+INSERT INTO MODELO VALUES (8,  3, 'Fusion');
+INSERT INTO MODELO VALUES (9,  4, 'Spark');
+INSERT INTO MODELO VALUES (10, 4, 'Silverado');
+INSERT INTO MODELO VALUES (11, 5, 'Sentra');
+INSERT INTO MODELO VALUES (12, 5, 'Frontier');
+INSERT INTO MODELO VALUES (13, 6, 'Tucson');
+INSERT INTO MODELO VALUES (14, 6, 'Santa Fe');
+INSERT INTO MODELO VALUES (15, 7, 'Sportage');
+INSERT INTO MODELO VALUES (16, 7, 'Sorento');
+INSERT INTO MODELO VALUES (17, 8, 'Serie 3');
+INSERT INTO MODELO VALUES (18, 9, 'Clase C');
+
+-- TIPO_VEHICULO (5)
+INSERT INTO TIPO_VEHICULO VALUES (1, 'Sedán');
+INSERT INTO TIPO_VEHICULO VALUES (2, 'SUV');
+INSERT INTO TIPO_VEHICULO VALUES (3, 'Pickup');
+INSERT INTO TIPO_VEHICULO VALUES (4, 'Minivan');
+INSERT INTO TIPO_VEHICULO VALUES (5, 'Hatchback');
+
+-- TIPO_TRANSPORTE (3)
+INSERT INTO TIPO_TRANSPORTE VALUES (1, 'Camión Plataforma', 8);
+INSERT INTO TIPO_TRANSPORTE VALUES (2, 'Camión Cerrado',    6);
+INSERT INTO TIPO_TRANSPORTE VALUES (3, 'Remolque',         10);
+
+-- TIPO_DESPERFECTO (4)
+INSERT INTO TIPO_DESPERFECTO VALUES (1, 'Rayón',        'Rayones en carrocería');
+INSERT INTO TIPO_DESPERFECTO VALUES (2, 'Golpe',        'Deformación en chapa');
+INSERT INTO TIPO_DESPERFECTO VALUES (3, 'Cristal roto', 'Ventana o parabrisas roto');
+INSERT INTO TIPO_DESPERFECTO VALUES (4, 'Mecánico',     'Defecto en motor o sistema');
+
+-- TALLERES (3: 2 autorizados, 1 no autorizado)
+INSERT INTO TALLER VALUES (1, 'Taller Autorizado A', 'Av. Principal 123', '2234-5678', 1);
+INSERT INTO TALLER VALUES (2, 'Taller B',            'Calle 5 Oriente',   '2234-5679', 0);
+INSERT INTO TALLER VALUES (3, 'Taller C',            'Zona Industrial',   '2234-5680', 1);
+
+-- PERSONAL_INTERNO (3)
+INSERT INTO PERSONAL_INTERNO VALUES (1, 'Juan',   'Pérez',    'Almacenero');
+INSERT INTO PERSONAL_INTERNO VALUES (2, 'María',  'González', 'Supervisor');
+INSERT INTO PERSONAL_INTERNO VALUES (3, 'Carlos', 'López',    'Operario');
+
+-- BODEGAS (6 — idDistrito: 5=San Salvador, 2=Santa Ana, 14=San Miguel,
+--                           7=Zacatecoluca, 8=Sensuntepeque, 3=Sonsonate)
+INSERT INTO BODEGA VALUES (1,  5, 'Bodega Central',     'Bulevar Los Héroes Km 2, San Salvador');
+INSERT INTO BODEGA VALUES (2,  2, 'Bodega Occidente',   'Carretera a Santa Ana Km 32');
+INSERT INTO BODEGA VALUES (3, 14, 'Bodega Oriente',     'Carretera Panamericana Km 138, San Miguel');
+INSERT INTO BODEGA VALUES (4,  7, 'Bodega Sur',         'Carretera al Puerto Km 56, Zacatecoluca');
+INSERT INTO BODEGA VALUES (5,  8, 'Bodega Paracentral', 'Carretera a Sensuntepeque Km 88');
+INSERT INTO BODEGA VALUES (6,  3, 'Bodega Costera',     'Carretera Litoral Km 72, Sonsonate');
+
+-- SECCIONES (18: 3 niveles por cada una de las 6 bodegas, capacidad 50 c/u)
+-- Bodega 1 — Central
+INSERT INTO SECCION VALUES (1,  1, 1, 50, 0);
+INSERT INTO SECCION VALUES (2,  1, 2, 50, 0);
+INSERT INTO SECCION VALUES (3,  1, 3, 50, 0);
+-- Bodega 2 — Occidente
+INSERT INTO SECCION VALUES (4,  2, 1, 50, 0);
+INSERT INTO SECCION VALUES (5,  2, 2, 50, 0);
+INSERT INTO SECCION VALUES (6,  2, 3, 50, 0);
+-- Bodega 3 — Oriente
+INSERT INTO SECCION VALUES (7,  3, 1, 50, 0);
+INSERT INTO SECCION VALUES (8,  3, 2, 50, 0);
+INSERT INTO SECCION VALUES (9,  3, 3, 50, 0);
+-- Bodega 4 — Sur
+INSERT INTO SECCION VALUES (10, 4, 1, 50, 0);
+INSERT INTO SECCION VALUES (11, 4, 2, 50, 0);
+INSERT INTO SECCION VALUES (12, 4, 3, 50, 0);
+-- Bodega 5 — Paracentral
+INSERT INTO SECCION VALUES (13, 5, 1, 50, 0);
+INSERT INTO SECCION VALUES (14, 5, 2, 50, 0);
+INSERT INTO SECCION VALUES (15, 5, 3, 50, 0);
+-- Bodega 6 — Costera
+INSERT INTO SECCION VALUES (16, 6, 1, 50, 0);
+INSERT INTO SECCION VALUES (17, 6, 2, 50, 0);
+INSERT INTO SECCION VALUES (18, 6, 3, 50, 0);

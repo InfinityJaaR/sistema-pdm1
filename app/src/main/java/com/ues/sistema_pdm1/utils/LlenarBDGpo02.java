@@ -405,9 +405,8 @@ public class LlenarBDGpo02 {
             // =================================================================
             // SECCIÓN 15: REPARACIONES
             // idVehiculo: 1-3 | idTaller: 1-3 (ya en BD)
-            // Trigger TRG_ESTADO_REPARACION solo dispara en UPDATE, no en INSERT.
-            // Por eso los vehículos 1-3 permanecen 'en bodega' tras esta inserción.
-            // aptoParaVenta=0 en demo; Ricardo lo actualizará en su módulo.
+            // TRG_ESTADO_REPARACION_INSERT dispara AFTER INSERT ON REPARACION:
+            // → vehículos 1, 2 y 3 quedan en 'en reparacion' automáticamente.
             // =================================================================
             if (reparacionDAO.contar() == 0) {
                 reparacionDAO.insertar(new Reparacion(0, 1, 1, "2024-01-20", "2024-01-25", "Reparación de golpe en puerta", 0, 0));
