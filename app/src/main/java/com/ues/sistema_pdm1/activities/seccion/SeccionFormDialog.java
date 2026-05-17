@@ -30,6 +30,7 @@ public class SeccionFormDialog extends DialogFragment {
 
     private SeccionFormDialog.OnSaveListener listener;
     private GenericDAO<Bodega> bodegaDAO;
+    private GenericDAO<Seccion> seccionDAO;
     private List<Bodega> listaBodegas;
 
     public static SeccionFormDialog newInstance(Seccion seccion) {
@@ -65,6 +66,8 @@ public class SeccionFormDialog extends DialogFragment {
 
         // Cargar Distritos en el Spinner
         bodegaDAO = new GenericDAO<>(requireContext(), Bodega.class, "BODEGA");
+        seccionDAO = new GenericDAO<>(requireContext(), Seccion.class, "SECCION");
+
         try {
             listaBodegas = bodegaDAO.obtenerTodos();
         } catch (SQLException e) {
@@ -140,6 +143,28 @@ public class SeccionFormDialog extends DialogFragment {
                 etNivel.setError("El nivel debe estar en entre 1 y 3");
                 etNivel.requestFocus();
                 return;
+            }
+
+            // --- Nuevas validaciones solicitadas ---
+            List<Seccion> seccionesBodega = seccionDAO.obtenerPor("ID_BODEGA", String.valueOf(bodega.getId()));
+
+            // 1. No más de 3 secciones por bodega
+            if (!esEdicion && seccionesBodega.size() >= 3) {
+                Toast.makeText(getActivity(), "Esta bodega ya tiene el máximo de 3 secciones", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            // 2. No niveles duplicados en una bodega
+            for (Seccion s : seccionesBodega) {
+                if (s.getNivel() == nivelInt) {
+                    // Si es edición, ignorar si es la misma sección
+                    if (esEdicion && s.getId() == id) {
+                        continue;
+                    }
+                    etNivel.setError("Ya existe una sección con el nivel " + nivelInt + " en esta bodega");
+                    etNivel.requestFocus();
+                    return;
+                }
             }
 
             if (listener != null) {
