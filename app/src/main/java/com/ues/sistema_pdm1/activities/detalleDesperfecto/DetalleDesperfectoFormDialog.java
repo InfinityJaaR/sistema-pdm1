@@ -34,6 +34,7 @@ import com.ues.sistema_pdm1.models.DetalleDesperfecto;
 import com.ues.sistema_pdm1.models.FotoDesperfecto;
 import com.ues.sistema_pdm1.models.TipoDesperfecto;
 import com.ues.sistema_pdm1.models.Vehiculo;
+import com.ues.sistema_pdm1.utils.Constants;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -204,12 +205,12 @@ public class DetalleDesperfectoFormDialog extends DialogFragment {
 
     private void abrirSelectorFuente() {
         if (listaFotos.size() >= 5) {
-            Toast.makeText(requireContext(), "Máximo 5 fotos permitidas", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), getString(R.string.msg_max_fotos), Toast.LENGTH_SHORT).show();
             return;
         }
-        String[] opciones = {"Cámara", "Galería"};
+        String[] opciones = {getString(R.string.label_camara), getString(R.string.label_galeria)};
         new AlertDialog.Builder(requireContext())
-                .setTitle("Agregar Evidencia")
+                .setTitle(getString(R.string.title_agregar_evidencia))
                 .setItems(opciones, (dialog, which) -> {
                     if (which == 0) {
                         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
@@ -233,7 +234,7 @@ public class DetalleDesperfectoFormDialog extends DialogFragment {
             Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), uri);
             procesarImagenCapturada(bitmap);
         } catch (IOException e) {
-            Toast.makeText(getContext(), "Error al leer imagen", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.error_leer_imagen), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -257,14 +258,14 @@ public class DetalleDesperfectoFormDialog extends DialogFragment {
         if (detalleEdicion == null) {
             rutasTemporales.add(ruta);
             listaFotos.add(foto);
-            Toast.makeText(requireContext(), "Foto añadida", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), getString(R.string.msg_foto_anadida), Toast.LENGTH_SHORT).show();
         } else {
             try {
                 fotoDAO.insertar(foto);
                 listaFotos.add(foto);
-                Toast.makeText(requireContext(), "Foto guardada", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), getString(R.string.msg_foto_guardada), Toast.LENGTH_SHORT).show();
             } catch (SQLException e) {
-                Toast.makeText(getContext(), "Error al guardar foto", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_guardar_foto), Toast.LENGTH_SHORT).show();
             }
         }
         actualizarListaFotosEnUI();
@@ -293,7 +294,7 @@ public class DetalleDesperfectoFormDialog extends DialogFragment {
             Bitmap bitmap = BitmapFactory.decodeFile(f.getRutaImagen());
             if (bitmap != null) iv.setImageBitmap(bitmap);
 
-            tvN.setText("Foto #" + (i + 1));
+            tvN.setText(getString(R.string.label_foto_numero, i + 1));
             tvF.setText(f.getFechaToma());
 
             // Al hacer click, si es solo lectura ve la foto, si no, pregunta para eliminar directamente
@@ -312,7 +313,7 @@ public class DetalleDesperfectoFormDialog extends DialogFragment {
     private void abrirConfirmacionEliminarFoto(int position) {
         View view = getLayoutInflater().inflate(R.layout.dialog_confirmacion, null);
         TextView tvMsg = view.findViewById(R.id.confirmacion_text);
-        tvMsg.setText("¿Desea eliminar esta foto?");
+        tvMsg.setText(getString(R.string.msg_eliminar_foto_pregunta));
         AlertDialog dialog = new AlertDialog.Builder(requireContext()).setView(view).create();
         view.findViewById(R.id.btn_no).setOnClickListener(v -> dialog.dismiss());
         view.findViewById(R.id.btn_si).setOnClickListener(v -> {
@@ -332,30 +333,30 @@ public class DetalleDesperfectoFormDialog extends DialogFragment {
         }
         listaFotos.remove(position);
         actualizarListaFotosEnUI();
-        Toast.makeText(requireContext(), "Foto eliminada", Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(), getString(R.string.msg_foto_eliminada), Toast.LENGTH_SHORT).show();
     }
 
     private void verFotoGrande(int position) {
         FotoDesperfecto f = listaFotos.get(position);
         Bitmap bitmap = BitmapFactory.decodeFile(f.getRutaImagen());
         if (bitmap == null) {
-            Toast.makeText(getContext(), "No se pudo cargar la imagen", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.error_cargar_imagen), Toast.LENGTH_SHORT).show();
             return;
         }
         ImageView imageView = new ImageView(requireContext());
         imageView.setImageBitmap(bitmap);
         imageView.setAdjustViewBounds(true);
         new AlertDialog.Builder(requireContext())
-                .setTitle("Evidencia - " + f.getFechaToma())
+                .setTitle(getString(R.string.label_evidencia_fecha, f.getFechaToma()))
                 .setView(imageView)
-                .setPositiveButton("Cerrar", null)
+                .setPositiveButton(getString(R.string.btn_cerrar), null)
                 .show();
     }
 
     private void guardarDatos() {
         String descripcion = etDescription.getText().toString().trim();
         if (descripcion.isEmpty()) {
-            etDescription.setError("Requerido");
+            etDescription.setError(getString(R.string.msg_campo_requerido));
             return;
         }
 
@@ -370,22 +371,22 @@ public class DetalleDesperfectoFormDialog extends DialogFragment {
                 for (String ruta : rutasTemporales) {
                     fotoDAO.insertar(new FotoDesperfecto(0, (int)idNuevo, ruta, fecha));
                 }
-                Toast.makeText(requireContext(), "Registrado con éxito", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), getString(R.string.msg_desperfecto_registrado), Toast.LENGTH_SHORT).show();
             } else {
                 detalleEdicion.setDescripcionDetalle(descripcion);
                 detalleEdicion.setIdTipoDesperfecto(t.getId());
                 detalleDAO.actualizar(detalleEdicion);
-                Toast.makeText(requireContext(), "Actualizado correctamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), getString(R.string.msg_desperfecto_actualizado), Toast.LENGTH_SHORT).show();
             }
             if (listener != null) listener.onGuardado();
             dismiss();
         } catch (SQLException e) {
-            Toast.makeText(getContext(), "Error al guardar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.msg_operacion_fallida), Toast.LENGTH_SHORT).show();
         }
     }
 
     private void bloquearParaVisualizacion() {
-        tvTitulo.setText("Detalle");
+        tvTitulo.setText(getString(R.string.title_detalle_desperfecto));
         spVehiculo.setEnabled(false); spTipo.setEnabled(false); etDescription.setEnabled(false);
         btnFoto.setVisibility(View.GONE); btnGuardar.setVisibility(View.GONE);
         if (detalleEdicion != null) {
@@ -396,8 +397,8 @@ public class DetalleDesperfectoFormDialog extends DialogFragment {
     }
 
     private void prepararParaEdicion() {
-        tvTitulo.setText("Editar");
-        btnGuardar.setText("ACTUALIZAR");
+        tvTitulo.setText(getString(R.string.title_editar_desperfecto));
+        btnGuardar.setText(getString(R.string.btn_actualizar));
         spVehiculo.setEnabled(false);
         etDescription.setText(detalleEdicion.getDescripcionDetalle());
         seleccionarEnSpinner(spVehiculo, detalleEdicion.getIdVehiculo());

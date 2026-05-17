@@ -105,7 +105,6 @@ public class VehiculoFormDialog extends DialogFragment {
 
         view.findViewById(R.id.btn_vehiculo_guardar).setOnClickListener(v -> guardar(id, dialog));
         
-        // Botón Cancelar (antes limpiar)
         Button btnCancelar = view.findViewById(R.id.btn_vehiculo_limpiar);
         btnCancelar.setText(R.string.btn_cancelar);
         btnCancelar.setOnClickListener(v -> dialog.dismiss());
@@ -149,7 +148,7 @@ public class VehiculoFormDialog extends DialogFragment {
             setupSpinner(spSeccion, secciones);
 
             List<String> anios = new ArrayList<>();
-            anios.add("Seleccione Año");
+            anios.add(getString(R.string.hint_seleccione_anio));
             int anioActual = Calendar.getInstance().get(Calendar.YEAR);
             int anioMinimo = anioActual - 5;
             for (int i = anioMinimo; i <= anioActual; i++) {
@@ -160,7 +159,7 @@ public class VehiculoFormDialog extends DialogFragment {
             spAnio.setAdapter(anioAdapter);
 
             List<String> estados = new ArrayList<>();
-            estados.add("Seleccione Estado");
+            estados.add(getString(R.string.hint_seleccione_estado));
             estados.add(Constants.ESTADO_VEHICULO_ALMACENADO);
             estados.add(Constants.ESTADO_VEHICULO_EN_REPARACION);
             estados.add(Constants.ESTADO_VEHICULO_LISTO);
@@ -170,13 +169,13 @@ public class VehiculoFormDialog extends DialogFragment {
             spEstado.setAdapter(estadoAdapter);
 
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Error catálogos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.error_cargar_catalogos), Toast.LENGTH_SHORT).show();
         }
     }
 
     private <T> void setupSpinner(Spinner sp, List<T> items) {
         List<Object> listaConPrompt = new ArrayList<>();
-        listaConPrompt.add("Seleccione una opción...");
+        listaConPrompt.add(getString(R.string.hint_seleccione_opcion));
         listaConPrompt.addAll(items);
         ArrayAdapter<Object> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item_text_black, listaConPrompt);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -228,15 +227,15 @@ public class VehiculoFormDialog extends DialogFragment {
         String color = etColor.getText().toString().trim();
 
         if (vin.isEmpty() || vin.length() != Constants.LONGITUD_VIN) { 
-            etVin.setError(Constants.MSG_DATOS_INVALIDOS); 
+            etVin.setError(getString(R.string.error_vin_invalido)); 
             return; 
         }
-        if (vinYaExiste(vin, id)) { etVin.setError("VIN duplicado"); return; }
-        if (color.isEmpty()) { etColor.setError(Constants.MSG_CAMPO_REQUERIDO); return; }
+        if (vinYaExiste(vin, id)) { etVin.setError(getString(R.string.error_vin_duplicado)); return; }
+        if (color.isEmpty()) { etColor.setError(getString(R.string.msg_campo_requerido)); return; }
         
         if (spTipo.getSelectedItemPosition() == 0 || spSeccion.getSelectedItemPosition() == 0 ||
                 spAnio.getSelectedItemPosition() == 0 || spEstado.getSelectedItemPosition() == 0) {
-            Toast.makeText(getActivity(), "Complete los campos requeridos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.error_campos_requeridos), Toast.LENGTH_SHORT).show();
             return;
         }
 

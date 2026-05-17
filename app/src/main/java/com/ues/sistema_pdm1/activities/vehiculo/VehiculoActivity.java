@@ -6,7 +6,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -92,7 +91,7 @@ public class VehiculoActivity extends AppCompatActivity {
             }
             filtrar();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar vehículos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_vehiculos), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -114,9 +113,9 @@ public class VehiculoActivity extends AppCompatActivity {
                         Marca ma = (m != null) ? marcaDAO.obtenerPorId(m.getIdMarca()) : null;
                         String titulo = v.getAnio() + " " + (ma != null ? ma.getNombreMarca() : "") + " " + (m != null ? m.getNombreModelo() : "");
                         tvH.setText(titulo.trim());
-                        tvS.setText("VIN: " + v.getVin() + " | " + v.getEstadoVehiculo());
+                        tvS.setText(getString(R.string.label_vin) + ": " + v.getVin() + " | " + v.getEstadoVehiculo());
                     } catch (Exception e) {
-                        tvH.setText("VIN: " + v.getVin());
+                        tvH.setText(getString(R.string.label_vin) + ": " + v.getVin());
                         tvS.setText(v.getEstadoVehiculo());
                     }
                 }
@@ -173,7 +172,7 @@ public class VehiculoActivity extends AppCompatActivity {
             try {
                 if (v == null) vehiculoDAO.insertar(veh); else vehiculoDAO.actualizar(veh);
                 cargarVehiculos();
-                Toast.makeText(this, "Vehículo guardado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.msg_vehiculo_guardado), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -183,19 +182,17 @@ public class VehiculoActivity extends AppCompatActivity {
 
     private void confirmarEliminar(Vehiculo v) {
         View view = getLayoutInflater().inflate(R.layout.dialog_confirmacion, null);
-        ((TextView)view.findViewById(R.id.confirmacion_text)).setText("¿Eliminar vehículo VIN: " + v.getVin() + "?");
+        ((TextView)view.findViewById(R.id.confirmacion_text)).setText(getString(R.string.msg_confirmar_eliminar_vehiculo, v.getVin()));
         androidx.appcompat.app.AlertDialog dialog = new androidx.appcompat.app.AlertDialog.Builder(this).setView(view).create();
 
         view.findViewById(R.id.btn_no).setOnClickListener(view1 -> dialog.dismiss());
         view.findViewById(R.id.btn_si).setOnClickListener(view1 -> {
             try {
-                // Corrección: Se pasa el ID (long) en lugar del objeto
                 vehiculoDAO.eliminar(v.getId());
                 cargarVehiculos();
-                Toast.makeText(this, "Eliminado correctamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.msg_vehiculo_eliminado), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             } catch (Exception e) {
-                // Mostrar mensaje del Trigger exacto
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }

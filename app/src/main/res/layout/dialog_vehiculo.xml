@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Identidad del Vehículo"
+                    android:text="@string/label_identidad_vehiculo"
                     android:textColor="#000000"
                     android:textSize="11sp"
                     android:textStyle="bold"
@@ -86,7 +86,8 @@
                     android:textColorHint="#000000"
                     android:background="@drawable/bg_search_white"
                     android:paddingHorizontal="16dp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:importantForAutofill="no" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -185,7 +186,8 @@
                             android:textColorHint="#000000"
                             android:background="@drawable/bg_search_white"
                             android:paddingHorizontal="16dp"
-                            android:inputType="text" />
+                            android:inputType="text"
+                            android:importantForAutofill="no" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -198,7 +200,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Logística e Inventario"
+                    android:text="@string/label_logistica_inventario"
                     android:textColor="#000000"
                     android:textSize="11sp"
                     android:textStyle="bold"
@@ -253,19 +255,22 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <Button
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_vehiculo_limpiar"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="0dp"
                         android:layout_height="56dp"
                         android:layout_weight="1"
                         android:layout_marginEnd="8dp"
-                        android:text="@string/btn_limpiar"
+                        android:text="@string/btn_cancelar"
                         android:textColor="@color/primary_blue"
                         app:strokeColor="@color/primary_blue"
                         app:cornerRadius="12dp" />
-                    <Button
+
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_vehiculo_guardar"
                         android:layout_width="0dp"
                         android:layout_height="56dp"

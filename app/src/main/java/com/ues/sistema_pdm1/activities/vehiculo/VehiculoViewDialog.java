@@ -116,7 +116,7 @@ public class VehiculoViewDialog extends DialogFragment {
             if (i != null) tvImportacion.setText(i.toString());
 
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Error al cargar detalles", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.error_cargar_datos), Toast.LENGTH_SHORT).show();
         }
     }
 }

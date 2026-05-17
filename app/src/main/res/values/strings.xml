@@ -26,9 +26,6 @@
     <string name="menu_section">Sección</string>
     <string name="menu_brand">Marcas</string>
 
-
-
-
     <!-- ________________________IMPORTADORES________________________________ -->
 
     <!-- Importadores Inicio-->
@@ -149,10 +146,6 @@
     <string name="label_importador_campo">Importador:</string>
     <string name="label_fecha_campo">Fecha:</string>
 
-
-
-
-
     <!-- ________________________BODEGAS________________________________ -->
     <string name="title_bodegas">Bodegas</string>
     <string name="subtitle_bodegas">Gestión de bodegas de almacenamiento</string>
@@ -220,6 +213,7 @@
     <string name="btn_actualizar">Actualizar</string>
     <string name="btn_cerrar">Cerrar</string>
     <string name="btn_limpiar">Limpiar</string>
+    <string name="btn_cancelar">Cancelar</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="modal_titulo_confirmacion">Confirmación</string>
@@ -227,13 +221,15 @@
     <string name="desc_agregar_nuevo">Agregar nuevo</string>
     <string name="desc_boton_buscar">Buscar</string>
 
-    <!-- Vehículos -->
+    <!-- ________________________VEHÍCULOS________________________________ -->
     <string name="title_vehiculos">Vehículos</string>
     <string name="subtitle_inventario">Sistema de inventario</string>
     <string name="hint_buscar">Buscar Vehiculo</string>
     <string name="modal_titulo_registro">Registro de Vehículo</string>
     <string name="modal_titulo_detalle">Detalles del Vehículo</string>
     <string name="modal_titulo_actualizar">Actualizar Vehículo</string>
+    <string name="label_identidad_vehiculo">Identidad del Vehículo</string>
+    <string name="label_logistica_inventario">Logística e Inventario</string>
     <string name="label_tipo">Tipo</string>
     <string name="label_modelo">Modelo</string>
     <string name="label_importacion">Importación</string>
@@ -244,17 +240,37 @@
     <string name="hint_vin">Ingrese número de VIN</string>
     <string name="hint_color">Ingrese el color del vehiculo</string>
     <string name="placeholder_empty">---</string>
+    <string name="hint_seleccione_opcion">Seleccione una opción...</string>
+    <string name="hint_seleccione_anio">Seleccione Año</string>
+    <string name="hint_seleccione_estado">Seleccione Estado</string>
+    <string name="msg_vehiculo_guardado">Vehículo guardado</string>
+    <string name="msg_vehiculo_eliminado">Eliminado correctamente</string>
+    <string name="msg_confirmar_eliminar_vehiculo">¿Eliminar vehículo VIN: %1$s?</string>
+    <string name="error_cargar_vehiculos">Error al cargar vehículos</string>
+    <string name="error_vin_invalido">VIN inválido</string>
+    <string name="error_vin_duplicado">VIN duplicado</string>
+    <string name="error_campos_requeridos">Complete los campos requeridos</string>
+    <string name="error_cargar_catalogos">Error catálogos</string>
 
-    <!-- Desperfectos -->
+    <!-- ________________________DESPERFECTOS________________________________ -->
     <string name="title_desperfectos">Desperfectos</string>
     <string name="subtitle_desperfectos">Registro de daños en vehículos</string>
+    <string name="subtitle_desperfectos_filtrado">Filtrado por VIN: %1$s</string>
+    <string name="subtitle_desperfectos_todos">Todos los desperfectos registrados</string>
     <string name="hint_buscar_desperfecto">Buscar desperfecto o VIN...</string>
     <string name="label_evidencia">Evidencia</string>
+    <string name="label_registrado_fecha">Registrado: %1$s</string>
     <string name="msg_eliminar_foto">¿Desea eliminar esta foto de evidencia?</string>
+    <string name="msg_eliminar_foto_pregunta">¿Desea eliminar esta foto?</string>
     <string name="title_opciones_imagen">Opciones de Imagen</string>
+    <string name="title_agregar_evidencia">Agregar Evidencia</string>
+    <string name="label_camara">Cámara</string>
+    <string name="label_galeria">Galería</string>
 
     <!-- Formulario Desperfectos -->
     <string name="title_nuevo_desperfecto">Nuevo Desperfecto</string>
+    <string name="title_detalle_desperfecto">Detalle del Desperfecto</string>
+    <string name="title_editar_desperfecto">Editar Desperfecto</string>
     <string name="label_seleccione_vehiculo">Seleccione Vehículo</string>
     <string name="label_tipo_desperfecto">Tipo de Desperfecto</string>
     <string name="label_descripcion_desperfecto">Descripción del Desperfecto</string>
@@ -262,12 +278,27 @@
     <string name="title_fotos_evidencia">Fotos de Evidencia</string>
     <string name="btn_agregar_foto">+ AGREGAR</string>
     <string name="desc_lista_fotos">Lista de fotos de evidencia</string>
+    <string name="msg_foto_anadida">Foto añadida</string>
+    <string name="msg_foto_guardada">Foto guardada</string>
+    <string name="msg_foto_eliminada">Foto eliminada</string>
+    <string name="msg_max_fotos">Máximo 5 fotos permitidas</string>
+    <string name="msg_desperfecto_registrado">Registrado con éxito</string>
+    <string name="msg_desperfecto_actualizado">Actualizado correctamente</string>
+    <string name="msg_confirmar_eliminar_desperfecto">¿Desea eliminar este desperfecto y sus fotos?\n(%1$s)</string>
+    <string name="label_foto_numero">Foto #%1$d</string>
+    <string name="label_evidencia_fecha">Evidencia - %1$s</string>
+    <string name="error_leer_imagen">Error al leer imagen</string>
+    <string name="error_cargar_imagen">No se pudo cargar la imagen</string>
+    <string name="error_cargar_desperfectos">Error al cargar desperfectos</string>
+    <string name="error_vehiculo_no_identificado">Error: Vehículo no identificado</string>
+    <string name="error_guardar_foto">Error al guardar foto</string>
+    <string name="error_foto_requerida">Agregue al menos una foto</string>
+    <string name="msg_campo_requerido">Requerido</string>
 
     <!-- Marcas -->
     <string name="title_marcas">Marcas</string>
     <string name="subtitle_marcas">Catálogo de marcas disponibles</string>
     <string name="hint_buscar_marca">Buscar marca...</string>
-    <string name="btn_cancelar">Cancelar</string>
     <string name="title_nueva_marca">Nueva Marca</string>
     <string name="title_editar_marca">Editar Marca</string>
     <string name="title_detalle_marca">Detalle de Marca</string>
@@ -289,6 +320,8 @@
 
     <!-- Comunes reutilizables -->
     <string name="error_cargar_datos">Error al cargar datos</string>
+    <string name="msg_operacion_fallida">Error al realizar la operación.</string>
+    <string name="msg_operacion_exitosa">Operación realizada exitosamente.</string>
     <string name="msg_accion_irreversible">Esta acción no se puede deshacer.</string>
 
     <!-- Transporte -->
