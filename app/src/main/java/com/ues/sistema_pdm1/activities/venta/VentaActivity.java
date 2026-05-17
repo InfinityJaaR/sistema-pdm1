@@ -79,7 +79,7 @@ public class VentaActivity extends AppCompatActivity {
             ventasFiltradas = new ArrayList<>(ventas);
             refrescarLista();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar ventas", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_ventas), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -131,7 +131,7 @@ public class VentaActivity extends AppCompatActivity {
                 cargarVentas();
                 Toast.makeText(this, Constants.MSG_OPERACION_EXITOSA, Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-                Toast.makeText(this, "Error al guardar venta: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         dialog.show(getSupportFragmentManager(), "form");
@@ -139,18 +139,18 @@ public class VentaActivity extends AppCompatActivity {
 
     private void confirmarEliminar(Venta venta) {
         new AlertDialog.Builder(this)
-                .setTitle("Eliminar Venta")
-                .setMessage("¿Desea eliminar la venta #" + venta.getId() + "?")
-                .setPositiveButton("Sí", (d, w) -> {
+                .setTitle(R.string.title_eliminar_venta)
+                .setMessage(getString(R.string.msg_confirmar_eliminar_venta, venta.getId()))
+                .setPositiveButton(R.string.yes, (d, w) -> {
                     try {
                         ventaDAO.eliminar(venta.getId());
                         cargarVentas();
-                        Toast.makeText(this, "Venta eliminada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.msg_venta_eliminada), Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(R.string.no, null)
                 .show();
     }
 
@@ -172,7 +172,7 @@ public class VentaActivity extends AppCompatActivity {
             TextView tvPrecio = convertView.findViewById(R.id.item_venta_precio);
 
             if (v != null) {
-                tvTitulo.setText("Venta #" + v.getId());
+                tvTitulo.setText(getString(R.string.label_venta_numero, v.getId()));
                 tvFecha.setText(v.getFechaVenta());
                 tvPrecio.setText(String.format(java.util.Locale.getDefault(), "$%.2f", v.getPrecio()));
             }

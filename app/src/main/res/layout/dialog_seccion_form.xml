@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bodega"
+            android:text="@string/label_bodega"
             android:textColor="#555555"
             android:textSize="13sp"
             android:textStyle="bold"
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="Seccion/Nivel de la bodega"
+            android:hint="@string/hint_nivel_seccion"
             android:inputType="number"
             android:padding="12dp"
             android:textSize="16sp"
@@ -55,7 +55,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Capacidad Máxima"
+                    android:text="@string/label_capacidad_max"
                     android:textColor="#555555"
                     android:textSize="13sp"
                     android:textStyle="bold"
@@ -65,7 +65,7 @@
                     android:id="@+id/et_capacidad_max"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Cap. Máxima"
+                    android:hint="@string/hint_capacidad_max"
                     android:inputType="number"
                     android:padding="12dp"
                     android:textSize="16sp" />
@@ -81,7 +81,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Capacidad Actual"
+                    android:text="@string/label_capacidad_actual"
                     android:textColor="#555555"
                     android:textSize="13sp"
                     android:textStyle="bold"
@@ -91,7 +91,7 @@
                     android:id="@+id/et_capacidad_actual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Cap. Actual"
+                    android:hint="@string/hint_capacidad_actual"
                     android:inputType="number"
                     android:padding="12dp"
                     android:textSize="16sp" />

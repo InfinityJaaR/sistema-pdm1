@@ -358,6 +358,9 @@
     <string name="hint_apellido_personal">Apellido del personal</string>
     <string name="field_cargo">Cargo *</string>
     <string name="hint_cargo">Cargo o puesto</string>
+    <string name="hint_seleccione_cargo">Seleccione un cargo</string>
+    <string name="cargo_supervisor">Supervisor</string>
+    <string name="cargo_empleado">Empleado</string>
     <string name="label_nombre">NOMBRE</string>
     <string name="label_apellido">APELLIDO</string>
     <string name="label_cargo">CARGO</string>
@@ -482,5 +485,22 @@
     <string name="error_nombre_modelo">Ingrese el nombre del modelo</string>
     <string name="label_marca_id">Marca ID: </string>
     <string name="label_nombre_modelo_detalle">Nombre: </string>
+
+    <!-- Login -->
+    <string name="error_login_campos">Ingrese usuario y contraseña</string>
+    <string name="msg_bienvenido">Bienvenido %s</string>
+    <string name="error_login_credenciales">Usuario o contraseña incorrectos</string>
+
+    <!-- Menú Principal -->
+    <string name="msg_cerrar_aplicacion">¿Desea cerrar la aplicación?</string>
+
+    <!-- Sección — validaciones -->
+    <string name="error_seleccione_bodega">Seleccione una bodega</string>
+    <string name="error_max_secciones">Esta bodega ya tiene el máximo de 3 secciones</string>
+    <string name="error_capacidad_max_limite">La capacidad máxima no puede ser superior a 50</string>
+    <string name="error_capacidad_actual_excede">La capacidad actual no puede exceder la capacidad total</string>
+    <string name="error_nivel_rango">El nivel debe estar entre 1 y 3</string>
+    <string name="error_nivel_duplicado">Ya existe una sección con el nivel %d en esta bodega</string>
+    <string name="label_ocupacion">Ocupación (Actual / Total)</string>
 
 </resources>

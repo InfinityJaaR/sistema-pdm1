@@ -69,7 +69,7 @@ public class VentaFormDialog extends DialogFragment {
         }
 
         AlertDialog dialog = new AlertDialog.Builder(requireContext())
-                .setTitle(venta == null ? "Nueva Venta" : "Editar Venta")
+                .setTitle(venta == null ? R.string.title_nueva_venta : R.string.title_editar_venta)
                 .setView(view)
                 .create();
 
@@ -96,12 +96,12 @@ public class VentaFormDialog extends DialogFragment {
         try {
             importadores = impDAO.obtenerTodos();
             if (importadores.isEmpty()) {
-                Toast.makeText(getContext(), "No hay importadores disponibles", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_no_importadores), Toast.LENGTH_SHORT).show();
                 dismiss();
                 return;
             }
         } catch (Exception e) {
-            Toast.makeText(getContext(), "Error al cargar importadores", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.error_cargar_importadores), Toast.LENGTH_SHORT).show();
             dismiss();
             return;
         }
@@ -110,12 +110,12 @@ public class VentaFormDialog extends DialogFragment {
         try {
             todosVehiculos = vehDAO.obtenerTodos();
             if (todosVehiculos.isEmpty()) {
-                Toast.makeText(getContext(), "No hay vehículos disponibles", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_no_vehiculos), Toast.LENGTH_SHORT).show();
                 dismiss();
                 return;
             }
         } catch (Exception e) {
-            Toast.makeText(getContext(), "Error al cargar vehículos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.error_cargar_vehiculos), Toast.LENGTH_SHORT).show();
             dismiss();
             return;
         }
@@ -144,7 +144,7 @@ public class VentaFormDialog extends DialogFragment {
         spVehiculo.setAdapter(vehAdapter);
 
         if (vehiculos.isEmpty()) {
-            Toast.makeText(getContext(), "No hay vehículos disponibles (Estado: listo/en bodega)", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), getString(R.string.error_no_vehiculos_listos), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -189,7 +189,7 @@ public class VentaFormDialog extends DialogFragment {
         try {
             double precio = Double.parseDouble(precioStr);
             if (precio <= 0) {
-                Toast.makeText(getContext(), "El precio debe ser mayor a 0", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_precio_minimo), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -207,7 +207,7 @@ public class VentaFormDialog extends DialogFragment {
             }
             dialog.dismiss();
         } catch (NumberFormatException e) {
-            Toast.makeText(getContext(), "Ingrese un precio válido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.error_precio_invalido), Toast.LENGTH_SHORT).show();
         }
     }
 }

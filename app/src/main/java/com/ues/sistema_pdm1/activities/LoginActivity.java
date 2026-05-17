@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         String clave   = etClave.getText().toString().trim();
 
         if (usuario.isEmpty() || clave.isEmpty()) {
-            Toast.makeText(this, "Ingrese usuario y contraseña", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_login_campos), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -61,10 +61,10 @@ public class LoginActivity extends AppCompatActivity {
         boolean exitoso = SessionManager.getInstance().login(usuario, clave);
 
         if (exitoso) {
-            Toast.makeText(this, "Bienvenido " + usuario, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.msg_bienvenido, usuario), Toast.LENGTH_SHORT).show();
             irAMain();
         } else {
-            Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_login_credenciales), Toast.LENGTH_SHORT).show();
             etUsuario.setText("");
             etClave.setText("");
             pbCargando.setVisibility(View.INVISIBLE);

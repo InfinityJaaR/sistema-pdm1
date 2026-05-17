@@ -14,8 +14,8 @@
         android:gravity="center_horizontal"
         android:paddingTop="40dp"
         android:paddingBottom="24dp"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp">
+        android:paddingStart="@dimen/login_horizontal_margin"
+        android:paddingEnd="@dimen/login_horizontal_margin">
 
         <!-- Ícono de la app -->
         <ImageView

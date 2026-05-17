@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">sistema-pdm1</string>
+    <string name="app_display_name">Sistema de Inventário\nde Veículos Importados</string>
+    <string name="login_title">Acesso ao Sistema</string>
+    <string name="username_text">Nome de Usuário</string>
+    <string name="password_text">Senha</string>
+    <string name="login_text">Entrar</string>
+    <string name="demo_text">Demo — Entrar como Admin</string>
+    <string name="footer_text">© 2026 · PDM115 Grupo 02 · UES</string>
+
+    <!-- Menú Principal -->
+    <string name="main_title">Sistema de Inventário</string>
+    <string name="main_welcome">Bem-vindo!</string>
+    <string name="main_subtitle">Gestão de Veículos Importados</string>
+    <string name="menu_importers">Importadores</string>
+    <string name="menu_imports">Importações</string>
+    <string name="menu_vehicles">Veículos</string>
+    <string name="menu_damage">Avarias</string>
+    <string name="menu_movements">Movimentações E/S</string>
+    <string name="menu_transport">Transporte</string>
+    <string name="menu_build">Reparações</string>
+    <string name="menu_workshops">Oficinas</string>
+    <string name="menu_sales">Vendas</string>
+    <string name="menu_warehouses">Depósitos</string>
+    <string name="menu_staff">Funcionários</string>
+    <string name="menu_section">Seção</string>
+    <string name="menu_brand">Marcas</string>
+
+    <!-- ________________________IMPORTADORES________________________________ -->
+
+    <!-- Importadores Inicio-->
+    <string name="importers_title">Importadores</string>
+    <string name="importers_subtitle">Gestão de veículos</string>
+    <string name="search_importer">Buscar importador...</string>
+
+
+    <!-- Formulario Importadores -->
+    <string name="form_title_add">Adicionar Importador</string>
+    <string name="form_title_edit">Editar Importador</string>
+    <string name="form_title_view">Detalhe do Importador</string>
+
+    <!-- Secciones -->
+    <string name="section_personal_data">Dados Pessoais</string>
+    <string name="section_contact">Informações de Contato</string>
+    <string name="section_professional">Informações Profissionais</string>
+    <string name="section_imports">Importações Realizadas</string>
+
+    <!-- Campos -->
+    <string name="field_name">Nome *</string>
+    <string name="field_lastname">Sobrenome *</string>
+    <string name="field_married_lastname">Sobrenome de Casada</string>
+    <string name="field_gender">Gênero *</string>
+    <string name="field_birthdate">Data de Nascimento *</string>
+    <string name="field_address">Endereço *</string>
+    <string name="field_phone_primary">Telefone Principal *</string>
+    <string name="field_phone_secondary">Telefone Secundário</string>
+    <string name="field_email">E-mail *</string>
+    <string name="field_nui">NUI (Número Único) *</string>
+    <string name="field_responsible">Responsável de Verificação</string>
+    <string name="field_gender_male">Masculino</string>
+    <string name="field_gender_female">Feminino</string>
+    <string name="field_district">Distrito *</string>
+
+    <!-- Botones -->
+    <string name="btn_save">Salvar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_edit">Editar</string>
+    <string name="btn_delete">Excluir</string>
+    <string name="btn_back">Voltar</string>
+
+    <!-- Delete confirmation -->
+    <string name="delete_title">Deseja excluir?</string>
+    <string name="delete_message">Esta ação não pode ser desfeita</string>
+    <string name="delete_confirm">Excluir importador</string>
+
+    <!-- Placeholders -->
+    <string name="hint_name">Insira o nome</string>
+    <string name="hint_lastname">Insira o sobrenome</string>
+    <string name="hint_address">Rua, número, cidade</string>
+    <string name="hint_phone">+56 9 XXXX XXXX</string>
+    <string name="hint_email">email@exemplo.com</string>
+    <string name="hint_nui">NUI12345</string>
+    <string name="hint_responsible">Nome do responsável</string>
+
+    <!-- Labels -->
+    <string name="label_show_married">Casada</string>
+    <string name="label_imports_count">Importações: </string>
+    <string name="label_no_imports">Sem importações registradas</string>
+
+    <!-- Importadores - Vista lista -->
+    <string name="error_cargar_importadores">Erro ao carregar importadores</string>
+
+    <!-- Importadores - Formulario -->
+    <string name="hint_fecha_dd_mm_yyyy">DD/MM/AAAA</string>
+    <string name="btn_agregar_contactos">Adicionar mais contatos</string>
+    <string name="hint_telefono_adicional">Telefone adicional</string>
+    <string name="error_seleccione_distrito">Selecione um distrito</string>
+    <string name="error_nui_longitud">O NUI deve ter exatamente %d caracteres</string>
+    <string name="error_edad_minima">O importador deve ter mais de 18 anos</string>
+    <string name="error_fecha_nacimiento_invalida">Data de nascimento inválida</string>
+    <string name="error_email_invalido">O endereço de e-mail não é válido</string>
+
+    <!-- Importadores - Vista detalle -->
+    <string name="label_nui_prefijo">NUI: </string>
+    <string name="label_nombre_campo">Nome:</string>
+    <string name="label_apellido_campo">Sobrenome:</string>
+    <string name="label_apellido_casada">Sob. Casada:</string>
+    <string name="label_genero">Gênero:</string>
+    <string name="label_nacimiento">Nascimento:</string>
+    <string name="label_nui_campo">NUI:</string>
+    <string name="label_responsable">Responsável:</string>
+    <string name="label_total">Total:</string>
+    <string name="label_ultimas_importaciones">Últimas importações:</string>
+    <string name="btn_gestionar_telefonos">Gerenciar telefones</string>
+    <string name="msg_cuenta_importaciones">%d importação(ões)</string>
+
+    <!-- Importadores - Diálogos de teléfonos -->
+    <string name="title_telefonos_importador">Telefones do importador</string>
+    <string name="label_agregar_telefono">+ Adicionar novo telefone</string>
+    <string name="title_eliminar_telefono">Excluir telefone</string>
+    <string name="msg_eliminar_numero">Excluir o número %s?</string>
+    <string name="msg_telefono_eliminado">Telefone excluído</string>
+    <string name="title_agregar_telefono">Adicionar telefone</string>
+    <string name="hint_numero_telefono">Número de telefone</string>
+    <string name="btn_agregar">Adicionar</string>
+    <string name="msg_telefono_agregado">Telefone adicionado</string>
+    <string name="label_importador_prefijo">Importador #</string>
+
+    <!-- ________________________IMPORTACIONES________________________________ -->
+
+    <string name="title_importaciones">Importações</string>
+    <string name="title_importacion">Importação</string>
+    <string name="subtitle_importaciones">Registro de importações</string>
+    <string name="hint_buscar_importacion">Buscar importação...</string>
+    <string name="error_cargar_importaciones">Erro ao carregar importações</string>
+    <string name="label_fecha_prefijo">Data: </string>
+    <string name="label_importacion_del">Importação de </string>
+    <string name="label_importacion_prefijo">Importação #</string>
+    <string name="title_agregar_importacion">Adicionar Importação</string>
+    <string name="title_editar_importacion">Editar Importação</string>
+    <string name="section_datos_importacion">Dados da Importação</string>
+    <string name="field_importador">Importador *</string>
+    <string name="field_fecha_importacion">Data de Importação *</string>
+    <string name="error_seleccione_importador">Selecione um importador</string>
+    <string name="title_detalle_importacion">Detalhe de Importação</string>
+    <string name="label_importador_campo">Importador:</string>
+    <string name="label_fecha_campo">Data:</string>
+
+    <!-- ________________________BODEGAS________________________________ -->
+    <string name="title_bodegas">Depósitos</string>
+    <string name="subtitle_bodegas">Gestão de depósitos de armazenamento</string>
+    <string name="hint_buscar_bodega">Buscar depósito...</string>
+    <string name="label_distrito">Distrito</string>
+    <string name="label_nombre_bodega">Nome do depósito</string>
+    <string name="label_direccion_bodega">Endereço do depósito</string>
+    <string name="hint_nombre_bodega">Nome do depósito</string>
+    <string name="hint_direccion_bodega">Endereço do depósito</string>
+    <string name="title_nueva_bodega">Novo Depósito</string>
+    <string name="title_editar_bodega">Editar Depósito</string>
+    <string name="title_eliminar_bodega">Excluir Depósito</string>
+    <string name="msg_confirmar_eliminar_bodega">Deseja excluir \'%s\'?</string>
+    <string name="msg_bodega_eliminada">Depósito excluído</string>
+    <string name="error_cargar_bodegas">Erro ao carregar depósitos</string>
+    <string name="error_guardar_bodega">Erro ao salvar depósito</string>
+
+    <!-- ________________________SECCIONES________________________________ -->
+    <string name="title_secciones">Seções</string>
+    <string name="subtitle_secciones">Gestão de níveis por depósito</string>
+    <string name="hint_buscar_seccion">Buscar seção por nível...</string>
+    <string name="label_bodega">Depósito</string>
+    <string name="label_nivel_seccion">Nível da Seção</string>
+    <string name="label_seccion">Seção</string>
+    <string name="hint_nivel_seccion">Seção/Nível do depósito</string>
+    <string name="label_capacidad_max">Capacidade Máxima</string>
+    <string name="hint_capacidad_max">Cap. Máxima</string>
+    <string name="label_capacidad_actual">Capacidade Atual</string>
+    <string name="hint_capacidad_actual">Cap. Atual</string>
+    <string name="title_nueva_seccion">Nova Seção</string>
+    <string name="title_editar_seccion">Editar Seção</string>
+    <string name="title_detalle_seccion">Detalhe da Seção</string>
+    <string name="title_eliminar_seccion">Excluir Seção</string>
+    <string name="msg_confirmar_eliminar_seccion">Deseja excluir a seção nível %d?</string>
+    <string name="msg_seccion_eliminada">Seção excluída</string>
+    <string name="error_cargar_secciones">Erro ao carregar seções</string>
+    <string name="error_guardar_seccion">Erro ao salvar seção</string>
+
+    <!-- ________________________VENTAS________________________________ -->
+    <string name="title_ventas">Vendas</string>
+    <string name="subtitle_ventas">Registro de vendas realizadas</string>
+    <string name="hint_buscar_venta">Buscar venda...</string>
+    <string name="label_importador">Importador</string>
+    <string name="label_vehiculo">Veículo</string>
+    <string name="label_fecha_venta">Data da Venda</string>
+    <string name="label_precio_venta">Preço de Venda</string>
+    <string name="hint_precio">0.00</string>
+    <string name="title_nueva_venta">Nova Venda</string>
+    <string name="title_editar_venta">Editar Venda</string>
+    <string name="title_eliminar_venta">Excluir Venda</string>
+    <string name="label_venta_numero">Venda #%d</string>
+    <string name="msg_confirmar_eliminar_venta">Deseja excluir a venda #%d?</string>
+    <string name="msg_venta_eliminada">Venda excluída</string>
+    <string name="error_cargar_ventas">Erro ao carregar vendas</string>
+    <string name="error_guardar_venta">Erro ao salvar venda</string>
+    <string name="error_no_importadores">Não há importadores disponíveis</string>
+    <string name="error_no_vehiculos">Não há veículos disponíveis</string>
+    <string name="error_no_vehiculos_listos">Não há veículos disponíveis (Estado: pronto/em depósito)</string>
+    <string name="error_precio_minimo">O preço deve ser maior que 0</string>
+    <string name="error_precio_invalido">Insira um preço válido</string>
+
+    <!-- Elementos da tela de Veículos -->
+    <!-- Comuns -->
+    <string name="btn_guardar">Salvar</string>
+    <string name="btn_actualizar">Atualizar</string>
+    <string name="btn_cerrar">Fechar</string>
+    <string name="btn_limpiar">Limpar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="modal_titulo_confirmacion">Confirmação</string>
+    <string name="msg_confirmacion_pregunta">Tem certeza de que deseja realizar esta ação?</string>
+    <string name="desc_agregar_nuevo">Adicionar novo</string>
+    <string name="desc_boton_buscar">Buscar</string>
+
+    <!-- ________________________VEÍCULOS________________________________ -->
+    <string name="title_vehiculos">Veículos</string>
+    <string name="subtitle_inventario">Sistema de inventário</string>
+    <string name="hint_buscar">Buscar Veículo</string>
+    <string name="modal_titulo_registro">Registro de Veículo</string>
+    <string name="modal_titulo_detalle">Detalhes do Veículo</string>
+    <string name="modal_titulo_actualizar">Atualizar Veículo</string>
+    <string name="label_identidad_vehiculo">Identidade do Veículo</string>
+    <string name="label_logistica_inventario">Logística e Inventário</string>
+    <string name="label_tipo">Tipo</string>
+    <string name="label_modelo">Modelo</string>
+    <string name="label_importacion">Importação</string>
+    <string name="label_vin">VIN</string>
+    <string name="label_anio">Ano</string>
+    <string name="label_color">Cor</string>
+    <string name="label_estado">Estado</string>
+    <string name="hint_vin">Insira o número VIN</string>
+    <string name="hint_color">Insira a cor do veículo</string>
+    <string name="placeholder_empty">---</string>
+    <string name="hint_seleccione_opcion">Selecione uma opção...</string>
+    <string name="hint_seleccione_anio">Selecione o Ano</string>
+    <string name="hint_seleccione_estado">Selecione o Estado</string>
+    <string name="msg_vehiculo_guardado">Veículo salvo</string>
+    <string name="msg_vehiculo_eliminado">Excluído com sucesso</string>
+    <string name="msg_confirmar_eliminar_vehiculo">Excluir veículo VIN: %1$s?</string>
+    <string name="error_cargar_vehiculos">Erro ao carregar veículos</string>
+    <string name="error_vin_invalido">VIN inválido</string>
+    <string name="error_vin_duplicado">VIN duplicado</string>
+    <string name="error_campos_requeridos">Preencha os campos obrigatórios</string>
+    <string name="error_cargar_catalogos">Erro nos catálogos</string>
+
+    <!-- ________________________AVARIAS________________________________ -->
+    <string name="title_desperfectos">Avarias</string>
+    <string name="subtitle_desperfectos">Registro de danos em veículos</string>
+    <string name="subtitle_desperfectos_filtrado">Filtrado por VIN: %1$s</string>
+    <string name="subtitle_desperfectos_todos">Todas as avarias registradas</string>
+    <string name="hint_buscar_desperfecto">Buscar avaria ou VIN...</string>
+    <string name="label_evidencia">Evidência</string>
+    <string name="label_registrado_fecha">Registrado: %1$s</string>
+    <string name="msg_eliminar_foto">Deseja excluir esta foto de evidência?</string>
+    <string name="msg_eliminar_foto_pregunta">Deseja excluir esta foto?</string>
+    <string name="title_opciones_imagen">Opções de Imagem</string>
+    <string name="title_agregar_evidencia">Adicionar Evidência</string>
+    <string name="label_camara">Câmera</string>
+    <string name="label_galeria">Galeria</string>
+
+    <!-- Formulário de Avarias -->
+    <string name="title_nuevo_desperfecto">Nova Avaria</string>
+    <string name="title_detalle_desperfecto">Detalhe da Avaria</string>
+    <string name="title_editar_desperfecto">Editar Avaria</string>
+    <string name="label_seleccione_vehiculo">Selecione o Veículo</string>
+    <string name="label_tipo_desperfecto">Tipo de Avaria</string>
+    <string name="label_descripcion_desperfecto">Descrição da Avaria</string>
+    <string name="hint_descripcion_desperfecto">Descreva a avaria encontrada...</string>
+    <string name="title_fotos_evidencia">Fotos de Evidência</string>
+    <string name="btn_agregar_foto">+ ADICIONAR</string>
+    <string name="desc_lista_fotos">Lista de fotos de evidência</string>
+    <string name="msg_foto_anadida">Foto adicionada</string>
+    <string name="msg_foto_guardada">Foto salva</string>
+    <string name="msg_foto_eliminada">Foto excluída</string>
+    <string name="msg_max_fotos">Máximo de 5 fotos permitidas</string>
+    <string name="msg_desperfecto_registrado">Registrado com sucesso</string>
+    <string name="msg_desperfecto_actualizado">Atualizado com sucesso</string>
+    <string name="msg_confirmar_eliminar_desperfecto">Deseja excluir esta avaria e suas fotos?\n(%1$s)</string>
+    <string name="label_foto_numero">Foto #%1$d</string>
+    <string name="label_evidencia_fecha">Evidência - %1$s</string>
+    <string name="error_leer_imagen">Erro ao ler imagem</string>
+    <string name="error_cargar_imagen">Não foi possível carregar a imagem</string>
+    <string name="error_cargar_desperfectos">Erro ao carregar avarias</string>
+    <string name="error_vehiculo_no_identificado">Erro: Veículo não identificado</string>
+    <string name="error_guardar_foto">Erro ao salvar foto</string>
+    <string name="error_foto_requerida">Adicione pelo menos uma foto</string>
+    <string name="msg_campo_requerido">Obrigatório</string>
+
+    <!-- Marcas -->
+    <string name="title_marcas">Marcas</string>
+    <string name="subtitle_marcas">Catálogo de marcas disponíveis</string>
+    <string name="hint_buscar_marca">Buscar marca...</string>
+    <string name="title_nueva_marca">Nova Marca</string>
+    <string name="title_editar_marca">Editar Marca</string>
+    <string name="title_detalle_marca">Detalhe da Marca</string>
+    <string name="error_nombre_marca">Insira o nome da marca</string>
+    <string name="label_id_marca">ID: </string>
+    <string name="error_cargar_marcas">Erro ao carregar marcas</string>
+    <string name="error_guardar_marca">Erro ao salvar marca</string>
+    <string name="title_eliminar_marca">Excluir Marca</string>
+    <string name="msg_eliminar_marca">Deseja excluir \'%1$s\'?</string>
+    <string name="msg_marca_eliminada">Marca excluída</string>
+    <!-- Fim dos elementos de Marca -->
+
+    <!--            COMUNS             -->
+    <!--Modal de Opções-->
+    <string name="title_options">Opções</string>
+    <string name="view">Ver</string>
+    <string name="update">Editar</string>
+    <string name="delete">Excluir</string>
+
+    <!-- Comuns reutilizáveis -->
+    <string name="error_cargar_datos">Erro ao carregar dados</string>
+    <string name="msg_operacion_fallida">Erro ao realizar a operação.</string>
+    <string name="msg_operacion_exitosa">Operação realizada com sucesso.</string>
+    <string name="msg_accion_irreversible">Esta ação não pode ser desfeita.</string>
+
+    <!-- Transporte -->
+    <string name="title_nuevo_transporte">Novo Transporte</string>
+    <string name="title_editar_transporte">Editar Transporte</string>
+    <string name="title_detalle_transporte">Detalhe de Transporte</string>
+    <string name="title_eliminar_transporte">Excluir Transporte</string>
+    <string name="label_transporte">Transporte</string>
+    <string name="subtitle_transporte">Gestão de unidades de transporte</string>
+    <string name="hint_buscar_transporte">Buscar por placa ou descrição...</string>
+    <string name="subtitle_form_transporte">Preencha os dados do transporte</string>
+    <string name="msg_transporte_capacidad">O transporte atingiu sua capacidade máxima para este dia</string>
+    <string name="error_cargar_transportes">Erro ao carregar transportes</string>
+    <string name="field_tipo_transporte">Tipo de Transporte *</string>
+    <string name="hint_seleccione_tipo_transporte">Selecione o tipo</string>
+    <string name="error_seleccione_tipo_transporte">Selecione o tipo de transporte</string>
+    <string name="field_placa">Placa *</string>
+    <string name="hint_placa">Ex: P-123-456</string>
+    <string name="field_descripcion_opcional">Descrição (opcional)</string>
+    <string name="hint_descripcion_transporte">Descrição do transporte</string>
+    <string name="label_tipo_transporte">TIPO DE TRANSPORTE</string>
+    <string name="label_descripcion_detalle">DESCRIÇÃO</string>
+
+    <!-- Funcionários -->
+    <string name="title_nuevo_personal">Novo Funcionário</string>
+    <string name="title_editar_personal">Editar Funcionário</string>
+    <string name="title_eliminar_personal">Excluir Funcionário</string>
+    <string name="label_personal_interno">Funcionários</string>
+    <string name="subtitle_personal">Gestão de funcionários</string>
+    <string name="hint_buscar_personal">Buscar por nome ou cargo...</string>
+    <string name="subtitle_form_personal">Preencha os dados do funcionário</string>
+    <string name="error_cargar_personal">Erro ao carregar funcionários</string>
+    <string name="hint_nombre_personal">Nome do funcionário</string>
+    <string name="hint_apellido_personal">Sobrenome do funcionário</string>
+    <string name="field_cargo">Cargo *</string>
+    <string name="hint_cargo">Cargo ou função</string>
+    <string name="hint_seleccione_cargo">Selecione um cargo</string>
+    <string name="cargo_supervisor">Supervisor</string>
+    <string name="cargo_empleado">Funcionário</string>
+    <string name="label_nombre">NOME</string>
+    <string name="label_apellido">SOBRENOME</string>
+    <string name="label_cargo">CARGO</string>
+
+    <!-- Movimentação -->
+    <string name="title_nuevo_movimiento">Nova Movimentação</string>
+    <string name="title_editar_movimiento">Editar Movimentação</string>
+    <string name="title_eliminar_movimiento">Excluir Movimentação</string>
+    <string name="label_movimientos">Movimentações</string>
+    <string name="subtitle_movimiento">Gestão de movimentações de veículos</string>
+    <string name="hint_buscar_movimiento">Buscar por tipo, data ou motivo...</string>
+    <string name="subtitle_form_movimiento">Preencha os dados da movimentação</string>
+    <string name="error_cargar_movimientos">Erro ao carregar movimentações</string>
+    <string name="field_tipo_movimiento">Tipo de Movimentação *</string>
+    <string name="hint_tipo_movimiento">Entrada / Saída</string>
+    <string name="field_fecha">Data *</string>
+    <string name="hint_fecha_formato">aaaa-MM-dd</string>
+    <string name="field_vehiculo">Veículo *</string>
+    <string name="hint_seleccione_vehiculo">Selecione o veículo</string>
+    <string name="field_transporte">Transporte *</string>
+    <string name="hint_seleccione_transporte">Selecione o transporte</string>
+    <string name="field_personal_interno">Funcionário Interno *</string>
+    <string name="hint_seleccione_personal">Selecione o funcionário</string>
+    <string name="field_bodega">Depósito *</string>
+    <string name="hint_seleccione_bodega">Selecione o depósito</string>
+    <string name="field_motivo">Motivo *</string>
+    <string name="hint_motivo">Motivo da movimentação</string>
+    <string name="label_tipo_movimiento">TIPO DE MOVIMENTAÇÃO</string>
+    <string name="label_fecha">DATA</string>
+    <string name="label_motivo">MOTIVO</string>
+    <string name="label_vehiculo_vin">VEÍCULO (VIN)</string>
+    <string name="label_transporte_detalle">TRANSPORTE</string>
+    <string name="label_personal_detalle">FUNCIONÁRIO INTERNO</string>
+    <string name="label_bodega_detalle">DEPÓSITO</string>
+
+    <!-- Navegação -->
+    <string name="nav_home">Início</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_logout">Sair</string>
+    <string name="logout_title">Encerrar sessão</string>
+    <string name="logout_message">Deseja encerrar a sessão atual?</string>
+
+    <!-- Oficina -->
+    <string name="title_talleres">Oficinas</string>
+    <string name="subtitle_talleres">Catálogo de Oficinas disponíveis</string>
+    <string name="hint_buscar_taller">Buscar Oficina</string>
+    <string name="title_nuevo_taller">Nova Oficina</string>
+    <string name="title_editar_taller">Editar Oficina</string>
+    <string name="title_detalle_taller">Detalhe da Oficina</string>
+    <string name="title_eliminar_taller">Excluir Oficina</string>
+    <string name="hint_nombre_taller">Nome da oficina</string>
+    <string name="hint_direccion_taller">Endereço da oficina</string>
+    <string name="hint_telefono_taller">Telefone da oficina</string>
+    <string name="label_autorizado_pregunta">Oficina autorizada?</string>
+    <string name="label_autorizado">Autorizada</string>
+    <string name="label_no_autorizado">Não autorizada</string>
+    <string name="error_cargar_talleres">Erro ao carregar oficinas</string>
+    <string name="error_guardar_taller">Erro ao salvar oficina</string>
+    <string name="msg_eliminar_taller">Deseja excluir \'%1$s\'?</string>
+    <string name="msg_taller_eliminado">Oficina excluída</string>
+    <string name="error_nombre_taller">Insira o nome da oficina</string>
+    <string name="error_direccion_taller">Insira o endereço da oficina</string>
+    <string name="error_telefono_taller">Insira um telefone válido (0000-0000)</string>
+    <string name="item_presiona_opciones">Toque para ver opções</string>
+
+    <!-- Reparação -->
+    <string name="title_reparaciones">Reparações</string>
+    <string name="subtitle_reparaciones">Catálogo de Reparações disponíveis</string>
+    <string name="hint_buscar_reparacion">Buscar Reparação</string>
+    <string name="title_nueva_reparacion">Nova Reparação</string>
+    <string name="title_editar_reparacion">Editar Reparação</string>
+    <string name="title_detalle_reparacion">Detalhe de Reparação</string>
+    <string name="title_eliminar_reparacion">Excluir Reparação</string>
+    <string name="msg_eliminar_reparacion">Deseja excluir esta reparação?</string>
+    <string name="msg_reparacion_registrada">Reparação registrada</string>
+    <string name="msg_reparacion_actualizada">Reparação atualizada</string>
+    <string name="msg_reparacion_eliminada">Reparação excluída</string>
+    <string name="error_cargar_reparaciones">Erro ao carregar reparações</string>
+    <string name="error_registrar_reparacion">Erro ao registrar reparação</string>
+    <string name="error_actualizar_reparacion">Erro ao atualizar reparação</string>
+    <string name="error_verificar_vehiculo">Erro ao verificar veículo</string>
+    <string name="error_vehiculo_no_encontrado">Veículo associado não encontrado</string>
+    <string name="error_apto_y_requiere">Não pode ser apto para venda e requerer outra reparação ao mesmo tempo</string>
+    <string name="error_vehiculo_no_en_reparacion">O veículo não está em reparação, não pode ser marcado como apto</string>
+    <string name="label_taller">Oficina</string>
+    <string name="label_fecha_inicio">Data de início</string>
+    <string name="label_fecha_fin">Data de término</string>
+    <string name="hint_buscar_vehiculo">Buscar veículo...</string>
+    <string name="hint_buscar_taller_reparacion">Buscar oficina...</string>
+    <string name="btn_seleccionar">Selecionar</string>
+    <string name="hint_descripcion_trabajo">Descrição do trabalho</string>
+    <string name="cb_apto_para_venta">Apto para venda</string>
+    <string name="cb_requiere_otra_reparacion">Requer outra reparação</string>
+    <string name="error_seleccione_vehiculo">Selecione um veículo</string>
+    <string name="error_seleccione_taller">Selecione uma oficina</string>
+    <string name="error_seleccione_fecha_inicio">Selecione a data de início</string>
+    <string name="error_descripcion_trabajo">Insira a descrição do trabalho</string>
+    <string name="label_vehiculo_id">Veículo ID: </string>
+    <string name="label_taller_id">Oficina ID: </string>
+    <string name="label_fecha_inicio_detalle">Data de início: </string>
+    <string name="label_fecha_fin_detalle">Data de término: </string>
+
+    <string name="label_apto_venta_si">✔ Apto para venda</string>
+    <string name="label_apto_venta_no">✘ Não apto para venda</string>
+    <string name="label_requiere_reparacion_si">⚠ Requer outra reparação</string>
+    <string name="label_requiere_reparacion_no">✔ Não requer outra reparação</string>
+
+    <!-- Modelo -->
+    <string name="title_modelos">Modelos</string>
+    <string name="subtitle_modelos">Catálogo de Modelos disponíveis</string>
+    <string name="hint_buscar_modelo">Buscar Modelo</string>
+    <string name="title_nuevo_modelo">Novo Modelo</string>
+    <string name="title_editar_modelo">Editar Modelo</string>
+    <string name="title_detalle_modelo">Detalhe de Modelo</string>
+    <string name="title_eliminar_modelo">Excluir Modelo</string>
+    <string name="msg_eliminar_modelo">Deseja excluir \'%1$s\'?</string>
+    <string name="msg_modelo_eliminado">Modelo excluído</string>
+    <string name="error_cargar_modelos">Erro ao carregar modelos</string>
+    <string name="error_guardar_modelo">Erro ao salvar modelo</string>
+    <string name="error_eliminar_modelo_trigger">Erro ao excluir modelo</string>
+    <string name="hint_nombre_modelo">Nome do modelo</string>
+    <string name="error_nombre_modelo">Insira o nome do modelo</string>
+    <string name="label_marca_id">Marca ID: </string>
+    <string name="label_nombre_modelo_detalle">Nome: </string>
+
+    <!-- Login -->
+    <string name="error_login_campos">Insira usuário e senha</string>
+    <string name="msg_bienvenido">Bem-vindo %s</string>
+    <string name="error_login_credenciales">Usuário ou senha incorretos</string>
+
+    <!-- Menu Principal -->
+    <string name="msg_cerrar_aplicacion">Deseja fechar o aplicativo?</string>
+
+    <!-- Seção — validações -->
+    <string name="error_seleccione_bodega">Selecione um depósito</string>
+    <string name="error_max_secciones">Este depósito já tem o máximo de 3 seções</string>
+    <string name="error_capacidad_max_limite">A capacidade máxima não pode ser superior a 50</string>
+    <string name="error_capacidad_actual_excede">A capacidade atual não pode exceder a capacidade total</string>
+    <string name="error_nivel_rango">O nível deve estar entre 1 e 3</string>
+    <string name="error_nivel_duplicado">Já existe uma seção com o nível %d neste depósito</string>
+    <string name="label_ocupacion">Ocupação (Atual / Total)</string>
+
+</resources>

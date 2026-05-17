@@ -100,6 +100,9 @@
     <string name="hint_apellido_personal">Staff last name</string>
     <string name="field_cargo">Position *</string>
     <string name="hint_cargo">Job title or position</string>
+    <string name="hint_seleccione_cargo">Select a position</string>
+    <string name="cargo_supervisor">Supervisor</string>
+    <string name="cargo_empleado">Employee</string>
     <string name="label_nombre">NAME</string>
     <string name="label_apellido">LAST NAME</string>
     <string name="label_cargo">POSITION</string>
@@ -358,4 +361,130 @@
     <string name="cb_apto_para_venta">Fit for sale</string>
     <string name="label_apto_venta_si">✔ Fit for sale</string>
     <string name="label_apto_venta_no">✘ Not fit for sale</string>
+
+    <!-- Vehicles -->
+    <string name="title_vehiculos">Vehicles</string>
+    <string name="hint_buscar">Search Vehicle</string>
+    <string name="modal_titulo_registro">Vehicle Registration</string>
+    <string name="modal_titulo_detalle">Vehicle Details</string>
+    <string name="modal_titulo_actualizar">Update Vehicle</string>
+    <string name="label_identidad_vehiculo">Vehicle Identity</string>
+    <string name="label_logistica_inventario">Logistics and Inventory</string>
+    <string name="label_tipo">Type</string>
+    <string name="label_importacion">Import</string>
+    <string name="label_vin">VIN</string>
+    <string name="label_anio">Year</string>
+    <string name="label_color">Color</string>
+    <string name="label_estado">Status</string>
+    <string name="hint_vin">Enter VIN number</string>
+    <string name="hint_color">Enter vehicle color</string>
+    <string name="hint_seleccione_opcion">Select an option...</string>
+    <string name="hint_seleccione_anio">Select Year</string>
+    <string name="hint_seleccione_estado">Select Status</string>
+    <string name="msg_vehiculo_guardado">Vehicle saved</string>
+    <string name="msg_vehiculo_eliminado">Successfully deleted</string>
+    <string name="msg_confirmar_eliminar_vehiculo">Delete vehicle VIN: %1$s?</string>
+    <string name="error_cargar_vehiculos">Error loading vehicles</string>
+    <string name="error_vin_invalido">Invalid VIN</string>
+    <string name="error_vin_duplicado">Duplicate VIN</string>
+    <string name="error_campos_requeridos">Complete all required fields</string>
+    <string name="error_cargar_catalogos">Catalog error</string>
+
+    <!-- Damage Reports -->
+    <string name="title_desperfectos">Damage Reports</string>
+    <string name="subtitle_desperfectos">Vehicle damage records</string>
+    <string name="subtitle_desperfectos_filtrado">Filtered by VIN: %1$s</string>
+    <string name="subtitle_desperfectos_todos">All registered damage reports</string>
+    <string name="hint_buscar_desperfecto">Search damage report or VIN...</string>
+    <string name="label_evidencia">Evidence</string>
+    <string name="label_registrado_fecha">Registered: %1$s</string>
+    <string name="msg_eliminar_foto">Do you want to delete this evidence photo?</string>
+    <string name="msg_eliminar_foto_pregunta">Do you want to delete this photo?</string>
+    <string name="title_opciones_imagen">Image Options</string>
+    <string name="title_agregar_evidencia">Add Evidence</string>
+    <string name="label_camara">Camera</string>
+    <string name="label_galeria">Gallery</string>
+    <string name="title_nuevo_desperfecto">New Damage Report</string>
+    <string name="title_detalle_desperfecto">Damage Report Detail</string>
+    <string name="title_editar_desperfecto">Edit Damage Report</string>
+    <string name="label_seleccione_vehiculo">Select Vehicle</string>
+    <string name="label_tipo_desperfecto">Damage Type</string>
+    <string name="label_descripcion_desperfecto">Damage Description</string>
+    <string name="hint_descripcion_desperfecto">Describe the damage found...</string>
+    <string name="title_fotos_evidencia">Evidence Photos</string>
+    <string name="desc_lista_fotos">Evidence photo list</string>
+    <string name="msg_foto_anadida">Photo added</string>
+    <string name="msg_foto_guardada">Photo saved</string>
+    <string name="msg_foto_eliminada">Photo deleted</string>
+    <string name="msg_max_fotos">Maximum 5 photos allowed</string>
+    <string name="msg_desperfecto_registrado">Successfully registered</string>
+    <string name="msg_desperfecto_actualizado">Successfully updated</string>
+    <string name="msg_confirmar_eliminar_desperfecto">Do you want to delete this damage report and its photos?\n(%1$s)</string>
+    <string name="label_foto_numero">Photo #%1$d</string>
+    <string name="label_evidencia_fecha">Evidence - %1$s</string>
+    <string name="error_leer_imagen">Error reading image</string>
+    <string name="error_cargar_imagen">Could not load image</string>
+    <string name="error_cargar_desperfectos">Error loading damage reports</string>
+    <string name="error_vehiculo_no_identificado">Error: Vehicle not identified</string>
+    <string name="error_guardar_foto">Error saving photo</string>
+    <string name="error_foto_requerida">Add at least one photo</string>
+    <string name="msg_campo_requerido">Required</string>
+
+    <!-- Workshop -->
+    <string name="label_autorizado_pregunta">Authorized workshop?</string>
+    <string name="label_autorizado">Authorized</string>
+    <string name="label_no_autorizado">Unauthorized</string>
+
+    <!-- Repair -->
+    <string name="hint_buscar_vehiculo">Search vehicle...</string>
+    <string name="btn_seleccionar">Select</string>
+    <string name="hint_descripcion_trabajo">Work description</string>
+    <string name="error_seleccione_vehiculo">Select a vehicle</string>
+    <string name="error_seleccione_fecha_inicio">Select start date</string>
+    <string name="error_descripcion_trabajo">Enter work description</string>
+    <string name="label_vehiculo_id">Vehicle ID: </string>
+    <string name="label_fecha_inicio">Start date</string>
+    <string name="label_fecha_fin">End date</string>
+    <string name="label_fecha_inicio_detalle">Start date: </string>
+    <string name="label_fecha_fin_detalle">End date: </string>
+    <string name="error_vehiculo_no_encontrado">Associated vehicle not found</string>
+    <string name="error_verificar_vehiculo">Error verifying vehicle</string>
+
+    <!-- Sales -->
+    <string name="error_no_importadores">No importers available</string>
+    <string name="error_no_vehiculos">No vehicles available</string>
+    <string name="error_precio_minimo">Price must be greater than 0</string>
+    <string name="error_precio_invalido">Enter a valid price</string>
+    <string name="hint_precio">0.00</string>
+    <string name="label_importador">Importer</string>
+    <string name="label_vehiculo">Vehicle</string>
+
+    <!-- Warehouses / Sections -->
+    <string name="label_capacidad_max">Maximum Capacity</string>
+    <string name="label_capacidad_actual">Current Capacity</string>
+    <string name="hint_capacidad_max">Max. Cap.</string>
+    <string name="hint_capacidad_actual">Current Cap.</string>
+    <string name="label_distrito">District</string>
+    <string name="item_presiona_opciones">Press to see options</string>
+
+    <!-- Common -->
+    <string name="msg_operacion_exitosa">Operation completed successfully.</string>
+    <string name="msg_operacion_fallida">Error performing the operation.</string>
+
+    <!-- Login -->
+    <string name="error_login_campos">Enter username and password</string>
+    <string name="msg_bienvenido">Welcome %s</string>
+    <string name="error_login_credenciales">Invalid username or password</string>
+
+    <!-- Main Menu -->
+    <string name="msg_cerrar_aplicacion">Do you want to close the application?</string>
+
+    <!-- Section — validation -->
+    <string name="error_seleccione_bodega">Select a warehouse</string>
+    <string name="error_max_secciones">This warehouse already has the maximum of 3 sections</string>
+    <string name="error_capacidad_max_limite">Maximum capacity cannot exceed 50</string>
+    <string name="error_capacidad_actual_excede">Current capacity cannot exceed maximum capacity</string>
+    <string name="error_nivel_rango">Level must be between 1 and 3</string>
+    <string name="error_nivel_duplicado">A section with level %d already exists in this warehouse</string>
+    <string name="label_ocupacion">Occupancy (Current / Total)</string>
 </resources>
