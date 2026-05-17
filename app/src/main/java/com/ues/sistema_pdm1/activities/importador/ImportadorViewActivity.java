@@ -70,7 +70,7 @@ public class ImportadorViewActivity extends AppCompatActivity {
             }
             poblarVista();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_datos), Toast.LENGTH_SHORT).show();
             finish();
         }
     }
@@ -83,12 +83,12 @@ public class ImportadorViewActivity extends AppCompatActivity {
             nombreCompleto += " de " + apCasadaHeader;
         }
         ((TextView) findViewById(R.id.detail_name)).setText(nombreCompleto);
-        ((TextView) findViewById(R.id.detail_nui)).setText("NUI: " + importador.getNui());
+        ((TextView) findViewById(R.id.detail_nui)).setText(getString(R.string.label_nui_prefijo) + importador.getNui());
 
         // Datos Personales
         ((TextView) findViewById(R.id.detail_first_name)).setText(importador.getNombreImportador());
         ((TextView) findViewById(R.id.detail_last_name)).setText(importador.getApellidoImportador());
-        ((TextView) findViewById(R.id.detail_gender)).setText("M".equals(importador.getGenero()) ? "Masculino" : "Femenino");
+        ((TextView) findViewById(R.id.detail_gender)).setText("M".equals(importador.getGenero()) ? getString(R.string.field_gender_male) : getString(R.string.field_gender_female));
         ((TextView) findViewById(R.id.detail_birthdate)).setText(importador.getFechaNacimiento());
 
         // Apellido de casada (condicional)
@@ -129,10 +129,10 @@ public class ImportadorViewActivity extends AppCompatActivity {
 
         // Importaciones
         List<Importacion> importaciones = importacionDAO.obtenerPor("ID_IMPORTADOR", String.valueOf(importadorId));
-        ((TextView) findViewById(R.id.detail_imports_count)).setText(importaciones.size() + " importación(es)");
+        ((TextView) findViewById(R.id.detail_imports_count)).setText(getString(R.string.msg_cuenta_importaciones, importaciones.size()));
 
         if (importaciones.isEmpty()) {
-            ((TextView) findViewById(R.id.detail_imports_list)).setText("Sin importaciones registradas");
+            ((TextView) findViewById(R.id.detail_imports_list)).setText(getString(R.string.label_no_imports));
         } else {
             StringBuilder sb = new StringBuilder();
             for (Importacion imp : importaciones) {
@@ -155,12 +155,12 @@ public class ImportadorViewActivity extends AppCompatActivity {
         for (int i = 0; i < tels.size(); i++) {
             items[i] = tels.get(i).getNumero() + " (" + tels.get(i).getTipo() + ")";
         }
-        items[tels.size()] = "+ Agregar nuevo teléfono";
+        items[tels.size()] = getString(R.string.label_agregar_telefono);
 
         final List<TelefonoImportador> listaTels = tels;
 
         new AlertDialog.Builder(this)
-            .setTitle("Teléfonos del importador")
+            .setTitle(R.string.title_telefonos_importador)
             .setItems(items, (dialog, which) -> {
                 if (which < listaTels.size()) {
                     confirmarEliminarTelefono(listaTels.get(which));
@@ -168,37 +168,37 @@ public class ImportadorViewActivity extends AppCompatActivity {
                     mostrarDialogoAgregarTelefono();
                 }
             })
-            .setNegativeButton("Cerrar", null)
+            .setNegativeButton(R.string.btn_cerrar, null)
             .show();
     }
 
     private void confirmarEliminarTelefono(TelefonoImportador tel) {
         new AlertDialog.Builder(this)
-            .setTitle("Eliminar teléfono")
-            .setMessage("¿Eliminar el número " + tel.getNumero() + "?")
-            .setPositiveButton("Eliminar", (d, w) -> {
+            .setTitle(R.string.title_eliminar_telefono)
+            .setMessage(getString(R.string.msg_eliminar_numero, tel.getNumero()))
+            .setPositiveButton(R.string.btn_delete, (d, w) -> {
                 try {
                     telefonoDAO.eliminar(tel.getId());
                     poblarVista();
-                    Toast.makeText(this, "Teléfono eliminado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.msg_telefono_eliminado), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(this, Constants.MSG_OPERACION_FALLIDA, Toast.LENGTH_SHORT).show();
                 }
             })
-            .setNegativeButton("Cancelar", null)
+            .setNegativeButton(R.string.btn_cancelar, null)
             .show();
     }
 
     private void mostrarDialogoAgregarTelefono() {
         EditText inputNumero = new EditText(this);
-        inputNumero.setHint("Número de teléfono");
+        inputNumero.setHint(getString(R.string.hint_numero_telefono));
         inputNumero.setInputType(android.text.InputType.TYPE_CLASS_PHONE);
         inputNumero.setPadding(48, 24, 48, 24);
 
         new AlertDialog.Builder(this)
-            .setTitle("Agregar teléfono")
+            .setTitle(R.string.title_agregar_telefono)
             .setView(inputNumero)
-            .setPositiveButton("Agregar", (d, w) -> {
+            .setPositiveButton(R.string.btn_agregar, (d, w) -> {
                 String num = inputNumero.getText().toString().trim();
                 if (num.isEmpty()) {
                     Toast.makeText(this, Constants.MSG_CAMPO_REQUERIDO, Toast.LENGTH_SHORT).show();
@@ -207,12 +207,12 @@ public class ImportadorViewActivity extends AppCompatActivity {
                 try {
                     telefonoDAO.insertar(new TelefonoImportador(0, importadorId, num, Constants.TIPO_TELEFONO_CELULAR));
                     poblarVista();
-                    Toast.makeText(this, "Teléfono agregado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.msg_telefono_agregado), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(this, Constants.MSG_OPERACION_FALLIDA, Toast.LENGTH_SHORT).show();
                 }
             })
-            .setNegativeButton("Cancelar", null)
+            .setNegativeButton(R.string.btn_cancelar, null)
             .show();
     }
 }

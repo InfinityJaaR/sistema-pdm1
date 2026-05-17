@@ -75,7 +75,7 @@ public class ImportadorActivity extends AppCompatActivity {
             importadores = importadorDAO.obtenerTodos();
         } catch (Exception e) {
             importadores = new ArrayList<>();
-            Toast.makeText(this, "Error al cargar importadores", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_importadores), Toast.LENGTH_SHORT).show();
         }
         mostrarImportadores(importadores);
     }
@@ -113,7 +113,7 @@ public class ImportadorActivity extends AppCompatActivity {
         TextView tvDireccion = card.findViewById(R.id.item_direccion);
 
         tvNombre.setText(nombreCompleto(imp));
-        tvNui.setText("NUI: " + imp.getNui());
+        tvNui.setText(getString(R.string.label_nui_prefijo) + imp.getNui());
 
         String email = imp.getCorreoElectronico();
         tvEmail.setText((email != null && !email.isEmpty()) ? email : "—");

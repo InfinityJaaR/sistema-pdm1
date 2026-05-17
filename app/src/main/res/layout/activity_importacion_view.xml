@@ -40,7 +40,7 @@
                 android:id="@+id/view_importacion_titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Importación"
+                android:text="@string/title_importacion"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_light" />
@@ -89,7 +89,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Detalle de Importación"
+                    android:text="@string/title_detalle_importacion"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary"
@@ -104,7 +104,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Importador:"
+                        android:text="@string/label_importador_campo"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginEnd="12dp"
@@ -127,7 +127,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fecha:"
+                        android:text="@string/label_fecha_campo"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
                         android:layout_marginEnd="12dp"

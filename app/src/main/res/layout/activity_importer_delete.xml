@@ -78,7 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:text="@string/btn_cancel"
+                android:text="@string/btn_cancelar"
                 android:backgroundTint="@color/primary_blue_light"
                 android:textColor="@color/primary_blue_dark"
                 android:layout_marginStart="8dp" />

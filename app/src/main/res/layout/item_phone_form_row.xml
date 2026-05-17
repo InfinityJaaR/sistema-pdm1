@@ -16,7 +16,7 @@
             android:id="@+id/input_phone_extra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Teléfono adicional"
+            android:hint="@string/hint_telefono_adicional"
             android:inputType="phone"
             android:textColor="@color/text_primary" />
 

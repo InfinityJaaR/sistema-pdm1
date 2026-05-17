@@ -67,7 +67,7 @@ public class ImportacionFormActivity extends AppCompatActivity {
         importacionDAO = new GenericDAO<>(this, Importacion.class, "importacion");
         importadorDAO  = new GenericDAO<>(this, Importador.class, "importador");
 
-        formTitle.setText(esEdicion ? "Editar Importación" : "Agregar Importación");
+        formTitle.setText(esEdicion ? getString(R.string.title_editar_importacion) : getString(R.string.title_agregar_importacion));
 
         configurarSpinnerImportador();
         configurarDatePicker();
@@ -117,7 +117,7 @@ public class ImportacionFormActivity extends AppCompatActivity {
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_datos), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -129,7 +129,7 @@ public class ImportacionFormActivity extends AppCompatActivity {
             return;
         }
         if (importadorSeleccionado == null) {
-            Toast.makeText(this, "Seleccione un importador", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_seleccione_importador), Toast.LENGTH_SHORT).show();
             return;
         }
 

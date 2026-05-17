@@ -90,6 +90,65 @@
     <string name="label_imports_count">Importaciones: </string>
     <string name="label_no_imports">Sin importaciones registradas</string>
 
+    <!-- Importadores - Vista lista -->
+    <string name="error_cargar_importadores">Error al cargar importadores</string>
+
+    <!-- Importadores - Formulario -->
+    <string name="hint_fecha_dd_mm_yyyy">DD/MM/YYYY</string>
+    <string name="btn_agregar_contactos">Agregar más contactos</string>
+    <string name="hint_telefono_adicional">Teléfono adicional</string>
+    <string name="error_seleccione_distrito">Seleccione un distrito</string>
+    <string name="error_nui_longitud">El NUI debe tener exactamente %d caracteres</string>
+    <string name="error_edad_minima">El importador debe ser mayor de 18 años</string>
+    <string name="error_fecha_nacimiento_invalida">Fecha de nacimiento no válida</string>
+    <string name="error_email_invalido">El correo electrónico no es válido</string>
+
+    <!-- Importadores - Vista detalle -->
+    <string name="label_nui_prefijo">NUI: </string>
+    <string name="label_nombre_campo">Nombre:</string>
+    <string name="label_apellido_campo">Apellido:</string>
+    <string name="label_apellido_casada">Ap. Casada:</string>
+    <string name="label_genero">Género:</string>
+    <string name="label_nacimiento">Nacimiento:</string>
+    <string name="label_nui_campo">NUI:</string>
+    <string name="label_responsable">Responsable:</string>
+    <string name="label_total">Total:</string>
+    <string name="label_ultimas_importaciones">Últimas importaciones:</string>
+    <string name="btn_gestionar_telefonos">Gestionar teléfonos</string>
+    <string name="msg_cuenta_importaciones">%d importación(es)</string>
+
+    <!-- Importadores - Diálogos de teléfonos -->
+    <string name="title_telefonos_importador">Teléfonos del importador</string>
+    <string name="label_agregar_telefono">+ Agregar nuevo teléfono</string>
+    <string name="title_eliminar_telefono">Eliminar teléfono</string>
+    <string name="msg_eliminar_numero">¿Eliminar el número %s?</string>
+    <string name="msg_telefono_eliminado">Teléfono eliminado</string>
+    <string name="title_agregar_telefono">Agregar teléfono</string>
+    <string name="hint_numero_telefono">Número de teléfono</string>
+    <string name="btn_agregar">Agregar</string>
+    <string name="msg_telefono_agregado">Teléfono agregado</string>
+    <string name="label_importador_prefijo">Importador #</string>
+
+    <!-- ________________________IMPORTACIONES________________________________ -->
+
+    <string name="title_importaciones">Importaciones</string>
+    <string name="title_importacion">Importación</string>
+    <string name="subtitle_importaciones">Registro de importaciones</string>
+    <string name="hint_buscar_importacion">Buscar importación...</string>
+    <string name="error_cargar_importaciones">Error al cargar importaciones</string>
+    <string name="label_fecha_prefijo">Fecha: </string>
+    <string name="label_importacion_del">Importación del </string>
+    <string name="label_importacion_prefijo">Importación #</string>
+    <string name="title_agregar_importacion">Agregar Importación</string>
+    <string name="title_editar_importacion">Editar Importación</string>
+    <string name="section_datos_importacion">Datos de la Importación</string>
+    <string name="field_importador">Importador *</string>
+    <string name="field_fecha_importacion">Fecha de Importación *</string>
+    <string name="error_seleccione_importador">Seleccione un importador</string>
+    <string name="title_detalle_importacion">Detalle de Importación</string>
+    <string name="label_importador_campo">Importador:</string>
+    <string name="label_fecha_campo">Fecha:</string>
+
 
 
 
