@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +16,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.ues.sistema_pdm1.R;
 import com.ues.sistema_pdm1.data.dao.GenericDAO;
+import com.ues.sistema_pdm1.models.Bodega;
 import com.ues.sistema_pdm1.models.Importacion;
 import com.ues.sistema_pdm1.models.Modelo;
 import com.ues.sistema_pdm1.models.Seccion;
@@ -46,7 +46,6 @@ public class VehiculoViewDialog extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Usamos un estilo que no tenga título para el diálogo
         setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_Material_Light_Dialog_MinWidth);
     }
 
@@ -64,11 +63,8 @@ public class VehiculoViewDialog extends DialogFragment {
                 .setView(view)
                 .create();
 
-        // Aplicamos fondo transparente para que se vean los bordes redondeados del CardView
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            // Opcional: animaciones de entrada
-            dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
         }
 
         btnCerrar.setOnClickListener(v -> dialog.dismiss());
@@ -100,6 +96,7 @@ public class VehiculoViewDialog extends DialogFragment {
             GenericDAO<Modelo> modeloDAO = new GenericDAO<>(getActivity(), Modelo.class, "modelo");
             GenericDAO<TipoVehiculo> tipoDAO = new GenericDAO<>(getActivity(), TipoVehiculo.class, "tipo_vehiculo");
             GenericDAO<Seccion> seccionDAO = new GenericDAO<>(getActivity(), Seccion.class, "seccion");
+            GenericDAO<Bodega> bodegaDAO = new GenericDAO<>(getActivity(), Bodega.class, "bodega");
             GenericDAO<Importacion> importacionDAO = new GenericDAO<>(getActivity(), Importacion.class, "importacion");
 
             Modelo m = modeloDAO.obtenerPorId(args.getInt("ID_MODELO"));
@@ -109,7 +106,13 @@ public class VehiculoViewDialog extends DialogFragment {
 
             if (m != null) tvModelo.setText(m.getNombreModelo());
             if (t != null) tvTipo.setText(t.getDescripcionTipoVehiculo());
-            if (s != null) tvSeccion.setText(s.toString());
+            
+            if (s != null) {
+                Bodega b = bodegaDAO.obtenerPorId(s.getIdBodega());
+                if (b != null) s.setNombreBodega(b.getNombreBodega());
+                tvSeccion.setText(s.toString());
+            }
+
             if (i != null) tvImportacion.setText(i.toString());
 
         } catch (Exception e) {
