@@ -153,8 +153,66 @@
 
 
 
+    <!-- ________________________BODEGAS________________________________ -->
+    <string name="title_bodegas">Bodegas</string>
+    <string name="subtitle_bodegas">Gestión de bodegas de almacenamiento</string>
+    <string name="hint_buscar_bodega">Buscar bodega...</string>
+    <string name="label_distrito">Distrito</string>
+    <string name="label_nombre_bodega">Nombre de la bodega</string>
+    <string name="label_direccion_bodega">Dirección de la bodega</string>
+    <string name="hint_nombre_bodega">Nombre de la bodega</string>
+    <string name="hint_direccion_bodega">Dirección de la bodega</string>
+    <string name="title_nueva_bodega">Nueva Bodega</string>
+    <string name="title_editar_bodega">Editar Bodega</string>
+    <string name="title_eliminar_bodega">Eliminar Bodega</string>
+    <string name="msg_confirmar_eliminar_bodega">¿Desea eliminar \'%s\'?</string>
+    <string name="msg_bodega_eliminada">Bodega eliminada</string>
+    <string name="error_cargar_bodegas">Error al cargar bodegas</string>
+    <string name="error_guardar_bodega">Error al guardar bodega</string>
 
+    <!-- ________________________SECCIONES________________________________ -->
+    <string name="title_secciones">Secciones</string>
+    <string name="subtitle_secciones">Gestión de niveles por bodega</string>
+    <string name="hint_buscar_seccion">Buscar sección por nivel...</string>
+    <string name="label_bodega">Bodega</string>
+    <string name="label_nivel_seccion">Nivel de Sección</string>
+    <string name="label_seccion">Sección</string>
+    <string name="hint_nivel_seccion">Seccion/Nivel de la bodega</string>
+    <string name="label_capacidad_max">Capacidad Máxima</string>
+    <string name="hint_capacidad_max">Cap. Máxima</string>
+    <string name="label_capacidad_actual">Capacidad Actual</string>
+    <string name="hint_capacidad_actual">Cap. Actual</string>
+    <string name="title_nueva_seccion">Nueva Sección</string>
+    <string name="title_editar_seccion">Editar Sección</string>
+    <string name="title_detalle_seccion">Detalle de Sección</string>
+    <string name="title_eliminar_seccion">Eliminar Sección</string>
+    <string name="msg_confirmar_eliminar_seccion">¿Desea eliminar la sección nivel %d?</string>
+    <string name="msg_seccion_eliminada">Sección eliminada</string>
+    <string name="error_cargar_secciones">Error al cargar secciones</string>
+    <string name="error_guardar_seccion">Error al guardar sección</string>
 
+    <!-- ________________________VENTAS________________________________ -->
+    <string name="title_ventas">Ventas</string>
+    <string name="subtitle_ventas">Registro de ventas realizadas</string>
+    <string name="hint_buscar_venta">Buscar venta...</string>
+    <string name="label_importador">Importador</string>
+    <string name="label_vehiculo">Vehículo</string>
+    <string name="label_fecha_venta">Fecha de Venta</string>
+    <string name="label_precio_venta">Precio de Venta</string>
+    <string name="hint_precio">0.00</string>
+    <string name="title_nueva_venta">Nueva Venta</string>
+    <string name="title_editar_venta">Editar Venta</string>
+    <string name="title_eliminar_venta">Eliminar Venta</string>
+    <string name="label_venta_numero">Venta #%d</string>
+    <string name="msg_confirmar_eliminar_venta">¿Desea eliminar la venta #%d?</string>
+    <string name="msg_venta_eliminada">Venta eliminada</string>
+    <string name="error_cargar_ventas">Error al cargar ventas</string>
+    <string name="error_guardar_venta">Error al guardar venta</string>
+    <string name="error_no_importadores">No hay importadores disponibles</string>
+    <string name="error_no_vehiculos">No hay vehículos disponibles</string>
+    <string name="error_no_vehiculos_listos">No hay vehículos disponibles (Estado: listo/en bodega)</string>
+    <string name="error_precio_minimo">El precio debe ser mayor a 0</string>
+    <string name="error_precio_invalido">Ingrese un precio válido</string>
 
     <!-- Elementos de la pantalla de Vehículos -->
     <!-- Comunes -->
@@ -177,7 +235,6 @@
     <string name="modal_titulo_detalle">Detalles del Vehículo</string>
     <string name="modal_titulo_actualizar">Actualizar Vehículo</string>
     <string name="label_tipo">Tipo</string>
-    <string name="label_seccion">Sección</string>
     <string name="label_modelo">Modelo</string>
     <string name="label_importacion">Importación</string>
     <string name="label_vin">VIN</string>
@@ -222,25 +279,6 @@
     <string name="msg_eliminar_marca">¿Desea eliminar \'%1$s\'?</string>
     <string name="msg_marca_eliminada">Marca eliminada</string>
     <!-- Fin de elementos de Marca -->
-
-    <!-- Elementos de la pantalla de Bodegas -->
-    <string name="title_bodegas">Bodegas</string>
-    <string name="subtitle_bodegas">Gestión de bodegas de almacenamiento</string>
-    <string name="hint_buscar_bodega">Buscar bodega...</string>
-    <string name="label_distrito">Distrito</string>
-    <string name="label_nombre_bodega">Nombre de la bodega</string>
-    <string name="label_direccion_bodega">Dirección de la bodega</string>
-    <string name="hint_nombre_bodega">Nombre de la bodega</string>
-    <string name="hint_direccion_bodega">Dirección de la bodega</string>
-    <!-- Fin de elementos de Bodega -->
-
-    <!-- Elementos de la pantalla de Secciones -->
-    <string name="title_secciones">Secciones</string>
-    <string name="subtitle_secciones">Gestión de niveles por bodega</string>
-    <string name="hint_buscar_seccion">Buscar sección por nivel...</string>
-    <string name="label_bodega">Bodega</string>
-    <string name="label_nivel_seccion">Nivel de Sección</string>
-    <!-- Fin de elementos de Seccion -->
 
     <!--            COMUNES             -->
     <!--Modal de Opciones-->
@@ -371,7 +409,6 @@
     <string name="error_vehiculo_no_encontrado">No se encontró el vehículo asociado</string>
     <string name="error_apto_y_requiere">No puede ser apto para venta y requerir otra reparación a la vez</string>
     <string name="error_vehiculo_no_en_reparacion">El vehículo no está en reparación, no se puede marcar como apto</string>
-    <string name="label_vehiculo">Vehículo</string>
     <string name="label_taller">Taller</string>
     <string name="label_fecha_inicio">Fecha inicio</string>
     <string name="label_fecha_fin">Fecha fin</string>

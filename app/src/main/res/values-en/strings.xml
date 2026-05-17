@@ -305,4 +305,12 @@
     <string name="title_eliminar_marca">Delete Brand</string>
     <string name="msg_eliminar_marca">Do you want to delete \'%1$s\'?</string>
     <string name="msg_marca_eliminada">Brand deleted</string>
+
+    <!-- Sales -->
+    <string name="title_ventas">Sales</string>
+    <string name="subtitle_ventas">Sales records</string>
+    <string name="label_precio_venta">Sale Price</string>
+    <string name="label_fecha_venta">Sale Date</string>
+    <string name="title_nueva_venta">New Sale</string>
+    <string name="error_no_vehiculos_listos">No vehicles available (Status: ready/in warehouse)</string>
 </resources>
