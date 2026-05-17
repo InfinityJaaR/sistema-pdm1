@@ -244,4 +244,12 @@
     <string name="label_transporte_detalle">TRANSPORT</string>
     <string name="label_personal_detalle">INTERNAL STAFF</string>
     <string name="label_bodega_detalle">WAREHOUSE</string>
+
+    <!-- Sales -->
+    <string name="title_ventas">Sales</string>
+    <string name="subtitle_ventas">Sales records</string>
+    <string name="label_precio_venta">Sale Price</string>
+    <string name="label_fecha_venta">Sale Date</string>
+    <string name="title_nueva_venta">New Sale</string>
+    <string name="error_no_vehiculos_listos">No vehicles available (Status: ready/in warehouse)</string>
 </resources>
