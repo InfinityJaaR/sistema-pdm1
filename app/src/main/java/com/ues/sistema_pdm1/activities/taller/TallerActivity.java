@@ -145,7 +145,7 @@ public class TallerActivity extends AppCompatActivity {
                         cargarTalleres();
                         Toast.makeText(this, "Taller eliminado", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error al eliminar taller", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
                 .setNegativeButton("No", null)
