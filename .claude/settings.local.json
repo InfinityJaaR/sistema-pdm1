@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(grep -rn '\"[A-ZÁ-Za-záéíóúñ][a-záéíóúñA-Z ]*[a-záéíóúñ ]\\\\{3,\\\\}\"' app/src/main/java --include=\"*.java\")",
-      "Bash(grep -v \"getString\\\\|e\\\\.getMessage\\\\|R\\\\.string\\\\|//\")",
-      "Read(//tmp/**)"
-    ]
-  }
-}
