@@ -86,7 +86,7 @@ public class SeccionActivity extends AppCompatActivity {
             seccionFiltradas = new ArrayList<>(seccion);
             refrescarLista();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar secciones", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_secciones), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -140,7 +140,7 @@ public class SeccionActivity extends AppCompatActivity {
                 }
                 cargarSecciones();
             } catch (Exception e) {
-                Toast.makeText(this, "Error al guardar seccion", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.error_guardar_seccion), Toast.LENGTH_SHORT).show();
             }
         });
         dialog.show(getSupportFragmentManager(), "form");
@@ -148,18 +148,18 @@ public class SeccionActivity extends AppCompatActivity {
 
     private void confirmarEliminar(Seccion seccion) {
         new AlertDialog.Builder(this)
-                .setTitle("Eliminar Seccion")
-                .setMessage("¿Desea eliminar '" + seccion.toString() + "'?")
-                .setPositiveButton("Sí", (d, w) -> {
+                .setTitle(R.string.title_eliminar_seccion)
+                .setMessage(getString(R.string.msg_confirmar_eliminar_seccion, seccion.getNivel()))
+                .setPositiveButton(R.string.yes, (d, w) -> {
                     try {
                         seccionDAO.eliminar(seccion.getId());
                         cargarSecciones();
-                        Toast.makeText(this, "Seccion eliminada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.msg_seccion_eliminada), Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(R.string.no, null)
                 .show();
     }
 }

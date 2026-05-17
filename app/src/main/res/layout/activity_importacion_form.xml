@@ -32,7 +32,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="16dp">
+        android:paddingStart="@dimen/form_horizontal_padding"
+        android:paddingEnd="@dimen/form_horizontal_padding"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"

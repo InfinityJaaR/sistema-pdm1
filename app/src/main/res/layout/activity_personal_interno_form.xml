@@ -42,7 +42,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:paddingStart="@dimen/form_horizontal_padding"
+            android:paddingEnd="@dimen/form_horizontal_padding"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
             <!-- Nombre -->
             <TextView
@@ -99,18 +102,13 @@
                 android:textColor="@color/text_secondary"
                 android:layout_marginBottom="6dp" />
 
-            <EditText
-                android:id="@+id/et_cargo_personal"
+            <Spinner
+                android:id="@+id/sp_cargo_personal"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:background="@drawable/bg_search_white"
                 android:paddingStart="14dp"
                 android:paddingEnd="14dp"
-                android:hint="@string/hint_cargo"
-                android:textSize="14sp"
-                android:textColor="@color/text_primary"
-                android:textColorHint="@color/text_secondary"
-                android:inputType="textCapWords"
                 android:layout_marginBottom="8dp" />
 
         </LinearLayout>

@@ -102,7 +102,7 @@ public class SeccionFormDialog extends DialogFragment {
         }
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())
-                .setTitle(esEdicion ? "Editar Seccion" : "Nueva Seccion")
+                .setTitle(esEdicion ? R.string.title_editar_seccion : R.string.title_nueva_seccion)
                 .setView(view)
                 .create();
 
@@ -113,11 +113,11 @@ public class SeccionFormDialog extends DialogFragment {
             Bodega bodega = (Bodega) spBodega.getSelectedItem();
 
             if (bodega == null) {
-                Toast.makeText(getActivity(), "Seleccione una bodega", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.error_seleccione_bodega), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (nivel.isEmpty()) {
-                etNivel.setError("Campo requerido");
+                etNivel.setError(getString(R.string.msg_campo_requerido));
                 return;
             }
 
@@ -127,30 +127,29 @@ public class SeccionFormDialog extends DialogFragment {
 
             // Validación de capacidad máxima
             if (capT > 50) {
-                etCapacidadMaxima.setError("La capacidad máxima no puede ser superior a 50");
+                etCapacidadMaxima.setError(getString(R.string.error_capacidad_max_limite));
                 etCapacidadMaxima.requestFocus();
                 return;
             }
 
             // Validación lógica: capacidad actual no puede ser mayor a la total
             if (capA > capT) {
-                etCapacidadActual.setError("La capacidad actual no puede exceder la capacidad total");
+                etCapacidadActual.setError(getString(R.string.error_capacidad_actual_excede));
                 etCapacidadActual.requestFocus();
                 return;
             }
 
             if (nivelInt < 1 || nivelInt > 3){
-                etNivel.setError("El nivel debe estar en entre 1 y 3");
+                etNivel.setError(getString(R.string.error_nivel_rango));
                 etNivel.requestFocus();
                 return;
             }
 
-            // --- Nuevas validaciones solicitadas ---
             List<Seccion> seccionesBodega = seccionDAO.obtenerPor("ID_BODEGA", String.valueOf(bodega.getId()));
 
             // 1. No más de 3 secciones por bodega
             if (!esEdicion && seccionesBodega.size() >= 3) {
-                Toast.makeText(getActivity(), "Esta bodega ya tiene el máximo de 3 secciones", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.error_max_secciones), Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -161,7 +160,7 @@ public class SeccionFormDialog extends DialogFragment {
                     if (esEdicion && s.getId() == id) {
                         continue;
                     }
-                    etNivel.setError("Ya existe una sección con el nivel " + nivelInt + " en esta bodega");
+                    etNivel.setError(getString(R.string.error_nivel_duplicado, nivelInt));
                     etNivel.requestFocus();
                     return;
                 }
