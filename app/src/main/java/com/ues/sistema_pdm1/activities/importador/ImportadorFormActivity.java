@@ -223,7 +223,7 @@ public class ImportadorFormActivity extends AppCompatActivity {
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_datos), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -286,12 +286,12 @@ public class ImportadorFormActivity extends AppCompatActivity {
         }
 
         if (distritoSeleccionado == null) {
-            Toast.makeText(this, "Seleccione un distrito", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_seleccione_distrito), Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (nui.length() != Constants.LONGITUD_NUI) {
-            Toast.makeText(this, "El NUI debe tener exactamente " + Constants.LONGITUD_NUI + " caracteres", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_nui_longitud, Constants.LONGITUD_NUI), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -305,17 +305,17 @@ public class ImportadorFormActivity extends AppCompatActivity {
             Calendar limite = Calendar.getInstance();
             limite.add(Calendar.YEAR, -18);
             if (nacimiento.after(limite)) {
-                Toast.makeText(this, "El importador debe ser mayor de 18 años", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.error_edad_minima), Toast.LENGTH_SHORT).show();
                 return;
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Fecha de nacimiento no válida", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_fecha_nacimiento_invalida), Toast.LENGTH_SHORT).show();
             return;
         }
 
         String email = texto(inputEmail);
         if (!email.isEmpty() && (!email.contains("@") || !email.contains("."))) {
-            Toast.makeText(this, "El correo electrónico no es válido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_email_invalido), Toast.LENGTH_SHORT).show();
             return;
         }
 

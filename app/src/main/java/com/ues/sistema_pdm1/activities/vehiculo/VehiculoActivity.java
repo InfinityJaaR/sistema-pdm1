@@ -41,7 +41,7 @@ public class VehiculoActivity extends AppCompatActivity {
     private GenericDAO<Marca> marcaDAO;
     private GenericDAO<Seccion> seccionDAO;
     private GenericDAO<Bodega> bodegaDAO;
-    
+
     private List<Vehiculo> vehiculos = new ArrayList<>();
     private List<Vehiculo> vehiculosFiltrados = new ArrayList<>();
 
@@ -72,19 +72,10 @@ public class VehiculoActivity extends AppCompatActivity {
         btnAgregar.setOnClickListener(v -> abrirFormulario(null));
         btnBuscar.setOnClickListener(v -> filtrar());
 
-        // Filtro en tiempo real para mejor experiencia
         etBuscar.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) { filtrar(); }
             @Override public void afterTextChanged(Editable s) {}
-        });
-
-        etBuscar.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                filtrar();
-                return true;
-            }
-            return false;
         });
 
         lvVehiculos.setOnItemClickListener((parent, view, position, id) ->
@@ -95,11 +86,10 @@ public class VehiculoActivity extends AppCompatActivity {
         try {
             vehiculos = vehiculoDAO.obtenerTodos();
             if (vehiculos != null) {
-                Collections.reverse(vehiculos); // Más recientes primero
+                Collections.reverse(vehiculos);
             } else {
                 vehiculos = new ArrayList<>();
             }
-            // Después de cargar, aplicamos el filtro actual (o lista completa si está vacío)
             filtrar();
         } catch (Exception e) {
             Toast.makeText(this, "Error al cargar vehículos", Toast.LENGTH_SHORT).show();
@@ -122,14 +112,9 @@ public class VehiculoActivity extends AppCompatActivity {
                     try {
                         Modelo m = modeloDAO.obtenerPorId(v.getIdModelo());
                         Marca ma = (m != null) ? marcaDAO.obtenerPorId(m.getIdMarca()) : null;
-                        
-                        // Título: Año Marca Modelo (Ej: 2021 Toyota Corolla)
                         String titulo = v.getAnio() + " " + (ma != null ? ma.getNombreMarca() : "") + " " + (m != null ? m.getNombreModelo() : "");
                         tvH.setText(titulo.trim());
-                        
-                        // Subtítulo: VIN y Estado (Ej: VIN: HSBDHG | vendido)
                         tvS.setText("VIN: " + v.getVin() + " | " + v.getEstadoVehiculo());
-                        
                     } catch (Exception e) {
                         tvH.setText("VIN: " + v.getVin());
                         tvS.setText(v.getEstadoVehiculo());
@@ -144,23 +129,15 @@ public class VehiculoActivity extends AppCompatActivity {
     private void filtrar() {
         String texto = etBuscar.getText().toString().trim().toLowerCase();
         vehiculosFiltrados = new ArrayList<>();
-        
+
         if (texto.isEmpty()) {
             vehiculosFiltrados.addAll(vehiculos);
         } else {
             for (Vehiculo v : vehiculos) {
                 boolean coincide = false;
-                
-                // 1. Filtrar por VIN
                 if (v.getVin().toLowerCase().contains(texto)) coincide = true;
-                
-                // 2. Filtrar por Estado
                 if (!coincide && v.getEstadoVehiculo().toLowerCase().contains(texto)) coincide = true;
-                
-                // 3. Filtrar por Año
                 if (!coincide && String.valueOf(v.getAnio()).contains(texto)) coincide = true;
-                
-                // 4. Filtrar por Marca y Modelo
                 if (!coincide) {
                     try {
                         Modelo m = modeloDAO.obtenerPorId(v.getIdModelo());
@@ -169,17 +146,12 @@ public class VehiculoActivity extends AppCompatActivity {
                                 coincide = true;
                             } else {
                                 Marca ma = marcaDAO.obtenerPorId(m.getIdMarca());
-                                if (ma != null && ma.getNombreMarca().toLowerCase().contains(texto)) {
-                                    coincide = true;
-                                }
+                                if (ma != null && ma.getNombreMarca().toLowerCase().contains(texto)) coincide = true;
                             }
                         }
                     } catch (Exception ignored) {}
                 }
-
-                if (coincide) {
-                    vehiculosFiltrados.add(v);
-                }
+                if (coincide) vehiculosFiltrados.add(v);
             }
         }
         refrescarLista();
@@ -203,7 +175,7 @@ public class VehiculoActivity extends AppCompatActivity {
                 cargarVehiculos();
                 Toast.makeText(this, "Vehículo guardado", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-                Toast.makeText(this, "Error al guardar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         dialog.show(getSupportFragmentManager(), "form");
@@ -213,13 +185,20 @@ public class VehiculoActivity extends AppCompatActivity {
         View view = getLayoutInflater().inflate(R.layout.dialog_confirmacion, null);
         ((TextView)view.findViewById(R.id.confirmacion_text)).setText("¿Eliminar vehículo VIN: " + v.getVin() + "?");
         androidx.appcompat.app.AlertDialog dialog = new androidx.appcompat.app.AlertDialog.Builder(this).setView(view).create();
+
         view.findViewById(R.id.btn_no).setOnClickListener(view1 -> dialog.dismiss());
         view.findViewById(R.id.btn_si).setOnClickListener(view1 -> {
             try {
+                // Corrección: Se pasa el ID (long) en lugar del objeto
                 vehiculoDAO.eliminar(v.getId());
                 cargarVehiculos();
+                Toast.makeText(this, "Eliminado correctamente", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
-            } catch (Exception e) { }
+            } catch (Exception e) {
+                // Mostrar mensaje del Trigger exacto
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                dialog.dismiss();
+            }
         });
         dialog.show();
     }

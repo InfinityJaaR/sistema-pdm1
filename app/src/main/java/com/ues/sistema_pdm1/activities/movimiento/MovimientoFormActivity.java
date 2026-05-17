@@ -51,8 +51,12 @@ public class MovimientoFormActivity extends AppCompatActivity {
     private PersonalInterno personalSeleccionado = null;
     private Bodega bodegaSeleccionada = null;
 
-    private boolean esEdicion = false;
-    private int movimientoId = 0;
+    private boolean esEdicion        = false;
+    private int     movimientoId     = 0;
+    private boolean vehiculosLoaded  = false;
+    private boolean transportesLoaded = false;
+    private boolean personalLoaded   = false;
+    private boolean bodegasLoaded    = false;
 
     private static final String[] TIPOS_MOVIMIENTO = {"Entrada", "Salida"};
 
@@ -88,11 +92,11 @@ public class MovimientoFormActivity extends AppCompatActivity {
         personalDAO   = new GenericDAO<>(this, PersonalInterno.class, "personal_interno");
         bodegaDAO     = new GenericDAO<>(this, Bodega.class, "bodega");
 
-        formTitle.setText(esEdicion ? "Editar Movimiento" : "Nuevo Movimiento");
+        formTitle.setText(esEdicion ? getString(R.string.title_editar_movimiento) : getString(R.string.title_nuevo_movimiento));
 
         configurarSpinnerTipo();
         configurarDatePicker();
-        cargarSpinners();
+        configurarSpinners();
 
         if (esEdicion) cargarDatos();
 
@@ -116,26 +120,69 @@ public class MovimientoFormActivity extends AppCompatActivity {
         });
     }
 
-    private void cargarSpinners() {
-        try { vehiculos   = vehiculoDAO.obtenerTodos();   } catch (Exception e) { vehiculos   = new ArrayList<>(); }
-        try { transportes = transporteDAO.obtenerTodos(); } catch (Exception e) { transportes = new ArrayList<>(); }
-        try { personal    = personalDAO.obtenerTodos();   } catch (Exception e) { personal    = new ArrayList<>(); }
-        try { bodegas     = bodegaDAO.obtenerTodos();     } catch (Exception e) { bodegas     = new ArrayList<>(); }
-
-        actvVehiculo.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, vehiculos));
-        actvVehiculo.setOnClickListener(v -> actvVehiculo.showDropDown());
+    private void configurarSpinners() {
+        Runnable cargarVehiculos = () -> {
+            if (!vehiculosLoaded) {
+                try { vehiculos = vehiculoDAO.obtenerTodos(); }
+                catch (Exception e) { vehiculos = new ArrayList<>(); }
+                vehiculosLoaded = true;
+                actvVehiculo.setAdapter(new ArrayAdapter<>(this,
+                    android.R.layout.simple_dropdown_item_1line, vehiculos));
+                if (vehiculoSeleccionado != null)
+                    actvVehiculo.setText(vehiculoSeleccionado.toString(), false);
+            }
+            actvVehiculo.showDropDown();
+        };
+        actvVehiculo.setOnFocusChangeListener((v, hasFocus) -> { if (hasFocus) cargarVehiculos.run(); });
+        actvVehiculo.setOnClickListener(v -> cargarVehiculos.run());
         actvVehiculo.setOnItemClickListener((p, v, pos, id) -> vehiculoSeleccionado = vehiculos.get(pos));
 
-        actvTransporte.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, transportes));
-        actvTransporte.setOnClickListener(v -> actvTransporte.showDropDown());
+        Runnable cargarTransportes = () -> {
+            if (!transportesLoaded) {
+                try { transportes = transporteDAO.obtenerTodos(); }
+                catch (Exception e) { transportes = new ArrayList<>(); }
+                transportesLoaded = true;
+                actvTransporte.setAdapter(new ArrayAdapter<>(this,
+                    android.R.layout.simple_dropdown_item_1line, transportes));
+                if (transporteSeleccionado != null)
+                    actvTransporte.setText(transporteSeleccionado.toString(), false);
+            }
+            actvTransporte.showDropDown();
+        };
+        actvTransporte.setOnFocusChangeListener((v, hasFocus) -> { if (hasFocus) cargarTransportes.run(); });
+        actvTransporte.setOnClickListener(v -> cargarTransportes.run());
         actvTransporte.setOnItemClickListener((p, v, pos, id) -> transporteSeleccionado = transportes.get(pos));
 
-        actvPersonal.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, personal));
-        actvPersonal.setOnClickListener(v -> actvPersonal.showDropDown());
+        Runnable cargarPersonal = () -> {
+            if (!personalLoaded) {
+                try { personal = personalDAO.obtenerTodos(); }
+                catch (Exception e) { personal = new ArrayList<>(); }
+                personalLoaded = true;
+                actvPersonal.setAdapter(new ArrayAdapter<>(this,
+                    android.R.layout.simple_dropdown_item_1line, personal));
+                if (personalSeleccionado != null)
+                    actvPersonal.setText(personalSeleccionado.toString(), false);
+            }
+            actvPersonal.showDropDown();
+        };
+        actvPersonal.setOnFocusChangeListener((v, hasFocus) -> { if (hasFocus) cargarPersonal.run(); });
+        actvPersonal.setOnClickListener(v -> cargarPersonal.run());
         actvPersonal.setOnItemClickListener((p, v, pos, id) -> personalSeleccionado = personal.get(pos));
 
-        actvBodega.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, bodegas));
-        actvBodega.setOnClickListener(v -> actvBodega.showDropDown());
+        Runnable cargarBodegas = () -> {
+            if (!bodegasLoaded) {
+                try { bodegas = bodegaDAO.obtenerTodos(); }
+                catch (Exception e) { bodegas = new ArrayList<>(); }
+                bodegasLoaded = true;
+                actvBodega.setAdapter(new ArrayAdapter<>(this,
+                    android.R.layout.simple_dropdown_item_1line, bodegas));
+                if (bodegaSeleccionada != null)
+                    actvBodega.setText(bodegaSeleccionada.toString(), false);
+            }
+            actvBodega.showDropDown();
+        };
+        actvBodega.setOnFocusChangeListener((v, hasFocus) -> { if (hasFocus) cargarBodegas.run(); });
+        actvBodega.setOnClickListener(v -> cargarBodegas.run());
         actvBodega.setOnItemClickListener((p, v, pos, id) -> bodegaSeleccionada = bodegas.get(pos));
     }
 
@@ -148,36 +195,17 @@ public class MovimientoFormActivity extends AppCompatActivity {
             etFecha.setText(m.getFechaMovimiento());
             etMotivo.setText(m.getMotivo());
 
-            for (Vehiculo v : vehiculos) {
-                if (v.getId() == m.getIdVehiculo()) {
-                    vehiculoSeleccionado = v;
-                    actvVehiculo.setText(v.toString(), false);
-                    break;
-                }
-            }
-            for (Transporte t : transportes) {
-                if (t.getId() == m.getIdTransporte()) {
-                    transporteSeleccionado = t;
-                    actvTransporte.setText(t.toString(), false);
-                    break;
-                }
-            }
-            for (PersonalInterno p : personal) {
-                if (p.getId() == m.getIdPersonal()) {
-                    personalSeleccionado = p;
-                    actvPersonal.setText(p.toString(), false);
-                    break;
-                }
-            }
-            for (Bodega b : bodegas) {
-                if (b.getId() == m.getIdBodega()) {
-                    bodegaSeleccionada = b;
-                    actvBodega.setText(b.toString(), false);
-                    break;
-                }
-            }
+            vehiculoSeleccionado   = vehiculoDAO.obtenerPorId(m.getIdVehiculo());
+            transporteSeleccionado = transporteDAO.obtenerPorId(m.getIdTransporte());
+            personalSeleccionado   = personalDAO.obtenerPorId(m.getIdPersonal());
+            bodegaSeleccionada     = bodegaDAO.obtenerPorId(m.getIdBodega());
+
+            if (vehiculoSeleccionado   != null) actvVehiculo.setText(vehiculoSeleccionado.toString(), false);
+            if (transporteSeleccionado != null) actvTransporte.setText(transporteSeleccionado.toString(), false);
+            if (personalSeleccionado   != null) actvPersonal.setText(personalSeleccionado.toString(), false);
+            if (bodegaSeleccionada     != null) actvBodega.setText(bodegaSeleccionada.toString(), false);
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_datos), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -215,7 +243,7 @@ public class MovimientoFormActivity extends AppCompatActivity {
             String msg = e.getMessage();
             if (msg != null && msg.contains("capacidad")) {
                 Toast.makeText(this,
-                    "El transporte ha alcanzado su capacidad máxima para este día",
+                    getString(R.string.msg_transporte_capacidad),
                     Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this, Constants.MSG_OPERACION_FALLIDA, Toast.LENGTH_SHORT).show();

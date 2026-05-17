@@ -30,7 +30,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Transporte"
+                    android:text="@string/label_transporte"
                     android:textColor="@color/text_light"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -38,7 +38,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gestión de unidades de transporte"
+                    android:text="@string/subtitle_transporte"
                     android:textColor="@color/primary_blue_light"
                     android:textSize="12sp" />
 
@@ -74,7 +74,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Buscar por placa o descripción..."
+                android:hint="@string/hint_buscar_transporte"
                 android:textColor="@color/text_light"
                 android:textColorHint="@color/primary_blue_light"
                 android:textSize="14sp"

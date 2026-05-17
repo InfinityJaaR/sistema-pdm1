@@ -22,6 +22,7 @@ import com.ues.sistema_pdm1.models.DetalleDesperfecto;
 import com.ues.sistema_pdm1.models.FotoDesperfecto;
 import com.ues.sistema_pdm1.models.TipoDesperfecto;
 import com.ues.sistema_pdm1.models.Vehiculo;
+import com.ues.sistema_pdm1.utils.Constants;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -202,18 +203,16 @@ public class DetalleDesperfectoActivity extends AppCompatActivity {
         view.findViewById(R.id.btn_no).setOnClickListener(v -> dialog.dismiss());
         view.findViewById(R.id.btn_si).setOnClickListener(v -> {
             try {
-                // Limpiar fotos asociadas
-                List<FotoDesperfecto> fotos = fotoDAO.obtenerPor("ID_DETALLE_DESPERFECTO", String.valueOf(d.getId()));
-                for (FotoDesperfecto f : fotos) {
-                    new File(f.getRutaImagen()).delete();
-                    fotoDAO.eliminar(f.getId());
-                }
+                // Se intenta eliminar el desperfecto directamente.
+                // Si el desperfecto tiene fotos, el TRIGGER de la base de datos lanzará un error.
                 detalleDAO.eliminar(d.getId());
                 cargarDatos();
                 dialog.dismiss();
-                Toast.makeText(this, "Eliminado correctamente", Toast.LENGTH_SHORT).show();
-            } catch (SQLException e) {
-                Toast.makeText(this, "Error al eliminar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, Constants.MSG_OPERACION_EXITOSA, Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                // REGLA GENERAL: Muestra el mensaje real del Trigger de la base de datos con duración larga.
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                dialog.dismiss();
             }
         });
 

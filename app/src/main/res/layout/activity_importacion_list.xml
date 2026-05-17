@@ -36,7 +36,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Importaciones"
+                    android:text="@string/title_importaciones"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_light" />
@@ -44,7 +44,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Registro de importaciones"
+                    android:text="@string/subtitle_importaciones"
                     android:textSize="12sp"
                     android:textColor="@color/text_light"
                     android:layout_marginTop="2dp" />
@@ -93,7 +93,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Buscar importación..."
+                android:hint="@string/hint_buscar_importacion"
                 android:textColor="@color/text_light"
                 android:textColorHint="@color/text_secondary"
                 android:textSize="14sp"

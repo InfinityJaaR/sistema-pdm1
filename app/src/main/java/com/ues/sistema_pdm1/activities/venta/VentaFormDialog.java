@@ -126,9 +126,8 @@ public class VentaFormDialog extends DialogFragment {
         for (Vehiculo v : todosVehiculos) {
             String estado = v.getEstadoVehiculo();
             if (estado != null && (
-                    estado.equalsIgnoreCase("en bodega") ||
-                    estado.equalsIgnoreCase("listo para venta") ||
-                    estado.equalsIgnoreCase(Constants.ESTADO_VEHICULO_ALMACENADO) ||
+                    Constants.ESTADO_VEHICULO_ALMACENADO.equalsIgnoreCase(estado) ||
+                    Constants.ESTADO_VEHICULO_LISTO.equalsIgnoreCase(estado) ||
                     (venta != null && v.getId() == venta.getIdVehiculo()))) {
                 vehiculos.add(v);
             }

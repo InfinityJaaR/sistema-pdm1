@@ -82,22 +82,20 @@ public class LlenarBDGpo02 {
             // Cada ID representa acceso al módulo; CRUD interno se define en FASE 4
             // =================================================================
             if (opcionDAO.contar() == 0) {
-                opcionDAO.insertar(new OpcionCrud("100", "Importador",        0));
-                opcionDAO.insertar(new OpcionCrud("200", "Vehículo",          0));
-                opcionDAO.insertar(new OpcionCrud("210", "Importación",       0));
-                opcionDAO.insertar(new OpcionCrud("300", "Bodega",            0));
-                opcionDAO.insertar(new OpcionCrud("310", "Sección",           0));
-                opcionDAO.insertar(new OpcionCrud("400", "Movimiento",        0));
-                opcionDAO.insertar(new OpcionCrud("410", "Transporte",        0));
-                opcionDAO.insertar(new OpcionCrud("500", "Reparación",        0));
-                opcionDAO.insertar(new OpcionCrud("510", "Taller",            0));
-                opcionDAO.insertar(new OpcionCrud("600", "Venta",             0));
-                opcionDAO.insertar(new OpcionCrud("610", "Desperfecto",       0));
-                opcionDAO.insertar(new OpcionCrud("620", "Personal Interno",  0));
-                opcionDAO.insertar(new OpcionCrud("630", "Marca",             0));
-                opcionDAO.insertar(new OpcionCrud("640", "Tipo de Transporte",0));
-                opcionDAO.insertar(new OpcionCrud("650", "Tipo de Vehículo",  0));
-                Log.d(TAG, "15 opciones de menú insertadas");
+                opcionDAO.insertar(new OpcionCrud("100", "Importador",       0));
+                opcionDAO.insertar(new OpcionCrud("200", "Vehículo",         0));
+                opcionDAO.insertar(new OpcionCrud("210", "Importación",      0));
+                opcionDAO.insertar(new OpcionCrud("300", "Bodega",           0));
+                opcionDAO.insertar(new OpcionCrud("310", "Sección",          0));
+                opcionDAO.insertar(new OpcionCrud("400", "Movimiento",       0));
+                opcionDAO.insertar(new OpcionCrud("410", "Transporte",       0));
+                opcionDAO.insertar(new OpcionCrud("500", "Reparación",       0));
+                opcionDAO.insertar(new OpcionCrud("510", "Taller",           0));
+                opcionDAO.insertar(new OpcionCrud("600", "Venta",            0));
+                opcionDAO.insertar(new OpcionCrud("610", "Desperfecto",      0));
+                opcionDAO.insertar(new OpcionCrud("620", "Personal Interno", 0));
+                opcionDAO.insertar(new OpcionCrud("630", "Marca",            0));
+                Log.d(TAG, "13 opciones de menú insertadas");
             }
 
             // =================================================================
@@ -106,23 +104,23 @@ public class LlenarBDGpo02 {
             // =================================================================
             if (accesoDAO.contar() == 0) {
 
-                // ADMIN (id="1"): acceso a los 15 módulos
+                // ADMIN (id="1"): acceso a los 13 módulos implementados
                 String[] todasOpciones = {
                     "100","200","210","300","310",
                     "400","410","500","510","600",
-                    "610","620","630","640","650"
+                    "610","620","630"
                 };
                 for (String opcion : todasOpciones) {
                     accesoDAO.insertar(new AccesoUsuario(opcion, "1"));
                 }
 
-                // IMPORTADOR (id="2"): Importador, Importación + catálogos básicos
-                for (String opcion : new String[]{"100","210","630","640","650"}) {
+                // IMPORTADOR (id="2"): módulos lógicos de importación
+                for (String opcion : new String[]{"100","200","210","610"}) {
                     accesoDAO.insertar(new AccesoUsuario(opcion, "2"));
                 }
 
-                // PERSONAL (id="3"): Movimiento, Transporte + catálogos básicos
-                for (String opcion : new String[]{"400","410","630","640","650"}) {
+                // PERSONAL (id="3"): módulos de operación en bodega, sin eliminar
+                for (String opcion : new String[]{"300","310","400","410","620"}) {
                     accesoDAO.insertar(new AccesoUsuario(opcion, "3"));
                 }
 
@@ -407,9 +405,8 @@ public class LlenarBDGpo02 {
             // =================================================================
             // SECCIÓN 15: REPARACIONES
             // idVehiculo: 1-3 | idTaller: 1-3 (ya en BD)
-            // Trigger TRG_ESTADO_REPARACION solo dispara en UPDATE, no en INSERT.
-            // Por eso los vehículos 1-3 permanecen 'en bodega' tras esta inserción.
-            // aptoParaVenta=0 en demo; Ricardo lo actualizará en su módulo.
+            // TRG_ESTADO_REPARACION_INSERT dispara AFTER INSERT ON REPARACION:
+            // → vehículos 1, 2 y 3 quedan en 'en reparacion' automáticamente.
             // =================================================================
             if (reparacionDAO.contar() == 0) {
                 reparacionDAO.insertar(new Reparacion(0, 1, 1, "2024-01-20", "2024-01-25", "Reparación de golpe en puerta", 0, 0));

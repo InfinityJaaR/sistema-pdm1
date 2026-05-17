@@ -92,6 +92,11 @@ public class SessionManager {
         }
     }
 
+    public boolean puedeEliminar() {
+        if (!isLoggedIn()) return false;
+        return !"3".equals(usuarioLogueado.getId());
+    }
+
     public List<Integer> obtenerAccesibles() {
         return new ArrayList<>(idsOpcionesAccesibles);
     }

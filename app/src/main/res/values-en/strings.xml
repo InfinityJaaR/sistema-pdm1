@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">sistema-pdm1</string>
+    <string name="app_display_name">Vehicle Inventory\nManagement System</string>
+    <string name="login_title">System Access</string>
+    <string name="username_text">Username</string>
+    <string name="password_text">Password</string>
+    <string name="login_text">Sign In</string>
+    <string name="demo_text">Demo — Sign in as Admin</string>
+    <string name="footer_text">© 2026 · PDM115 Group 02 · UES</string>
+
+    <!-- Main Menu -->
+    <string name="main_title">Inventory System</string>
+    <string name="main_welcome">Welcome!</string>
+    <string name="main_subtitle">Imported Vehicle Management</string>
+    <string name="menu_importers">Importers</string>
+    <string name="menu_imports">Imports</string>
+    <string name="menu_vehicles">Vehicles</string>
+    <string name="menu_damage">Damage Reports</string>
+    <string name="menu_movements">Movements I/O</string>
+    <string name="menu_transport">Transport</string>
+    <string name="menu_build">Repairs</string>
+    <string name="menu_workshops">Workshops</string>
+    <string name="menu_sales">Sales</string>
+    <string name="menu_warehouses">Warehouses</string>
+    <string name="menu_staff">Staff</string>
+    <string name="menu_section">Section</string>
+    <string name="menu_brand">Brands</string>
+
+    <!-- Buttons -->
+    <string name="btn_save">Save</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_guardar">Save</string>
+    <string name="btn_cancelar">Cancel</string>
+    <string name="btn_actualizar">Update</string>
+    <string name="btn_cerrar">Close</string>
+    <string name="btn_limpiar">Clear</string>
+    <string name="btn_agregar_foto">+ ADD</string>
+
+    <!-- Common -->
+    <string name="error_cargar_datos">Error loading data</string>
+    <string name="msg_accion_irreversible">This action cannot be undone.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="modal_titulo_confirmacion">Confirmation</string>
+    <string name="msg_confirmacion_pregunta">Are you sure you want to perform this action?</string>
+    <string name="desc_agregar_nuevo">Add new</string>
+    <string name="desc_boton_buscar">Search</string>
+    <string name="title_options">Options</string>
+    <string name="view">View</string>
+    <string name="update">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="delete_title">Do you want to delete?</string>
+    <string name="delete_message">This action cannot be undone</string>
+    <string name="placeholder_empty">---</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_logout">Sign out</string>
+    <string name="logout_title">Sign out</string>
+    <string name="logout_message">Do you want to sign out?</string>
+
+    <!-- Transport -->
+    <string name="title_nuevo_transporte">New Transport</string>
+    <string name="title_editar_transporte">Edit Transport</string>
+    <string name="title_detalle_transporte">Transport Detail</string>
+    <string name="title_eliminar_transporte">Delete Transport</string>
+    <string name="label_transporte">Transport</string>
+    <string name="subtitle_transporte">Transport unit management</string>
+    <string name="hint_buscar_transporte">Search by plate or description...</string>
+    <string name="subtitle_form_transporte">Fill in transport details</string>
+    <string name="msg_transporte_capacidad">Transport has reached its maximum capacity for this day</string>
+    <string name="error_cargar_transportes">Error loading transports</string>
+    <string name="field_tipo_transporte">Transport Type *</string>
+    <string name="hint_seleccione_tipo_transporte">Select type</string>
+    <string name="error_seleccione_tipo_transporte">Select the transport type</string>
+    <string name="field_placa">Plate *</string>
+    <string name="hint_placa">e.g. P-123-456</string>
+    <string name="field_descripcion_opcional">Description (optional)</string>
+    <string name="hint_descripcion_transporte">Transport description</string>
+    <string name="label_tipo_transporte">TRANSPORT TYPE</string>
+    <string name="label_descripcion_detalle">DESCRIPTION</string>
+
+    <!-- Internal Staff -->
+    <string name="title_nuevo_personal">New Staff Member</string>
+    <string name="title_editar_personal">Edit Staff Member</string>
+    <string name="title_eliminar_personal">Delete Staff Member</string>
+    <string name="label_personal_interno">Internal Staff</string>
+    <string name="subtitle_personal">Staff management</string>
+    <string name="hint_buscar_personal">Search by name or position...</string>
+    <string name="subtitle_form_personal">Fill in staff details</string>
+    <string name="error_cargar_personal">Error loading staff</string>
+    <string name="field_name">First Name *</string>
+    <string name="field_lastname">Last Name *</string>
+    <string name="hint_nombre_personal">Staff first name</string>
+    <string name="hint_apellido_personal">Staff last name</string>
+    <string name="field_cargo">Position *</string>
+    <string name="hint_cargo">Job title or position</string>
+    <string name="label_nombre">NAME</string>
+    <string name="label_apellido">LAST NAME</string>
+    <string name="label_cargo">POSITION</string>
+
+    <!-- Importers -->
+    <string name="importers_title">Importers</string>
+    <string name="importers_subtitle">Vehicle management</string>
+    <string name="search_importer">Search importer...</string>
+    <string name="form_title_add">Add Importer</string>
+    <string name="form_title_edit">Edit Importer</string>
+    <string name="form_title_view">Importer Detail</string>
+    <string name="section_personal_data">Personal Data</string>
+    <string name="section_contact">Contact Information</string>
+    <string name="section_professional">Professional Information</string>
+    <string name="section_imports">Import History</string>
+    <string name="field_married_lastname">Married Last Name</string>
+    <string name="field_gender">Gender *</string>
+    <string name="field_birthdate">Date of Birth *</string>
+    <string name="field_address">Address *</string>
+    <string name="field_phone_primary">Primary Phone *</string>
+    <string name="field_phone_secondary">Secondary Phone</string>
+    <string name="field_email">Email *</string>
+    <string name="field_nui">NUI (Unique Number) *</string>
+    <string name="field_responsible">Verification Responsible</string>
+    <string name="field_gender_male">Male</string>
+    <string name="field_gender_female">Female</string>
+    <string name="field_district">District *</string>
+    <string name="hint_name">Enter first name</string>
+    <string name="hint_lastname">Enter last name</string>
+    <string name="hint_address">Street, number, city</string>
+    <string name="hint_phone">XXXX-XXXX</string>
+    <string name="hint_email">email@example.com</string>
+    <string name="hint_nui">NUI12345</string>
+    <string name="hint_responsible">Responsible name</string>
+    <string name="label_show_married">Married</string>
+    <string name="label_imports_count">Imports: </string>
+    <string name="label_no_imports">No imports registered</string>
+    <string name="delete_confirm">Delete importer</string>
+
+    <!-- Importers - List -->
+    <string name="error_cargar_importadores">Error loading importers</string>
+
+    <!-- Importers - Form -->
+    <string name="hint_fecha_dd_mm_yyyy">DD/MM/YYYY</string>
+    <string name="btn_agregar_contactos">Add more contacts</string>
+    <string name="hint_telefono_adicional">Additional phone</string>
+    <string name="error_seleccione_distrito">Select a district</string>
+    <string name="error_nui_longitud">The NUI must be exactly %d characters</string>
+    <string name="error_edad_minima">The importer must be over 18 years old</string>
+    <string name="error_fecha_nacimiento_invalida">Invalid date of birth</string>
+    <string name="error_email_invalido">Invalid email address</string>
+
+    <!-- Importers - Detail view -->
+    <string name="label_nui_prefijo">NUI: </string>
+    <string name="label_nombre_campo">Name:</string>
+    <string name="label_apellido_campo">Last Name:</string>
+    <string name="label_apellido_casada">Married Name:</string>
+    <string name="label_genero">Gender:</string>
+    <string name="label_nacimiento">Birth:</string>
+    <string name="label_nui_campo">NUI:</string>
+    <string name="label_responsable">Responsible:</string>
+    <string name="label_total">Total:</string>
+    <string name="label_ultimas_importaciones">Recent imports:</string>
+    <string name="btn_gestionar_telefonos">Manage phones</string>
+    <string name="msg_cuenta_importaciones">%d import(s)</string>
+
+    <!-- Importers - Phone dialogs -->
+    <string name="title_telefonos_importador">Importer phones</string>
+    <string name="label_agregar_telefono">+ Add new phone</string>
+    <string name="title_eliminar_telefono">Delete phone</string>
+    <string name="msg_eliminar_numero">Delete number %s?</string>
+    <string name="msg_telefono_eliminado">Phone deleted</string>
+    <string name="title_agregar_telefono">Add phone</string>
+    <string name="hint_numero_telefono">Phone number</string>
+    <string name="btn_agregar">Add</string>
+    <string name="msg_telefono_agregado">Phone added</string>
+    <string name="label_importador_prefijo">Importer #</string>
+
+    <!-- Imports -->
+    <string name="title_importaciones">Imports</string>
+    <string name="title_importacion">Import</string>
+    <string name="subtitle_importaciones">Import records</string>
+    <string name="hint_buscar_importacion">Search import...</string>
+    <string name="error_cargar_importaciones">Error loading imports</string>
+    <string name="label_fecha_prefijo">Date: </string>
+    <string name="label_importacion_del">Import from </string>
+    <string name="label_importacion_prefijo">Import #</string>
+    <string name="title_agregar_importacion">Add Import</string>
+    <string name="title_editar_importacion">Edit Import</string>
+    <string name="section_datos_importacion">Import Details</string>
+    <string name="field_importador">Importer *</string>
+    <string name="field_fecha_importacion">Import Date *</string>
+    <string name="error_seleccione_importador">Select an importer</string>
+    <string name="title_detalle_importacion">Import Detail</string>
+    <string name="label_importador_campo">Importer:</string>
+    <string name="label_fecha_campo">Date:</string>
+
+    <!-- Movement -->
+    <string name="title_nuevo_movimiento">New Movement</string>
+    <string name="title_editar_movimiento">Edit Movement</string>
+    <string name="title_eliminar_movimiento">Delete Movement</string>
+    <string name="label_movimientos">Movements</string>
+    <string name="subtitle_movimiento">Vehicle movement management</string>
+    <string name="hint_buscar_movimiento">Search by type, date or reason...</string>
+    <string name="subtitle_form_movimiento">Fill in movement details</string>
+    <string name="error_cargar_movimientos">Error loading movements</string>
+    <string name="field_tipo_movimiento">Movement Type *</string>
+    <string name="hint_tipo_movimiento">Entry / Exit</string>
+    <string name="field_fecha">Date *</string>
+    <string name="hint_fecha_formato">yyyy-MM-dd</string>
+    <string name="field_vehiculo">Vehicle *</string>
+    <string name="hint_seleccione_vehiculo">Select vehicle</string>
+    <string name="field_transporte">Transport *</string>
+    <string name="hint_seleccione_transporte">Select transport</string>
+    <string name="field_personal_interno">Internal Staff *</string>
+    <string name="hint_seleccione_personal">Select staff member</string>
+    <string name="field_bodega">Warehouse *</string>
+    <string name="hint_seleccione_bodega">Select warehouse</string>
+    <string name="field_motivo">Reason *</string>
+    <string name="hint_motivo">Movement reason</string>
+    <string name="label_tipo_movimiento">MOVEMENT TYPE</string>
+    <string name="label_fecha">DATE</string>
+    <string name="label_motivo">REASON</string>
+    <string name="label_vehiculo_vin">VEHICLE (VIN)</string>
+    <string name="label_transporte_detalle">TRANSPORT</string>
+    <string name="label_personal_detalle">INTERNAL STAFF</string>
+    <string name="label_bodega_detalle">WAREHOUSE</string>
+</resources>
