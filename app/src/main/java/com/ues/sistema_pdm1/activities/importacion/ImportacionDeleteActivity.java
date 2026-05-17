@@ -51,7 +51,7 @@ public class ImportacionDeleteActivity extends AppCompatActivity {
             setResult(RESULT_OK);
             finish();
         } catch (Exception e) {
-            Toast.makeText(this, Constants.MSG_OPERACION_FALLIDA, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }

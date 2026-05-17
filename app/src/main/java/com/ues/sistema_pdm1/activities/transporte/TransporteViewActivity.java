@@ -55,7 +55,7 @@ public class TransporteViewActivity extends AppCompatActivity {
             if (t == null) { finish(); return; }
             poblarVista(t);
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_datos), Toast.LENGTH_SHORT).show();
             finish();
         }
     }
