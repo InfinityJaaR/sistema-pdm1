@@ -306,11 +306,56 @@
     <string name="msg_eliminar_marca">Do you want to delete \'%1$s\'?</string>
     <string name="msg_marca_eliminada">Brand deleted</string>
 
+    <!-- Warehouses -->
+    <string name="title_bodegas">Warehouses</string>
+    <string name="subtitle_bodegas">Storage warehouse management</string>
+    <string name="hint_buscar_bodega">Search warehouse...</string>
+    <string name="label_nombre_bodega">Warehouse name</string>
+    <string name="label_direccion_bodega">Warehouse address</string>
+    <string name="hint_nombre_bodega">Warehouse name</string>
+    <string name="hint_direccion_bodega">Warehouse address</string>
+    <string name="title_nueva_bodega">New Warehouse</string>
+    <string name="title_editar_bodega">Edit Warehouse</string>
+    <string name="title_eliminar_bodega">Delete Warehouse</string>
+    <string name="msg_confirmar_eliminar_bodega">Do you want to delete \'%s\'?</string>
+    <string name="msg_bodega_eliminada">Warehouse deleted</string>
+    <string name="error_cargar_bodegas">Error loading warehouses</string>
+    <string name="error_guardar_bodega">Error saving warehouse</string>
+
+    <!-- Sections -->
+    <string name="title_secciones">Sections</string>
+    <string name="subtitle_secciones">Warehouse level management</string>
+    <string name="hint_buscar_seccion">Search section by level...</string>
+    <string name="label_bodega">Warehouse</string>
+    <string name="label_nivel_seccion">Section Level</string>
+    <string name="label_seccion">Section</string>
+    <string name="hint_nivel_seccion">Section/Warehouse level</string>
+    <string name="title_nueva_seccion">New Section</string>
+    <string name="title_editar_seccion">Edit Section</string>
+    <string name="title_detalle_seccion">Section Detail</string>
+    <string name="title_eliminar_seccion">Delete Section</string>
+    <string name="msg_confirmar_eliminar_seccion">Do you want to delete section level %d?</string>
+    <string name="msg_seccion_eliminada">Section deleted</string>
+    <string name="error_cargar_secciones">Error loading sections</string>
+    <string name="error_guardar_seccion">Error saving section</string>
+
     <!-- Sales -->
     <string name="title_ventas">Sales</string>
     <string name="subtitle_ventas">Sales records</string>
+    <string name="subtitle_inventario">Inventory system</string>
+    <string name="hint_buscar_venta">Search sale...</string>
     <string name="label_precio_venta">Sale Price</string>
     <string name="label_fecha_venta">Sale Date</string>
+    <string name="label_venta_numero">Sale #%d</string>
     <string name="title_nueva_venta">New Sale</string>
+    <string name="title_editar_venta">Edit Sale</string>
+    <string name="title_eliminar_venta">Delete Sale</string>
+    <string name="msg_confirmar_eliminar_venta">Do you want to delete sale #%d?</string>
+    <string name="msg_venta_eliminada">Sale deleted</string>
+    <string name="error_cargar_ventas">Error loading sales</string>
+    <string name="error_guardar_venta">Error saving sale</string>
     <string name="error_no_vehiculos_listos">No vehicles available (Status: ready/in warehouse)</string>
+    <string name="cb_apto_para_venta">Fit for sale</string>
+    <string name="label_apto_venta_si">✔ Fit for sale</string>
+    <string name="label_apto_venta_no">✘ Not fit for sale</string>
 </resources>
