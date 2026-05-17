@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:background="#F5F5F7">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +30,7 @@
                     android:id="@+id/tv_taller_titulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Talleres"
+                    android:text="@string/title_talleres"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -40,7 +39,7 @@
                     android:id="@+id/tv_taller_subtitulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Catálogo de Talleres disponibles"
+                    android:text="@string/subtitle_talleres"
                     android:textColor="#AAAACC"
                     android:textSize="12sp" />
 
@@ -59,7 +58,6 @@
 
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="52dp"
@@ -76,7 +74,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Buscar Taller"
+                android:hint="@string/hint_buscar_taller"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#AAAACC"
                 android:textSize="14sp"
@@ -98,7 +96,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
