@@ -227,4 +227,82 @@
     <string name="label_transporte_detalle">TRANSPORT</string>
     <string name="label_personal_detalle">INTERNAL STAFF</string>
     <string name="label_bodega_detalle">WAREHOUSE</string>
+
+    <!-- Taller -->
+    <string name="title_talleres">Workshops</string>
+    <string name="subtitle_talleres">Available workshops catalog</string>
+    <string name="hint_buscar_taller">Search Workshop</string>
+    <string name="title_nuevo_taller">New Workshop</string>
+    <string name="title_editar_taller">Edit Workshop</string>
+    <string name="title_detalle_taller">Workshop Detail</string>
+    <string name="title_eliminar_taller">Delete Workshop</string>
+    <string name="hint_nombre_taller">Workshop name</string>
+    <string name="hint_direccion_taller">Workshop address</string>
+    <string name="hint_telefono_taller">Workshop phone</string>
+    <string name="error_cargar_talleres">Error loading workshops</string>
+    <string name="error_guardar_taller">Error saving workshop</string>
+    <string name="msg_eliminar_taller">Do you want to delete \'%1$s\'?</string>
+    <string name="msg_taller_eliminado">Workshop deleted</string>
+    <string name="error_nombre_taller">Enter the workshop name</string>
+    <string name="error_direccion_taller">Enter the workshop address</string>
+    <string name="error_telefono_taller">Enter a valid phone (0000-0000)</string>
+
+    <!-- Reparación -->
+    <string name="title_reparaciones">Repairs</string>
+    <string name="subtitle_reparaciones">Available repairs catalog</string>
+    <string name="hint_buscar_reparacion">Search Repair</string>
+    <string name="title_nueva_reparacion">New Repair</string>
+    <string name="title_editar_reparacion">Edit Repair</string>
+    <string name="title_detalle_reparacion">Repair Detail</string>
+    <string name="title_eliminar_reparacion">Delete Repair</string>
+    <string name="msg_eliminar_reparacion">Do you want to delete this repair?</string>
+    <string name="msg_reparacion_registrada">Repair registered</string>
+    <string name="msg_reparacion_actualizada">Repair updated</string>
+    <string name="msg_reparacion_eliminada">Repair deleted</string>
+    <string name="error_cargar_reparaciones">Error loading repairs</string>
+    <string name="error_registrar_reparacion">Error registering repair</string>
+    <string name="error_actualizar_reparacion">Error updating repair</string>
+    <string name="error_apto_y_requiere">Cannot be fit for sale and require another repair at the same time</string>
+    <string name="error_vehiculo_no_en_reparacion">The vehicle is not under repair, cannot be marked as fit for sale</string>
+    <string name="label_taller">Workshop</string>
+    <string name="hint_buscar_taller_reparacion">Search workshop...</string>
+    <string name="cb_requiere_otra_reparacion">Requires another repair</string>
+    <string name="error_seleccione_taller">Select a workshop</string>
+    <string name="label_taller_id">Workshop ID: </string>
+    <string name="label_requiere_reparacion_si">⚠ Requires another repair</string>
+    <string name="label_requiere_reparacion_no">✔ Does not require another repair</string>
+
+    <!-- Modelo -->
+    <string name="title_modelos">Models</string>
+    <string name="subtitle_modelos">Available models catalog</string>
+    <string name="hint_buscar_modelo">Search Model</string>
+    <string name="title_nuevo_modelo">New Model</string>
+    <string name="title_editar_modelo">Edit Model</string>
+    <string name="title_detalle_modelo">Model Detail</string>
+    <string name="title_eliminar_modelo">Delete Model</string>
+    <string name="msg_eliminar_modelo">Do you want to delete \'%1$s\'?</string>
+    <string name="msg_modelo_eliminado">Model deleted</string>
+    <string name="error_cargar_modelos">Error loading models</string>
+    <string name="error_guardar_modelo">Error saving model</string>
+    <string name="error_eliminar_modelo_trigger">Error deleting model</string>
+    <string name="hint_nombre_modelo">Model name</string>
+    <string name="error_nombre_modelo">Enter the model name</string>
+    <string name="label_marca_id">Brand ID: </string>
+    <string name="label_nombre_modelo_detalle">Name: </string>
+    <string name="label_modelo">Model</string>
+
+    <!-- Marca -->
+    <string name="title_marcas">Brands</string>
+    <string name="subtitle_marcas">Available brands catalog</string>
+    <string name="hint_buscar_marca">Search brand...</string>
+    <string name="title_nueva_marca">New Brand</string>
+    <string name="title_editar_marca">Edit Brand</string>
+    <string name="title_detalle_marca">Brand Detail</string>
+    <string name="error_nombre_marca">Enter the brand name</string>
+    <string name="label_id_marca">ID: </string>
+    <string name="error_cargar_marcas">Error loading brands</string>
+    <string name="error_guardar_marca">Error saving brand</string>
+    <string name="title_eliminar_marca">Delete Brand</string>
+    <string name="msg_eliminar_marca">Do you want to delete \'%1$s\'?</string>
+    <string name="msg_marca_eliminada">Brand deleted</string>
 </resources>
