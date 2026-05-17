@@ -180,6 +180,79 @@
     <string name="update">Editar</string>
     <string name="delete">Eliminar</string>
 
+    <!-- Comunes reutilizables -->
+    <string name="error_cargar_datos">Error al cargar datos</string>
+    <string name="msg_accion_irreversible">Esta acción no se puede deshacer.</string>
+
+    <!-- Transporte -->
+    <string name="title_nuevo_transporte">Nuevo Transporte</string>
+    <string name="title_editar_transporte">Editar Transporte</string>
+    <string name="title_detalle_transporte">Detalle de transporte</string>
+    <string name="title_eliminar_transporte">Eliminar Transporte</string>
+    <string name="label_transporte">Transporte</string>
+    <string name="subtitle_transporte">Gestión de unidades de transporte</string>
+    <string name="hint_buscar_transporte">Buscar por placa o descripción...</string>
+    <string name="subtitle_form_transporte">Complete los datos del transporte</string>
+    <string name="msg_transporte_capacidad">El transporte ha alcanzado su capacidad máxima para este día</string>
+    <string name="error_cargar_transportes">Error al cargar transportes</string>
+    <string name="field_tipo_transporte">Tipo de Transporte *</string>
+    <string name="hint_seleccione_tipo_transporte">Seleccione el tipo</string>
+    <string name="error_seleccione_tipo_transporte">Seleccione el tipo de transporte</string>
+    <string name="field_placa">Placa *</string>
+    <string name="hint_placa">Ej: P-123-456</string>
+    <string name="field_descripcion_opcional">Descripción (opcional)</string>
+    <string name="hint_descripcion_transporte">Descripción del transporte</string>
+    <string name="label_tipo_transporte">TIPO DE TRANSPORTE</string>
+    <string name="label_descripcion_detalle">DESCRIPCIÓN</string>
+
+    <!-- Personal Interno -->
+    <string name="title_nuevo_personal">Nuevo Personal</string>
+    <string name="title_editar_personal">Editar Personal</string>
+    <string name="title_eliminar_personal">Eliminar Personal</string>
+    <string name="label_personal_interno">Personal Interno</string>
+    <string name="subtitle_personal">Gestión de personal</string>
+    <string name="hint_buscar_personal">Buscar por nombre o cargo...</string>
+    <string name="subtitle_form_personal">Complete los datos del personal</string>
+    <string name="error_cargar_personal">Error al cargar personal</string>
+    <string name="hint_nombre_personal">Nombre del personal</string>
+    <string name="hint_apellido_personal">Apellido del personal</string>
+    <string name="field_cargo">Cargo *</string>
+    <string name="hint_cargo">Cargo o puesto</string>
+    <string name="label_nombre">NOMBRE</string>
+    <string name="label_apellido">APELLIDO</string>
+    <string name="label_cargo">CARGO</string>
+
+    <!-- Movimiento -->
+    <string name="title_nuevo_movimiento">Nuevo Movimiento</string>
+    <string name="title_editar_movimiento">Editar Movimiento</string>
+    <string name="title_eliminar_movimiento">Eliminar Movimiento</string>
+    <string name="label_movimientos">Movimientos</string>
+    <string name="subtitle_movimiento">Gestión de movimientos de vehículos</string>
+    <string name="hint_buscar_movimiento">Buscar por tipo, fecha o motivo...</string>
+    <string name="subtitle_form_movimiento">Complete los datos del movimiento</string>
+    <string name="error_cargar_movimientos">Error al cargar movimientos</string>
+    <string name="field_tipo_movimiento">Tipo de Movimiento *</string>
+    <string name="hint_tipo_movimiento">Entrada / Salida</string>
+    <string name="field_fecha">Fecha *</string>
+    <string name="hint_fecha_formato">yyyy-MM-dd</string>
+    <string name="field_vehiculo">Vehículo *</string>
+    <string name="hint_seleccione_vehiculo">Seleccione el vehículo</string>
+    <string name="field_transporte">Transporte *</string>
+    <string name="hint_seleccione_transporte">Seleccione el transporte</string>
+    <string name="field_personal_interno">Personal Interno *</string>
+    <string name="hint_seleccione_personal">Seleccione el personal</string>
+    <string name="field_bodega">Bodega *</string>
+    <string name="hint_seleccione_bodega">Seleccione la bodega</string>
+    <string name="field_motivo">Motivo *</string>
+    <string name="hint_motivo">Motivo del movimiento</string>
+    <string name="label_tipo_movimiento">TIPO DE MOVIMIENTO</string>
+    <string name="label_fecha">FECHA</string>
+    <string name="label_motivo">MOTIVO</string>
+    <string name="label_vehiculo_vin">VEHÍCULO (VIN)</string>
+    <string name="label_transporte_detalle">TRANSPORTE</string>
+    <string name="label_personal_detalle">PERSONAL INTERNO</string>
+    <string name="label_bodega_detalle">BODEGA</string>
+
     <!-- Navegación -->
     <string name="nav_home">Inicio</string>
     <string name="nav_profile">Perfil</string>

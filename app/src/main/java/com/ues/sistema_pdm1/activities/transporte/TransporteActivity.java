@@ -71,7 +71,7 @@ public class TransporteActivity extends AppCompatActivity {
             transportes = transporteDAO.obtenerTodos();
         } catch (Exception e) {
             transportes = new ArrayList<>();
-            Toast.makeText(this, "Error al cargar transportes", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_transportes), Toast.LENGTH_SHORT).show();
         }
         mostrarTransportes(transportes);
     }
@@ -111,7 +111,12 @@ public class TransporteActivity extends AppCompatActivity {
 
         card.setOnClickListener(v -> abrirVista(t.getId()));
         card.findViewById(R.id.item_btn_editar).setOnClickListener(v -> abrirFormulario(t.getId()));
-        card.findViewById(R.id.item_btn_eliminar).setOnClickListener(v -> abrirEliminar(t));
+        View btnEliminar = card.findViewById(R.id.item_btn_eliminar);
+        if (SessionManager.getInstance().puedeEliminar()) {
+            btnEliminar.setOnClickListener(v -> abrirEliminar(t));
+        } else {
+            btnEliminar.setVisibility(View.GONE);
+        }
     }
 
     private void abrirFormulario(int id) {
