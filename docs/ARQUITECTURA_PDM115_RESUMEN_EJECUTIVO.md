@@ -116,7 +116,7 @@ Cubre el ciclo completo: importación → almacenamiento en bodegas → movimien
                              │
 ┌───────────────────────────▼──────────────────────────┐
 │                     SQLite                            │
-│  inventario_pdm1.db — 26 tablas + 7 triggers         │
+│  inventario_pdm1.db — 26 tablas + 32 triggers         │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -162,21 +162,28 @@ Cubre el ciclo completo: importación → almacenamiento en bodegas → movimien
 | 25 | REPARACION | VEHICULO, TALLER |
 | 26 | VENTA | VEHICULO, IMPORTADOR |
 
-### 7 Triggers
+### 32 Triggers
 
 | Trigger | Tabla | Cuándo dispara | Efecto |
 |---------|-------|---------------|--------|
-| TRG_ANIO_VEHICULO | VEHICULO | BEFORE INSERT | Rechaza si `ANIO <= 2020` |
-| TRG_CAPACIDAD_SECCION | VEHICULO | BEFORE INSERT | Rechaza si `SECCION` está llena |
+| TRG_ANIO_VEHICULO | VEHICULO | BEFORE INSERT | Rechaza si antigüedad > 5 años (`strftime('%Y','now') - 5`) |
+| TRG_CAPACIDAD_SECCION | VEHICULO | BEFORE INSERT | Rechaza si sección está llena al insertar |
+| TRG_CAPACIDAD_SECCION_UPDATE | VEHICULO | BEFORE UPDATE de ID_SECCION | Rechaza si sección destino está llena al mover |
 | TRG_CAPACIDAD_TRANSPORTE | MOVIMIENTO | BEFORE INSERT | Rechaza si transporte alcanzó límite diario |
 | TRG_SECCION_INCREMENTAR | VEHICULO | AFTER INSERT | Suma +1 a `CAPACIDAD_ACTUAL` de la sección |
 | TRG_SECCION_MOVER | VEHICULO | AFTER UPDATE de ID_SECCION | Resta -1 sección origen, suma +1 sección destino |
+| TRG_SECCION_DECREMENTAR | VEHICULO | AFTER DELETE | Resta -1 a `CAPACIDAD_ACTUAL` de la sección |
 | TRG_ESTADO_VENDIDO | VENTA | AFTER INSERT | Cambia vehículo a `'vendido'` automáticamente |
-| TRG_ESTADO_REPARACION | REPARACION | AFTER UPDATE de APTO_PARA_VENTA | Cambia vehículo a `'listo'` o `'en reparacion'` |
+| TRG_ESTADO_VENTA_DELETE | VENTA | AFTER DELETE | Revierte vehículo a `'listo para venta'` al eliminar venta |
+| TRG_ESTADO_VENTA_UPDATE | VENTA | AFTER UPDATE de ID_VEHICULO | Revierte vehículo anterior y marca el nuevo como `'vendido'` |
+| TRG_ESTADO_REPARACION_INSERT | REPARACION | AFTER INSERT | Cambia vehículo a `'en reparacion'` siempre |
+| TRG_ESTADO_REPARACION | REPARACION | AFTER UPDATE de APTO_PARA_VENTA | Cambia vehículo a `'listo para venta'` o `'en reparacion'` |
 
-> ⚠️ `TRG_ESTADO_REPARACION` dispara en **UPDATE**, no en INSERT. Insertar una
-> reparación no cambia el estado del vehículo; solo lo hace cuando se edita
-> el campo `aptoParaVenta`.
+> **Flujo de estados de vehículo:**
+> `'en bodega'` → *(crear reparación)* → `'en reparacion'` → *(editar, aptoParaVenta=1)* → `'listo para venta'` → *(registrar venta)* → `'vendido'`
+>
+> `TRG_ESTADO_REPARACION_INSERT` dispara en INSERT y siempre pone `'en reparacion'`.
+> `TRG_ESTADO_REPARACION` dispara en UPDATE de `APTO_PARA_VENTA` y transiciona a `'listo para venta'`.
 
 ---
 
@@ -506,7 +513,7 @@ app/src/main/
 ### Infraestructura base (ya verificada)
 
 ```
-✅ DatabaseHelper crea 26 tablas y 7 triggers
+✅ DatabaseHelper crea 26 tablas y 32 triggers
 ✅ GenericDAO mapea campos automáticamente
 ✅ SessionManager valida credenciales y permisos
 ✅ LlenarBDGpo02 precarga las 26 tablas

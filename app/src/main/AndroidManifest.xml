@@ -87,6 +87,36 @@
             android:name=".activities.transporte.TransporteActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.transporte.TransporteFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.transporte.TransporteViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.transporte.TransporteDeleteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Overlay.Transparent" />
+        <activity
+            android:name=".activities.personalInterno.PersonalInternoFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.personalInterno.PersonalInternoViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.personalInterno.PersonalInternoDeleteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Overlay.Transparent" />
+        <activity
+            android:name=".activities.movimiento.MovimientoFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.movimiento.MovimientoViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.movimiento.MovimientoDeleteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Overlay.Transparent" />
+        <activity
             android:name=".activities.detalleDesperfecto.DetalleDesperfectoActivity"
             android:exported="false" />
         <activity
