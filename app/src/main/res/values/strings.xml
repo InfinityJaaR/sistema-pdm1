@@ -232,11 +232,17 @@
     <string name="label_logistica_inventario">Logística e Inventario</string>
     <string name="label_tipo">Tipo</string>
     <string name="label_modelo">Modelo</string>
+    <string name="label_marca">Marca</string>
     <string name="label_importacion">Importación</string>
     <string name="label_vin">VIN</string>
     <string name="label_anio">Año</string>
     <string name="label_color">Color</string>
     <string name="label_estado">Estado</string>
+    <string name="label_desperfectos">Desperfectos</string>
+    <string name="label_fecha_registro">Fecha de registro</string>
+    <string name="section_vehiculos_importacion">Vehículos de esta Importación</string>
+    <string name="msg_sin_vehiculos_importacion">No hay vehículos registrados para esta importación</string>
+    <string name="msg_sin_desperfectos">Sin desperfectos registrados</string>
     <string name="hint_vin">Ingrese número de VIN</string>
     <string name="hint_color">Ingrese el color del vehiculo</string>
     <string name="placeholder_empty">---</string>
