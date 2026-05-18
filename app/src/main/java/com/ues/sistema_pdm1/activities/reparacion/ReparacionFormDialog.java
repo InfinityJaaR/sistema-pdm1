@@ -139,7 +139,12 @@ public class ReparacionFormDialog extends DialogFragment {
                     vehiculos.add(v);
             }
 
-            talleres = tallerDAO.obtenerTodos();
+            List<Taller> todosTalleres = tallerDAO.obtenerTodos();
+            talleres = new ArrayList<>();
+            for (Taller t : todosTalleres) {
+                if (t.getAutorizado() == 1)
+                    talleres.add(t);
+            }
 
             ArrayAdapter<Vehiculo> adapterVehiculo = new ArrayAdapter<>(
                     getContext(), android.R.layout.simple_dropdown_item_1line, vehiculos);
