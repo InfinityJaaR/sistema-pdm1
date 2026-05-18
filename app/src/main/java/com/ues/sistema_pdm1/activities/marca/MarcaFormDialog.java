@@ -57,14 +57,14 @@ public class MarcaFormDialog extends DialogFragment {
         }
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())
-            .setTitle(esEdicion ? "Editar Marca" : "Nueva Marca")
+            .setTitle(esEdicion ? getString(R.string.title_editar_marca) : getString(R.string.title_nueva_marca))
             .setView(view)
             .create();
 
         btnGuardar.setOnClickListener(v -> {
             String nombre = etNombre.getText().toString().trim();
             if (nombre.isEmpty()) {
-                Toast.makeText(getActivity(), "Ingrese el nombre de la marca",
+                Toast.makeText(getActivity(), getString(R.string.error_nombre_marca),
                     Toast.LENGTH_SHORT).show();
                 return;
             }

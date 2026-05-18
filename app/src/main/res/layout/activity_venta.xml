@@ -34,7 +34,7 @@
                     android:id="@+id/tv_venta_titulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ventas"
+                    android:text="@string/title_ventas"
                     android:textColor="@color/text_light"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -43,7 +43,7 @@
                     android:id="@+id/tv_venta_subtitulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Registro de ventas realizadas"
+                    android:text="@string/subtitle_ventas"
                     android:textColor="@color/primary_blue_light"
                     android:textSize="12sp" />
 
@@ -79,7 +79,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Buscar venta..."
+                android:hint="@string/hint_buscar_venta"
                 android:textColor="@color/text_light"
                 android:textColorHint="@color/primary_blue_light"
                 android:textSize="14sp"

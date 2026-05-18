@@ -74,7 +74,7 @@ public class BodegaActivity extends AppCompatActivity {
             bodegaFiltradas = new ArrayList<>(bodega);
             refrescarLista();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar bodegas", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_bodegas), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -125,7 +125,7 @@ public class BodegaActivity extends AppCompatActivity {
                 }
                 cargarBodegas();
             } catch (Exception e) {
-                Toast.makeText(this, "Error al guardar bodega", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.error_guardar_bodega), Toast.LENGTH_SHORT).show();
             }
         });
         dialog.show(getSupportFragmentManager(), "form");
@@ -133,18 +133,18 @@ public class BodegaActivity extends AppCompatActivity {
 
     private void confirmarEliminar(Bodega bodega) {
         new AlertDialog.Builder(this)
-                .setTitle("Eliminar Bodega")
-                .setMessage("¿Desea eliminar '" + bodega.getNombreBodega() + "'?")
-                .setPositiveButton("Sí", (d, w) -> {
+                .setTitle(R.string.title_eliminar_bodega)
+                .setMessage(getString(R.string.msg_confirmar_eliminar_bodega, bodega.getNombreBodega()))
+                .setPositiveButton(R.string.yes, (d, w) -> {
                     try {
                         bodegaDAO.eliminar(bodega.getId());
                         cargarBodegas();
-                        Toast.makeText(this, "Bodega eliminada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.msg_bodega_eliminada), Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error al eliminar boddega", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(R.string.no, null)
                 .show();
     }
 }

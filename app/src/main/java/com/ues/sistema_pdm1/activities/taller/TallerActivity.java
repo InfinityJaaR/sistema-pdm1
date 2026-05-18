@@ -1,7 +1,6 @@
 package com.ues.sistema_pdm1.activities.taller;
 
 import android.os.Bundle;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -15,7 +14,6 @@ import com.ues.sistema_pdm1.utils.SessionManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.content.Intent;
@@ -26,9 +24,9 @@ import java.util.List;
 
 public class TallerActivity extends AppCompatActivity {
 
-    private ListView lvTalleres;
+    private ListView    lvTalleres;
     private ImageButton btnAgregar, btnBuscar;
-    private EditText etBuscar;
+    private EditText    etBuscar;
 
     private GenericDAO<Taller> tallerDAO;
     private List<Taller> talleres          = new ArrayList<>();
@@ -78,7 +76,7 @@ public class TallerActivity extends AppCompatActivity {
             talleresFiltrados = new ArrayList<>(talleres);
             refrescarLista();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar talleres", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_talleres), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -95,9 +93,8 @@ public class TallerActivity extends AppCompatActivity {
         } else {
             talleresFiltrados = new ArrayList<>();
             for (Taller t : talleres) {
-                if (t.getNombreTaller().toLowerCase().contains(texto)) {
+                if (t.getNombreTaller().toLowerCase().contains(texto))
                     talleresFiltrados.add(t);
-                }
             }
         }
         refrescarLista();
@@ -129,7 +126,7 @@ public class TallerActivity extends AppCompatActivity {
                 }
                 cargarTalleres();
             } catch (Exception e) {
-                Toast.makeText(this, "Error al guardar taller", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.error_guardar_taller), Toast.LENGTH_SHORT).show();
             }
         });
         dialog.show(getSupportFragmentManager(), "form");
@@ -137,18 +134,18 @@ public class TallerActivity extends AppCompatActivity {
 
     private void confirmarEliminar(Taller taller) {
         new AlertDialog.Builder(this)
-                .setTitle("Eliminar Taller")
-                .setMessage("¿Desea eliminar '" + taller.getNombreTaller() + "'?")
-                .setPositiveButton("Sí", (d, w) -> {
+                .setTitle(getString(R.string.title_eliminar_taller))
+                .setMessage(getString(R.string.msg_eliminar_taller, taller.getNombreTaller()))
+                .setPositiveButton(getString(R.string.yes), (d, w) -> {
                     try {
                         tallerDAO.eliminar(taller.getId());
                         cargarTalleres();
-                        Toast.makeText(this, "Taller eliminado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.msg_taller_eliminado), Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error al eliminar taller", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(getString(R.string.no), null)
                 .show();
     }
 }

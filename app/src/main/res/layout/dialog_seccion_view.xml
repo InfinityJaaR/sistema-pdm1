@@ -56,7 +56,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ocupación (Actual / Total)"
+        android:text="@string/label_ocupacion"
         android:textColor="#555555"
         android:textSize="12sp"
         android:textStyle="bold" />

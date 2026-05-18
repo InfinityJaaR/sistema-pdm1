@@ -6,7 +6,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -14,14 +13,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ues.sistema_pdm1.R;
 import com.ues.sistema_pdm1.activities.LoginActivity;
 import com.ues.sistema_pdm1.data.dao.GenericDAO;
+import com.ues.sistema_pdm1.models.Bodega;
 import com.ues.sistema_pdm1.models.Marca;
 import com.ues.sistema_pdm1.models.Modelo;
+import com.ues.sistema_pdm1.models.Seccion;
 import com.ues.sistema_pdm1.models.Vehiculo;
 import com.ues.sistema_pdm1.utils.SessionManager;
 
@@ -38,7 +38,9 @@ public class VehiculoActivity extends AppCompatActivity {
     private GenericDAO<Vehiculo> vehiculoDAO;
     private GenericDAO<Modelo> modeloDAO;
     private GenericDAO<Marca> marcaDAO;
-    
+    private GenericDAO<Seccion> seccionDAO;
+    private GenericDAO<Bodega> bodegaDAO;
+
     private List<Vehiculo> vehiculos = new ArrayList<>();
     private List<Vehiculo> vehiculosFiltrados = new ArrayList<>();
 
@@ -61,25 +63,18 @@ public class VehiculoActivity extends AppCompatActivity {
         vehiculoDAO = new GenericDAO<>(this, Vehiculo.class, "vehiculo");
         modeloDAO = new GenericDAO<>(this, Modelo.class, "modelo");
         marcaDAO = new GenericDAO<>(this, Marca.class, "marca");
+        seccionDAO = new GenericDAO<>(this, Seccion.class, "seccion");
+        bodegaDAO = new GenericDAO<>(this, Bodega.class, "bodega");
 
         cargarVehiculos();
 
         btnAgregar.setOnClickListener(v -> abrirFormulario(null));
         btnBuscar.setOnClickListener(v -> filtrar());
 
-        // Filtro en tiempo real para mejor experiencia
         etBuscar.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) { filtrar(); }
             @Override public void afterTextChanged(Editable s) {}
-        });
-
-        etBuscar.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                filtrar();
-                return true;
-            }
-            return false;
         });
 
         lvVehiculos.setOnItemClickListener((parent, view, position, id) ->
@@ -90,14 +85,13 @@ public class VehiculoActivity extends AppCompatActivity {
         try {
             vehiculos = vehiculoDAO.obtenerTodos();
             if (vehiculos != null) {
-                Collections.reverse(vehiculos); // Más recientes primero
+                Collections.reverse(vehiculos);
             } else {
                 vehiculos = new ArrayList<>();
             }
-            // Después de cargar, aplicamos el filtro actual (o lista completa si está vacío)
             filtrar();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar vehículos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_vehiculos), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -118,10 +112,11 @@ public class VehiculoActivity extends AppCompatActivity {
                         Modelo m = modeloDAO.obtenerPorId(v.getIdModelo());
                         Marca ma = (m != null) ? marcaDAO.obtenerPorId(m.getIdMarca()) : null;
                         String titulo = v.getAnio() + " " + (ma != null ? ma.getNombreMarca() : "") + " " + (m != null ? m.getNombreModelo() : "");
-                        tvH.setText(titulo);
-                        tvS.setText("VIN: " + v.getVin() + " | " + v.getEstadoVehiculo());
+                        tvH.setText(titulo.trim());
+                        tvS.setText(getString(R.string.label_vin) + ": " + v.getVin() + " | " + v.getEstadoVehiculo());
                     } catch (Exception e) {
-                        tvH.setText("VIN: " + v.getVin());
+                        tvH.setText(getString(R.string.label_vin) + ": " + v.getVin());
+                        tvS.setText(v.getEstadoVehiculo());
                     }
                 }
                 return convertView;
@@ -133,13 +128,29 @@ public class VehiculoActivity extends AppCompatActivity {
     private void filtrar() {
         String texto = etBuscar.getText().toString().trim().toLowerCase();
         vehiculosFiltrados = new ArrayList<>();
+
         if (texto.isEmpty()) {
             vehiculosFiltrados.addAll(vehiculos);
         } else {
             for (Vehiculo v : vehiculos) {
-                if (v.getVin().toLowerCase().contains(texto)) {
-                    vehiculosFiltrados.add(v);
+                boolean coincide = false;
+                if (v.getVin().toLowerCase().contains(texto)) coincide = true;
+                if (!coincide && v.getEstadoVehiculo().toLowerCase().contains(texto)) coincide = true;
+                if (!coincide && String.valueOf(v.getAnio()).contains(texto)) coincide = true;
+                if (!coincide) {
+                    try {
+                        Modelo m = modeloDAO.obtenerPorId(v.getIdModelo());
+                        if (m != null) {
+                            if (m.getNombreModelo().toLowerCase().contains(texto)) {
+                                coincide = true;
+                            } else {
+                                Marca ma = marcaDAO.obtenerPorId(m.getIdMarca());
+                                if (ma != null && ma.getNombreMarca().toLowerCase().contains(texto)) coincide = true;
+                            }
+                        }
+                    } catch (Exception ignored) {}
                 }
+                if (coincide) vehiculosFiltrados.add(v);
             }
         }
         refrescarLista();
@@ -161,9 +172,9 @@ public class VehiculoActivity extends AppCompatActivity {
             try {
                 if (v == null) vehiculoDAO.insertar(veh); else vehiculoDAO.actualizar(veh);
                 cargarVehiculos();
-                Toast.makeText(this, "Vehículo guardado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.msg_vehiculo_guardado), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-                Toast.makeText(this, "Error al guardar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         dialog.show(getSupportFragmentManager(), "form");
@@ -171,15 +182,20 @@ public class VehiculoActivity extends AppCompatActivity {
 
     private void confirmarEliminar(Vehiculo v) {
         View view = getLayoutInflater().inflate(R.layout.dialog_confirmacion, null);
-        ((TextView)view.findViewById(R.id.confirmacion_text)).setText("¿Eliminar vehículo VIN: " + v.getVin() + "?");
-        AlertDialog dialog = new AlertDialog.Builder(this).setView(view).create();
+        ((TextView)view.findViewById(R.id.confirmacion_text)).setText(getString(R.string.msg_confirmar_eliminar_vehiculo, v.getVin()));
+        androidx.appcompat.app.AlertDialog dialog = new androidx.appcompat.app.AlertDialog.Builder(this).setView(view).create();
+
         view.findViewById(R.id.btn_no).setOnClickListener(view1 -> dialog.dismiss());
         view.findViewById(R.id.btn_si).setOnClickListener(view1 -> {
             try {
                 vehiculoDAO.eliminar(v.getId());
                 cargarVehiculos();
+                Toast.makeText(this, getString(R.string.msg_vehiculo_eliminado), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
-            } catch (Exception e) { }
+            } catch (Exception e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                dialog.dismiss();
+            }
         });
         dialog.show();
     }

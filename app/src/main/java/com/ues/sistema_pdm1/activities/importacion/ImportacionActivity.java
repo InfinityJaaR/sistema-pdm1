@@ -75,7 +75,7 @@ public class ImportacionActivity extends AppCompatActivity {
             importaciones = importacionDAO.obtenerTodos();
         } catch (Exception e) {
             importaciones = new ArrayList<>();
-            Toast.makeText(this, "Error al cargar importaciones", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_importaciones), Toast.LENGTH_SHORT).show();
         }
         mostrarImportaciones(importaciones);
     }
@@ -108,7 +108,7 @@ public class ImportacionActivity extends AppCompatActivity {
 
         String nombreImp = nombreImportador(imp.getIdImportador());
         tvImportador.setText(nombreImp);
-        tvFecha.setText("Fecha: " + imp.getFechaImportacion());
+        tvFecha.setText(getString(R.string.label_fecha_prefijo) + imp.getFechaImportacion());
 
         card.setOnClickListener(v -> abrirVista(imp.getId()));
         card.findViewById(R.id.item_importacion_btn_editar).setOnClickListener(v -> abrirFormulario(imp.getId()));
@@ -120,9 +120,9 @@ public class ImportacionActivity extends AppCompatActivity {
             Importador imp = importadorDAO.obtenerPorId(idImportador);
             return imp != null
                 ? imp.getNombreImportador() + " " + imp.getApellidoImportador()
-                : "Importador #" + idImportador;
+                : getString(R.string.label_importador_prefijo) + idImportador;
         } catch (Exception e) {
-            return "Importador #" + idImportador;
+            return getString(R.string.label_importador_prefijo) + idImportador;
         }
     }
 
@@ -141,7 +141,7 @@ public class ImportacionActivity extends AppCompatActivity {
     private void abrirEliminar(Importacion imp) {
         Intent intent = new Intent(this, ImportacionDeleteActivity.class);
         intent.putExtra("importacion_id", imp.getId());
-        intent.putExtra("importacion_label", "Importación del " + imp.getFechaImportacion());
+        intent.putExtra("importacion_label", getString(R.string.label_importacion_del) + imp.getFechaImportacion());
         launcher.launch(intent);
     }
 }

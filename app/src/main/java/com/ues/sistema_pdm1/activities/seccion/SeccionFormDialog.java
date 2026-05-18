@@ -30,6 +30,7 @@ public class SeccionFormDialog extends DialogFragment {
 
     private SeccionFormDialog.OnSaveListener listener;
     private GenericDAO<Bodega> bodegaDAO;
+    private GenericDAO<Seccion> seccionDAO;
     private List<Bodega> listaBodegas;
 
     public static SeccionFormDialog newInstance(Seccion seccion) {
@@ -65,6 +66,8 @@ public class SeccionFormDialog extends DialogFragment {
 
         // Cargar Distritos en el Spinner
         bodegaDAO = new GenericDAO<>(requireContext(), Bodega.class, "BODEGA");
+        seccionDAO = new GenericDAO<>(requireContext(), Seccion.class, "SECCION");
+
         try {
             listaBodegas = bodegaDAO.obtenerTodos();
         } catch (SQLException e) {
@@ -84,6 +87,7 @@ public class SeccionFormDialog extends DialogFragment {
             etNivel.setText(String.valueOf(args.getInt("NIVEL")));
             etCapacidadMaxima.setText(String.valueOf(args.getInt("CAPACIDAD_MAXIMA")));
             etCapacidadActual.setText(String.valueOf(args.getInt("CAPACIDAD_ACTUAL")));
+            etCapacidadActual.setEnabled(false);
 
             int idBodega = args.getInt("ID_BODEGA");
             for (int i = 0; i < listaBodegas.size(); i++) {
@@ -92,10 +96,13 @@ public class SeccionFormDialog extends DialogFragment {
                     break;
                 }
             }
+        } else {
+            etCapacidadActual.setText("0");
+            etCapacidadActual.setEnabled(false);
         }
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())
-                .setTitle(esEdicion ? "Editar Seccion" : "Nueva Seccion")
+                .setTitle(esEdicion ? R.string.title_editar_seccion : R.string.title_nueva_seccion)
                 .setView(view)
                 .create();
 
@@ -106,11 +113,11 @@ public class SeccionFormDialog extends DialogFragment {
             Bodega bodega = (Bodega) spBodega.getSelectedItem();
 
             if (bodega == null) {
-                Toast.makeText(getActivity(), "Seleccione una bodega", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.error_seleccione_bodega), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (nivel.isEmpty()) {
-                etNivel.setError("Campo requerido");
+                etNivel.setError(getString(R.string.msg_campo_requerido));
                 return;
             }
 
@@ -120,22 +127,43 @@ public class SeccionFormDialog extends DialogFragment {
 
             // Validación de capacidad máxima
             if (capT > 50) {
-                etCapacidadMaxima.setError("La capacidad máxima no puede ser superior a 50");
+                etCapacidadMaxima.setError(getString(R.string.error_capacidad_max_limite));
                 etCapacidadMaxima.requestFocus();
                 return;
             }
 
             // Validación lógica: capacidad actual no puede ser mayor a la total
             if (capA > capT) {
-                etCapacidadActual.setError("La capacidad actual no puede exceder la capacidad total");
+                etCapacidadActual.setError(getString(R.string.error_capacidad_actual_excede));
                 etCapacidadActual.requestFocus();
                 return;
             }
 
             if (nivelInt < 1 || nivelInt > 3){
-                etNivel.setError("El nivel debe estar en entre 1 y 3");
+                etNivel.setError(getString(R.string.error_nivel_rango));
                 etNivel.requestFocus();
                 return;
+            }
+
+            List<Seccion> seccionesBodega = seccionDAO.obtenerPor("ID_BODEGA", String.valueOf(bodega.getId()));
+
+            // 1. No más de 3 secciones por bodega
+            if (!esEdicion && seccionesBodega.size() >= 3) {
+                Toast.makeText(getActivity(), getString(R.string.error_max_secciones), Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            // 2. No niveles duplicados en una bodega
+            for (Seccion s : seccionesBodega) {
+                if (s.getNivel() == nivelInt) {
+                    // Si es edición, ignorar si es la misma sección
+                    if (esEdicion && s.getId() == id) {
+                        continue;
+                    }
+                    etNivel.setError(getString(R.string.error_nivel_duplicado, nivelInt));
+                    etNivel.requestFocus();
+                    return;
+                }
             }
 
             if (listener != null) {

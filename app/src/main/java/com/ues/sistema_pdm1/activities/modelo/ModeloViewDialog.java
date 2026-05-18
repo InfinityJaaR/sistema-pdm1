@@ -19,8 +19,8 @@ public class ModeloViewDialog extends DialogFragment {
     public static ModeloViewDialog newInstance(Modelo modelo) {
         ModeloViewDialog dialog = new ModeloViewDialog();
         Bundle args = new Bundle();
-        args.putInt("ID_MODELO",       modelo.getId());
-        args.putInt("ID_MARCA",        modelo.getIdMarca());
+        args.putInt("ID_MODELO",        modelo.getId());
+        args.putInt("ID_MARCA",         modelo.getIdMarca());
         args.putString("NOMBRE_MODELO", modelo.getNombreModelo());
         dialog.setArguments(args);
         return dialog;
@@ -38,12 +38,12 @@ public class ModeloViewDialog extends DialogFragment {
         Button   btnCerrar = view.findViewById(R.id.btn_cerrar);
 
         Bundle args = requireArguments();
-        tvId.setText("ID: "      + args.getInt("ID_MODELO"));
-        tvMarca.setText("Marca ID: " + args.getInt("ID_MARCA"));
-        tvNombre.setText("Nombre: "  + args.getString("NOMBRE_MODELO"));
+        tvId.setText("ID: " + args.getInt("ID_MODELO"));
+        tvMarca.setText(getString(R.string.label_marca_id)          + args.getInt("ID_MARCA"));
+        tvNombre.setText(getString(R.string.label_nombre_modelo_detalle) + args.getString("NOMBRE_MODELO"));
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())
-                .setTitle("Detalle de Modelo")
+                .setTitle(getString(R.string.title_detalle_modelo))
                 .setView(view)
                 .create();
 

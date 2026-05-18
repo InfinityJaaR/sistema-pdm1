@@ -97,7 +97,7 @@ public class ReparacionFormDialog extends DialogFragment {
                             btnFechaInicio.setText(fecha);
                             if (!fechaFinHolder[0].isEmpty() && fechaFinHolder[0].compareTo(fecha) < 0) {
                                 fechaFinHolder[0] = "";
-                                btnFechaFin.setText("Seleccionar");
+                                btnFechaFin.setText(getString(R.string.btn_seleccionar));
                             }
                         },
                         cal.get(Calendar.YEAR),
@@ -134,11 +134,17 @@ public class ReparacionFormDialog extends DialogFragment {
             List<Vehiculo> todos = vehiculoDAO.obtenerTodos();
             vehiculos = new ArrayList<>();
             for (Vehiculo v : todos) {
-                if ("en reparacion".equals(v.getEstadoVehiculo()))
+                String estado = v.getEstadoVehiculo();
+                if ("en reparacion".equals(estado) || "en bodega".equals(estado))
                     vehiculos.add(v);
             }
 
-            talleres = tallerDAO.obtenerTodos();
+            List<Taller> todosTalleres = tallerDAO.obtenerTodos();
+            talleres = new ArrayList<>();
+            for (Taller t : todosTalleres) {
+                if (t.getAutorizado() == 1)
+                    talleres.add(t);
+            }
 
             ArrayAdapter<Vehiculo> adapterVehiculo = new ArrayAdapter<>(
                     getContext(), android.R.layout.simple_dropdown_item_1line, vehiculos);
@@ -174,7 +180,7 @@ public class ReparacionFormDialog extends DialogFragment {
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.error_cargar_reparaciones), Toast.LENGTH_SHORT).show();
         }
 
         if (esEdicion) {
@@ -185,10 +191,21 @@ public class ReparacionFormDialog extends DialogFragment {
             etDescripcion.setText(args.getString("DESCRIPCION_TRABAJO"));
             cbAptoParaVenta.setChecked(args.getInt("APTO_PARA_VENTA") == 1);
             cbRequiere.setChecked(args.getInt("REQUIERE_OTRA_REPARACION") == 1);
+            cbAptoParaVenta.setEnabled(true);
+            cbRequiere.setEnabled(true);
+        } else {
+            cbAptoParaVenta.setChecked(false);
+            cbRequiere.setChecked(false);
+            cbAptoParaVenta.setEnabled(false);
+            cbRequiere.setEnabled(false);
+            cbAptoParaVenta.setVisibility(View.GONE);
+            cbRequiere.setVisibility(View.GONE);
         }
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())
-                .setTitle(esEdicion ? "Editar Reparación" : "Nueva Reparación")
+                .setTitle(esEdicion
+                        ? getString(R.string.title_editar_reparacion)
+                        : getString(R.string.title_nueva_reparacion))
                 .setView(view)
                 .create();
 
@@ -200,19 +217,19 @@ public class ReparacionFormDialog extends DialogFragment {
             int requiereReparacion = cbRequiere.isChecked() ? 1 : 0;
 
             if (vehiculoSeleccionado == null) {
-                Toast.makeText(getActivity(), "Seleccione un vehículo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.error_seleccione_vehiculo), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (tallerSeleccionado == null) {
-                Toast.makeText(getActivity(), "Seleccione un taller", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.error_seleccione_taller), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (fechaInicio.isEmpty()) {
-                Toast.makeText(getActivity(), "Seleccione la fecha de inicio", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.error_seleccione_fecha_inicio), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (descripcion.isEmpty()) {
-                Toast.makeText(getActivity(), "Ingrese la descripción del trabajo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.error_descripcion_trabajo), Toast.LENGTH_SHORT).show();
                 return;
             }
 

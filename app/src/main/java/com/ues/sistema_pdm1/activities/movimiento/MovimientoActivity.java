@@ -2,14 +2,17 @@ package com.ues.sistema_pdm1.activities.movimiento;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ues.sistema_pdm1.R;
@@ -23,13 +26,15 @@ import java.util.List;
 
 public class MovimientoActivity extends AppCompatActivity {
 
-    private ListView   lvMovimiento;
-    private ImageButton btnAgregar, btnBuscar;
-    private EditText   etBuscar;
+    private LinearLayout containerLista;
+    private EditText searchInput;
 
     private GenericDAO<Movimiento> movimientoDAO;
-    private List<Movimiento> movimientos         = new ArrayList<>();
-    private List<Movimiento> movimientosFiltrados = new ArrayList<>();
+    private List<Movimiento> movimientos = new ArrayList<>();
+
+    private final ActivityResultLauncher<Intent> launcher =
+        registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            result -> cargarMovimientos());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,119 +42,100 @@ public class MovimientoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movimiento);
 
         if (!SessionManager.getInstance().isLoggedIn()) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
+            startActivity(new Intent(this, LoginActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             finish();
             return;
         }
 
-        lvMovimiento = findViewById(R.id.lv_movimiento);
-        btnAgregar   = findViewById(R.id.btn_movimiento_agregar);
-        btnBuscar    = findViewById(R.id.btn_movimiento_lupa);
-        etBuscar     = findViewById(R.id.et_movimiento_buscar);
+        containerLista = findViewById(R.id.container_lista_movimiento);
+        searchInput    = findViewById(R.id.et_movimiento_buscar);
 
         movimientoDAO = new GenericDAO<>(this, Movimiento.class, "movimiento");
 
-        cargarMovimientos();
+        findViewById(R.id.btn_movimiento_agregar).setOnClickListener(v -> abrirFormulario(0));
 
-        btnAgregar.setOnClickListener(v -> abrirFormulario(null));
-
-        lvMovimiento.setOnItemClickListener((parent, view, position, id) ->
-            abrirDialogOpciones(movimientosFiltrados.get(position)));
-
-        btnBuscar.setOnClickListener(v -> filtrar());
-
-        etBuscar.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                filtrar();
-                return true;
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filtrar(s.toString().trim().toLowerCase());
             }
-            return false;
+            @Override public void afterTextChanged(Editable s) {}
         });
+
+        cargarMovimientos();
     }
 
     private void cargarMovimientos() {
         try {
             movimientos = movimientoDAO.obtenerTodos();
-            movimientosFiltrados = new ArrayList<>(movimientos);
-            refrescarLista();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar movimientos", Toast.LENGTH_SHORT).show();
+            movimientos = new ArrayList<>();
+            Toast.makeText(this, getString(R.string.error_cargar_movimientos), Toast.LENGTH_SHORT).show();
         }
+        mostrarMovimientos(movimientos);
     }
 
-    private void refrescarLista() {
-        ArrayAdapter<Movimiento> adapter = new ArrayAdapter<>(
-            this, R.layout.item_movimiento, R.id.item_nombre, movimientosFiltrados);
-        lvMovimiento.setAdapter(adapter);
-    }
-
-    private void filtrar() {
-        String texto = etBuscar.getText().toString().trim().toLowerCase();
+    private void filtrar(String texto) {
         if (texto.isEmpty()) {
-            movimientosFiltrados = new ArrayList<>(movimientos);
-        } else {
-            movimientosFiltrados = new ArrayList<>();
-            for (Movimiento m : movimientos) {
-                String tipo   = m.getTipoMovimiento()  != null ? m.getTipoMovimiento().toLowerCase()  : "";
-                String fecha  = m.getFechaMovimiento() != null ? m.getFechaMovimiento().toLowerCase() : "";
-                String motivo = m.getMotivo()          != null ? m.getMotivo().toLowerCase()          : "";
-                if (tipo.contains(texto) || fecha.contains(texto) || motivo.contains(texto)) {
-                    movimientosFiltrados.add(m);
-                }
+            mostrarMovimientos(movimientos);
+            return;
+        }
+        List<Movimiento> filtrados = new ArrayList<>();
+        for (Movimiento m : movimientos) {
+            String tipo   = m.getTipoMovimiento()  != null ? m.getTipoMovimiento().toLowerCase()  : "";
+            String fecha  = m.getFechaMovimiento() != null ? m.getFechaMovimiento().toLowerCase() : "";
+            String motivo = m.getMotivo()          != null ? m.getMotivo().toLowerCase()          : "";
+            if (tipo.contains(texto) || fecha.contains(texto) || motivo.contains(texto)) {
+                filtrados.add(m);
             }
         }
-        refrescarLista();
+        mostrarMovimientos(filtrados);
     }
 
-    private void abrirDialogOpciones(Movimiento m) {
-        MovimientoOptionsDialog dialog = MovimientoOptionsDialog.newInstance(m);
-        dialog.setCallbacks(
-            () -> abrirVer(m),
-            () -> abrirFormulario(m),
-            () -> confirmarEliminar(m)
-        );
-        dialog.show(getSupportFragmentManager(), "opciones");
+    private void mostrarMovimientos(List<Movimiento> lista) {
+        containerLista.removeAllViews();
+        LayoutInflater inflater = LayoutInflater.from(this);
+        for (Movimiento m : lista) {
+            View card = inflater.inflate(R.layout.item_movimiento, containerLista, false);
+            bindCard(card, m);
+            containerLista.addView(card);
+        }
     }
 
-    private void abrirVer(Movimiento m) {
-        MovimientoViewDialog.newInstance(m)
-            .show(getSupportFragmentManager(), "ver");
+    private void bindCard(View card, Movimiento m) {
+        TextView tvTipoFecha = card.findViewById(R.id.item_tipo_fecha);
+        TextView tvMotivo    = card.findViewById(R.id.item_motivo);
+
+        tvTipoFecha.setText(m.getTipoMovimiento() + " — " + m.getFechaMovimiento());
+        tvMotivo.setText(m.getMotivo() != null ? m.getMotivo() : "—");
+
+        card.setOnClickListener(v -> abrirVista(m.getId()));
+        card.findViewById(R.id.item_btn_editar).setOnClickListener(v -> abrirFormulario(m.getId()));
+        View btnEliminar = card.findViewById(R.id.item_btn_eliminar);
+        if (SessionManager.getInstance().puedeEliminar()) {
+            btnEliminar.setOnClickListener(v -> abrirEliminar(m));
+        } else {
+            btnEliminar.setVisibility(View.GONE);
+        }
     }
 
-    private void abrirFormulario(Movimiento m) {
-        MovimientoFormDialog dialog = MovimientoFormDialog.newInstance(m);
-        dialog.setOnSaveListener(guardado -> {
-            try {
-                if (m == null) {
-                    movimientoDAO.insertar(guardado);
-                } else {
-                    movimientoDAO.actualizar(guardado);
-                }
-                cargarMovimientos();
-            } catch (Exception e) {
-                Toast.makeText(this, "Error al guardar movimiento", Toast.LENGTH_SHORT).show();
-            }
-        });
-        dialog.show(getSupportFragmentManager(), "form");
+    private void abrirFormulario(int id) {
+        Intent intent = new Intent(this, MovimientoFormActivity.class);
+        intent.putExtra("movimiento_id", id);
+        launcher.launch(intent);
     }
 
-    private void confirmarEliminar(Movimiento m) {
-        new AlertDialog.Builder(this)
-            .setTitle("Eliminar Movimiento")
-            .setMessage("¿Desea eliminar el movimiento '" + m.getTipoMovimiento()
-                + "' del " + m.getFechaMovimiento() + "?")
-            .setPositiveButton("Sí", (d, w) -> {
-                try {
-                    movimientoDAO.eliminar(m.getId());
-                    cargarMovimientos();
-                    Toast.makeText(this, "Movimiento eliminado", Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    Toast.makeText(this, "Error al eliminar movimiento", Toast.LENGTH_SHORT).show();
-                }
-            })
-            .setNegativeButton("No", null)
-            .show();
+    private void abrirVista(int id) {
+        Intent intent = new Intent(this, MovimientoViewActivity.class);
+        intent.putExtra("movimiento_id", id);
+        launcher.launch(intent);
+    }
+
+    private void abrirEliminar(Movimiento m) {
+        Intent intent = new Intent(this, MovimientoDeleteActivity.class);
+        intent.putExtra("movimiento_id", m.getId());
+        intent.putExtra("movimiento_label", m.getTipoMovimiento() + " — " + m.getFechaMovimiento());
+        launcher.launch(intent);
     }
 }

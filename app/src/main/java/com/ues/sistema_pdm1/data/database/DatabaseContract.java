@@ -105,16 +105,12 @@ public final class DatabaseContract {
         public static final String COL_ID_DISTRITO    = "ID_DISTRITO";
         public static final String COL_NOMBRE_BODEGA  = "NOMBRE_BODEGA";
         public static final String COL_DIRECCION_BODEGA = "DIRECCION_BODEGA";
-        public static final String COL_CAPACIDAD_TOTAL = "CAPACIDAD_TOTAL";
-        public static final String COL_CAPACIDAD_ACTUAL = "CAPACIDAD_ACTUAL";
         public static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS BODEGA (" +
             "    ID_BODEGA           INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    ID_DISTRITO         INTEGER," +
             "    NOMBRE_BODEGA       TEXT    NOT NULL," +
             "    DIRECCION_BODEGA    TEXT    NOT NULL," +
-            "    CAPACIDAD_TOTAL     INTEGER NOT NULL DEFAULT 0 CHECK (CAPACIDAD_TOTAL <= 150)," +
-            "    CAPACIDAD_ACTUAL    INTEGER NOT NULL DEFAULT 0," +
             "    FOREIGN KEY (ID_DISTRITO) REFERENCES DISTRITO (ID_DISTRITO)" +
             ")";
     }

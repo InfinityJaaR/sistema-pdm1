@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Importador"
+            android:text="@string/label_importador"
             android:textColor="#888888"
             android:textSize="12sp" />
 
@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vehículo"
+            android:text="@string/label_vehiculo"
             android:textColor="#888888"
             android:textSize="12sp" />
 
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha de Venta"
+            android:text="@string/label_fecha_venta"
             android:textColor="#888888"
             android:textSize="12sp" />
 
@@ -61,7 +61,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Precio de Venta"
+            android:text="@string/label_precio_venta"
             android:textColor="#888888"
             android:textSize="12sp" />
 
@@ -78,7 +78,7 @@
             android:id="@+id/btn_venta_view_cerrar"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:text="Cerrar"
+            android:text="@string/btn_cerrar"
             android:backgroundTint="#12122A"
             android:textColor="#FFFFFF" />
 

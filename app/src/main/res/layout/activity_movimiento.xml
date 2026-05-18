@@ -30,7 +30,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Movimientos"
+                    android:text="@string/label_movimientos"
                     android:textColor="@color/text_light"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -38,7 +38,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gestión de movimientos de vehículos"
+                    android:text="@string/subtitle_movimiento"
                     android:textColor="@color/primary_blue_light"
                     android:textSize="12sp" />
 
@@ -74,7 +74,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Buscar por tipo, fecha o motivo..."
+                android:hint="@string/hint_buscar_movimiento"
                 android:textColor="@color/text_light"
                 android:textColorHint="@color/primary_blue_light"
                 android:textSize="14sp"
@@ -98,22 +98,18 @@
     </LinearLayout>
 
     <!-- CUERPO -->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_weight="1">
 
-        <ListView
-            android:id="@+id/lv_movimiento"
+        <LinearLayout
+            android:id="@+id/container_lista_movimiento"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="8dp"
-            android:clipToPadding="false"
-            tools:listitem="@layout/item_movimiento" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp" />
 
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

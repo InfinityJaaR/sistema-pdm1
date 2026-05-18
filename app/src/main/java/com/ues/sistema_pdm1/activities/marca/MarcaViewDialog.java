@@ -36,11 +36,11 @@ public class MarcaViewDialog extends DialogFragment {
         Button btnCerrar  = view.findViewById(R.id.btn_cerrar);
 
         Bundle args = requireArguments();
-        tvId.setText("ID: " + args.getInt("ID"));
+        tvId.setText(getString(R.string.label_id_marca) + args.getInt("ID"));
         tvNombre.setText(args.getString("NOMBRE"));
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())
-            .setTitle("Detalle de Marca")
+            .setTitle(getString(R.string.title_detalle_marca))
             .setView(view)
             .create();
 

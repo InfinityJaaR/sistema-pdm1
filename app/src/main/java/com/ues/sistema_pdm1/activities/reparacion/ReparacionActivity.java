@@ -79,7 +79,7 @@ public class ReparacionActivity extends AppCompatActivity {
             reparacionesFiltradas = new ArrayList<>(reparaciones);
             refrescarLista();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al cargar reparaciones", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar_reparaciones), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -134,17 +134,15 @@ public class ReparacionActivity extends AppCompatActivity {
         try {
             reparacionDAO.insertar(reparacion);
             cargarReparaciones();
-            Toast.makeText(this, "Reparación registrada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.msg_reparacion_registrada), Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al registrar reparación", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_registrar_reparacion), Toast.LENGTH_SHORT).show();
         }
     }
 
     private void actualizar(Reparacion reparacion) {
         if (reparacion.getAptoParaVenta() == 1 && reparacion.getRequiereOtraReparacion() == 1) {
-            Toast.makeText(this,
-                    "No puede ser apto para venta y requerir otra reparación a la vez",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.error_apto_y_requiere), Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -153,13 +151,12 @@ public class ReparacionActivity extends AppCompatActivity {
             vehiculos = vehiculoDAO.obtenerPor(
                     "ID_VEHICULO", String.valueOf(reparacion.getIdVehiculo()));
         } catch (Exception e) {
-            Toast.makeText(this, "Error al verificar vehículo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_verificar_vehiculo), Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (vehiculos == null || vehiculos.isEmpty()) {
-            Toast.makeText(this, "No se encontró el vehículo asociado",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_vehiculo_no_encontrado), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -167,35 +164,33 @@ public class ReparacionActivity extends AppCompatActivity {
 
         if (reparacion.getAptoParaVenta() == 1
                 && !vehiculo.getEstadoVehiculo().equals("en reparacion")) {
-            Toast.makeText(this,
-                    "El vehículo no está en reparación, no se puede marcar como apto",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.error_vehiculo_no_en_reparacion), Toast.LENGTH_LONG).show();
             return;
         }
 
         try {
             reparacionDAO.actualizar(reparacion);
             cargarReparaciones();
-            Toast.makeText(this, "Reparación actualizada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.msg_reparacion_actualizada), Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-            Toast.makeText(this, "Error al actualizar reparación", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_actualizar_reparacion), Toast.LENGTH_SHORT).show();
         }
     }
 
     private void confirmarEliminar(Reparacion reparacion) {
         new AlertDialog.Builder(this)
-                .setTitle("Eliminar Reparación")
-                .setMessage("¿Desea eliminar esta reparación?")
-                .setPositiveButton("Sí", (d, w) -> {
+                .setTitle(getString(R.string.title_eliminar_reparacion))
+                .setMessage(getString(R.string.msg_eliminar_reparacion))
+                .setPositiveButton(getString(R.string.yes), (d, w) -> {
                     try {
                         reparacionDAO.eliminar(reparacion.getId());
                         cargarReparaciones();
-                        Toast.makeText(this, "Reparación eliminada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.msg_reparacion_eliminada), Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error al eliminar reparación", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(getString(R.string.no), null)
                 .show();
     }
 }

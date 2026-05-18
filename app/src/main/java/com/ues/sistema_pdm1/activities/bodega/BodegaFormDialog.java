@@ -92,7 +92,7 @@ public class BodegaFormDialog extends DialogFragment {
         }
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())
-                .setTitle(esEdicion ? "Editar Bodega" : "Nueva Bodega")
+                .setTitle(esEdicion ? R.string.title_editar_bodega : R.string.title_nueva_bodega)
                 .setView(view)
                 .create();
 
@@ -102,15 +102,15 @@ public class BodegaFormDialog extends DialogFragment {
             Distrito distrito = (Distrito) spDistrito.getSelectedItem();
 
             if (distrito == null) {
-                Toast.makeText(getActivity(), "Seleccione un distrito", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.error_seleccione_distrito), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (nombre.isEmpty()) {
-                etNombre.setError("Campo requerido");
+                etNombre.setError(getString(R.string.msg_campo_requerido));
                 return;
             }
             if (direccion.isEmpty()) {
-                etDireccion.setError("Campo requerido");
+                etDireccion.setError(getString(R.string.msg_campo_requerido));
                 return;
             }
 

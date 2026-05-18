@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public void handleOnBackPressed() {
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle(R.string.nav_logout)
-                        .setMessage("¿Desea cerrar la aplicación?")
+                        .setMessage(R.string.msg_cerrar_aplicacion)
                         .setPositiveButton(R.string.yes, (dialog, which) -> finish())
                         .setNegativeButton(R.string.no,  (dialog, which) -> dialog.dismiss())
                         .show();
@@ -199,7 +199,6 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, TallerActivity.class);
                 break;
             default:
-                Toast.makeText(this, "Módulo en construcción", Toast.LENGTH_SHORT).show();
                 return;
         }
         startActivity(intent);

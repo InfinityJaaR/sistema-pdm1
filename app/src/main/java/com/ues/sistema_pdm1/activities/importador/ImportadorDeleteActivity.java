@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ues.sistema_pdm1.R;
 import com.ues.sistema_pdm1.activities.LoginActivity;
 import com.ues.sistema_pdm1.data.dao.GenericDAO;
-import com.ues.sistema_pdm1.models.Importacion;
 import com.ues.sistema_pdm1.models.Importador;
 import com.ues.sistema_pdm1.models.TelefonoImportador;
 import com.ues.sistema_pdm1.utils.Constants;
@@ -25,7 +24,6 @@ public class ImportadorDeleteActivity extends AppCompatActivity {
 
     private GenericDAO<Importador> importadorDAO;
     private GenericDAO<TelefonoImportador> telefonoDAO;
-    private GenericDAO<Importacion> importacionDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +40,8 @@ public class ImportadorDeleteActivity extends AppCompatActivity {
         importadorId = getIntent().getIntExtra("importador_id", 0);
         String nombre = getIntent().getStringExtra("importador_nombre");
 
-        importadorDAO   = new GenericDAO<>(this, Importador.class, "importador");
-        telefonoDAO     = new GenericDAO<>(this, TelefonoImportador.class, "telefono_importador");
-        importacionDAO  = new GenericDAO<>(this, Importacion.class, "importacion");
+        importadorDAO = new GenericDAO<>(this, Importador.class, "importador");
+        telefonoDAO   = new GenericDAO<>(this, TelefonoImportador.class, "telefono_importador");
 
         TextView tvNombre = findViewById(R.id.delete_importer_name);
         tvNombre.setText(nombre != null ? nombre : "");
@@ -62,15 +59,6 @@ public class ImportadorDeleteActivity extends AppCompatActivity {
             return;
         }
 
-        // Verificar si tiene importaciones vinculadas
-        List<Importacion> importaciones = importacionDAO.obtenerPor("ID_IMPORTADOR", String.valueOf(importadorId));
-        if (!importaciones.isEmpty()) {
-            Toast.makeText(this,
-                "No se puede eliminar: el importador tiene " + importaciones.size() + " importación(es) registrada(s)",
-                Toast.LENGTH_LONG).show();
-            return;
-        }
-
         try {
             // Eliminar teléfonos primero
             List<TelefonoImportador> tels = telefonoDAO.obtenerPor("ID_IMPORTADOR", String.valueOf(importadorId));
@@ -84,7 +72,7 @@ public class ImportadorDeleteActivity extends AppCompatActivity {
             setResult(RESULT_OK);
             finish();
         } catch (Exception e) {
-            Toast.makeText(this, Constants.MSG_OPERACION_FALLIDA, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }

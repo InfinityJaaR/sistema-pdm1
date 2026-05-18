@@ -22,6 +22,7 @@ import com.ues.sistema_pdm1.models.DetalleDesperfecto;
 import com.ues.sistema_pdm1.models.FotoDesperfecto;
 import com.ues.sistema_pdm1.models.TipoDesperfecto;
 import com.ues.sistema_pdm1.models.Vehiculo;
+import com.ues.sistema_pdm1.utils.Constants;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -96,14 +97,15 @@ public class DetalleDesperfectoActivity extends AppCompatActivity {
         try {
             listaOriginal = detalleDAO.obtenerTodos();
             if (listaOriginal == null) listaOriginal = new ArrayList<>();
-            
-            // Mostrar el más reciente primero (invierte la lista de la BD)
+
+            // Mostrar el más reciente primero
             Collections.reverse(listaOriginal);
-            
+
             listaFiltrada = new ArrayList<>(listaOriginal);
             refrescarLista();
         } catch (SQLException e) {
-            Log.e(TAG, "Error al cargar datos: " + e.getMessage());
+            Log.e(TAG, "Error: " + e.getMessage());
+            Toast.makeText(this, getString(R.string.error_cargar_desperfectos), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -123,13 +125,13 @@ public class DetalleDesperfectoActivity extends AppCompatActivity {
                 if (item != null) {
                     try {
                         Vehiculo v = vehiculoDAO.obtenerPorId(item.getIdVehiculo());
-                        tvVehiculo.setText(v != null ? "Vehículo: " + v.getVin() : "ID: " + item.getIdVehiculo());
+                        tvVehiculo.setText(v != null ? getString(R.string.menu_vehicles) + ": " + v.getVin() : "ID: " + item.getIdVehiculo());
                         TipoDesperfecto t = tipoDAO.obtenerPorId(item.getIdTipoDesperfecto());
-                        tvTipo.setText(t != null ? t.getNombreTipoDesperfecto() : "Desconocido");
+                        tvTipo.setText(t != null ? t.getNombreTipoDesperfecto() : getString(R.string.placeholder_empty));
                     } catch (SQLException e) {
-                        tvVehiculo.setText("Error");
+                        tvVehiculo.setText(getString(R.string.error_cargar_datos));
                     }
-                    tvFecha.setText(item.getFechaRegistro());
+                    tvFecha.setText(getString(R.string.label_registrado_fecha, item.getFechaRegistro()));
                 }
                 return convertView;
             }
@@ -145,13 +147,13 @@ public class DetalleDesperfectoActivity extends AppCompatActivity {
             listaFiltrada = new ArrayList<>();
             for (DetalleDesperfecto d : listaOriginal) {
                 boolean coincide = false;
-                
-                // 1. Buscar en descripción
+
+                // 1. Busca en la DESCRIPCIÓN del desperfecto
                 if (d.getDescripcionDetalle().toLowerCase().contains(texto)) {
                     coincide = true;
-                } 
-                
-                // 2. Buscar en VIN del Vehículo
+                }
+
+                // 2. Busca en el VIN del Vehículo asociado
                 if (!coincide) {
                     try {
                         Vehiculo v = vehiculoDAO.obtenerPorId(d.getIdVehiculo());
@@ -161,7 +163,7 @@ public class DetalleDesperfectoActivity extends AppCompatActivity {
                     } catch (SQLException ignored) {}
                 }
 
-                // 3. Buscar en el nombre del Tipo de Desperfecto
+                // 3. Busca en el nombre del TIPO de Desperfecto
                 if (!coincide) {
                     try {
                         TipoDesperfecto t = tipoDAO.obtenerPorId(d.getIdTipoDesperfecto());
@@ -180,8 +182,7 @@ public class DetalleDesperfectoActivity extends AppCompatActivity {
     }
 
     private void abrirVer(DetalleDesperfecto d) {
-        DetalleDesperfectoFormDialog.newInstance(d, true)
-                .show(getSupportFragmentManager(), "ViewDialog");
+        DetalleDesperfectoFormDialog.newInstance(d, true).show(getSupportFragmentManager(), "ViewDialog");
     }
 
     private void abrirEditar(DetalleDesperfecto d) {
@@ -193,30 +194,21 @@ public class DetalleDesperfectoActivity extends AppCompatActivity {
     private void abrirConfirmacionEliminar(DetalleDesperfecto d) {
         View view = getLayoutInflater().inflate(R.layout.dialog_confirmacion, null);
         TextView tvMsg = view.findViewById(R.id.confirmacion_text);
-        tvMsg.setText("¿Desea eliminar este desperfecto y sus fotos?\n(" + d.getDescripcionDetalle() + ")");
-
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setView(view)
-                .create();
+        tvMsg.setText(getString(R.string.msg_confirmar_eliminar_desperfecto, d.getDescripcionDetalle()));
+        AlertDialog dialog = new AlertDialog.Builder(this).setView(view).create();
 
         view.findViewById(R.id.btn_no).setOnClickListener(v -> dialog.dismiss());
         view.findViewById(R.id.btn_si).setOnClickListener(v -> {
             try {
-                // Limpiar fotos asociadas
-                List<FotoDesperfecto> fotos = fotoDAO.obtenerPor("ID_DETALLE_DESPERFECTO", String.valueOf(d.getId()));
-                for (FotoDesperfecto f : fotos) {
-                    new File(f.getRutaImagen()).delete();
-                    fotoDAO.eliminar(f.getId());
-                }
                 detalleDAO.eliminar(d.getId());
                 cargarDatos();
                 dialog.dismiss();
-                Toast.makeText(this, "Eliminado correctamente", Toast.LENGTH_SHORT).show();
-            } catch (SQLException e) {
-                Toast.makeText(this, "Error al eliminar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.msg_operacion_exitosa), Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                dialog.dismiss();
             }
         });
-
         dialog.show();
     }
 }

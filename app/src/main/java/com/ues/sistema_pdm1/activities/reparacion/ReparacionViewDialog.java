@@ -37,30 +37,32 @@ public class ReparacionViewDialog extends DialogFragment {
         View view = LayoutInflater.from(getActivity())
                 .inflate(R.layout.dialog_reparacion_view, null);
 
-        TextView tvId           = view.findViewById(R.id.tv_id_reparacion);
-        TextView tvVehiculo     = view.findViewById(R.id.tv_vehiculo_reparacion);
-        TextView tvTaller       = view.findViewById(R.id.tv_taller_reparacion);
-        TextView tvFechaInicio  = view.findViewById(R.id.tv_fecha_inicio_reparacion);
-        TextView tvFechaFin     = view.findViewById(R.id.tv_fecha_fin_reparacion);
-        TextView tvDescripcion  = view.findViewById(R.id.tv_descripcion_reparacion);
-        TextView tvAptoVenta    = view.findViewById(R.id.tv_apto_venta_reparacion);
-        TextView tvRequiereRep  = view.findViewById(R.id.tv_requiere_reparacion);
-        Button   btnCerrar      = view.findViewById(R.id.btn_cerrar);
+        TextView tvId          = view.findViewById(R.id.tv_id_reparacion);
+        TextView tvVehiculo    = view.findViewById(R.id.tv_vehiculo_reparacion);
+        TextView tvTaller      = view.findViewById(R.id.tv_taller_reparacion);
+        TextView tvFechaInicio = view.findViewById(R.id.tv_fecha_inicio_reparacion);
+        TextView tvFechaFin    = view.findViewById(R.id.tv_fecha_fin_reparacion);
+        TextView tvDescripcion = view.findViewById(R.id.tv_descripcion_reparacion);
+        TextView tvAptoVenta   = view.findViewById(R.id.tv_apto_venta_reparacion);
+        TextView tvRequiereRep = view.findViewById(R.id.tv_requiere_reparacion);
+        Button   btnCerrar     = view.findViewById(R.id.btn_cerrar);
 
         Bundle args = requireArguments();
-        tvId.setText("ID: "            + args.getInt("ID_REPARACION"));
-        tvVehiculo.setText("Vehículo ID: " + args.getInt("ID_VEHICULO"));
-        tvTaller.setText("Taller ID: "     + args.getInt("ID_TALLER"));
-        tvFechaInicio.setText("Fecha inicio: " + args.getString("FECHA_INICIO"));
-        tvFechaFin.setText("Fecha fin: "       + args.getString("FECHA_FIN"));
-        tvDescripcion.setText("Descripción: "  + args.getString("DESCRIPCION_TRABAJO"));
+        tvId.setText("ID: "  + args.getInt("ID_REPARACION"));
+        tvVehiculo.setText(getString(R.string.label_vehiculo_id)    + args.getInt("ID_VEHICULO"));
+        tvTaller.setText(getString(R.string.label_taller_id)        + args.getInt("ID_TALLER"));
+        tvFechaInicio.setText(getString(R.string.label_fecha_inicio_detalle) + args.getString("FECHA_INICIO"));
+        tvFechaFin.setText(getString(R.string.label_fecha_fin_detalle)       + args.getString("FECHA_FIN"));
+        tvDescripcion.setText(getString(R.string.label_descripcion_detalle)  + args.getString("DESCRIPCION_TRABAJO"));
         tvAptoVenta.setText(args.getInt("APTO_PARA_VENTA") == 1
-                ? "✔ Apto para venta" : "✘ No apto para venta");
+                ? getString(R.string.label_apto_venta_si)
+                : getString(R.string.label_apto_venta_no));
         tvRequiereRep.setText(args.getInt("REQUIERE_OTRA_REPARACION") == 1
-                ? "⚠ Requiere otra reparación" : "✔ No requiere otra reparación");
+                ? getString(R.string.label_requiere_reparacion_si)
+                : getString(R.string.label_requiere_reparacion_no));
 
         AlertDialog dialog = new AlertDialog.Builder(requireActivity())
-                .setTitle("Detalle de Reparación")
+                .setTitle(getString(R.string.title_detalle_reparacion))
                 .setView(view)
                 .create();
 

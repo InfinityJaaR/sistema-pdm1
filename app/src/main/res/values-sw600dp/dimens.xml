@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_horizontal_margin">80dp</dimen>
+    <dimen name="form_horizontal_padding">60dp</dimen>
+    <dimen name="menu_horizontal_padding">60dp</dimen>
+</resources>
