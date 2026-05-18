@@ -343,11 +343,11 @@ public class LlenarBDGpo02 {
 
             if (reparacionDAO.contar() == 0) {
                 reparacionDAO.insertar(new Reparacion(0, 1, 1, "2024-01-20", "2024-01-25", "Reparación de golpe en puerta",   0, 0));
-                reparacionDAO.insertar(new Reparacion(0, 2, 2, "2024-01-22", "2024-02-01", "Pulido y pintura por rayones",    0, 0));
+                reparacionDAO.insertar(new Reparacion(0, 3, 2, "2024-01-22", "2024-02-01", "Pulido y pintura por rayones",    0, 0));
                 reparacionDAO.insertar(new Reparacion(0, 3, 3, "2024-02-25", "2024-03-05", "Reemplazo de vidrio trasero",     0, 0));
-                reparacionDAO.insertar(new Reparacion(0, 7, 1, "2024-03-01", "2024-03-10", "Revisión general previa a venta", 0, 0));
-                reparacionDAO.actualizar(new Reparacion(4, 7, 1, "2024-03-01", "2024-03-10", "Revisión general previa a venta", 1, 0));
-                reparacionDAO.insertar(new Reparacion(0, 9, 2, "2024-04-15", "2024-04-25", "Revisión mecánica completa",      0, 0));
+                reparacionDAO.insertar(new Reparacion(0, 1, 7, "2024-03-01", "2024-03-10", "Revisión general previa a venta", 0, 0));
+                reparacionDAO.actualizar(new Reparacion(4, 1, 7, "2024-03-01", "2024-03-10", "Revisión general previa a venta", 1, 0));
+                reparacionDAO.insertar(new Reparacion(0, 3, 9, "2024-04-15", "2024-04-25", "Revisión mecánica completa",      0, 0));
                 Log.d(TAG, "Reparaciones insertadas");
             }
 

@@ -144,6 +144,22 @@
 
             </LinearLayout>
 
+            <!-- SECCIÓN: VEHÍCULOS DE LA IMPORTACIÓN -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/section_vehiculos_importacion"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="10dp" />
+
+            <LinearLayout
+                android:id="@+id/container_vehiculos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
         </LinearLayout>
 
     </ScrollView>

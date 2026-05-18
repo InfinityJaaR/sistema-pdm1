@@ -8,7 +8,7 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME    = "inventario_pdm1.db";
-    private static final int    DB_VERSION = 11;
+    private static final int    DB_VERSION = 12;
     private static final String TAG        = "DatabaseHelper";
 
     // ----------------------------------------------------------------
@@ -162,6 +162,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         "        ) " +
         "        THEN RAISE(ABORT, 'La seccion ha alcanzado su capacidad maxima') " +
         "    END; " +
+        "END";
+
+    private static final String TRG_TALLER_AUTORIZADO_REPARACION =
+        "CREATE TRIGGER IF NOT EXISTS TRG_TALLER_AUTORIZADO_REPARACION " +
+        "BEFORE INSERT ON REPARACION " +
+        "BEGIN " +
+        "    SELECT CASE " +
+        "        WHEN (SELECT AUTORIZADO FROM TALLER WHERE ID_TALLER = NEW.ID_TALLER) != 1 " +
+        "        THEN RAISE(ABORT, 'El taller no esta autorizado para realizar reparaciones') " +
+        "    END; " +
+        "END";
+
+    private static final String TRG_TALLER_DESAUTORIZAR =
+        "CREATE TRIGGER IF NOT EXISTS TRG_TALLER_DESAUTORIZAR " +
+        "BEFORE UPDATE OF AUTORIZADO ON TALLER " +
+        "WHEN NEW.AUTORIZADO = 0 " +
+        "BEGIN " +
+        "    SELECT CASE " +
+        "        WHEN (SELECT COUNT(*) FROM REPARACION WHERE ID_TALLER = OLD.ID_TALLER) > 0 " +
+        "        THEN RAISE(ABORT, 'No se puede desautorizar un taller con reparaciones asignadas') " +
+        "    END; " +
+        "END";
+
+    private static final String TRG_VENTA_LIBERA_SECCION =
+        "CREATE TRIGGER IF NOT EXISTS TRG_VENTA_LIBERA_SECCION " +
+        "AFTER INSERT ON VENTA " +
+        "BEGIN " +
+        "    UPDATE VEHICULO " +
+        "    SET ID_SECCION = NULL " +
+        "    WHERE ID_VEHICULO = NEW.ID_VEHICULO; " +
         "END";
 
     // ----------------------------------------------------------------
@@ -434,8 +464,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         execSafe(db, TRG_ESTADO_VENTA_UPDATE,         "TRG_ESTADO_VENTA_UPDATE");
         execSafe(db, TRG_ESTADO_REPARACION,           "TRG_ESTADO_REPARACION");
         execSafe(db, TRG_ESTADO_REPARACION_INSERT,    "TRG_ESTADO_REPARACION_INSERT");
-        execSafe(db, TRG_SECCION_DECREMENTAR,         "TRG_SECCION_DECREMENTAR");
-        execSafe(db, TRG_CAPACIDAD_SECCION_UPDATE,    "TRG_CAPACIDAD_SECCION_UPDATE");
+        execSafe(db, TRG_SECCION_DECREMENTAR,              "TRG_SECCION_DECREMENTAR");
+        execSafe(db, TRG_CAPACIDAD_SECCION_UPDATE,         "TRG_CAPACIDAD_SECCION_UPDATE");
+        execSafe(db, TRG_TALLER_AUTORIZADO_REPARACION,     "TRG_TALLER_AUTORIZADO_REPARACION");
+        execSafe(db, TRG_TALLER_DESAUTORIZAR,              "TRG_TALLER_DESAUTORIZAR");
+        execSafe(db, TRG_VENTA_LIBERA_SECCION,             "TRG_VENTA_LIBERA_SECCION");
 
         // Triggers RESTRICT — protección de integridad referencial
         execSafe(db, TRG_RESTRICT_PAIS_DELETE,              "TRG_RESTRICT_PAIS_DELETE");
@@ -483,6 +516,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         dropSafe(db, "TRIGGER", "TRG_RESTRICT_MUNICIPIO_DELETE");
         dropSafe(db, "TRIGGER", "TRG_RESTRICT_DEPARTAMENTO_DELETE");
         dropSafe(db, "TRIGGER", "TRG_RESTRICT_PAIS_DELETE");
+        dropSafe(db, "TRIGGER", "TRG_VENTA_LIBERA_SECCION");
+        dropSafe(db, "TRIGGER", "TRG_TALLER_DESAUTORIZAR");
+        dropSafe(db, "TRIGGER", "TRG_TALLER_AUTORIZADO_REPARACION");
         dropSafe(db, "TRIGGER", "TRG_CAPACIDAD_SECCION_UPDATE");
         dropSafe(db, "TRIGGER", "TRG_SECCION_DECREMENTAR");
         dropSafe(db, "TRIGGER", "TRG_ESTADO_REPARACION_INSERT");

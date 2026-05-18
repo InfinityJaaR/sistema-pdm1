@@ -371,11 +371,17 @@
     <string name="label_identidad_vehiculo">Vehicle Identity</string>
     <string name="label_logistica_inventario">Logistics and Inventory</string>
     <string name="label_tipo">Type</string>
+    <string name="label_marca">Brand</string>
     <string name="label_importacion">Import</string>
     <string name="label_vin">VIN</string>
     <string name="label_anio">Year</string>
     <string name="label_color">Color</string>
     <string name="label_estado">Status</string>
+    <string name="label_desperfectos">Defects</string>
+    <string name="label_fecha_registro">Registration date</string>
+    <string name="section_vehiculos_importacion">Vehicles in this Importation</string>
+    <string name="msg_sin_vehiculos_importacion">No vehicles registered for this importation</string>
+    <string name="msg_sin_desperfectos">No defects registered</string>
     <string name="hint_vin">Enter VIN number</string>
     <string name="hint_color">Enter vehicle color</string>
     <string name="hint_seleccione_opcion">Select an option...</string>
